@@ -1,3 +1,5 @@
+import QtQuick
+
 QtObject{
     required property color p100
     required property color p200

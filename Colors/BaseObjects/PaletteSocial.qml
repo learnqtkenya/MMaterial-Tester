@@ -1,3 +1,5 @@
+import QtQuick
+
 QtObject{
     required property color facebook
     required property color twitter

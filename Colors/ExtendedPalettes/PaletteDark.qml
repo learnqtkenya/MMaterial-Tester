@@ -1,4 +1,4 @@
-import "../"
+import "../BaseObjects"
 
 PaletteExtended{
     p100: "#F9FAFB"

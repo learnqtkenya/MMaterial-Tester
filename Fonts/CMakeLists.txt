@@ -34,8 +34,6 @@ set_source_files_properties(PublicSans.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE
 )
 
-set_source_files_properties(BaseFont.qml PROPERTIES HEADER_FILE_ONLY TRUE)
-
 qt_add_qml_module(FontsLib
     URI Fonts
     VERSION 1.0

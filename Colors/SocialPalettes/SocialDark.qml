@@ -1,4 +1,4 @@
-import "../"
+import "../BaseObjects"
 
 PaletteSocial{
     facebook: "#1877F2"

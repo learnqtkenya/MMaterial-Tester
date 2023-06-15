@@ -1,3 +1,5 @@
+import QtQuick
+
 QtObject{
     required property color lighter
     required property color light

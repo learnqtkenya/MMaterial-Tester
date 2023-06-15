@@ -1,3 +1,5 @@
+import QtQuick
+
 QtObject{
     required property PaletteBasic primary
     required property PaletteBasic secondary

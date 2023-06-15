@@ -1,5 +1,7 @@
 import "../BasicPalettes/Dark"
 import "../SocialPalettes/"
+import "../BaseObjects"
+import "../ExtendedPalettes"
 
 ThemeBase{
     primary: PrimaryDark{}
@@ -9,4 +11,5 @@ ThemeBase{
     warning: WarningDark{}
     error: ErrorDark{}
     social: SocialDark{}
+    main: PaletteDark{}
 }

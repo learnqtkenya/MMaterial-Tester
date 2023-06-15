@@ -1,5 +1,7 @@
 import "../BasicPalettes/Light"
-import "../SocialPalettes"
+import "../SocialPalettes/"
+import "../BaseObjects"
+import "../ExtendedPalettes"
 
 ThemeBase{
     primary: PrimaryLight{}
@@ -9,4 +11,5 @@ ThemeBase{
     warning: WarningLight{}
     error: ErrorLight{}
     social: SocialLight{}
+    main: PaletteLight{}
 }
