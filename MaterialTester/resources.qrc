@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Main.qml</file>
+        <file>Showcase/FontShowcase.qml</file>
+        <file>Showcase/ColorShowcase/ColorShowcase.qml</file>
+        <file>MainWindow.qml</file>
+    </qresource>
+</RCC>
