@@ -3,7 +3,9 @@ qt_add_library(MMaterialLib STATIC)
 set_target_properties(MMaterialLib PROPERTIES AUTOMOC ON)
 target_link_libraries(MMaterialLib PRIVATE Qt6::Quick)
 
+
 list(APPEND MODULE_ASSETS
+    # Fonts
     Fonts/Families/PublicSans/PublicSans-ExtraBold.ttf
     Fonts/Families/PublicSans/PublicSans-Bold.ttf
     Fonts/Families/PublicSans/PublicSans-SemiBold.ttf
@@ -11,9 +13,13 @@ list(APPEND MODULE_ASSETS
     Fonts/Families/PublicSans/PublicSans-Regular.ttf
     Fonts/Families/PublicSans/PublicSans-Light.ttf
     Fonts/Families/PublicSans/PublicSans-ExtraLight.ttf
+
+    # Icons
+    Icons/assets/android.svg
 )
 
 list(APPEND MODULE_QML_FILES
+    # Fonts
     Fonts/PublicSans.qml
     Fonts/BaseFont.qml
     Fonts/Texts/H1.qml
@@ -30,6 +36,7 @@ list(APPEND MODULE_QML_FILES
     Fonts/Texts/Overline.qml
     Fonts/Texts/BaseText.qml
 
+    # Colors / Themes
     Colors/Theme.qml
     Colors/ThemeList.qml
     Colors/BaseObjects/PaletteBackground.qml
@@ -42,6 +49,10 @@ list(APPEND MODULE_QML_FILES
     Colors/BaseObjects/ThemeBase.qml
     Colors/Themes/DarkTheme.qml
     Colors/Themes/LightTheme.qml
+
+    # Icons
+    Icons/Icon.qml
+    Icons/IconList.qml
 )
 
 set_source_files_properties(
@@ -50,6 +61,7 @@ set_source_files_properties(
     Colors/Themes/DarkTheme.qml
     Colors/Themes/LightTheme.qml
     Colors/ThemeList.qml
+    Icons/IconList.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE
 )
 
