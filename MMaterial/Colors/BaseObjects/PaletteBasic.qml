@@ -6,4 +6,5 @@ QtObject{
     required property color main
     required property color dark
     required property color darker
+    required property color contrastText
 }

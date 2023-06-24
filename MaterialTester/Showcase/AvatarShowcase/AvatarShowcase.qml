@@ -1,12 +1,10 @@
 import QtQuick 2.15
+import QtQuick.Controls
 import MMaterial
-
+import QtQuick.Effects
 Item {
-    Icon{
-        path: IconList.android
-        sourceSize.height: 50
-        anchors.centerIn: parent
-        color: Theme.success.light
-        interactive: true
-    }
+
+
+
+
 }

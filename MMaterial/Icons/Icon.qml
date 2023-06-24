@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Effects
 
 Image{
-    id: icon
+    id: _icon
 
     property string color: ""
     property string path: ""
@@ -19,11 +19,12 @@ Image{
     fillMode: Image.PreserveAspectFit
     source: visible ? path : ""
 
-    layer.enabled: color != ""
+    layer.enabled: _icon.color != ""
     layer {
         effect: MultiEffect {
-            colorizationColor: icon.color
+            colorizationColor: _icon.color
             colorization: 1
+            brightness: 1
         }
     }
 
@@ -36,36 +37,36 @@ Image{
         onTriggered: tooltipTime+=1;
         onRunningChanged: if(!running){ tooltipTime = 0; }
     }
-    Keys.onPressed: if((event.key == Qt.Key_Return || event.key == Qt.Key_Enter) && icon.interactive){ accepted(); confirmed();}
+    Keys.onPressed: if((event.key == Qt.Key_Return || event.key == Qt.Key_Enter) && _icon.interactive){ accepted(); confirmed();}
     MouseArea{
         id: mouseArea
-        visible: icon.interactive || icon.tooltipEnabled
+        visible: _icon.interactive || _icon.tooltipEnabled
         anchors.fill: parent
-        onClicked: if(icon.interactive){ icon.clicked(); }
+        onClicked: if(_icon.interactive){ _icon.clicked(); }
         hoverEnabled: hoverable
-        cursorShape: containsMouse && icon.interactive ? Qt.PointingHandCursor : Qt.ArrowCursor
+        cursorShape: containsMouse && _icon.interactive ? Qt.PointingHandCursor : Qt.ArrowCursor
     }
 
     states: [
         State {
-            when: mouseArea.pressed && icon.interactive
+            when: mouseArea.pressed && _icon.interactive
             name: "PRESSED"
-            PropertyChanges { target: icon; scale: 0.8; }
+            PropertyChanges { target: _icon; scale: 0.8; }
         },
         State {
-            when: icon.interactive
+            when: _icon.interactive
             name: "DEFAULT"
-            PropertyChanges { target: icon; scale: 1; }
+            PropertyChanges { target: _icon; scale: 1; }
         }
     ]
     transitions: [
         Transition {
             from: "PRESSED"
-            NumberAnimation { target: icon; properties: "scale"; duration: 1150; easing.type: Easing.OutElastic; }
+            NumberAnimation { target: _icon; properties: "scale"; duration: 1150; easing.type: Easing.OutElastic; }
         },
         Transition {
             from: "DEFAULT"
-            NumberAnimation { target: icon; properties: "scale"; duration: 70; }
+            NumberAnimation { target: _icon; properties: "scale"; duration: 70; }
         }
     ]
 }

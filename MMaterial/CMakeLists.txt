@@ -16,6 +16,7 @@ list(APPEND MODULE_ASSETS
 
     # Icons
     Icons/assets/android.svg
+    Icons/assets/mail.svg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -53,6 +54,12 @@ list(APPEND MODULE_QML_FILES
     # Icons
     Icons/Icon.qml
     Icons/IconList.qml
+    Icons/Avatar.qml
+
+    # Badge
+    Badge/BadgeNumber.qml
+    Badge/BadgeDot.qml
+    Badge/Badge.qml
 )
 
 set_source_files_properties(

@@ -29,6 +29,7 @@ qt_add_qml_module(appMaterialTester
         DevTools/FileWatcher.cpp
         DevTools/CustomEngine.h
         DevTools/CustomEngine.cpp
+        QML_FILES
 
 
 )

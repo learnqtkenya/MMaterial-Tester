@@ -11,6 +11,7 @@ ThemeBase{
         main: "#00AB55"
         dark: "#007B55"
         darker: "#005249"
+        contrastText: "#FFFFFF"
     }
     secondary: PaletteBasic{
         lighter: "#D6E4FF"
@@ -18,6 +19,7 @@ ThemeBase{
         main: "#3366FF"
         dark: "#1939B7"
         darker: "#091A7A"
+        contrastText: "#FFFFFF"
     }
     info: PaletteBasic{
         lighter: "#CAFDF5"
@@ -25,6 +27,7 @@ ThemeBase{
         main: "#00B8D9"
         dark: "#006C9C"
         darker: "#003768"
+        contrastText: "#FFFFFF"
     }
     success: PaletteBasic{
         lighter: "#D8FBDE"
@@ -32,6 +35,7 @@ ThemeBase{
         main: "#36B37E"
         dark: "#1B806A"
         darker: "#0A5554"
+        contrastText: "#FFFFFF"
     }
     warning: PaletteBasic{
         lighter: "#FFF5CC"
@@ -39,6 +43,7 @@ ThemeBase{
         main: "#FFAB00"
         dark: "#B76E00"
         darker: "#7A4100"
+        contrastText: "#212B36"
     }
     error: PaletteBasic{
         lighter: "#FFE9D5"
@@ -46,6 +51,7 @@ ThemeBase{
         main: "#FF5630"
         dark: "#B71D18"
         darker: "#7A0916"
+        contrastText: "#FFFFFF"
     }
     social: PaletteSocial{
         facebook: "#1877F2"
