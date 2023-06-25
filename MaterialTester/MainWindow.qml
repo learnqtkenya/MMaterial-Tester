@@ -43,18 +43,20 @@ Rectangle{
             right: parent.right
         }
 
-        initialItem: avatarShowcase
+        initialItem: accordionShowcase
     }
 
     Component{ id: fontShowcase;  FontShowcase{ } }
     Component{ id: colorShowcase; ColorShowcase{ } }
     Component{ id: avatarShowcase; AvatarShowcase{ } }
+    Component{ id: badgeShowcase; BadgeShowcase{ } }
+    Component{ id: accordionShowcase; AccordionShowcase{ } }
 
     RoundButton{
         anchors{
             right: parent.right;
             top: parent.top;
-            margins: 14;
+            margins: Size.pixel14;
         }
 
         height: 50

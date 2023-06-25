@@ -30,6 +30,8 @@ qt_add_qml_module(appMaterialTester
         DevTools/CustomEngine.h
         DevTools/CustomEngine.cpp
         QML_FILES
+        QML_FILES Showcase/BadgeShowcase.qml
+        QML_FILES Showcase/AccordionShowcase.qml
 
 
 )

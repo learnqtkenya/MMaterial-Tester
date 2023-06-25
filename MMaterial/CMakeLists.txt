@@ -17,6 +17,7 @@ list(APPEND MODULE_ASSETS
     # Icons
     Icons/assets/android.svg
     Icons/assets/mail.svg
+    Icons/assets/arrow.svg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -56,10 +57,14 @@ list(APPEND MODULE_QML_FILES
     Icons/IconList.qml
     Icons/Avatar.qml
 
-    # Badge
-    Badge/BadgeNumber.qml
-    Badge/BadgeDot.qml
-    Badge/Badge.qml
+    # Components
+    Components/Badge/BadgeNumber.qml
+    Components/Badge/BadgeDot.qml
+    Components/Badge/Badge.qml
+    Components/Accordion.qml
+
+    # Settings
+    Settings/Size.qml
 )
 
 set_source_files_properties(
@@ -69,6 +74,7 @@ set_source_files_properties(
     Colors/Themes/LightTheme.qml
     Colors/ThemeList.qml
     Icons/IconList.qml
+    Settings/Size.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE
 )
 

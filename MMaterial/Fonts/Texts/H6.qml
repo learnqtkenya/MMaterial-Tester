@@ -1,10 +1,11 @@
 import QtQuick
 import "../"
+import "../../Settings"
 
 BaseText {
     font {
         family: PublicSans.bold
-        pixelSize: 18
+        pixelSize: Size.pixel18
         bold: true
     }
     lineHeight: 1.5

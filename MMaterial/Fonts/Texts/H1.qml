@@ -1,10 +1,11 @@
 import QtQuick
 import "../"
+import "../../Settings"
 
 BaseText {
     font {
         family: PublicSans.extraBold
-        pixelSize: 64
+        pixelSize: Size.pixel64
     }
     lineHeight: 1.2
     elide: Text.ElideRight

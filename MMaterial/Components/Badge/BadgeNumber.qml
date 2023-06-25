@@ -1,6 +1,7 @@
 import QtQuick 2.15
-import "../Fonts/Texts"
-import "../Colors"
+import "../../Fonts/Texts"
+import "../../Colors"
+import "../../Settings"
 
 Rectangle{
     id: _badge
@@ -14,7 +15,7 @@ Rectangle{
     property var accent: Theme.error //Needs to be PaletteBasic type
     property int quantity: 1
     property int maxQuantity: 999
-    property int pixelSize: 24
+    property int pixelSize: Size.pixel24
 
     H4{
         id: number

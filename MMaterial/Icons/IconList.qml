@@ -8,4 +8,5 @@ QtObject{
 
     readonly property string android: iconBasePath + "android.svg"
     readonly property string mail: iconBasePath + "mail.svg"
+    readonly property string arrow: iconBasePath + "arrow.svg"
 }
