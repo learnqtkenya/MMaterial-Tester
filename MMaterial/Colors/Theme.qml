@@ -17,6 +17,7 @@ ThemeBase{
     background: currentTheme.background
     other: currentTheme.other
     text: currentTheme.text
+    action: currentTheme.action
 
     property ThemeBase currentTheme: LightTheme
 

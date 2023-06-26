@@ -6,6 +6,7 @@ import MMaterial
 import "./Showcase"
 import "./Showcase/ColorShowcase"
 import "./Showcase/AvatarShowcase"
+import "./Showcase/ButtonShowcase"
 
 Rectangle{
     color: Theme.background.main
@@ -43,7 +44,7 @@ Rectangle{
             right: parent.right
         }
 
-        initialItem: accordionShowcase
+        initialItem: buttonShowcase
     }
 
     Component{ id: fontShowcase;  FontShowcase{ } }
@@ -51,16 +52,17 @@ Rectangle{
     Component{ id: avatarShowcase; AvatarShowcase{ } }
     Component{ id: badgeShowcase; BadgeShowcase{ } }
     Component{ id: accordionShowcase; AccordionShowcase{ } }
+    Component{ id: buttonShowcase; ButtonShowcase{ } }
 
-    RoundButton{
+    MButton{
         anchors{
             right: parent.right;
             top: parent.top;
             margins: Size.pixel14;
         }
 
-        height: 50
-        width: 50
+        height: recommendedHeight
+        width: recommendedWidth
         text: Theme.currentTheme.objectName
         onClicked: {
             if(Theme.currentTheme.objectName === "Light Theme")

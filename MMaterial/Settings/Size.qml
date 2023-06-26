@@ -6,10 +6,13 @@ Item {
     property real scale: 1.0
     property real pixel1: 1 * scale
     property real pixel4: 4 * scale
+    property real pixel6: 6 * scale
     property real pixel8: 8 * scale
     property real pixel10: 10 * scale
     property real pixel12: 12 * scale
+    property real pixel13: 13 * scale
     property real pixel14: 14 * scale
+    property real pixel15: 15 * scale
     property real pixel16: 16 * scale
     property real pixel18: 18 * scale
     property real pixel20: 20 * scale

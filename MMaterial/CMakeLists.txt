@@ -18,6 +18,7 @@ list(APPEND MODULE_ASSETS
     Icons/assets/android.svg
     Icons/assets/mail.svg
     Icons/assets/arrow.svg
+    Icons/assets/logo.svg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -65,6 +66,9 @@ list(APPEND MODULE_QML_FILES
 
     # Settings
     Settings/Size.qml
+
+    # Buttons
+    Buttons/MButton.qml
 )
 
 set_source_files_properties(

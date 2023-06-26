@@ -71,11 +71,11 @@ ThemeBase{
     }
     action: PaletteAction{
         active: "#637381"
-        hover: Qt.rgba(145, 158, 171, 0.08)
-        selected: Qt.rgba(145, 158, 171, 0.16)
-        disabled: Qt.rgba(145, 158, 171, 0.80)
-        disabledBackground: Qt.rgba(145, 158, 171, 0.24)
-        focus: Qt.rgba(145, 158, 171, 0.24)
+        hover: Qt.rgba(0, 0, 0, 0.08)
+        selected: Qt.rgba(0, 0, 0, 0.16)
+        disabled: Qt.rgba(0, 0, 0, 0.2)
+        disabledBackground: Qt.rgba(0, 0, 0, 0.05)
+        focus: Qt.rgba(0, 0, 0, 0.14)
     }
     other: PaletteOther{
         divider: "#919EAB"
