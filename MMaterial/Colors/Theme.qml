@@ -6,18 +6,19 @@ import "./Themes"
 pragma Singleton
 
 ThemeBase{
-    primary: currentTheme.primary
-    secondary: currentTheme.secondary
-    info: currentTheme.info
-    success: currentTheme.success
-    warning: currentTheme.warning
-    error: currentTheme.error
-    main: currentTheme.main
-    social: currentTheme.social
-    background: currentTheme.background
-    other: currentTheme.other
-    text: currentTheme.text
-    action: currentTheme.action
+    primary: currentTheme ? currentTheme.primary : null
+    secondary: currentTheme ? currentTheme.secondary : null
+    info: currentTheme ? currentTheme.info : null
+    success: currentTheme ? currentTheme.success : null
+    warning: currentTheme ? currentTheme.warning : null
+    error: currentTheme ? currentTheme.error : null
+    main: currentTheme ? currentTheme.main : null
+    social: currentTheme ? currentTheme.social : null
+    background: currentTheme ? currentTheme.background : null
+    other: currentTheme ? currentTheme.other : null
+    text: currentTheme ? currentTheme.text : null
+    action: currentTheme ? currentTheme.action : null
+    common: currentTheme ? currentTheme.common : null
 
     property ThemeBase currentTheme: LightTheme
 

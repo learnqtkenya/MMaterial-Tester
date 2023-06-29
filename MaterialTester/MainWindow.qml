@@ -7,6 +7,7 @@ import "./Showcase"
 import "./Showcase/ColorShowcase"
 import "./Showcase/AvatarShowcase"
 import "./Showcase/ButtonShowcase"
+import "./Showcase/AlertShowcase"
 
 Rectangle{
     color: Theme.background.main
@@ -44,7 +45,7 @@ Rectangle{
             right: parent.right
         }
 
-        initialItem: buttonShowcase
+        initialItem: alertShowcase
     }
 
     Component{ id: fontShowcase;  FontShowcase{ } }
@@ -53,6 +54,7 @@ Rectangle{
     Component{ id: badgeShowcase; BadgeShowcase{ } }
     Component{ id: accordionShowcase; AccordionShowcase{ } }
     Component{ id: buttonShowcase; ButtonShowcase{ } }
+    Component{ id: alertShowcase; AlertShowcase{ } }
 
     MButton{
         anchors{
@@ -66,10 +68,10 @@ Rectangle{
         text: Theme.currentTheme.objectName
         onClicked: {
             if(Theme.currentTheme.objectName === "Light Theme")
-                Theme.setTheme(ThemeList.dark); //or Theme.setTheme(DarkTheme);
+                Theme.currentTheme = ThemeList.dark; //or Theme.setTheme(DarkTheme);
 
             else
-                Theme.setTheme(ThemeList.light); //or Theme.setTheme(LightTheme);
+                Theme.currentTheme = ThemeList.light; //or Theme.setTheme(LightTheme);
         }
     }
 }

@@ -19,6 +19,10 @@ list(APPEND MODULE_ASSETS
     Icons/assets/mail.svg
     Icons/assets/arrow.svg
     Icons/assets/logo.svg
+    Icons/assets/alert.svg
+    Icons/assets/info.svg
+    Icons/assets/success.svg
+    Icons/assets/closeX.svg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -42,6 +46,7 @@ list(APPEND MODULE_QML_FILES
     # Colors / Themes
     Colors/Theme.qml
     Colors/ThemeList.qml
+    Colors/BaseObjects/PaletteCommon.qml
     Colors/BaseObjects/PaletteBackground.qml
     Colors/BaseObjects/PaletteText.qml
     Colors/BaseObjects/PaletteBasic.qml
@@ -52,7 +57,6 @@ list(APPEND MODULE_QML_FILES
     Colors/BaseObjects/ThemeBase.qml
     Colors/Themes/DarkTheme.qml
     Colors/Themes/LightTheme.qml
-
     # Icons
     Icons/Icon.qml
     Icons/IconList.qml
@@ -63,6 +67,8 @@ list(APPEND MODULE_QML_FILES
     Components/Badge/BadgeDot.qml
     Components/Badge/Badge.qml
     Components/Accordion.qml
+    Components/Alerts/Alert.qml
+    Components/Alerts/AlertController.qml
 
     # Settings
     Settings/Size.qml

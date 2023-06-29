@@ -10,4 +10,9 @@ QtObject{
     readonly property string mail: iconBasePath + "mail.svg"
     readonly property string arrow: iconBasePath + "arrow.svg"
     readonly property string logo: iconBasePath + "logo.svg"
+    readonly property string closeX: iconBasePath + "closeX.svg"
+
+    readonly property string info: iconBasePath + "info.svg"
+    readonly property string success: iconBasePath + "success.svg"
+    readonly property string alert: iconBasePath + "alert.svg"
 }

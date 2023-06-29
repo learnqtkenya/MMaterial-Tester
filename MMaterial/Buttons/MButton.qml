@@ -16,8 +16,11 @@ Rectangle{
 
     radius: 8
     opacity: mouseArea.pressed ? 0.7 : 1 //TODO replace with ripple effect when OpacityMask is fixed in Qt6
+    color: _private.backgroundColor
+    border.color: _private.borderColor
 
     property alias mouseArea: mouseArea
+    property alias title: _title
     property var accent: Theme.info //Needs to be PaletteBasic type
 
     property int pixelSize: {
@@ -81,11 +84,13 @@ Rectangle{
                 id: _leftIcon
                 visible: path != ""
                 sourceSize.height: _title.contentHeight * 0.5
+                color: _private.textColor
             }
             H2{
                 id: _title
                 font.pixelSize: _button.pixelSize
                 text: _button.text
+                color: _private.textColor
                 font{
                     capitalization: Font.Capitalize
                     bold: true
@@ -98,6 +103,7 @@ Rectangle{
                 id: _rightIcon
                 visible: path != ""
                 sourceSize.height: _title.contentHeight * 0.5
+                color: _private.textColor
             }
         }
     }
@@ -120,44 +126,58 @@ Rectangle{
         onClicked: { _button.clicked(); }
     }
 
+    QtObject{
+        id: _private
+        property color backgroundColor: "#FFFFFF"
+        property color textColor: "#FFFFFF"
+        property color borderColor: "#FFFFFF"
+    }
+
     state: "contained"
     states: [
         State{
             when: _button.type == MButton.Type.Contained
             name: "contained"
+            PropertyChanges { target: _button; border.width: 0 }
             PropertyChanges {
-                target: _button;
-                color: _button.enabled ? (mouseArea.containsMouse ? _button.accent.dark : _button.accent.main) : Theme.action.disabledBackground
-                border.width: 0
+                target: _private;
+                backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.dark : _button.accent.main) : Theme.action.disabledBackground
+                textColor: _button.enabled ? _button.accent.contrastText : Theme.action.disabled
+                borderColor: "transparent"
             }
-            PropertyChanges { target: _title; color: _button.enabled ? _button.accent.contrastText : Theme.action.disabled; }
-            PropertyChanges { target: _leftIcon; color: _button.enabled ?  _button.accent.contrastText : Theme.action.disabled; }
-            PropertyChanges { target: _rightIcon; color: _button.enabled ? _button.accent.contrastText : Theme.action.disabled; }
         },
         State{
             when: _button.type == MButton.Type.Outlined
             name: "outlined"
-            PropertyChanges { target: _button; color:  _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent8 : "transparent") : "transparent"; border.width: 1; border.color: _button.enabled ? _button.accent.main : Theme.action.disabled; }
-            PropertyChanges { target: _title; color:  _button.enabled ? _button.accent.main : Theme.action.disabled; }
-            PropertyChanges { target: _leftIcon; color:  _button.enabled ? _button.accent.main : Theme.action.disabled; }
-            PropertyChanges { target: _rightIcon; color:  _button.enabled ? _button.accent.main : Theme.action.disabled; }
+            PropertyChanges { target: _button; border.width: 1; }
+            PropertyChanges {
+                target: _private;
+                backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent8 : "transparent") : "transparent"
+                textColor: _button.enabled ? _button.accent.main : Theme.action.disabled
+                borderColor:  _button.enabled ? _button.accent.main : Theme.action.disabled
+            }
         },
         State{
             when: _button.type == MButton.Type.Text
             name: "text"
-            PropertyChanges { target: _button; color: mouseArea.containsMouse ? _button.accent.transparent8 : "transparent"; border.width: 0; }
-            PropertyChanges { target: _title; color: _button.enabled ? _button.accent.main : Theme.action.disabled; }
-            PropertyChanges { target: _leftIcon; color: _button.enabled ? _button.accent.main : Theme.action.disabled; }
-            PropertyChanges { target: _rightIcon; color: _button.enabled ? _button.accent.main : Theme.action.disabled; }
+            PropertyChanges { target: _button;  border.width: 0; }
+            PropertyChanges {
+                target: _private;
+                backgroundColor: mouseArea.containsMouse ? _button.accent.transparent8 : "transparent"
+                textColor:  _button.enabled ? _button.accent.main : Theme.action.disabled
+                borderColor: "transparent"
+            }
         },
         State{
             when: _button.type == MButton.Type.Soft
             name: "soft"
-            PropertyChanges { target: _button; color: _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent32 : _button.accent.transparent16) : Theme.action.disabledBackground; border.width: 0; }
-            PropertyChanges { target: _title; color: _button.enabled ? _button.accent.dark : Theme.action.disabled; }
-            PropertyChanges { target: _leftIcon; color: _button.enabled ? _button.accent.dark : Theme.action.disabled; }
-            PropertyChanges { target: _rightIcon; color: _button.enabled ? _button.accent.dark : Theme.action.disabled; }
+            PropertyChanges { target: _button; border.width: 0; }
+            PropertyChanges {
+                target: _private;
+                backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent32 : _button.accent.transparent16) : Theme.action.disabledBackground
+                textColor:  _button.enabled ? _button.accent.dark : Theme.action.disabled
+                borderColor: "transparent"
+            }
         }
-
     ]
 }

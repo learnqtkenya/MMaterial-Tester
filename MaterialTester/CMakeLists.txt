@@ -27,12 +27,17 @@ qt_add_qml_module(appMaterialTester
         Showcase/AccordionShowcase.qml
         Showcase/ButtonShowcase/ButtonShowcase.qml
         Showcase/ButtonShowcase/ButtonGroup.qml
+        Showcase/AlertShowcase/AlertShowcase.qml
+
+        Showcase/AlertShowcase/AlertContainer.qml
 
     SOURCES
         DevTools/FileWatcher.h
         DevTools/FileWatcher.cpp
         DevTools/CustomEngine.h
         DevTools/CustomEngine.cpp
+        QML_FILES
+        QML_FILES Showcase/AlertShowcase/CustomAlert.qml
 )
 
 set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../")

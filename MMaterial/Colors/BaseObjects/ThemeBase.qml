@@ -14,4 +14,6 @@ QtObject{
 
     required property PaletteGrey main
     required property PaletteSocial social
+
+    property PaletteCommon common: PaletteCommon{}
 }
