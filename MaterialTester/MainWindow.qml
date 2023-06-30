@@ -60,7 +60,7 @@ Rectangle{
             right: parent.right
         }
 
-        initialItem: toggleButtonShowcase
+        initialItem: fabButtonShowcase
     }
 
     Component{ id: fontShowcase;  FontShowcase{ } }
@@ -70,6 +70,7 @@ Rectangle{
     Component{ id: accordionShowcase; AccordionShowcase{ } }
     Component{ id: buttonShowcase; ButtonShowcase{ } }
     Component{ id: toggleButtonShowcase; ToggleButtonShowcase{ } }
+    Component{ id: fabButtonShowcase; FabButtonShowcase{ } }
     Component{ id: alertShowcase; AlertShowcase{ } }
 
     AppSettings{

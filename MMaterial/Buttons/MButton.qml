@@ -11,8 +11,18 @@ import "../Colors"
 Rectangle{
     id: _button
 
-    readonly property real recommendedHeight: _title.contentHeight + _button.verticalPadding * 2
-    readonly property real recommendedWidth: _title.implicitWidth + (_leftIcon.visible ? _leftIcon.implicitWidth + _mainLayout.spacing : 0) + (_rightIcon.visible ? _rightIcon.implicitWidth + _mainLayout.spacing : 0) + _button.horizontalPadding * 2
+    readonly property real recommendedHeight: _private.oneOrLessChildrenVisible ? _title.contentHeight + _button.verticalPadding * 2 : _title.contentHeight + _button.verticalPadding * 2
+    readonly property real recommendedWidth:  {
+        if(_private.oneOrLessChildrenVisible)
+            return recommendedHeight;
+        else
+            return _title.implicitWidth + (_leftIcon.visible ? _leftIcon.implicitWidth + _mainLayout.spacing : 0) + (_rightIcon.visible ? _rightIcon.implicitWidth + _mainLayout.spacing : 0) + _button.horizontalPadding * 2
+    }
+
+    Layout.preferredHeight: recommendedHeight
+    Layout.preferredWidth: recommendedWidth
+    height: recommendedHeight
+    width: recommendedWidth
 
     radius: 8
     opacity: mouseArea.pressed ? 0.7 : 1 //TODO replace with ripple effect when OpacityMask is fixed in Qt6
@@ -73,7 +83,7 @@ Rectangle{
         visible: !_button.isLoading
         anchors {
             fill: parent
-            leftMargin: _button.horizontalPadding; rightMargin: _button.horizontalPadding
+            leftMargin: _private.oneOrLessChildrenVisible ? 0 : _button.horizontalPadding; rightMargin: _private.oneOrLessChildrenVisible ? 0 : _button.horizontalPadding
             topMargin: _button.verticalPadding; bottomMargin: _button.verticalPadding
         }
         RowLayout{
@@ -83,10 +93,12 @@ Rectangle{
             Icon{
                 id: _leftIcon
                 visible: path != ""
-                sourceSize.height: _title.contentHeight * 0.5
+                sourceSize.height: _title.contentHeight * 0.55
+                Layout.alignment: _title.visible ? Qt.AlignLeft : Qt.AlignCenter
             }
             H2{
                 id: _title
+                visible: text !== ""
                 font.pixelSize: _button.pixelSize
                 text: _button.text
                 color: _private.textColor
@@ -101,7 +113,8 @@ Rectangle{
             Icon{
                 id: _rightIcon
                 visible: path != ""
-                sourceSize.height: _title.contentHeight * 0.5
+                sourceSize.height: _title.contentHeight * 0.55
+                Layout.alignment: _title.visible ? Qt.AlignRight : Qt.AlignCenter
             }
         }
     }
@@ -129,6 +142,7 @@ Rectangle{
         property color backgroundColor: "#FFFFFF"
         property color textColor: "#FFFFFF"
         property color borderColor: "#FFFFFF"
+        property bool oneOrLessChildrenVisible: !_title.visible && (!_leftIcon.visible || !_rightIcon.visible)
     }
 
     state: "contained"

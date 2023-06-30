@@ -19,6 +19,7 @@ list(APPEND MODULE_ASSETS
     Icons/assets/mail.svg
     Icons/assets/arrow.svg
     Icons/assets/logo.svg
+    Icons/assets/alternativeLogo.svg
     Icons/assets/alert.svg
     Icons/assets/info.svg
     Icons/assets/success.svg
@@ -86,6 +87,7 @@ list(APPEND MODULE_QML_FILES
     # Buttons
     Buttons/MButton.qml
     Buttons/MToggleButton.qml
+    Buttons/MFabButton.qml
 )
 
 set_source_files_properties(

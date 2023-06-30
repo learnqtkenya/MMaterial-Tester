@@ -7,14 +7,14 @@ import MMaterial
 
 Item{
     id: _appSettings
-    width: 300
+    width: 300 * Size.scale
     height: parent.height
     anchors{
         right: parent.right
         rightMargin: 0
     }
 
-    property bool isOpen: true
+    property bool isOpen: false
 
     Rectangle{
         id: _background
