@@ -24,6 +24,8 @@ list(APPEND MODULE_ASSETS
     Icons/assets/success.svg
     Icons/assets/closeX.svg
     Icons/assets/menu.svg
+    Icons/assets/sun.svg
+    Icons/assets/moon.svg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -59,6 +61,12 @@ list(APPEND MODULE_QML_FILES
     Colors/BaseObjects/ThemeBase.qml
     Colors/Themes/DarkTheme.qml
     Colors/Themes/LightTheme.qml
+    Colors/BasicPalettes/BasicRed.qml
+    Colors/BasicPalettes/BasicGreen.qml
+    Colors/BasicPalettes/BasicPurple.qml
+    Colors/BasicPalettes/BasicBlue.qml
+    Colors/BasicPalettes/BasicOrange.qml
+    Colors/BasicPalettes/BasicLightBlue.qml
     # Icons
     Icons/Icon.qml
     Icons/IconList.qml
@@ -81,11 +89,18 @@ list(APPEND MODULE_QML_FILES
 )
 
 set_source_files_properties(
-    Fonts/PublicSans.qml
     Colors/Theme.qml
     Colors/Themes/DarkTheme.qml
     Colors/Themes/LightTheme.qml
     Colors/ThemeList.qml
+    Colors/BasicPalettes/BasicRed.qml
+    Colors/BasicPalettes/BasicGreen.qml
+    Colors/BasicPalettes/BasicPurple.qml
+    Colors/BasicPalettes/BasicBlue.qml
+    Colors/BasicPalettes/BasicOrange.qml
+    Colors/BasicPalettes/BasicLightBlue.qml
+
+    Fonts/PublicSans.qml
     Icons/IconList.qml
     Settings/Size.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE

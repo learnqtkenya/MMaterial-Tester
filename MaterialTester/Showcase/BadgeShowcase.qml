@@ -7,17 +7,17 @@ Item {
     objectName: "Badge"
     ColumnLayout{
         anchors.fill: parent
-        anchors.margins: 32
+        anchors.margins: Size.pixel32
         H6{
             text: qsTr("Number")
         }
         GridLayout{
             id: numberBadgeGrid
-            Layout.topMargin: 24
+            Layout.topMargin: Size.pixel24
             Layout.fillWidth: true
             columns: 7
-            rowSpacing: 40
-            columnSpacing: 40
+            rowSpacing: Size.pixel40
+            columnSpacing: Size.pixel40
 
             Badge{
                 accent: Theme.primary
@@ -77,16 +77,16 @@ Item {
         }
         H6{
 
-            Layout.topMargin: 48
+            Layout.topMargin: Size.pixel48
             text: qsTr("Dot")
         }
         GridLayout{
             id: dotBadgeGrid
-            Layout.topMargin: 24
+            Layout.topMargin: Size.pixel24
             Layout.fillWidth: true
             columns: 7
-            rowSpacing: 40
-            columnSpacing: 40
+            rowSpacing: Size.pixel40
+            columnSpacing: Size.pixel40
 
             Badge{
                 accent: Theme.primary

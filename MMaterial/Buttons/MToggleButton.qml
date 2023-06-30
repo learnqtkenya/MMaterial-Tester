@@ -19,7 +19,8 @@ Rectangle{
 
     property bool checked: false
     property alias mouseArea: mouseArea
-    property var accent: Theme.info //Needs to be PaletteBasic type
+    property var accent: Theme.primary //Needs to be PaletteBasic type
+    property bool customCheckImplementation: false
 
     property real recommendedHeight
     property real recommendedWidth
@@ -44,7 +45,11 @@ Rectangle{
         hoverEnabled: true
         cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
         enabled: !_button.isLoading
-        onClicked: { _button.clicked(); _button.checked = !_button.checked; }
+        onClicked: {
+            _button.clicked();
+            if(!_button.customCheckImplementation)
+                _button.checked = !_button.checked;
+        }
     }
 
     Item{

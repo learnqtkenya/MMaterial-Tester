@@ -1,4 +1,5 @@
 import QtQuick 2.15
+import QtQuick.Controls
 import QtQuick.Effects
 import QtQuick.Layouts
 
@@ -6,14 +7,14 @@ import MMaterial
 
 Item{
     id: _appSettings
-    width: 400
+    width: 300
     height: parent.height
     anchors{
         right: parent.right
         rightMargin: 0
     }
 
-    property bool isOpen: false
+    property bool isOpen: true
 
     Rectangle{
         id: _background
@@ -54,7 +55,45 @@ Item{
     Rectangle{ id: _splitter; height: Size.pixel1; width: parent.width; color: Theme.main.p600; anchors { top: _header.bottom; topMargin: Size.pixel4 } }
 
     ColumnLayout{
-        anchors.fill: parent
+        anchors {
+            top: _header.bottom; bottom: parent.bottom
+            left: parent.left; right: parent.right
+            margins: Size.pixel18
+        }
+
+        TwoChoices{
+            text: qsTr("Mode")
+            leftButton {
+                icon.path: IconList.sun
+                onClicked: Theme.currentTheme = LightTheme;
+                checked: Theme.currentTheme == LightTheme;
+            }
+            rightButton {
+                icon.path: IconList.moon
+                onClicked: Theme.currentTheme = DarkTheme;
+                checked: Theme.currentTheme == DarkTheme;
+            }
+        }
+
+        SubTitle{
+            text: qsTr("Presets")
+        }
+
+        GridLayout{
+            Layout.fillWidth: true
+            columns: 3
+            rowSpacing: Size.pixel16
+            columnSpacing: Size.pixel16
+
+            PresetButton{ accent: BasicBlue }
+            PresetButton{ accent: BasicGreen }
+            PresetButton{ accent: BasicLightBlue }
+            PresetButton{ accent: BasicOrange }
+            PresetButton{ accent: BasicPurple }
+            PresetButton{ accent: BasicRed }
+        }
+
+        Item{ Layout.fillHeight: true; }
     }
 
     layer{

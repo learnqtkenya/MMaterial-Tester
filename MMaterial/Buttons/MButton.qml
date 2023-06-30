@@ -21,7 +21,7 @@ Rectangle{
 
     property alias mouseArea: mouseArea
     property alias title: _title
-    property var accent: Theme.info //Needs to be PaletteBasic type
+    property var accent: Theme.primary //Needs to be PaletteBasic type
 
     property int pixelSize: {
         if(size == Size.Grade.L)

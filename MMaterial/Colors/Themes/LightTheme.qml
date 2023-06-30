@@ -1,26 +1,13 @@
 import "../BaseObjects"
+import "../BasicPalettes"
 
 pragma Singleton
 
 ThemeBase{
     objectName: "Light Theme"
 
-    primary: PaletteBasic{
-        lighter: "#C8FACD"
-        light: "#5BE584"
-        main: "#00AB55"
-        dark: "#007B55"
-        darker: "#005249"
-        contrastText: "#FFFFFF"
-    }
-    secondary: PaletteBasic{
-        lighter: "#D6E4FF"
-        light: "#84A9FF"
-        main: "#3366FF"
-        dark: "#1939B7"
-        darker: "#091A7A"
-        contrastText: "#FFFFFF"
-    }
+    primary: BasicGreen
+    secondary: BasicBlue
     info: PaletteBasic{
         lighter: "#CAFDF5"
         light: "#61F3F3"

@@ -33,13 +33,16 @@ qt_add_qml_module(appMaterialTester
         Showcase/ButtonShowcase/ToggleButtonShowcase.qml
         Components/Common/TitleRow.qml
         Showcase/AlertShowcase/AlertContainer.qml
+        Components/AppSettings/SubTitle.qml
+        Components/AppSettings/TwoChoices.qml
+        Components/AppSettings/PresetButton.qml
 
     SOURCES
         DevTools/FileWatcher.h
         DevTools/FileWatcher.cpp
         DevTools/CustomEngine.h
         DevTools/CustomEngine.cpp
-        QML_FILES
+
 )
 
 set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../")

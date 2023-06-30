@@ -43,22 +43,6 @@ Rectangle{
             color: Theme.text.primary
             onClicked: appSettings.toggle();
         }
-
-        MButton{
-            size: Size.S
-            Layout.alignment: Qt.AlignVCenter
-            Layout.preferredHeight: recommendedHeight
-            Layout.preferredWidth: recommendedWidth
-            text: Theme.currentTheme.objectName
-            onClicked: {
-                if(Theme.currentTheme.objectName === "Light Theme")
-                    Theme.currentTheme = ThemeList.dark; //or Theme.setTheme(DarkTheme);
-
-                else
-                    Theme.currentTheme = ThemeList.light; //or Theme.setTheme(LightTheme);
-            }
-        }
-
     }
     Rectangle{
         height: 1
