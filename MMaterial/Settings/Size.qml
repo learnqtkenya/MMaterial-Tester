@@ -26,6 +26,7 @@ Item {
     enum Grade {
         S,
         M,
-        L
+        L,
+        Custom
     }
 }

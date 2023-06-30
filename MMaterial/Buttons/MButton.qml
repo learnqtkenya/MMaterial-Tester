@@ -84,7 +84,6 @@ Rectangle{
                 id: _leftIcon
                 visible: path != ""
                 sourceSize.height: _title.contentHeight * 0.5
-                color: _private.textColor
             }
             H2{
                 id: _title
@@ -103,7 +102,6 @@ Rectangle{
                 id: _rightIcon
                 visible: path != ""
                 sourceSize.height: _title.contentHeight * 0.5
-                color: _private.textColor
             }
         }
     }
@@ -145,6 +143,8 @@ Rectangle{
                 textColor: _button.enabled ? _button.accent.contrastText : Theme.action.disabled
                 borderColor: "transparent"
             }
+            PropertyChanges{ target: _leftIcon; color: _private.textColor }
+            PropertyChanges{ target: _rightIcon; color: _private.textColor }
         },
         State{
             when: _button.type == MButton.Type.Outlined
@@ -152,10 +152,12 @@ Rectangle{
             PropertyChanges { target: _button; border.width: 1; }
             PropertyChanges {
                 target: _private;
-                backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent8 : "transparent") : "transparent"
+                backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent.p8 : "transparent") : "transparent"
                 textColor: _button.enabled ? _button.accent.main : Theme.action.disabled
                 borderColor:  _button.enabled ? _button.accent.main : Theme.action.disabled
             }
+            PropertyChanges{ target: _leftIcon; color: _private.textColor }
+            PropertyChanges{ target: _rightIcon; color: _private.textColor }
         },
         State{
             when: _button.type == MButton.Type.Text
@@ -163,10 +165,12 @@ Rectangle{
             PropertyChanges { target: _button;  border.width: 0; }
             PropertyChanges {
                 target: _private;
-                backgroundColor: mouseArea.containsMouse ? _button.accent.transparent8 : "transparent"
+                backgroundColor: mouseArea.containsMouse ? _button.accent.transparent.p8 : "transparent"
                 textColor:  _button.enabled ? _button.accent.main : Theme.action.disabled
                 borderColor: "transparent"
             }
+            PropertyChanges{ target: _leftIcon; color: _private.textColor }
+            PropertyChanges{ target: _rightIcon; color: _private.textColor }
         },
         State{
             when: _button.type == MButton.Type.Soft
@@ -174,10 +178,12 @@ Rectangle{
             PropertyChanges { target: _button; border.width: 0; }
             PropertyChanges {
                 target: _private;
-                backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent32 : _button.accent.transparent16) : Theme.action.disabledBackground
+                backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent.p32 : _button.accent.transparent.p16) : Theme.action.disabledBackground
                 textColor:  _button.enabled ? _button.accent.dark : Theme.action.disabled
                 borderColor: "transparent"
             }
+            PropertyChanges{ target: _leftIcon; color: _private.textColor }
+            PropertyChanges{ target: _rightIcon; color: _private.textColor }
         }
     ]
 }

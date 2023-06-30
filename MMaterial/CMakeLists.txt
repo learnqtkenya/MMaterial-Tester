@@ -23,6 +23,7 @@ list(APPEND MODULE_ASSETS
     Icons/assets/info.svg
     Icons/assets/success.svg
     Icons/assets/closeX.svg
+    Icons/assets/menu.svg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -46,6 +47,7 @@ list(APPEND MODULE_QML_FILES
     # Colors / Themes
     Colors/Theme.qml
     Colors/ThemeList.qml
+    Colors/BaseObjects/PaletteTransparent.qml
     Colors/BaseObjects/PaletteCommon.qml
     Colors/BaseObjects/PaletteBackground.qml
     Colors/BaseObjects/PaletteText.qml
@@ -75,6 +77,7 @@ list(APPEND MODULE_QML_FILES
 
     # Buttons
     Buttons/MButton.qml
+    Buttons/MToggleButton.qml
 )
 
 set_source_files_properties(

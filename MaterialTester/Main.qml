@@ -2,8 +2,9 @@ import QtQuick
 import QtQuick.Window
 
 Window {
-    width: 840
-    height: 540
+    id: window
+    width: 1440
+    height: 1200
     visible: true
     title: qsTr("Hello World")
 

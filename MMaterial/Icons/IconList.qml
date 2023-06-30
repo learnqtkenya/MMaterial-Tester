@@ -11,6 +11,7 @@ QtObject{
     readonly property string arrow: iconBasePath + "arrow.svg"
     readonly property string logo: iconBasePath + "logo.svg"
     readonly property string closeX: iconBasePath + "closeX.svg"
+    readonly property string menu: iconBasePath + "menu.svg"
 
     readonly property string info: iconBasePath + "info.svg"
     readonly property string success: iconBasePath + "success.svg"

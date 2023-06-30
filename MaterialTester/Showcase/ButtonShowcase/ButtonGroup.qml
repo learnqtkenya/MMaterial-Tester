@@ -3,6 +3,8 @@ import QtQuick.Layouts
 
 import MMaterial
 
+import "../../Components/Common"
+
 ColumnLayout{
     id: groupRoot
     required property int buttonType
@@ -11,17 +13,8 @@ ColumnLayout{
         text: groupRoot.title
     }
 
-    RowLayout{
-        Layout.topMargin: Size.pixel40
-        Layout.preferredWidth: parent.width
-        spacing: Size.pixel20
-
-        Overline{
-            text: qsTr("COLOR")
-            color: Theme.text.disabled
-            Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-            Layout.rightMargin: 100 * Size.scale
-        }
+    TitleRow{
+        title: qsTr("Color")
 
         MButton{
             type: groupRoot.buttonType
@@ -68,17 +61,8 @@ ColumnLayout{
         Item{ Layout.fillWidth: true; }
     }
 
-    RowLayout{
-        Layout.topMargin: Size.pixel40
-        Layout.preferredWidth: parent.width
-        spacing: Size.pixel20
-
-        Overline{
-            text: qsTr("STATES")
-            color: Theme.text.disabled
-            Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-            Layout.rightMargin: 100 * Size.scale
-        }
+    TitleRow{
+        title: qsTr("States")
 
         MButton{
             type: groupRoot.buttonType
@@ -98,17 +82,8 @@ ColumnLayout{
         Item{ Layout.fillWidth: true; }
     }
 
-    RowLayout{
-        Layout.topMargin: Size.pixel40
-        Layout.preferredWidth: parent.width
-        spacing: Size.pixel20
-
-        Overline{
-            text: qsTr("ICON")
-            color: Theme.text.disabled
-            Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-            Layout.rightMargin: 100 * Size.scale
-        }
+    TitleRow{
+        title: qsTr("Icon")
 
         MButton{
             type: groupRoot.buttonType
@@ -138,17 +113,8 @@ ColumnLayout{
         Item{ Layout.fillWidth: true; }
     }
 
-    RowLayout{
-        Layout.topMargin: Size.pixel40
-        Layout.preferredWidth: parent.width
-        spacing: Size.pixel20
-
-        Overline{
-            text: qsTr("SIZE")
-            color: Theme.text.disabled
-            Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-            Layout.rightMargin: 100 * Size.scale
-        }
+    TitleRow{
+        title: qsTr("Size")
 
         MButton{
             type: groupRoot.buttonType

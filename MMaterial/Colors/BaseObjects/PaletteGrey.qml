@@ -10,4 +10,8 @@ QtObject{
     required property color p700
     required property color p800
     required property color p900
+
+    property PaletteTransparent transparent: PaletteTransparent{
+        mainColor: p500
+    }
 }

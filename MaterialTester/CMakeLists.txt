@@ -28,7 +28,10 @@ qt_add_qml_module(appMaterialTester
         Showcase/ButtonShowcase/ButtonShowcase.qml
         Showcase/ButtonShowcase/ButtonGroup.qml
         Showcase/AlertShowcase/AlertShowcase.qml
-
+        Showcase/AlertShowcase/CustomAlert.qml
+        Components/AppSettings/AppSettings.qml
+        Showcase/ButtonShowcase/ToggleButtonShowcase.qml
+        Components/Common/TitleRow.qml
         Showcase/AlertShowcase/AlertContainer.qml
 
     SOURCES
@@ -37,7 +40,6 @@ qt_add_qml_module(appMaterialTester
         DevTools/CustomEngine.h
         DevTools/CustomEngine.cpp
         QML_FILES
-        QML_FILES Showcase/AlertShowcase/CustomAlert.qml
 )
 
 set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../")

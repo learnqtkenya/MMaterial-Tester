@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 
 import MMaterial
 
@@ -9,31 +10,61 @@ import "./Showcase/AvatarShowcase"
 import "./Showcase/ButtonShowcase"
 import "./Showcase/AlertShowcase"
 
+import "./Components/AppSettings"
+
 Rectangle{
     color: Theme.background.main
-    Item{
-        id: header
-        height: parent.height * 0.1
-        width: parent.width
 
-        H2{
-            width: parent.width * 0.85
-            anchors {
-                verticalCenter: parent.verticalCenter
-                horizontalCenter: parent.horizontalCenter
-            }
+
+
+    RowLayout{
+        id: header
+        spacing: Size.pixel14
+        height: 56 * Size.scale
+        width: parent.width* 0.95
+        anchors {
+            top: parent.top
+            horizontalCenter: parent.horizontalCenter
+        }
+
+        H6{
+            Layout.fillWidth: true
             text: showcaseLoader.currentItem ? showcaseLoader.currentItem.objectName : ""
+            color: Theme.main.p500
             font {
                 capitalization: Font.AllUppercase
             }
         }
 
-        Rectangle{
-            height: 1
-            width: parent.width
-            color: Theme.other.divider
-            anchors.bottom: parent.bottom
+        Icon{
+            path: IconList.menu
+            sourceSize.height: parent.height/4
+            interactive: true
+            color: Theme.text.primary
+            onClicked: appSettings.toggle();
         }
+
+        MButton{
+            size: Size.S
+            Layout.alignment: Qt.AlignVCenter
+            Layout.preferredHeight: recommendedHeight
+            Layout.preferredWidth: recommendedWidth
+            text: Theme.currentTheme.objectName
+            onClicked: {
+                if(Theme.currentTheme.objectName === "Light Theme")
+                    Theme.currentTheme = ThemeList.dark; //or Theme.setTheme(DarkTheme);
+
+                else
+                    Theme.currentTheme = ThemeList.light; //or Theme.setTheme(LightTheme);
+            }
+        }
+
+    }
+    Rectangle{
+        height: 1
+        width: parent.width
+        color: Theme.other.divider
+        anchors.bottom: parent.bottom
     }
 
     StackView{
@@ -45,7 +76,7 @@ Rectangle{
             right: parent.right
         }
 
-        initialItem: alertShowcase
+        initialItem: toggleButtonShowcase
     }
 
     Component{ id: fontShowcase;  FontShowcase{ } }
@@ -54,25 +85,11 @@ Rectangle{
     Component{ id: badgeShowcase; BadgeShowcase{ } }
     Component{ id: accordionShowcase; AccordionShowcase{ } }
     Component{ id: buttonShowcase; ButtonShowcase{ } }
+    Component{ id: toggleButtonShowcase; ToggleButtonShowcase{ } }
     Component{ id: alertShowcase; AlertShowcase{ } }
 
-    MButton{
-        anchors{
-            right: parent.right;
-            top: parent.top;
-            margins: Size.pixel14;
-        }
-
-        height: recommendedHeight
-        width: recommendedWidth
-        text: Theme.currentTheme.objectName
-        onClicked: {
-            if(Theme.currentTheme.objectName === "Light Theme")
-                Theme.currentTheme = ThemeList.dark; //or Theme.setTheme(DarkTheme);
-
-            else
-                Theme.currentTheme = ThemeList.light; //or Theme.setTheme(LightTheme);
-        }
+    AppSettings{
+        id: appSettings
     }
 }
 
