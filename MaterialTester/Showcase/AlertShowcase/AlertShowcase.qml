@@ -4,11 +4,11 @@ import QtQuick.Controls
 import MMaterial
 Item {
     objectName: "Alerts"
+    visible: showcaseLoader.status == Loader.Ready
 
     Item{
         anchors{
             fill: parent
-            margins: Size.pixel32
         }
 
         ColumnLayout{

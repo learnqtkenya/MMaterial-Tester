@@ -15,6 +15,7 @@ QtObject{
     readonly property string menu: iconBasePath + "menu.svg"
     readonly property string sun: iconBasePath + "sun.svg"
     readonly property string moon: iconBasePath + "moon.svg"
+    readonly property string star: iconBasePath + "star.svg"
 
     readonly property string info: iconBasePath + "info.svg"
     readonly property string success: iconBasePath + "success.svg"

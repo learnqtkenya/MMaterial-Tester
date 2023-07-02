@@ -27,6 +27,7 @@ list(APPEND MODULE_ASSETS
     Icons/assets/menu.svg
     Icons/assets/sun.svg
     Icons/assets/moon.svg
+    Icons/assets/star.svg
 )
 
 list(APPEND MODULE_QML_FILES

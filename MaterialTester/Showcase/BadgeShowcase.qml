@@ -5,16 +5,17 @@ import MMaterial
 
 Item {
     objectName: "Badge"
+    visible: showcaseLoader.status == Loader.Ready
     ColumnLayout{
         anchors.fill: parent
-        anchors.margins: Size.pixel32
         H6{
             text: qsTr("Number")
         }
         GridLayout{
             id: numberBadgeGrid
             Layout.topMargin: Size.pixel24
-            Layout.fillWidth: true
+            Layout.preferredWidth: parent.width
+            Layout.preferredHeight: 100 * Size.scale
             columns: 7
             rowSpacing: Size.pixel40
             columnSpacing: Size.pixel40
@@ -83,7 +84,7 @@ Item {
         GridLayout{
             id: dotBadgeGrid
             Layout.topMargin: Size.pixel24
-            Layout.fillWidth: true
+            Layout.preferredWidth: parent.width
             columns: 7
             rowSpacing: Size.pixel40
             columnSpacing: Size.pixel40

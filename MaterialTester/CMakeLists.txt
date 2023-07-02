@@ -36,14 +36,18 @@ qt_add_qml_module(appMaterialTester
         Components/AppSettings/SubTitle.qml
         Components/AppSettings/TwoChoices.qml
         Components/AppSettings/PresetButton.qml
+        Showcase/ButtonShowcase/FabButtonShowcase.qml
+        Showcase/ButtonShowcase/FABButtonGroup.qml
+        Components/Sidebar/Sidebar.qml
+        Components/Sidebar/SidebarCategoryLabel.qml
 
     SOURCES
         DevTools/FileWatcher.h
         DevTools/FileWatcher.cpp
         DevTools/CustomEngine.h
         DevTools/CustomEngine.cpp
-        QML_FILES Showcase/ButtonShowcase/FabButtonShowcase.qml
-        QML_FILES Showcase/ButtonShowcase/FABButtonGroup.qml
+        QML_FILES Components/Sidebar/SidebarItem.qml
+        QML_FILES Components/Sidebar/CheckedGroup.qml
 
 )
 

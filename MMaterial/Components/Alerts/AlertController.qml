@@ -49,7 +49,8 @@ ListView{
         }
 
         onClose: {
-            _timer.stop()
+            if(_timer.running)
+                _timer.stop()
             listModel.remove(index)
         }
     }

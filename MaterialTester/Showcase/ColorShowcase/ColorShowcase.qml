@@ -5,12 +5,11 @@ import QtQuick.Layouts
 import MMaterial
 Item {
     objectName: "Colors"
-
+    visible: showcaseLoader.status == Loader.Ready
     ColumnLayout{
         id: rootLayout
         anchors{
             fill: parent
-            margins: 40
         }
         GridLayout{
             id: grid

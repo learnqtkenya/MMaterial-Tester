@@ -4,13 +4,13 @@ import MMaterial
 
 Item{
     objectName: "Button"
+    visible: showcaseLoader.status == Loader.Ready
     ListView{
         id: listView
         spacing: 80 * Size.scale
         clip: true
         anchors {
             fill: parent
-            margins: Size.pixel24
         }
 
         model: [

@@ -3,7 +3,7 @@ import QtQuick.Controls
 import MMaterial
 import QtQuick.Effects
 Item {
-
+    visible: showcaseLoader.status == Loader.Ready
 
 
 

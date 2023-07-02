@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Controls.Material
 
 import MMaterial
 
@@ -11,6 +12,7 @@ import "./Showcase/ButtonShowcase"
 import "./Showcase/AlertShowcase"
 
 import "./Components/AppSettings"
+import "./Components/Sidebar"
 
 Rectangle{
     color: Theme.background.main
@@ -51,16 +53,26 @@ Rectangle{
         anchors.bottom: parent.bottom
     }
 
-    StackView{
+    Loader{
         id: showcaseLoader
+        asynchronous: true
         anchors{
+            margins: Size.pixel32
             top: header.bottom
             bottom: parent.bottom
-            left: parent.left
+            left: sidebar.right
             right: parent.right
         }
 
-        initialItem: fabButtonShowcase
+        sourceComponent: badgeShowcase
+
+        BusyIndicator{
+            anchors.centerIn: parent
+            height: Size.pixel48 * 2
+            width: height
+            visible: showcaseLoader.status == Loader.Loading
+            Material.accent: Theme.primary.main
+        }
     }
 
     Component{ id: fontShowcase;  FontShowcase{ } }
@@ -68,13 +80,17 @@ Rectangle{
     Component{ id: avatarShowcase; AvatarShowcase{ } }
     Component{ id: badgeShowcase; BadgeShowcase{ } }
     Component{ id: accordionShowcase; AccordionShowcase{ } }
-    Component{ id: buttonShowcase; ButtonShowcase{ } }
+    Component{ id: buttonShowcase; ButtonShowcase{  } }
     Component{ id: toggleButtonShowcase; ToggleButtonShowcase{ } }
     Component{ id: fabButtonShowcase; FabButtonShowcase{ } }
     Component{ id: alertShowcase; AlertShowcase{ } }
 
     AppSettings{
         id: appSettings
+    }
+
+    Sidebar{
+        id: sidebar
     }
 }
 

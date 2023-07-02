@@ -9,10 +9,10 @@ import "../../Components/Common"
 
 Item{
     objectName: "Toggle Buttons"
+    visible: showcaseLoader.status == Loader.Ready
     ColumnLayout{
         anchors{
             fill: parent
-            margins: Size.pixel32
         }
         spacing: 80 * Size.scale
 

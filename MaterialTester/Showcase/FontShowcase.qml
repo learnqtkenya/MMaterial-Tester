@@ -6,6 +6,8 @@ import MMaterial
 ColumnLayout {
     objectName: "Typography"
     readonly property string mainLabel: "Almost before we knew it, we had left the ground."
+    visible: showcaseLoader.status == Loader.Ready
+
     H1{
         text: mainLabel
         Layout.preferredWidth: parent.width

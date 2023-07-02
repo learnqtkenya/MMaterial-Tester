@@ -4,13 +4,13 @@ import QtQuick.Layouts
 import QtQuick.Effects
 Rectangle {
     objectName: "Accordion"
+    visible: showcaseLoader.status == Loader.Ready
     color: Theme.background.main
 
     ListView{
         id: listview
         anchors{
             fill: parent
-            margins: Size.scale * 50
         }
         model: 5
         spacing: Size.pixel8
