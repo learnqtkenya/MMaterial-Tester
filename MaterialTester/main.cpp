@@ -13,8 +13,11 @@ int main(int argc, char *argv[])
 
     engine.addImportPath("../../Material-Qt/MMaterial"); // for Material
     engine.rootContext()->setContextProperty("QmlEngine", &engine);
-
+#if defined(__wasm__) || !defined(QT_DEBUG)
+    const QUrl url(u"qrc:/MaterialTester/Main.qml"_qs);
+#else
     const QUrl url(qgetenv("MAIN_QML"));
+#endif
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
         &app, []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);

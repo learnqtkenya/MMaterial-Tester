@@ -3,7 +3,6 @@ qt_add_library(MMaterialLib STATIC)
 set_target_properties(MMaterialLib PROPERTIES AUTOMOC ON)
 target_link_libraries(MMaterialLib PRIVATE Qt6::Quick)
 
-
 list(APPEND MODULE_ASSETS
     # Fonts
     Fonts/Families/PublicSans/PublicSans-ExtraBold.ttf
@@ -28,6 +27,10 @@ list(APPEND MODULE_ASSETS
     Icons/assets/sun.svg
     Icons/assets/moon.svg
     Icons/assets/star.svg
+    Icons/assets/avatar.svg
+    Icons/assets/font.svg
+    Icons/assets/palette.svg
+    Icons/assets/verified.svg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -69,10 +72,10 @@ list(APPEND MODULE_QML_FILES
     Colors/BasicPalettes/BasicBlue.qml
     Colors/BasicPalettes/BasicOrange.qml
     Colors/BasicPalettes/BasicLightBlue.qml
+
     # Icons
     Icons/Icon.qml
     Icons/IconList.qml
-    Icons/Avatar.qml
 
     # Components
     Components/Badge/BadgeNumber.qml
@@ -81,7 +84,7 @@ list(APPEND MODULE_QML_FILES
     Components/Accordion.qml
     Components/Alerts/Alert.qml
     Components/Alerts/AlertController.qml
-
+    Components/Avatar.qml
     # Settings
     Settings/Size.qml
 
@@ -89,6 +92,12 @@ list(APPEND MODULE_QML_FILES
     Buttons/MButton.qml
     Buttons/MToggleButton.qml
     Buttons/MFabButton.qml
+    Buttons/CheckedGroup.qml
+
+    # Sidebar
+    Sidebar/Sidebar.qml
+    Sidebar/SidebarCategoryLabel.qml
+    Sidebar/SidebarItem.qml
 )
 
 set_source_files_properties(

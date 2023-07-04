@@ -89,7 +89,7 @@ Rectangle{
         id: appSettings
     }
 
-    Sidebar{
+    CustomSidebar{
         id: sidebar
     }
 }

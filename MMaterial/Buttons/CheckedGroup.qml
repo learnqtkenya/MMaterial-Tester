@@ -6,6 +6,8 @@ QtObject {
     property var checkables: []
 
     Component.onCompleted: {
+        if(!enabled)
+            return;
         checkables = checkables.filter(item => item.checked !== undefined && item.onClicked !== undefined);
 
         for(let checkable of checkables)
@@ -20,3 +22,4 @@ QtObject {
                 checkable.checked = false;
     }
 }
+

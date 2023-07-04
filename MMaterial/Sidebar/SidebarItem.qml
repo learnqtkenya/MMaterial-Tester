@@ -1,7 +1,11 @@
 import QtQuick
 import QtQuick.Layouts
 
-import MMaterial
+import "../Settings"
+import "../Colors"
+import "../Icons"
+import "../Fonts/Texts"
+import "../Fonts"
 
 Item{
     id: _sidebarItem
@@ -45,7 +49,6 @@ Item{
                 id: _icon
                 visible: path != ""
                 sourceSize.height: Size.pixel24
-                sourceSize.width: Size.pixel24
                 Layout.alignment: Qt.AlignVCenter
             }
 
@@ -74,7 +77,7 @@ Item{
         MouseArea{
             id: _mouseArea
             anchors.fill: parent
-            cursorShape: Qt.PointingHan
+            cursorShape: Qt.PointingHandCursor
             hoverEnabled: true
             onClicked: {
                 if (_sidebarItem.model && _sidebarItem.model.length > 0) {
@@ -88,9 +91,17 @@ Item{
 
         states: [
             State {
+                name: "disabled"
+                when: !_sidebarItem.enabled
+                PropertyChanges{ target: _mainItem; color: "transparent"; opacity: 0.64; }
+                PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
+                PropertyChanges{ target: _icon; color: Theme.text.secondary }
+                PropertyChanges{ target: _arrow; color: Theme.text.secondary }
+            },
+            State {
                 name: "checked"
                 when: _sidebarItem.checked
-                PropertyChanges{ target: _mainItem; color: _mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; }
+                PropertyChanges{ target: _mainItem; color: _mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; opacity: 1;}
                 PropertyChanges { target: _title; font.family: PublicSans.semiBold; color: Theme.primary.main; }
                 PropertyChanges{ target: _icon; color: Theme.primary.main }
                 PropertyChanges{ target: _arrow; color: Theme.primary.main; }
@@ -98,7 +109,7 @@ Item{
             State {
                 name: "unchecked"
                 when: !_sidebarItem.checked
-                PropertyChanges{ target: _mainItem; color: _mouseArea.containsMouse ? Theme.background.neutral : "transparent"; }
+                PropertyChanges{ target: _mainItem; color: _mouseArea.containsMouse ? Theme.background.neutral : "transparent"; opacity: 1;}
                 PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
                 PropertyChanges{ target: _icon; color: Theme.text.secondary }
                 PropertyChanges{ target: _arrow; color: Theme.text.secondary }
@@ -122,6 +133,7 @@ Item{
             property bool checked: false
             property string text: modelData.text
 
+            enabled: modelData.enabled === undefined ? true : modelData.enabled
             radius: _mainItem.radius
             height: 36 * Size.scale
             width: _listView.width
@@ -152,27 +164,36 @@ Item{
             MouseArea{
                 id: _subItemMouseArea
                 anchors.fill: parent
-                hoverEnabled: true
+                hoverEnabled: parent.enabled
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
-                    modelData.onClicked();
-                    _sidebarItem.clicked();
                     _listView.currentIndex = index;
                     if(!_sidebarItem.checked)
                         _sidebarItem.checked = true;
+                    modelData.onClicked();
+                    _sidebarItem.clicked();
                 }
             }
 
             states: [
                 State {
+                    name: "disabled"
+                    when: !_subItem.enabled
+                    PropertyChanges{ target: _subItem; opacity: 0.68; }
+                    PropertyChanges{ target: _dot; color: Theme.text.secondary; scale: 1 }
+                    PropertyChanges{ target: _label; color: Theme.text.secondary; font.family: PublicSans.regular }
+                },
+                State {
                     name: "checked"
                     when: _listView.currentIndex === index
+                    PropertyChanges{ target: _subItem; opacity: 1; }
                     PropertyChanges{ target: _dot; color: Theme.primary.main; scale: 3 }
                     PropertyChanges{ target: _label; color: Theme.text.primary; font.family: PublicSans.semiBold }
                 },
                 State {
                     name: "unchecked"
                     when: _listView.currentIndex !== index
+                    PropertyChanges{ target: _subItem; opacity: 1; }
                     PropertyChanges{ target: _dot; color: Theme.text.secondary; scale: 1 }
                     PropertyChanges{ target: _label; color: Theme.text.secondary; font.family: PublicSans.regular }
                 }
