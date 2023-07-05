@@ -50,22 +50,22 @@ Image{
     states: [
         State {
             when: mouseArea.pressed && _icon.interactive
-            name: "PRESSED"
+            name: "pressed"
             PropertyChanges { target: _icon; scale: 0.8; }
         },
         State {
             when: _icon.interactive
-            name: "DEFAULT"
+            name: "default"
             PropertyChanges { target: _icon; scale: 1; }
         }
     ]
     transitions: [
         Transition {
-            from: "PRESSED"
+            from: "pressed"
             NumberAnimation { target: _icon; properties: "scale"; duration: 1150; easing.type: Easing.OutElastic; }
         },
         Transition {
-            from: "DEFAULT"
+            from: "default"
             NumberAnimation { target: _icon; properties: "scale"; duration: 70; }
         }
     ]

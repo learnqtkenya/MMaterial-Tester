@@ -39,15 +39,17 @@ qt_add_qml_module(appMaterialTester
         Showcase/ButtonShowcase/FabButtonShowcase.qml
         Showcase/ButtonShowcase/FABButtonGroup.qml
         Components/Sidebar/CustomSidebar.qml
+        Showcase/ButtonShowcase/CheckboxShowcase.qml
 
     SOURCES
         DevTools/FileWatcher.h
         DevTools/FileWatcher.cpp
         DevTools/CustomEngine.h
         DevTools/CustomEngine.cpp
+        QML_FILES
 )
-set(QML_IMPORT_PATH ${CMAKE_SOURCE_DIR}/../MMaterial ${CMAKE_BINARY_DIR}/imports CACHE STRING "" FORCE)
-set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../")
+set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../" ${CMAKE_BINARY_DIR}/imports CACHE STRING "MMaterial imports" FORCE)
+
 # Add the QML import path to the QML_IMPORT_PATH environment variable
 list(APPEND ENV{QML_IMPORT_PATH} "${QML_IMPORT_PATH}")
 

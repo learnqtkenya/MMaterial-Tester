@@ -19,7 +19,9 @@ Item {
     readonly property real pixel20: 20 * scale
     readonly property real pixel22: 22 * scale
     readonly property real pixel24: 24 * scale
+    readonly property real pixel30: 30 * scale
     readonly property real pixel32: 32 * scale
+    readonly property real pixel36: 36 * scale
     readonly property real pixel40: 40 * scale
     readonly property real pixel48: 48 * scale
     readonly property real pixel64: 64 * scale

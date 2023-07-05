@@ -31,6 +31,7 @@ list(APPEND MODULE_ASSETS
     Icons/assets/font.svg
     Icons/assets/palette.svg
     Icons/assets/verified.svg
+    Icons/assets/checkmark.svg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -92,7 +93,9 @@ list(APPEND MODULE_QML_FILES
     Buttons/MButton.qml
     Buttons/MToggleButton.qml
     Buttons/MFabButton.qml
+    Buttons/MCheckbox.qml
     Buttons/CheckedGroup.qml
+    Buttons/Checkable.qml
 
     # Sidebar
     Sidebar/Sidebar.qml
@@ -125,6 +128,5 @@ qt_add_qml_module(MMaterialLib
     RESOURCES ${MODULE_ASSETS}
 )
 
-# Function to add a QML file to the list as a private file
 
 

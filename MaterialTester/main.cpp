@@ -11,9 +11,10 @@ int main(int argc, char *argv[])
 
     CustomEngine engine;
 
-    engine.addImportPath("../../Material-Qt/MMaterial"); // for Material
+    engine.addImportPath(":/MMaterial"); // for Material
     engine.rootContext()->setContextProperty("QmlEngine", &engine);
 #if defined(__wasm__) || !defined(QT_DEBUG)
+    engine.addImportPath("qrc:/");
     const QUrl url(u"qrc:/MaterialTester/Main.qml"_qs);
 #else
     const QUrl url(qgetenv("MAIN_QML"));

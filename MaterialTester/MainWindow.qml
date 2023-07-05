@@ -17,8 +17,6 @@ import "./Components/Sidebar"
 Rectangle{
     color: Theme.background.main
 
-
-
     RowLayout{
         id: header
         spacing: Size.pixel14
@@ -64,7 +62,7 @@ Rectangle{
             right: parent.right
         }
 
-        sourceComponent: badgeShowcase
+        sourceComponent: fontShowcase
 
         BusyIndicator{
             anchors.centerIn: parent
@@ -84,6 +82,7 @@ Rectangle{
     Component{ id: toggleButtonShowcase; ToggleButtonShowcase{ } }
     Component{ id: fabButtonShowcase; FabButtonShowcase{ } }
     Component{ id: alertShowcase; AlertShowcase{ } }
+    Component{ id: checkboxShowcase; CheckboxShowcase{ } }
 
     AppSettings{
         id: appSettings

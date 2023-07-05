@@ -20,6 +20,7 @@ QtObject{
     readonly property string font: iconBasePath + "font.svg"
     readonly property string palette: iconBasePath + "palette.svg"
     readonly property string verified: iconBasePath + "verified.svg"
+    readonly property string checkmark: iconBasePath + "checkmark.svg"
 
     readonly property string info: iconBasePath + "info.svg"
     readonly property string success: iconBasePath + "success.svg"

@@ -35,7 +35,12 @@ Sidebar {
     SidebarItem{
         text: "Buttons";
         icon.path: IconList.star;
-        model: [{text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}}, {text : "Fab", onClicked: function(){ showcaseLoader.sourceComponent = fabButtonShowcase}}, {text : "Toggle", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonShowcase }}];
+        model: [
+            {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}},
+            {text : "Fab", onClicked: function(){ showcaseLoader.sourceComponent = fabButtonShowcase}},
+            {text : "Toggle", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonShowcase }},
+            {text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }}
+        ];
     }
     SidebarItem{
         text: "Alerts";
