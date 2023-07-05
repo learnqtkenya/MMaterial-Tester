@@ -8,17 +8,17 @@ import MMaterial
 import "../../Components/Common"
 
 Item{
-    objectName: "Toggle Buttons"
+    objectName: "Toggle Button"
     visible: showcaseLoader.status == Loader.Ready
     ColumnLayout{
         anchors{
             fill: parent
         }
         spacing: 80 * Size.scale
-
+        Subtitle1{ text: "Toggle Button" }
         TitleRow{
             title: qsTr("Color")
-
+            Layout.topMargin: -Size.pixel40
             MToggleButton{ accent: Theme.primary; checked: true; }
             MToggleButton{ accent: Theme.secondary; checked: true; }
             MToggleButton{ accent: Theme.info; checked: true; }

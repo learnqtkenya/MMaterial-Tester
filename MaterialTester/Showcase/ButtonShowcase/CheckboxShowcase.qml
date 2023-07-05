@@ -9,10 +9,12 @@ ColumnLayout {
     objectName: "Checkbox"
     visible: showcaseLoader.status == Loader.Ready
     spacing: Size.pixel40
+    Subtitle1{ text: "Checkbox" }
     TitleRow{
         title: qsTr("Default")
         width: parent.width
         spacing: Size.pixel36
+        Layout.topMargin: Size.pixel10
 
         MCheckbox{ accent: Theme.primary; checked: false; }
         MCheckbox{ accent: Theme.primary; checked: true; }

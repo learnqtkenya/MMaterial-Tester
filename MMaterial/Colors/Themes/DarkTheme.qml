@@ -55,7 +55,7 @@ ThemeBase{
     background: PaletteBackground{
         main: "#161C24"
         paper: "#212B36"
-        neutral: Qt.rgba(145, 158, 171, 0.16)
+        neutral: "#212B36"
     }
     action: PaletteAction{
         active: "#919EAB"

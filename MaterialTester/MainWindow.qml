@@ -10,6 +10,7 @@ import "./Showcase/ColorShowcase"
 import "./Showcase/AvatarShowcase"
 import "./Showcase/ButtonShowcase"
 import "./Showcase/AlertShowcase"
+import "./Showcase/ListItemShowcase"
 
 import "./Components/AppSettings"
 import "./Components/Sidebar"
@@ -83,6 +84,7 @@ Rectangle{
     Component{ id: fabButtonShowcase; FabButtonShowcase{ } }
     Component{ id: alertShowcase; AlertShowcase{ } }
     Component{ id: checkboxShowcase; CheckboxShowcase{ } }
+    Component{ id: listItemShowcase; ListItemShowcase{ } }
 
     AppSettings{
         id: appSettings

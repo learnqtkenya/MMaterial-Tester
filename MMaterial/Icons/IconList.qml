@@ -21,6 +21,11 @@ QtObject{
     readonly property string palette: iconBasePath + "palette.svg"
     readonly property string verified: iconBasePath + "verified.svg"
     readonly property string checkmark: iconBasePath + "checkmark.svg"
+    readonly property string list: iconBasePath + "list.svg"
+    readonly property string search: iconBasePath + "search.svg"
+    readonly property string stonks: iconBasePath + "stonks.svg"
+    readonly property string send: iconBasePath + "send.svg"
+    readonly property string call: iconBasePath + "call.svg"
 
     readonly property string info: iconBasePath + "info.svg"
     readonly property string success: iconBasePath + "success.svg"

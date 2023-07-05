@@ -58,8 +58,8 @@ ThemeBase{
     }
     action: PaletteAction{
         active: "#637381"
-        hover: Qt.rgba(0, 0, 0, 0.08)
-        selected: Qt.rgba(0, 0, 0, 0.02)
+        hover: Qt.rgba(0, 0, 0, 0.03)
+        selected: Qt.rgba(0, 0, 0, 0.06)
         disabled: Qt.rgba(0, 0, 0, 0.2)
         disabledBackground: Qt.rgba(0, 0, 0, 0.05)
         focus: Qt.rgba(0, 0, 0, 0.14)

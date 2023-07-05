@@ -32,6 +32,11 @@ list(APPEND MODULE_ASSETS
     Icons/assets/palette.svg
     Icons/assets/verified.svg
     Icons/assets/checkmark.svg
+    Icons/assets/list.svg
+    Icons/assets/search.svg
+    Icons/assets/send.svg
+    Icons/assets/stonks.svg
+    Icons/assets/call.svg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -101,6 +106,11 @@ list(APPEND MODULE_QML_FILES
     Sidebar/Sidebar.qml
     Sidebar/SidebarCategoryLabel.qml
     Sidebar/SidebarItem.qml
+
+    # Lists
+    Lists/ListItem.qml
+    Lists/ListItemContact.qml
+    Lists/AbstractListItem.qml
 )
 
 set_source_files_properties(

@@ -7,7 +7,7 @@ import "../Fonts/Texts"
 
 Rectangle{
     id: _avatar
-    color: accent.main
+    color: enabled ? accent.main : Theme.action.disabled
     radius: 100
     property string title: "A"
     property var accent: Theme.primary
@@ -27,6 +27,7 @@ Rectangle{
         font.pixelSize: parent.height * 0.4
         color: _avatar.accent.contrastText
         verticalAlignment: Qt.AlignVCenter
+        horizontalAlignment: Qt.AlignHCenter
         font.capitalization: Font.AllUppercase
         text: _avatar.title.length >= 1 ?_avatar.title[0] : ""
     }

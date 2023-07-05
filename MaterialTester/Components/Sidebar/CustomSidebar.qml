@@ -47,5 +47,10 @@ Sidebar {
         icon.path: IconList.alert;
         onClicked: showcaseLoader.sourceComponent = alertShowcase;
     }
+    SidebarItem{
+        text: "List Items";
+        icon.path: IconList.list;
+        onClicked: showcaseLoader.sourceComponent = listItemShowcase;
+    }
     Item{ Layout.fillHeight: true; }
 }
