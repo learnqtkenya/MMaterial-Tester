@@ -4,13 +4,19 @@ import QtQuick.Layouts
 import MMaterial
 
 Sidebar {
+    SidebarCategoryLabel{ text: qsTr("Introduction")}
+    SidebarItem{
+        text: "Project";
+        icon.path: IconList.info;
+        onClicked: showcaseLoader.sourceComponent = projectInfo;
+        checked: true
+    }
+
     SidebarCategoryLabel{ text: qsTr("Components")}
     SidebarItem{
-        id: _fonts
         text: "Fonts";
         icon.path: IconList.font;
         onClicked: showcaseLoader.sourceComponent = fontShowcase;
-        checked: true
     }
     SidebarItem{
         text: "Colors";

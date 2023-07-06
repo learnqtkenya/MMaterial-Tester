@@ -57,13 +57,14 @@ Rectangle{
         asynchronous: true
         anchors{
             margins: Size.pixel32
+            leftMargin: Size.pixel46
             top: header.bottom
             bottom: parent.bottom
             left: sidebar.right
             right: parent.right
         }
 
-        sourceComponent: fontShowcase
+        sourceComponent: projectInfo
 
         BusyIndicator{
             anchors.centerIn: parent
@@ -74,6 +75,7 @@ Rectangle{
         }
     }
 
+    Component{ id: projectInfo; ProjectInfo{ } }
     Component{ id: fontShowcase;  FontShowcase{ } }
     Component{ id: colorShowcase; ColorShowcase{ } }
     Component{ id: avatarShowcase; AvatarShowcase{ } }
