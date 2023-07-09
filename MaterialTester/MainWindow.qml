@@ -98,7 +98,7 @@ Rectangle{
     }
 
     onWidthChanged: {
-        Size.format = width * 0.35 >= 280 * Size.scale ? Size.Format.Extended : Size.Format.Compact
+       Size.format = Window.width > 800 ? Size.Format.Extended : Size.Format.Compact
     }
 }
 

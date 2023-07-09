@@ -16,7 +16,7 @@ Item {
             Layout.topMargin: Size.pixel24
             Layout.preferredWidth: parent.width
             Layout.preferredHeight: 100 * Size.scale
-            columns: 7
+            columns: Size.format == Size.Format.Extended ? 7 : 4
             rowSpacing: Size.pixel40
             columnSpacing: Size.pixel40
 
@@ -85,7 +85,7 @@ Item {
             id: dotBadgeGrid
             Layout.topMargin: Size.pixel24
             Layout.preferredWidth: parent.width
-            columns: 7
+            columns: Size.format == Size.Format.Extended ? 7 : 4
             rowSpacing: Size.pixel40
             columnSpacing: Size.pixel40
 

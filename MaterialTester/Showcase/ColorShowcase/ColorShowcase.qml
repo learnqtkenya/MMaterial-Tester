@@ -16,9 +16,10 @@ Item {
             Layout.preferredHeight: parent.height * 0.66
             Layout.fillWidth: true
             columns: 4
-            rowSpacing: 40
-            columnSpacing: 40
+            rowSpacing: Size.pixel40
+            columnSpacing: Size.pixel40
 
+            property int preferredColumnSpan: Window.width > 800 ? 1 : 2
             PaletteBasicView{
                 id: primaryView
                 Layout.columnSpan: 2
@@ -31,18 +32,22 @@ Item {
                 palette: Theme.secondary
             }
             PaletteBasicView{
+                Layout.columnSpan: grid.preferredColumnSpan
                 title: "Info"
                 palette: Theme.info
             }
             PaletteBasicView{
+                Layout.columnSpan: grid.preferredColumnSpan
                 title: "Success"
                 palette: Theme.success
             }
             PaletteBasicView{
+                Layout.columnSpan: grid.preferredColumnSpan
                 title: "Warning"
                 palette: Theme.warning
             }
             PaletteBasicView{
+                Layout.columnSpan: grid.preferredColumnSpan
                 title: "Error"
                 palette: Theme.error
             }
