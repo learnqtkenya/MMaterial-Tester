@@ -33,4 +33,12 @@ Item {
         L,
         Custom
     }
+
+    enum Format {
+        Extended,
+        Compact
+    }
+
+    property int format: Size.Format.Extended
+
 }

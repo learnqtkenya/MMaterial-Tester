@@ -64,7 +64,7 @@ Rectangle{
             right: parent.right
         }
 
-        sourceComponent: projectInfo
+        sourceComponent: placeholder
 
         BusyIndicator{
             anchors.centerIn: parent
@@ -75,6 +75,7 @@ Rectangle{
         }
     }
 
+    Component{ id: placeholder; Placeholder{ } }
     Component{ id: projectInfo; ProjectInfo{ } }
     Component{ id: fontShowcase;  FontShowcase{ } }
     Component{ id: colorShowcase; ColorShowcase{ } }
@@ -94,6 +95,10 @@ Rectangle{
 
     CustomSidebar{
         id: sidebar
+    }
+
+    onWidthChanged: {
+        Size.format = width * 0.35 >= 280 * Size.scale ? Size.Format.Extended : Size.Format.Compact
     }
 }
 

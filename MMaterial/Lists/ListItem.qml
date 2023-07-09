@@ -5,6 +5,7 @@ import "../Settings"
 import "../Icons"
 import "../Colors"
 import "../Fonts/Texts"
+import "../Fonts"
 
 AbstractListItem{
     id: _listItem
@@ -34,7 +35,8 @@ AbstractListItem{
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignVCenter
             verticalAlignment: Qt.AlignVCenter
-            color: Theme.text.primary
+            font.family: _listItem.selected ? PublicSans.semiBold : PublicSans.regular
+            color: _listItem.selected ? Theme.text.primary : Theme.text.secondary
         }
     }
 }

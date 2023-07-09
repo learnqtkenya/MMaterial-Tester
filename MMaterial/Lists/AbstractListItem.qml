@@ -3,6 +3,7 @@ import "../Colors"
 
 Rectangle {
     opacity: 1
+    radius: 8
 
     property bool containsMouse: _mouseArea.containsMouse
     property alias mouseArea: _mouseArea

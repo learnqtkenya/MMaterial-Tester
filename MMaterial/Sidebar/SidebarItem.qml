@@ -1,27 +1,24 @@
 import QtQuick
 import QtQuick.Layouts
 
-import "../Settings"
-import "../Colors"
-import "../Icons"
-import "../Fonts/Texts"
-import "../Fonts"
+import MMaterial
 
 Item{
     id: _sidebarItem
 
+    property bool checked: ListView.isCurrentItem
+    height: _listView.height + _listView.anchors.topMargin + _mainItem.height
+    width: ListView.view ? ListView.view.width : 0
+
+    required property string category
+
     property alias icon: _icon
     property alias text: _title.text
-    property bool checked: false
     property bool isOpen: false
     property alias model: _listView.model
+    property alias list: _listView
 
     property real openingSpeed: 150
-
-    signal clicked
-
-    Layout.preferredHeight: childrenRect.height
-    Layout.fillWidth: true
 
     onIsOpenChanged: {
         _listView.currentIndex = -1;
@@ -31,11 +28,30 @@ Item{
             _listView.currentIndex = -1;
     }
 
-    Rectangle {
+    signal clicked
+
+    function selectItem(){
+        if(typeof index !== "undefined")
+            ListView.view.currentIndex = index;
+        else if(typeof ObjectModel.index !== "undefined")
+            ListView.view.currentIndex = ObjectModel.index;
+    }
+
+    Checkable {
         id: _mainItem
         height: 50 * Size.scale
         width: parent.width
+        customCheckImplementation: true
         radius: 8
+
+        onClicked: {
+            if (_sidebarItem.model && _sidebarItem.model.length > 0) {
+                _sidebarItem.isOpen = !_sidebarItem.isOpen;
+            } else {
+                _sidebarItem.selectItem();
+            }
+            _sidebarItem.clicked();
+        }
 
         RowLayout{
             anchors{
@@ -50,6 +66,7 @@ Item{
                 visible: path != ""
                 sourceSize.height: Size.pixel24
                 Layout.alignment: Qt.AlignVCenter
+                color: _title.color
             }
 
             Subtitle2{
@@ -73,22 +90,6 @@ Item{
 
             }
         }
-
-        MouseArea{
-            id: _mouseArea
-            anchors.fill: parent
-            cursorShape: Qt.PointingHandCursor
-            hoverEnabled: true
-            onClicked: {
-                if (_sidebarItem.model && _sidebarItem.model.length > 0) {
-                    _sidebarItem.isOpen = !_sidebarItem.isOpen;
-                } else {
-                    _sidebarItem.checked = true;
-                }
-                _sidebarItem.clicked()
-            }
-        }
-
         states: [
             State {
                 name: "disabled"
@@ -101,7 +102,7 @@ Item{
             State {
                 name: "checked"
                 when: _sidebarItem.checked
-                PropertyChanges{ target: _mainItem; color: _mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; opacity: 1;}
+                PropertyChanges{ target: _mainItem; color: _mainItem.mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; opacity: 1;}
                 PropertyChanges { target: _title; font.family: PublicSans.semiBold; color: Theme.primary.main; }
                 PropertyChanges{ target: _icon; color: Theme.primary.main }
                 PropertyChanges{ target: _arrow; color: Theme.primary.main; }
@@ -109,7 +110,7 @@ Item{
             State {
                 name: "unchecked"
                 when: !_sidebarItem.checked
-                PropertyChanges{ target: _mainItem; color: _mouseArea.containsMouse ? Theme.background.neutral : "transparent"; opacity: 1;}
+                PropertyChanges{ target: _mainItem; color: _mainItem.mouseArea.containsMouse ? Theme.background.neutral : "transparent"; opacity: 1;}
                 PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
                 PropertyChanges{ target: _icon; color: Theme.text.secondary }
                 PropertyChanges{ target: _arrow; color: Theme.text.secondary }
@@ -130,7 +131,7 @@ Item{
         clip: true
         delegate: Rectangle{
             id: _subItem
-            property bool checked: false
+            property bool checked: ListView.isCurrentItem
             property string text: modelData.text
 
             enabled: modelData.enabled === undefined ? true : modelData.enabled
@@ -168,10 +169,8 @@ Item{
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
                     _listView.currentIndex = index;
-                    if(!_sidebarItem.checked)
-                        _sidebarItem.checked = true;
+                    _sidebarItem.selectItem();
                     modelData.onClicked();
-                    _sidebarItem.clicked();
                 }
             }
 
@@ -223,7 +222,7 @@ Item{
         State{
             when: _sidebarItem.isOpen
             name: "open"
-            PropertyChanges{ target: _listView; height: (count * (36*Size.scale)) + ((count-1) * spacing) }
+            PropertyChanges{ target: _listView; height: _listView.contentHeight }
         },
         State{
             when: !_sidebarItem.isOpen

@@ -106,6 +106,10 @@ list(APPEND MODULE_QML_FILES
     Sidebar/Sidebar.qml
     Sidebar/SidebarCategoryLabel.qml
     Sidebar/SidebarItem.qml
+    Sidebar/CompactSidebar.qml
+    Sidebar/SidebarCompactItem.qml
+    Sidebar/SidebarSeparator.qml
+    Sidebar/ExtendedSidebar.qml
 
     # Lists
     Lists/ListItem.qml

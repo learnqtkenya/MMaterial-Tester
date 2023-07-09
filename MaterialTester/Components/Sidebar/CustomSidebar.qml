@@ -4,59 +4,128 @@ import QtQuick.Layouts
 import MMaterial
 
 Sidebar {
-    SidebarCategoryLabel{ text: qsTr("Introduction")}
-    SidebarItem{
-        text: "Project";
-        icon.path: IconList.info;
-        onClicked: showcaseLoader.sourceComponent = projectInfo;
-        checked: true
+    name: "John Doe"
+    role: "Admin"
+
+    extendedSidebar.list.currentIndex: -1;
+    compactSidebar.list.currentIndex: -1;
+
+    extendedSidebar.model: ObjectModel{
+        id: extendedModel
+        SidebarItem{
+            text: "Project";
+            icon.path: IconList.info;
+            onClicked: showcaseLoader.sourceComponent = projectInfo;
+            category: "introduction"
+        }
+        SidebarItem{
+            text: "Fonts";
+            icon.path: IconList.font;
+            onClicked: showcaseLoader.sourceComponent = fontShowcase;
+            category: "components"
+        }
+        SidebarItem{
+            text: "Colors";
+            icon.path: IconList.palette;
+            onClicked: showcaseLoader.sourceComponent = colorShowcase;
+            category: "components"
+        }
+        SidebarItem{
+            text: "Badge";
+            icon.path: IconList.verified;
+            onClicked: showcaseLoader.sourceComponent = badgeShowcase;
+            category: "components"
+        }
+        SidebarItem{
+            text: "Accordion";
+            icon.path: IconList.star;
+            onClicked: showcaseLoader.sourceComponent = accordionShowcase;
+            category: "components"
+        }
+        SidebarItem{
+            text: "Buttons";
+            icon.path: IconList.star;
+            category: "components"
+            model: [
+                {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}},
+                {text : "Fab", onClicked: function(){ showcaseLoader.sourceComponent = fabButtonShowcase}},
+                {text : "Toggle", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonShowcase }},
+                {text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }}
+            ];
+        }
+        SidebarItem{
+            text: "Alerts";
+            icon.path: IconList.alert;
+            onClicked: showcaseLoader.sourceComponent = alertShowcase;
+            category: "components"
+        }
+        SidebarItem{
+            text: "List Items";
+            icon.path: IconList.list;
+            onClicked: showcaseLoader.sourceComponent = listItemShowcase;
+            category: "components"
+        }
     }
 
-    SidebarCategoryLabel{ text: qsTr("Components")}
-    SidebarItem{
-        text: "Fonts";
-        icon.path: IconList.font;
-        onClicked: showcaseLoader.sourceComponent = fontShowcase;
+    compactSidebar.model: ObjectModel{
+        id: compactModel
+        SidebarCompactItem{
+            text: "Project";
+            icon.path: IconList.info;
+            onClicked: showcaseLoader.sourceComponent = projectInfo;
+            category: "introduction"
+        }
+        SidebarCompactItem{
+            text: "Fonts";
+            icon.path: IconList.font;
+            onClicked: showcaseLoader.sourceComponent = fontShowcase;
+            category: "components"
+        }
+        SidebarCompactItem{
+            text: "Colors";
+            icon.path: IconList.palette;
+            onClicked: showcaseLoader.sourceComponent = colorShowcase;
+            category: "components"
+        }
+    //            SidebarCompactItem{
+    //                text: "Avatars";
+    //                icon.path: IconList.star;
+    //                onClicked: showcaseLoader.sourceComponent = avatarShowcase;
+    //            }
+        SidebarCompactItem{
+            text: "Badge";
+            icon.path: IconList.verified;
+            onClicked: showcaseLoader.sourceComponent = badgeShowcase;
+            category: "components"
+        }
+        SidebarCompactItem{
+            text: "Accordion";
+            icon.path: IconList.star;
+            onClicked: showcaseLoader.sourceComponent = accordionShowcase;
+            category: "components"
+        }
+        SidebarCompactItem{
+            text: "Buttons";
+            icon.path: IconList.star;
+            category: "components"
+            model: [
+                {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}},
+                {text : "Fab", onClicked: function(){ showcaseLoader.sourceComponent = fabButtonShowcase}},
+                {text : "Toggle", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonShowcase }},
+                {text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }}
+            ];
+        }
+        SidebarCompactItem{
+            text: "Alerts";
+            icon.path: IconList.alert;
+            onClicked: showcaseLoader.sourceComponent = alertShowcase;
+            category: "components"
+        }
+        SidebarCompactItem{
+            text: "List Items";
+            icon.path: IconList.list;
+            onClicked: showcaseLoader.sourceComponent = listItemShowcase;
+            category: "components"
+        }
     }
-    SidebarItem{
-        text: "Colors";
-        icon.path: IconList.palette;
-        onClicked: showcaseLoader.sourceComponent = colorShowcase;
-    }
-//            SidebarItem{
-//                text: "Avatars";
-//                icon.path: IconList.star;
-//                onClicked: showcaseLoader.sourceComponent = avatarShowcase;
-//            }
-    SidebarItem{
-        text: "Badge";
-        icon.path: IconList.verified;
-        onClicked: showcaseLoader.sourceComponent = badgeShowcase;
-    }
-    SidebarItem{
-        text: "Accordion";
-        icon.path: IconList.star;
-        onClicked: showcaseLoader.sourceComponent = accordionShowcase;
-    }
-    SidebarItem{
-        text: "Buttons";
-        icon.path: IconList.star;
-        model: [
-            {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}},
-            {text : "Fab", onClicked: function(){ showcaseLoader.sourceComponent = fabButtonShowcase}},
-            {text : "Toggle", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonShowcase }},
-            {text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }}
-        ];
-    }
-    SidebarItem{
-        text: "Alerts";
-        icon.path: IconList.alert;
-        onClicked: showcaseLoader.sourceComponent = alertShowcase;
-    }
-    SidebarItem{
-        text: "List Items";
-        icon.path: IconList.list;
-        onClicked: showcaseLoader.sourceComponent = listItemShowcase;
-    }
-    Item{ Layout.fillHeight: true; }
 }

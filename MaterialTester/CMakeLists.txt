@@ -43,6 +43,7 @@ qt_add_qml_module(appMaterialTester
         Showcase/ListItemShowcase/ListItemShowcase.qml
         Showcase/ListItemShowcase/ListBorders.qml
         Showcase/ProjectInfo.qml
+        Showcase/Placeholder.qml
 
     SOURCES
         DevTools/FileWatcher.h

@@ -23,7 +23,7 @@ ColumnLayout{
             listView{
                 model: 4
                 delegate: ListItem{
-                    width: _plainListView.width
+                    width: _plainListView.listView.width
                     text: "List Item " + index
                 }
             }
@@ -37,10 +37,10 @@ ColumnLayout{
             ObjectModel{
                 id: _iconObjectModel
 
-                ListItem{ width: _iconListView.width; text: "List Item"; icon.path: IconList.alert }
-                ListItem{ width: _iconListView.width; text: "List Item"; icon.path: IconList.mail }
-                ListItem{ width: _iconListView.width; text: "List Item"; icon.path: IconList.stonks }
-                ListItem{ width: _iconListView.width; text: "List Item"; icon.path: IconList.logo }
+                ListItem{ width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.alert }
+                ListItem{ width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.mail }
+                ListItem{ width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.stonks }
+                ListItem{ width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.logo }
             }
         }
 
@@ -53,22 +53,22 @@ ColumnLayout{
                 id: _advancedObjectModel
 
                 ListItem{
-                    width: _iconListView.width; text: "List Item"; icon.path: IconList.alert;
+                    width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.alert;
                     containsMouse: mouseArea.containsMouse || _button1.mouseArea.containsMouse
                     MButton{ id: _button1; size: Size.Grade.M;  }
                 }
                 ListItem{
-                    width: _iconListView.width; text: "List Item"; icon.path: IconList.mail;
+                    width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.mail;
                     containsMouse: mouseArea.containsMouse || _button2.mouseArea.containsMouse
                     MButton{ id: _button2; size: Size.Grade.M; type: MButton.Type.Outlined }
                 }
                 ListItem{
-                    width: _iconListView.width; text: "List Item"; icon.path: IconList.stonks;
+                    width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.stonks;
                     containsMouse: mouseArea.containsMouse || _button3.mouseArea.containsMouse
                     MButton{ id: _button3; size: Size.Grade.M }
                 }
                 ListItem{
-                    width: _iconListView.width; text: "List Item"; icon.path: IconList.logo;
+                    width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.logo;
                     containsMouse: mouseArea.containsMouse || _button4.mouseArea.containsMouse
                     MButton{ id: _button4; size: Size.Grade.M; type: MButton.Type.Outlined }
                 }

@@ -20,9 +20,7 @@ Rectangle{
         clip: true
         anchors {
             fill: parent
-            margins: parent.border.width
-            topMargin: parent.radius
-            bottomMargin: parent.radius
+            margins: parent.border.width + parent.radius
         }
     }
 }

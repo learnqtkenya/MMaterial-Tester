@@ -5,11 +5,18 @@ import "../Settings"
 import "../Colors"
 import "../Fonts/Texts"
 
-Overline {
-    Layout.preferredHeight: Size.scale * 50
-    Layout.leftMargin: Size.pixel16
-    Layout.bottomMargin: Size.pixel8
-    verticalAlignment: Qt.AlignBottom
-    color: Theme.text.secondary
-    font.pixelSize: Size.pixel11
+Item{
+    height: Size.scale * 50
+    property alias text: _label.text
+    Overline {
+        id: _label
+        anchors{
+            fill: parent
+            bottomMargin: Size.pixel8
+            leftMargin: Size.pixel16
+        }
+        verticalAlignment: Qt.AlignBottom
+        color: Theme.text.secondary
+        font.pixelSize: Size.pixel11
+    }
 }
