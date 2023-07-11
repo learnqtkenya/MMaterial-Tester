@@ -4,7 +4,7 @@ pragma Singleton
 
 QtObject{
     //Icons
-    readonly property string iconBasePath: Qt.resolvedUrl("./assets/")
+    readonly property string iconBasePath: Qt.resolvedUrl("./assets/svg/")
 
     readonly property string android: iconBasePath + "android.svg"
     readonly property string mail: iconBasePath + "mail.svg"

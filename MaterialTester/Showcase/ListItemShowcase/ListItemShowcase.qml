@@ -12,8 +12,10 @@ ColumnLayout{
         Layout.fillWidth: true
         font.capitalization: Font.AllUppercase
     }
-    RowLayout {
-        spacing: Size.pixel32
+    GridLayout {
+        rowSpacing: Size.pixel22
+        columnSpacing: Size.pixel22
+        columns: Window.width > 1300 * Size.scale ? 3 : (Window.width > 900 * Size.scale ? 2 : 1)
 
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop
@@ -80,7 +82,7 @@ ColumnLayout{
         text: "List Item Contact"
         color: Theme.text.disabled
         Layout.fillWidth: true
-        Layout.topMargin: Size.pixel32*2
+        Layout.topMargin: Size.pixel32
         font.capitalization: Font.AllUppercase
     }
     ListBorders{
@@ -103,5 +105,4 @@ ColumnLayout{
     }
 
     Item{ Layout.fillHeight: true; }
-
 }

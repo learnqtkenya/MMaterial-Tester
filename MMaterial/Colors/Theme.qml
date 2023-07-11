@@ -19,6 +19,7 @@ ThemeBase{
     text: currentTheme ? currentTheme.text : null
     action: currentTheme ? currentTheme.action : null
     common: currentTheme ? currentTheme.common : null
+    defaultNeutral: currentTheme ? currentTheme.defaultNeutral : null
 
     property ThemeBase currentTheme: LightTheme
 

@@ -25,8 +25,6 @@ Item{
             MToggleButton{ accent: Theme.success; checked: true; }
             MToggleButton{ accent: Theme.warning; checked: true; }
             MToggleButton{ accent: Theme.error; checked: true; }
-
-            Item{ Layout.fillWidth: true; }
         }
 
         TitleRow{
@@ -35,8 +33,6 @@ Item{
             MToggleButton{ accent: Theme.primary; checked: true; }
             MToggleButton{ accent: Theme.primary; checked: false; }
             MToggleButton{ accent: Theme.primary; enabled: false; }
-
-            Item{ Layout.fillWidth: true; }
         }
 
         TitleRow{
@@ -45,8 +41,6 @@ Item{
             MToggleButton{ accent: Theme.primary; checked: true; size: Size.Grade.L; }
             MToggleButton{ accent: Theme.primary; checked: true; size: Size.Grade.M; }
             MToggleButton{ accent: Theme.primary; checked: true; size: Size.Grade.S; }
-
-            Item{ Layout.fillWidth: true; }
         }
 
         Item{ Layout.fillHeight: true; }

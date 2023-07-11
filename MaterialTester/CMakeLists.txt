@@ -44,7 +44,7 @@ qt_add_qml_module(appMaterialTester
         Showcase/ListItemShowcase/ListBorders.qml
         Showcase/ProjectInfo.qml
         Showcase/Placeholder.qml
-
+        Showcase/PaginationShowcase.qml
     SOURCES
         DevTools/FileWatcher.h
         DevTools/FileWatcher.cpp

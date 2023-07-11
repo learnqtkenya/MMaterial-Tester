@@ -18,7 +18,6 @@ ColumnLayout {
 
         MCheckbox{ accent: Theme.primary; checked: false; }
         MCheckbox{ accent: Theme.primary; checked: true; }
-        Item{ Layout.fillWidth: true; }
     }
     TitleRow{
         title: qsTr("Color")
@@ -31,7 +30,6 @@ ColumnLayout {
         MCheckbox{ accent: Theme.success; checked: true; }
         MCheckbox{ accent: Theme.warning; checked: true; }
         MCheckbox{ accent: Theme.error; checked: true; }
-        Item{ Layout.fillWidth: true; }
     }
     TitleRow{
         title: qsTr("States")
@@ -42,7 +40,6 @@ ColumnLayout {
         MCheckbox{ accent: Theme.primary; checked: true; }
         MCheckbox{ accent: Theme.primary; checked: false; enabled: false; }
         MCheckbox{ accent: Theme.primary; checked: true; enabled: false; }
-        Item{ Layout.fillWidth: true; }
     }
     Item{ Layout.fillHeight: true; }
 

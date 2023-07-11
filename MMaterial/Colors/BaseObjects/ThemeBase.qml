@@ -16,4 +16,9 @@ QtObject{
     required property PaletteSocial social
 
     property PaletteCommon common: PaletteCommon{}
+
+    property PaletteBasic defaultNeutral: PaletteBasic{
+        main: text.primary
+        contrastText: background.main
+    }
 }

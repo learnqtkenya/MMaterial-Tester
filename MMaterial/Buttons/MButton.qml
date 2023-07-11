@@ -58,7 +58,6 @@ Rectangle{
             return Size.pixel4;
     }
 
-
     property bool isLoading: false
     property string text: "Button"
     property bool backgroundVisible: true
@@ -75,7 +74,8 @@ Rectangle{
         Contained,
         Outlined,
         Text,
-        Soft
+        Soft,
+        Custom
     }
 
     Item{
@@ -131,7 +131,7 @@ Rectangle{
     MouseArea{
         id: mouseArea
         anchors.fill: parent
-        hoverEnabled: true
+        hoverEnabled: _button.enabled
         cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
         enabled: !_button.isLoading
         onClicked: { _button.clicked(); }
@@ -168,7 +168,7 @@ Rectangle{
                 target: _private;
                 backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent.p8 : "transparent") : "transparent"
                 textColor: _button.enabled ? _button.accent.main : Theme.action.disabled
-                borderColor:  _button.enabled ? _button.accent.main : Theme.action.disabled
+                borderColor:  _button.enabled ? (_button.mouseArea.containsMouse ? _button.accent.main : _button.accent.transparent.p48) : Theme.action.disabled
             }
             PropertyChanges{ target: _leftIcon; color: _private.textColor }
             PropertyChanges{ target: _rightIcon; color: _private.textColor }
@@ -198,6 +198,10 @@ Rectangle{
             }
             PropertyChanges{ target: _leftIcon; color: _private.textColor }
             PropertyChanges{ target: _rightIcon; color: _private.textColor }
+        },
+        State{
+            when: true
+            name: "custom"
         }
     ]
 }

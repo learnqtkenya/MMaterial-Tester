@@ -14,29 +14,29 @@ list(APPEND MODULE_ASSETS
     Fonts/Families/PublicSans/PublicSans-ExtraLight.ttf
 
     # Icons
-    Icons/assets/android.svg
-    Icons/assets/mail.svg
-    Icons/assets/arrow.svg
-    Icons/assets/logo.svg
-    Icons/assets/alternativeLogo.svg
-    Icons/assets/alert.svg
-    Icons/assets/info.svg
-    Icons/assets/success.svg
-    Icons/assets/closeX.svg
-    Icons/assets/menu.svg
-    Icons/assets/sun.svg
-    Icons/assets/moon.svg
-    Icons/assets/star.svg
-    Icons/assets/avatar.svg
-    Icons/assets/font.svg
-    Icons/assets/palette.svg
-    Icons/assets/verified.svg
-    Icons/assets/checkmark.svg
-    Icons/assets/list.svg
-    Icons/assets/search.svg
-    Icons/assets/send.svg
-    Icons/assets/stonks.svg
-    Icons/assets/call.svg
+    Icons/assets/svg/android.svg
+    Icons/assets/svg/mail.svg
+    Icons/assets/svg/arrow.svg
+    Icons/assets/svg/logo.svg
+    Icons/assets/svg/alternativeLogo.svg
+    Icons/assets/svg/alert.svg
+    Icons/assets/svg/info.svg
+    Icons/assets/svg/success.svg
+    Icons/assets/svg/closeX.svg
+    Icons/assets/svg/menu.svg
+    Icons/assets/svg/sun.svg
+    Icons/assets/svg/moon.svg
+    Icons/assets/svg/star.svg
+    Icons/assets/svg/avatar.svg
+    Icons/assets/svg/font.svg
+    Icons/assets/svg/palette.svg
+    Icons/assets/svg/verified.svg
+    Icons/assets/svg/checkmark.svg
+    Icons/assets/svg/list.svg
+    Icons/assets/svg/search.svg
+    Icons/assets/svg/send.svg
+    Icons/assets/svg/stonks.svg
+    Icons/assets/svg/call.svg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -91,6 +91,8 @@ list(APPEND MODULE_QML_FILES
     Components/Alerts/Alert.qml
     Components/Alerts/AlertController.qml
     Components/Avatar.qml
+    Components/Paginator.qml
+
     # Settings
     Settings/Size.qml
 

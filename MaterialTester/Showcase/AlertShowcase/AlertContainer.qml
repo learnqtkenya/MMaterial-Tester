@@ -11,7 +11,9 @@ RowLayout{
     property alias container: container
     H6{
         Layout.alignment: Qt.AlignTop
-        Layout.preferredWidth: Size.scale * 120
+        Layout.maximumWidth: 120 * Size.scale
+        Layout.minimumWidth: Size.pixel10
+        Layout.preferredWidth: Window.width * 0.08
         text: alertContainer.title
         width: parent.width
         height: Size.pixel40

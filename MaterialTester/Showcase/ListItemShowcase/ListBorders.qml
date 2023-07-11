@@ -1,5 +1,6 @@
-import QtQuick 2.15
+import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
 
 import MMaterial
 
@@ -10,6 +11,7 @@ Rectangle{
     Layout.fillHeight: true
     Layout.maximumHeight: listView.childrenRect.height + radius*2
     Layout.fillWidth: true
+    Layout.minimumHeight: Size.scale* 110
     color: "transparent"
     border.width: 2
     border.color: Theme.action.disabledBackground

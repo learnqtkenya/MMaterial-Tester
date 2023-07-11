@@ -88,6 +88,7 @@ Rectangle{
     Component{ id: alertShowcase; AlertShowcase{ } }
     Component{ id: checkboxShowcase; CheckboxShowcase{ } }
     Component{ id: listItemShowcase; ListItemShowcase{ } }
+    Component{ id: paginationShowcase; PaginationShowcase{ } }
 
     AppSettings{
         id: appSettings

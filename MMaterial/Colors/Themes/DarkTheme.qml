@@ -67,6 +67,7 @@ ThemeBase{
     }
     other: PaletteOther{
         divider: "#919EAB"
+        outline: Qt.rgba(145, 158, 171, 0.32)
     }
 
     main: PaletteGrey{

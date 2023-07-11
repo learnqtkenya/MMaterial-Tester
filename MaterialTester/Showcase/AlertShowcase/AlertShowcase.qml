@@ -17,6 +17,8 @@ Item {
                 left: parent.left
                 bottom: parent.bottom
                 top: parent.top
+                right: options.left
+                rightMargin: Window.width * 0.03
             }
             width: alertWidth
             property real alertWidth: parent.width * 0.6
@@ -65,22 +67,100 @@ Item {
         ColumnLayout{
             id: options
             anchors{
-                left: mainLayout.right
-                leftMargin: Size.pixel20
                 right: parent.right
                 bottom: parent.bottom
                 top: parent.top
             }
+            width: _createAlertButton.recommendedWidth
+            H6{
+                Layout.alignment: Qt.AlignTop
+                Layout.fillWidth: true
+                Layout.topMargin: Size.pixel20
+                text: "Message"
+                width: parent.width
+                height: Size.pixel40
+                color: Theme.text.disabled
+                font {
+                    pixelSize: Size.pixel12
+                    capitalization: Font.AllUppercase
+                }
+            }
             TextField{
                 id: alertTextInput
-                Layout.preferredWidth: parent.width
+                Layout.fillWidth: true
                 Layout.preferredHeight: Size.pixel32
                 placeholderText: qsTr("Insert alert text here")
                 text: "Message for alerts..."
                 Layout.alignment: Qt.AlignRight
             }
+            ButtonGroup{
+                id: severityGroup
+                buttons: [infoButton, successButton, warningButton, errorButton]
+            }
+            ButtonGroup{
+                id: variantGroup
+                buttons: [filledButton, standardButton, outlinedButton]
+            }
+            ButtonGroup{
+                id: buttonGroup
+                buttons: [yesButton, noButton]
+            }
+
+            H6{
+                Layout.topMargin: Size.pixel20
+                Layout.alignment: Qt.AlignTop
+                Layout.fillWidth: true
+                text: "Severity"
+                width: parent.width
+                height: Size.pixel40
+                color: Theme.text.disabled
+                font {
+                    pixelSize: Size.pixel12
+                    capitalization: Font.AllUppercase
+                }
+            }
+            RadioButton{ id: infoButton; text: qsTr("Info"); checked: true; property int severity: Alert.Severity.Info; }
+            RadioButton{ id: successButton; text: qsTr("Success"); property int severity: Alert.Severity.Success }
+            RadioButton{ id: warningButton; text: qsTr("Warning"); property int severity: Alert.Severity.Warning }
+            RadioButton{ id: errorButton; text: qsTr("Error"); property int severity: Alert.Severity.Error }
+
+            H6{
+                Layout.alignment: Qt.AlignTop
+                Layout.fillWidth: true
+                Layout.topMargin: Size.pixel20
+                text: "Variant"
+                width: parent.width
+                height: Size.pixel40
+                color: Theme.text.disabled
+                font {
+                    pixelSize: Size.pixel12
+                    capitalization: Font.AllUppercase
+                }
+            }
+            RadioButton{ id: filledButton; text: qsTr("Filled"); checked: true; property int variant: Alert.Variant.Filled}
+            RadioButton{ id: standardButton; text: qsTr("Standard"); property int variant: Alert.Variant.Standard}
+            RadioButton{ id: outlinedButton; text: qsTr("Outlined"); property int variant: Alert.Variant.Outlined }
+
+            H6{
+                Layout.alignment: Qt.AlignTop
+                Layout.fillWidth: true
+                Layout.topMargin: Size.pixel20
+                text: "Buttons"
+                width: parent.width
+                height: Size.pixel40
+                color: Theme.text.disabled
+                font {
+                    pixelSize: Size.pixel12
+                    capitalization: Font.AllUppercase
+                }
+            }
+            RadioButton{ id: yesButton; text: qsTr("Yes"); checked: true; }
+            RadioButton{ id: noButton; text: qsTr("No"); }
+
 
             MButton{
+                id: _createAlertButton
+                Layout.topMargin: Size.pixel20
                 Layout.preferredHeight: recommendedHeight
                 Layout.preferredWidth: recommendedWidth
                 text: "Create alert"
@@ -109,68 +189,6 @@ Item {
                 Layout.alignment:  Qt.AlignRight
                 accent: Theme.info
             }
-            ButtonGroup{
-                id: severityGroup
-                buttons: [infoButton, successButton, warningButton, errorButton]
-            }
-            ButtonGroup{
-                id: variantGroup
-                buttons: [filledButton, standardButton, outlinedButton]
-            }
-            ButtonGroup{
-                id: buttonGroup
-                buttons: [yesButton, noButton]
-            }
-
-            H6{
-                Layout.alignment: Qt.AlignTop
-                Layout.preferredWidth: Size.scale * 120
-                text: "Severity"
-                width: parent.width
-                height: Size.pixel40
-                color: Theme.text.disabled
-                font {
-                    pixelSize: Size.pixel12
-                    capitalization: Font.AllUppercase
-                }
-            }
-            RadioButton{ id: infoButton; text: qsTr("Info"); checked: true; property int severity: Alert.Severity.Info; }
-            RadioButton{ id: successButton; text: qsTr("Success"); property int severity: Alert.Severity.Success }
-            RadioButton{ id: warningButton; text: qsTr("Warning"); property int severity: Alert.Severity.Warning }
-            RadioButton{ id: errorButton; text: qsTr("Error"); property int severity: Alert.Severity.Error }
-
-            H6{
-                Layout.alignment: Qt.AlignTop
-                Layout.preferredWidth: Size.scale * 120
-                Layout.topMargin: Size.pixel20
-                text: "Variant"
-                width: parent.width
-                height: Size.pixel40
-                color: Theme.text.disabled
-                font {
-                    pixelSize: Size.pixel12
-                    capitalization: Font.AllUppercase
-                }
-            }
-            RadioButton{ id: filledButton; text: qsTr("Filled"); checked: true; property int variant: Alert.Variant.Filled}
-            RadioButton{ id: standardButton; text: qsTr("Standard"); property int variant: Alert.Variant.Standard}
-            RadioButton{ id: outlinedButton; text: qsTr("Outlined"); property int variant: Alert.Variant.Outlined }
-
-            H6{
-                Layout.alignment: Qt.AlignTop
-                Layout.preferredWidth: Size.scale * 120
-                Layout.topMargin: Size.pixel20
-                text: "Buttons"
-                width: parent.width
-                height: Size.pixel40
-                color: Theme.text.disabled
-                font {
-                    pixelSize: Size.pixel12
-                    capitalization: Font.AllUppercase
-                }
-            }
-            RadioButton{ id: yesButton; text: qsTr("Yes"); checked: true; }
-            RadioButton{ id: noButton; text: qsTr("No"); }
 
             Item{ Layout.fillHeight: true; }
         }
