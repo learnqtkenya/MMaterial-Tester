@@ -44,7 +44,7 @@ Sidebar {
         }
         SidebarItem{
             text: "Buttons";
-            icon.path: IconList.star;
+            icon.path: IconList.gamepad;
             category: "components"
             model: [
                 {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}},
@@ -64,6 +64,17 @@ Sidebar {
             icon.path: IconList.list;
             onClicked: showcaseLoader.sourceComponent = listItemShowcase;
             category: "components"
+        }
+        SidebarItem{
+            text: "Pagination";
+            icon.path: IconList.pages;
+            category: "components"
+            model: [
+                {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = paginationShowcase }},
+                {text : "Simple", onClicked: function(){ showcaseLoader.sourceComponent = paginationSimpleShowcase }},
+                {text : "Bubble", onClicked: function(){ showcaseLoader.sourceComponent = paginationBubbleShowcase }},
+                {text : "Arrows", onClicked: function(){ showcaseLoader.sourceComponent = paginationArrowsShowcase }}
+            ];
         }
     }
 
@@ -106,7 +117,7 @@ Sidebar {
         }
         SidebarCompactItem{
             text: "Buttons";
-            icon.path: IconList.star;
+            icon.path: IconList.gamepad;
             category: "components"
             model: [
                 {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}},
@@ -126,6 +137,17 @@ Sidebar {
             icon.path: IconList.list;
             onClicked: showcaseLoader.sourceComponent = listItemShowcase;
             category: "components"
+        }
+        SidebarCompactItem{
+            text: "Pagination";
+            icon.path: IconList.pages;
+            category: "components"
+            model: [
+                {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = paginationShowcase }},
+                {text : "Simple", onClicked: function(){ showcaseLoader.sourceComponent = paginationSimpleShowcase }},
+                {text : "Bubble", onClicked: function(){ showcaseLoader.sourceComponent = paginationBubbleShowcase }},
+                {text : "Arrows", onClicked: function(){ showcaseLoader.sourceComponent = paginationArrowsShowcase }}
+            ];
         }
     }
 }

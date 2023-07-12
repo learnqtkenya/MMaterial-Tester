@@ -89,9 +89,7 @@ Rectangle {
             Layout.topMargin: Size.pixel16
             Layout.fillHeight: true;
             Layout.fillWidth: true
-            interactive: Window.window
-                         ? contentHeight + _sidebarLayout.topPadding + _sidebarLayout.bottomPadding > Window.window.height
-                         : false
+            clip: true
             section.property: "category"
             section.delegate: SidebarCategoryLabel{
                 required property string section

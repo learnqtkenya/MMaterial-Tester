@@ -44,7 +44,12 @@ qt_add_qml_module(appMaterialTester
         Showcase/ListItemShowcase/ListBorders.qml
         Showcase/ProjectInfo.qml
         Showcase/Placeholder.qml
-        Showcase/PaginationShowcase.qml
+        Showcase/PaginationShowcase/PaginationShowcase.qml
+        Showcase/PaginationShowcase/CustomSwipeView.qml
+        Showcase/PaginationShowcase/PaginatorArrowsShowcase.qml
+        Showcase/PaginationShowcase/PaginatorBubbleShowcase.qml
+        Showcase/PaginationShowcase/PaginatorSimpleShowcase.qml
+
     SOURCES
         DevTools/FileWatcher.h
         DevTools/FileWatcher.cpp

@@ -36,10 +36,8 @@ Rectangle {
             Layout.topMargin: Size.pixel16
             Layout.fillHeight: true;
             Layout.fillWidth: true
-            interactive: Window.window
-                         ? contentHeight + _sidebarLayout.topPadding + _sidebarLayout.bottomPadding > Window.window.height
-                         : false
             section.property: "category"
+            clip: true
             section.delegate: SidebarSeparator{
                 required property string section
             }

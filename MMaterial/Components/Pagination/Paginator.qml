@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
 
 import MMaterial
 
@@ -13,9 +14,11 @@ Item{
 
     readonly property real recommendedWidth: _decrementButton.width + _incrementButton.width + (Math.min(visiblePageCount, _listView.count) * (Size.pixel40 + _listView.spacing) + _listView.spacing)
     readonly property real recommendedHeight: Size.pixel40
-    property alias currentIndex: _listView.currentIndex
+
+    required property SwipeView indexView
+
     property int visiblePageCount: 3
-    property int numberOfPages: 5
+    property int numberOfPages: indexView.count
 
     property int selectedType: MFabButton.Type.Soft
     property int radius: 10
@@ -36,7 +39,7 @@ Item{
             sourceSize.height: _listView.height * 0.15
         }
 
-        onClicked: _listView.decrementCurrentIndex();
+        onClicked: _pagination.indexView.decrementCurrentIndex();
     }
     ListView{
         id: _listView
@@ -50,14 +53,17 @@ Item{
         spacing: Size.pixel6
         orientation: ListView.Horizontal
         clip: true
+        currentIndex: _pagination.indexView.currentIndex
 
-        onCurrentIndexChanged: positionViewAtIndex(currentIndex, ListView.Center)
+        onCurrentIndexChanged: {
+            positionViewAtIndex(currentIndex, ListView.Center)
+        }
 
         delegate: MFabButton{
             height: _pagination.height
             width: height
             radius: _pagination.radius
-            text: modelData
+            text: (modelData+1)
             horizontalPadding: 0
             verticalPadding: 0
             title.font {
@@ -67,7 +73,7 @@ Item{
             accent: ListView.isCurrentItem ? Theme.primary : Theme.defaultNeutral
             type: ListView.isCurrentItem ? _pagination.selectedType : MFabButton.Type.Text
             onClicked: {
-                _listView.currentIndex = index;
+                _pagination.indexView.currentIndex = index;
             }
         }
     }
@@ -87,6 +93,6 @@ Item{
             path: IconList.arrow
             sourceSize.height: _listView.height * 0.15
         }
-        onClicked: _listView.incrementCurrentIndex();
+        onClicked: _pagination.indexView.incrementCurrentIndex();
     }
 }

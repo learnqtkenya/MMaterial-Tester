@@ -62,7 +62,7 @@ Image{
     transitions: [
         Transition {
             from: "pressed"
-            NumberAnimation { target: _icon; properties: "scale"; duration: 1150; easing.type: Easing.OutElastic; }
+            NumberAnimation { id: _clickedAnimation; target: _icon; properties: "scale"; duration: 1150; easing.type: Easing.OutElastic; }
         },
         Transition {
             from: "default"

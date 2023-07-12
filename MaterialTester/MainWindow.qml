@@ -11,6 +11,7 @@ import "./Showcase/AvatarShowcase"
 import "./Showcase/ButtonShowcase"
 import "./Showcase/AlertShowcase"
 import "./Showcase/ListItemShowcase"
+import "./Showcase/PaginationShowcase"
 
 import "./Components/AppSettings"
 import "./Components/Sidebar"
@@ -82,13 +83,20 @@ Rectangle{
     Component{ id: avatarShowcase; AvatarShowcase{ } }
     Component{ id: badgeShowcase; BadgeShowcase{ } }
     Component{ id: accordionShowcase; AccordionShowcase{ } }
+    Component{ id: alertShowcase; AlertShowcase{ } }
+    Component{ id: listItemShowcase; ListItemShowcase{ } }
+
+    // Buttons
     Component{ id: buttonShowcase; ButtonShowcase{  } }
     Component{ id: toggleButtonShowcase; ToggleButtonShowcase{ } }
     Component{ id: fabButtonShowcase; FabButtonShowcase{ } }
-    Component{ id: alertShowcase; AlertShowcase{ } }
     Component{ id: checkboxShowcase; CheckboxShowcase{ } }
-    Component{ id: listItemShowcase; ListItemShowcase{ } }
+
+    // Pagination
     Component{ id: paginationShowcase; PaginationShowcase{ } }
+    Component{ id: paginationArrowsShowcase; PaginatorArrowsShowcase{ } }
+    Component{ id: paginationBubbleShowcase; PaginatorBubbleShowcase{ } }
+    Component{ id: paginationSimpleShowcase; PaginatorSimpleShowcase{ } }
 
     AppSettings{
         id: appSettings

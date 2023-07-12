@@ -37,6 +37,14 @@ list(APPEND MODULE_ASSETS
     Icons/assets/svg/send.svg
     Icons/assets/svg/stonks.svg
     Icons/assets/svg/call.svg
+    Icons/assets/svg/pages.svg
+    Icons/assets/svg/gamepad.svg
+
+    # Images
+    Icons/assets/png/programmer-female.png
+    Icons/assets/png/programmer-female2.png
+    Icons/assets/png/programmer-male.png
+    Icons/assets/png/programmer-male2.png
 )
 
 list(APPEND MODULE_QML_FILES
@@ -82,6 +90,7 @@ list(APPEND MODULE_QML_FILES
     # Icons
     Icons/Icon.qml
     Icons/IconList.qml
+    Icons/ImageList.qml
 
     # Components
     Components/Badge/BadgeNumber.qml
@@ -91,7 +100,7 @@ list(APPEND MODULE_QML_FILES
     Components/Alerts/Alert.qml
     Components/Alerts/AlertController.qml
     Components/Avatar.qml
-    Components/Paginator.qml
+    Components/Pagination/Paginator.qml
 
     # Settings
     Settings/Size.qml
@@ -117,6 +126,11 @@ list(APPEND MODULE_QML_FILES
     Lists/ListItem.qml
     Lists/ListItemContact.qml
     Lists/AbstractListItem.qml
+
+    # Pagination
+    Components/Pagination/PaginatorSimple.qml
+    Components/Pagination/PaginatorBubble.qml
+    Components/Pagination/PaginatorArrows.qml
 )
 
 set_source_files_properties(
@@ -133,6 +147,7 @@ set_source_files_properties(
 
     Fonts/PublicSans.qml
     Icons/IconList.qml
+    Icons/ImageList.qml
     Settings/Size.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE
 )
