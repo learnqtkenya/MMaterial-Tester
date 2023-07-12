@@ -49,12 +49,14 @@ qt_add_qml_module(appMaterialTester
         Showcase/PaginationShowcase/PaginatorArrowsShowcase.qml
         Showcase/PaginationShowcase/PaginatorBubbleShowcase.qml
         Showcase/PaginationShowcase/PaginatorSimpleShowcase.qml
+        Showcase/ButtonShowcase/RadioButtonShowcase.qml
 
     SOURCES
         DevTools/FileWatcher.h
         DevTools/FileWatcher.cpp
         DevTools/CustomEngine.h
         DevTools/CustomEngine.cpp
+
 )
 set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../" ${CMAKE_BINARY_DIR}/imports CACHE STRING "MMaterial imports" FORCE)
 

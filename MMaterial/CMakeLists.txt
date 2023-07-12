@@ -112,6 +112,7 @@ list(APPEND MODULE_QML_FILES
     Buttons/MCheckbox.qml
     Buttons/CheckedGroup.qml
     Buttons/Checkable.qml
+    Buttons/MRadioButton.qml
 
     # Sidebar
     Sidebar/Sidebar.qml

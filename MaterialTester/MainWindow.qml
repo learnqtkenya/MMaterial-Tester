@@ -91,6 +91,7 @@ Rectangle{
     Component{ id: toggleButtonShowcase; ToggleButtonShowcase{ } }
     Component{ id: fabButtonShowcase; FabButtonShowcase{ } }
     Component{ id: checkboxShowcase; CheckboxShowcase{ } }
+    Component{ id: radioButtonShowcase; RadioButtonShowcase{ } }
 
     // Pagination
     Component{ id: paginationShowcase; PaginationShowcase{ } }
