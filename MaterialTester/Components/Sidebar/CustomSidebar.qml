@@ -50,7 +50,8 @@ Sidebar {
                 {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}},
                 {text : "Fab", onClicked: function(){ showcaseLoader.sourceComponent = fabButtonShowcase}},
                 {text : "Toggle", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonShowcase }},
-                {text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }}
+                {text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }},
+                {text : "Radio", onClicked: function(){ showcaseLoader.sourceComponent = radioButtonShowcase }}
             ];
         }
         SidebarItem{
@@ -147,8 +148,7 @@ Sidebar {
                 {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = paginationShowcase }},
                 {text : "Simple", onClicked: function(){ showcaseLoader.sourceComponent = paginationSimpleShowcase }},
                 {text : "Bubble", onClicked: function(){ showcaseLoader.sourceComponent = paginationBubbleShowcase }},
-                {text : "Arrows", onClicked: function(){ showcaseLoader.sourceComponent = paginationArrowsShowcase }},
-                {text : "Radio", onClicked: function(){ showcaseLoader.sourceComponent = radioButtonShowcase }}
+                {text : "Arrows", onClicked: function(){ showcaseLoader.sourceComponent = paginationArrowsShowcase }}
             ];
         }
     }
