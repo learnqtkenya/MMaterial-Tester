@@ -101,6 +101,8 @@ list(APPEND MODULE_QML_FILES
     Components/Alerts/AlertController.qml
     Components/Avatar.qml
     Components/Pagination/Paginator.qml
+    Components/Progress/MProgressBar.qml
+    Components/Progress/MCircularProgressBar.qml
 
     # Settings
     Settings/Size.qml

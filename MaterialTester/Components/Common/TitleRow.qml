@@ -10,6 +10,7 @@ RowLayout{
 
     default property alias container: _grid.data
     property string title: ""
+    property alias grid: _grid
     Overline{
         text: parent.title
         color: Theme.text.disabled

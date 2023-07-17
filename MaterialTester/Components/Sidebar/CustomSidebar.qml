@@ -77,6 +77,12 @@ Sidebar {
                 {text : "Arrows", onClicked: function(){ showcaseLoader.sourceComponent = paginationArrowsShowcase }}
             ];
         }
+        SidebarItem{
+            text: "Progress";
+            icon.path: IconList.stonks;
+            category: "components"
+            onClicked: showcaseLoader.sourceComponent = progressShowcase;
+        }
     }
 
     compactSidebar.model: ObjectModel{
@@ -99,11 +105,6 @@ Sidebar {
             onClicked: showcaseLoader.sourceComponent = colorShowcase;
             category: "components"
         }
-    //            SidebarCompactItem{
-    //                text: "Avatars";
-    //                icon.path: IconList.star;
-    //                onClicked: showcaseLoader.sourceComponent = avatarShowcase;
-    //            }
         SidebarCompactItem{
             text: "Badge";
             icon.path: IconList.verified;
@@ -150,6 +151,12 @@ Sidebar {
                 {text : "Bubble", onClicked: function(){ showcaseLoader.sourceComponent = paginationBubbleShowcase }},
                 {text : "Arrows", onClicked: function(){ showcaseLoader.sourceComponent = paginationArrowsShowcase }}
             ];
+        }
+        SidebarCompactItem{
+            text: "Progress";
+            icon.path: IconList.stonks;
+            category: "components"
+            onClicked: showcaseLoader.sourceComponent = progressShowcase;
         }
     }
 }

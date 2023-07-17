@@ -85,6 +85,7 @@ Rectangle{
     Component{ id: accordionShowcase; AccordionShowcase{ } }
     Component{ id: alertShowcase; AlertShowcase{ } }
     Component{ id: listItemShowcase; ListItemShowcase{ } }
+    Component{ id: progressShowcase; ProgressShowcase{ } }
 
     // Buttons
     Component{ id: buttonShowcase; ButtonShowcase{  } }
