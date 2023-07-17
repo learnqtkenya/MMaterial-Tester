@@ -57,6 +57,7 @@ qt_add_qml_module(appMaterialTester
         DevTools/CustomEngine.h
         DevTools/CustomEngine.cpp
         QML_FILES Showcase/ProgressShowcase.qml
+        QML_FILES Showcase/ButtonShowcase/SwitchShowcase.qml
 
 )
 set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../" ${CMAKE_BINARY_DIR}/imports CACHE STRING "MMaterial imports" FORCE)

@@ -93,17 +93,17 @@ Item {
                 text: "Message for alerts..."
                 Layout.alignment: Qt.AlignRight
             }
-            ButtonGroup{
+            CheckedGroup{
                 id: severityGroup
-                buttons: [infoButton, successButton, warningButton, errorButton]
+                checkables: [infoButton, successButton, warningButton, errorButton]
             }
-            ButtonGroup{
+            CheckedGroup{
                 id: variantGroup
-                buttons: [filledButton, standardButton, outlinedButton]
+                checkables: [filledButton, standardButton, outlinedButton]
             }
-            ButtonGroup{
+            CheckedGroup{
                 id: buttonGroup
-                buttons: [yesButton, noButton]
+                checkables: [yesButton, noButton]
             }
 
             H6{
@@ -119,10 +119,10 @@ Item {
                     capitalization: Font.AllUppercase
                 }
             }
-            RadioButton{ id: infoButton; text: qsTr("Info"); checked: true; property int severity: Alert.Severity.Info; }
-            RadioButton{ id: successButton; text: qsTr("Success"); property int severity: Alert.Severity.Success }
-            RadioButton{ id: warningButton; text: qsTr("Warning"); property int severity: Alert.Severity.Warning }
-            RadioButton{ id: errorButton; text: qsTr("Error"); property int severity: Alert.Severity.Error }
+            MRadioButton{ id: infoButton; text: qsTr("Info"); checked: true; property int severity: Alert.Severity.Info; }
+            MRadioButton{ id: successButton; text: qsTr("Success"); property int severity: Alert.Severity.Success }
+            MRadioButton{ id: warningButton; text: qsTr("Warning"); property int severity: Alert.Severity.Warning }
+            MRadioButton{ id: errorButton; text: qsTr("Error"); property int severity: Alert.Severity.Error }
 
             H6{
                 Layout.alignment: Qt.AlignTop
@@ -137,9 +137,9 @@ Item {
                     capitalization: Font.AllUppercase
                 }
             }
-            RadioButton{ id: filledButton; text: qsTr("Filled"); checked: true; property int variant: Alert.Variant.Filled}
-            RadioButton{ id: standardButton; text: qsTr("Standard"); property int variant: Alert.Variant.Standard}
-            RadioButton{ id: outlinedButton; text: qsTr("Outlined"); property int variant: Alert.Variant.Outlined }
+            MRadioButton{ id: filledButton; text: qsTr("Filled"); checked: true; property int variant: Alert.Variant.Filled}
+            MRadioButton{ id: standardButton; text: qsTr("Standard"); property int variant: Alert.Variant.Standard}
+            MRadioButton{ id: outlinedButton; text: qsTr("Outlined"); property int variant: Alert.Variant.Outlined }
 
             H6{
                 Layout.alignment: Qt.AlignTop
@@ -154,8 +154,8 @@ Item {
                     capitalization: Font.AllUppercase
                 }
             }
-            RadioButton{ id: yesButton; text: qsTr("Yes"); checked: true; }
-            RadioButton{ id: noButton; text: qsTr("No"); }
+            MRadioButton{ id: yesButton; text: qsTr("Yes"); checked: true; }
+            MRadioButton{ id: noButton; text: qsTr("No"); }
 
 
             MButton{

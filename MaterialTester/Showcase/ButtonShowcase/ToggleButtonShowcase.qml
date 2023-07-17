@@ -7,10 +7,12 @@ import MMaterial
 
 import "../../Components/Common"
 
-Item{
+Flickable{
     objectName: "Toggle Button"
     visible: showcaseLoader.status == Loader.Ready
+    contentHeight: _mainLayout.implicitHeight
     ColumnLayout{
+        id: _mainLayout
         anchors{
             fill: parent
         }

@@ -144,6 +144,8 @@ Item{
             left: _radioButton.right; leftMargin: Size.pixel12
             right: parent.right
         }
+        verticalAlignment: Qt.AlignVCenter
+        height: parent.height
         maximumLineCount: 1
         elide: Text.ElideRight
         wrapMode: Text.NoWrap

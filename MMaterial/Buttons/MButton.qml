@@ -38,24 +38,21 @@ Rectangle{
             return Size.pixel15
         if(size == Size.Grade.M)
             return Size.pixel14
-        if(size == Size.Grade.S)
-            return Size.pixel13
+        return Size.pixel13
     }
     property real horizontalPadding: {
         if(size == Size.Grade.L)
             return Size.pixel22;
         if(size == Size.Grade.M)
             return Size.pixel16;
-        if(size == Size.Grade.S)
-            return Size.pixel10;
+        return Size.pixel10;
     }
     property real verticalPadding: {
         if(size == Size.Grade.L)
             return Size.pixel12;
         if(size == Size.Grade.M)
             return Size.pixel6;
-        if(size == Size.Grade.S)
-            return Size.pixel4;
+        return Size.pixel4;
     }
 
     property bool isLoading: false

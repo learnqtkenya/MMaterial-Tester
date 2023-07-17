@@ -39,10 +39,10 @@ Rectangle{
         }
 
         Icon{
-            path: IconList.menu
-            sourceSize.height: parent.height/4
+            path: IconList.settings
+            sourceSize.height: parent.height/2
             interactive: true
-            color: Theme.text.primary
+            color: Theme.text.secondary
             onClicked: appSettings.toggle();
         }
     }
@@ -93,6 +93,7 @@ Rectangle{
     Component{ id: fabButtonShowcase; FabButtonShowcase{ } }
     Component{ id: checkboxShowcase; CheckboxShowcase{ } }
     Component{ id: radioButtonShowcase; RadioButtonShowcase{ } }
+    Component{ id: switchShowcase; SwitchShowcase{ } }
 
     // Pagination
     Component{ id: paginationShowcase; PaginationShowcase{ } }

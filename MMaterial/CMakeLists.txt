@@ -3,6 +3,9 @@ qt_add_library(MMaterialLib STATIC)
 set_target_properties(MMaterialLib PROPERTIES AUTOMOC ON)
 target_link_libraries(MMaterialLib PRIVATE Qt6::Quick)
 
+set(PNG_PATH Icons/assets/png)
+set(SVG_PATH Icons/assets/svg)
+
 list(APPEND MODULE_ASSETS
     # Fonts
     Fonts/Families/PublicSans/PublicSans-ExtraBold.ttf
@@ -14,37 +17,38 @@ list(APPEND MODULE_ASSETS
     Fonts/Families/PublicSans/PublicSans-ExtraLight.ttf
 
     # Icons
-    Icons/assets/svg/android.svg
-    Icons/assets/svg/mail.svg
-    Icons/assets/svg/arrow.svg
-    Icons/assets/svg/logo.svg
-    Icons/assets/svg/alternativeLogo.svg
-    Icons/assets/svg/alert.svg
-    Icons/assets/svg/info.svg
-    Icons/assets/svg/success.svg
-    Icons/assets/svg/closeX.svg
-    Icons/assets/svg/menu.svg
-    Icons/assets/svg/sun.svg
-    Icons/assets/svg/moon.svg
-    Icons/assets/svg/star.svg
-    Icons/assets/svg/avatar.svg
-    Icons/assets/svg/font.svg
-    Icons/assets/svg/palette.svg
-    Icons/assets/svg/verified.svg
-    Icons/assets/svg/checkmark.svg
-    Icons/assets/svg/list.svg
-    Icons/assets/svg/search.svg
-    Icons/assets/svg/send.svg
-    Icons/assets/svg/stonks.svg
-    Icons/assets/svg/call.svg
-    Icons/assets/svg/pages.svg
-    Icons/assets/svg/gamepad.svg
+    ${SVG_PATH}/android.svg
+    ${SVG_PATH}/mail.svg
+    ${SVG_PATH}/arrow.svg
+    ${SVG_PATH}/logo.svg
+    ${SVG_PATH}/alternativeLogo.svg
+    ${SVG_PATH}/alert.svg
+    ${SVG_PATH}/info.svg
+    ${SVG_PATH}/success.svg
+    ${SVG_PATH}/closeX.svg
+    ${SVG_PATH}/menu.svg
+    ${SVG_PATH}/sun.svg
+    ${SVG_PATH}/moon.svg
+    ${SVG_PATH}/star.svg
+    ${SVG_PATH}/avatar.svg
+    ${SVG_PATH}/font.svg
+    ${SVG_PATH}/palette.svg
+    ${SVG_PATH}/verified.svg
+    ${SVG_PATH}/checkmark.svg
+    ${SVG_PATH}/list.svg
+    ${SVG_PATH}/search.svg
+    ${SVG_PATH}/send.svg
+    ${SVG_PATH}/stonks.svg
+    ${SVG_PATH}/call.svg
+    ${SVG_PATH}/pages.svg
+    ${SVG_PATH}/gamepad.svg
+    ${SVG_PATH}/settings.svg
 
     # Images
-    Icons/assets/png/programmer-female.png
-    Icons/assets/png/programmer-female2.png
-    Icons/assets/png/programmer-male.png
-    Icons/assets/png/programmer-male2.png
+    ${PNG_PATH}/programmer-female.png
+    ${PNG_PATH}/programmer-female2.png
+    ${PNG_PATH}/programmer-male.png
+    ${PNG_PATH}/programmer-male2.png
 )
 
 list(APPEND MODULE_QML_FILES
@@ -115,6 +119,7 @@ list(APPEND MODULE_QML_FILES
     Buttons/CheckedGroup.qml
     Buttons/Checkable.qml
     Buttons/MRadioButton.qml
+    Buttons/MSwitch.qml
 
     # Sidebar
     Sidebar/Sidebar.qml

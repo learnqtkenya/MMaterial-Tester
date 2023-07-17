@@ -5,42 +5,47 @@ import MMaterial
 
 import "../../Components/Common"
 
-ColumnLayout {
+Flickable{
     objectName: "Checkbox"
-    visible: showcaseLoader.status == Loader.Ready
-    spacing: Size.pixel40
-    Subtitle1{ text: "Checkbox" }
-    TitleRow{
-        title: qsTr("Default")
-        width: parent.width
-        spacing: Size.pixel36
-        Layout.topMargin: Size.pixel10
+    contentHeight: _mainLayout.implicitHeight
+    ColumnLayout {
+        id: _mainLayout
+        anchors.fill: parent
+        visible: showcaseLoader.status == Loader.Ready
+        spacing: Size.pixel40
+        Subtitle1{ text: "Checkbox" }
+        TitleRow{
+            title: qsTr("Default")
+            width: parent.width
+            spacing: Size.pixel36
+            Layout.topMargin: Size.pixel10
 
-        MCheckbox{ accent: Theme.primary; checked: false; }
-        MCheckbox{ accent: Theme.primary; checked: true; }
+            MCheckbox{ accent: Theme.primary; checked: false; }
+            MCheckbox{ accent: Theme.primary; checked: true; }
+        }
+        TitleRow{
+            title: qsTr("Color")
+            width: parent.width
+            spacing: Size.pixel36
+
+            MCheckbox{ accent: Theme.primary; checked: true; }
+            MCheckbox{ accent: Theme.secondary; checked: true; }
+            MCheckbox{ accent: Theme.info; checked: true; }
+            MCheckbox{ accent: Theme.success; checked: true; }
+            MCheckbox{ accent: Theme.warning; checked: true; }
+            MCheckbox{ accent: Theme.error; checked: true; }
+        }
+        TitleRow{
+            title: qsTr("States")
+            width: parent.width
+            spacing: Size.pixel36
+
+            MCheckbox{ accent: Theme.primary; checked: false; }
+            MCheckbox{ accent: Theme.primary; checked: true; }
+            MCheckbox{ accent: Theme.primary; checked: false; enabled: false; }
+            MCheckbox{ accent: Theme.primary; checked: true; enabled: false; }
+        }
+        Item{ Layout.fillHeight: true; }
+
     }
-    TitleRow{
-        title: qsTr("Color")
-        width: parent.width
-        spacing: Size.pixel36
-
-        MCheckbox{ accent: Theme.primary; checked: true; }
-        MCheckbox{ accent: Theme.secondary; checked: true; }
-        MCheckbox{ accent: Theme.info; checked: true; }
-        MCheckbox{ accent: Theme.success; checked: true; }
-        MCheckbox{ accent: Theme.warning; checked: true; }
-        MCheckbox{ accent: Theme.error; checked: true; }
-    }
-    TitleRow{
-        title: qsTr("States")
-        width: parent.width
-        spacing: Size.pixel36
-
-        MCheckbox{ accent: Theme.primary; checked: false; }
-        MCheckbox{ accent: Theme.primary; checked: true; }
-        MCheckbox{ accent: Theme.primary; checked: false; enabled: false; }
-        MCheckbox{ accent: Theme.primary; checked: true; enabled: false; }
-    }
-    Item{ Layout.fillHeight: true; }
-
 }

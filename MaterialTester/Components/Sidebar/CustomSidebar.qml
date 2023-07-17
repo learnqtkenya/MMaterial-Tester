@@ -51,7 +51,8 @@ Sidebar {
                 {text : "Fab", onClicked: function(){ showcaseLoader.sourceComponent = fabButtonShowcase}},
                 {text : "Toggle", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonShowcase }},
                 {text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }},
-                {text : "Radio", onClicked: function(){ showcaseLoader.sourceComponent = radioButtonShowcase }}
+                {text : "Radio", onClicked: function(){ showcaseLoader.sourceComponent = radioButtonShowcase }},
+                {text : "Switch", onClicked: function(){ showcaseLoader.sourceComponent = switchShowcase }}
             ];
         }
         SidebarItem{
@@ -126,7 +127,8 @@ Sidebar {
                 {text : "Fab", onClicked: function(){ showcaseLoader.sourceComponent = fabButtonShowcase}},
                 {text : "Toggle", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonShowcase }},
                 {text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }},
-                {text : "Radio", onClicked: function(){ showcaseLoader.sourceComponent = radioButtonShowcase }}
+                {text : "Radio", onClicked: function(){ showcaseLoader.sourceComponent = radioButtonShowcase }},
+                {text : "Switch", onClicked: function(){ showcaseLoader.sourceComponent = switchShowcase }}
             ];
         }
         SidebarCompactItem{
