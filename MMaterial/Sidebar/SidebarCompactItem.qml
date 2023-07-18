@@ -104,7 +104,6 @@ Checkable {
     //Popup
     Menu {
         id: _contextMenu
-        //        visible: _sidebarItem.mouseArea.containsMouse
         x: _sidebarItem.x + _sidebarItem.width
         Repeater{
             model: _sidebarItem.model

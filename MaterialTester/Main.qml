@@ -6,7 +6,7 @@ Window {
     width: 1440
     height: 1200
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("MMaterial")
 
     Loader{
         id: mainLoader

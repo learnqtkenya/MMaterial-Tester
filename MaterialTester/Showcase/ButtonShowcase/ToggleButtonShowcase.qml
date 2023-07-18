@@ -11,6 +11,8 @@ Flickable{
     objectName: "Toggle Button"
     visible: showcaseLoader.status == Loader.Ready
     contentHeight: _mainLayout.implicitHeight
+
+    ScrollIndicator.vertical: MScrollIndicator{}
     ColumnLayout{
         id: _mainLayout
         anchors{
@@ -19,7 +21,7 @@ Flickable{
         spacing: 80 * Size.scale
         Subtitle1{ text: "Toggle Button" }
         TitleRow{
-            title: qsTr("Color")
+            title.text: qsTr("Color")
             Layout.topMargin: -Size.pixel40
             MToggleButton{ accent: Theme.primary; checked: true; }
             MToggleButton{ accent: Theme.secondary; checked: true; }
@@ -30,7 +32,7 @@ Flickable{
         }
 
         TitleRow{
-            title: qsTr("States")
+            title.text: qsTr("States")
 
             MToggleButton{ accent: Theme.primary; checked: true; }
             MToggleButton{ accent: Theme.primary; checked: false; }
@@ -38,7 +40,7 @@ Flickable{
         }
 
         TitleRow{
-            title: qsTr("Size")
+            title.text: qsTr("Size")
 
             MToggleButton{ accent: Theme.primary; checked: true; size: Size.Grade.L; }
             MToggleButton{ accent: Theme.primary; checked: true; size: Size.Grade.M; }

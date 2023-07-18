@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Layouts
+import QtQuick.Controls
 
 import MMaterial
 
@@ -7,6 +8,8 @@ import "../../Components/Common"
 Flickable{
     objectName: "Radio Button"
     contentHeight: _mainLayout.implicitHeight
+
+    ScrollIndicator.vertical: MScrollIndicator{}
     ColumnLayout {
         id: _mainLayout
         anchors.fill: parent
@@ -14,7 +17,7 @@ Flickable{
         spacing: Size.pixel40
         Subtitle1{ text: "Radio Button" }
         TitleRow{
-            title: qsTr("Default")
+            title.text: qsTr("Default")
             width: parent.width
             spacing: Size.pixel36
             Layout.topMargin: Size.pixel10
@@ -23,7 +26,7 @@ Flickable{
             MRadioButton{ accent: Theme.primary; checked: true; Layout.preferredWidth: height; }
         }
         TitleRow{
-            title: qsTr("Color")
+            title.text: qsTr("Color")
             width: parent.width
             spacing: Size.pixel36
 
@@ -35,7 +38,7 @@ Flickable{
             MRadioButton{ accent: Theme.error; checked: true; Layout.preferredWidth: height; }
         }
         TitleRow{
-            title: qsTr("States")
+            title.text: qsTr("States")
             width: parent.width
             spacing: Size.pixel36
 
@@ -45,7 +48,7 @@ Flickable{
             MRadioButton{ accent: Theme.primary; checked: true; enabled: false; Layout.preferredWidth: height; }
         }
         TitleRow{
-            title: qsTr("Label")
+            title.text: qsTr("Label")
             width: parent.width
             spacing: Size.pixel36
             Layout.topMargin: Size.pixel10

@@ -14,7 +14,7 @@ ColumnLayout{
     }
 
     TitleRow{
-        title: qsTr("Color")
+        title.text: qsTr("Color")
 
         MButton{
             type: groupRoot.buttonType
@@ -50,7 +50,7 @@ ColumnLayout{
     }
 
     TitleRow{
-        title: qsTr("States")
+        title.text: qsTr("States")
 
         MButton{
             type: groupRoot.buttonType
@@ -66,7 +66,7 @@ ColumnLayout{
     }
 
     TitleRow{
-        title: qsTr("Icon")
+        title.text: qsTr("Icon")
 
         MButton{
             type: groupRoot.buttonType
@@ -90,7 +90,7 @@ ColumnLayout{
     }
 
     TitleRow{
-        title: qsTr("Size")
+        title.text: qsTr("Size")
 
         MButton{
             type: groupRoot.buttonType

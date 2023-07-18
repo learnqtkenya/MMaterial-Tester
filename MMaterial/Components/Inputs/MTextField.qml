@@ -8,6 +8,8 @@ Rectangle{
 
     property real recommendedHeight: 56 * Size.scale
     property real recommendedWidth: (Size.format == Size.Format.Extended ? 319 : 200) * Size.scale
+    property bool showPlaceholder: !_textInput.focus && _textInput.text === ""
+
     Layout.preferredWidth: recommendedWidth
     Layout.preferredHeight: recommendedHeight
     height: recommendedHeight
@@ -24,6 +26,7 @@ Rectangle{
     property alias input: _textInput
     property alias leftIcon: _leftIcon
     property alias rightIcon: _rightIcon
+    property var hoverHandler: _hoverHandler
     property alias text: _textInput.text
 
     property var accent: Theme.primary
@@ -58,7 +61,7 @@ Rectangle{
     B2{
         id: _label
         font.pixelSize: Size.pixel12
-        text: "Label"
+        text: "Placeholder"
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: _private.isOutlinedType ? Qt.AlignHCenter : Qt.AlignLeft
         width: implicitWidth + Size.pixel8
@@ -69,10 +72,10 @@ Rectangle{
         states: [
             State {
                 name: "foreground"
-                when: !_textInput.focus && _textInput.text === ""
+                when: _textField.showPlaceholder
                 PropertyChanges { target: _labelContainer; opacity: 0.0; }
                 PropertyChanges { target: _mainContainer; anchors { topMargin: 0; } }
-                PropertyChanges{ target: _label; scale: 1.4; x: (_private.isStandardType ? 0 : _textInput.x) + _label.width * 0.2; y: _textField.height/2 - _label.height/2}
+                PropertyChanges{ target: _label; scale: 1.4; x: _textInput.x + _label.width * 0.2; y: _textField.height/2 - _label.height/2}
             },
             State {
                 name: "background"
@@ -143,6 +146,7 @@ Rectangle{
 
             HoverHandler{
                 id: _hoverHandler
+                enabled: !_textInput.readOnly
                 cursorShape: Qt.IBeamCursor
             }
         }
@@ -152,7 +156,7 @@ Rectangle{
             color: Theme.action.active
             visible: path !== ""
             interactive: true
-            sourceSize.height: path === "" ? 0 : _textField.height * 0.3
+            sourceSize.width: path === "" ? 0 : _textField.height * 0.3
             anchors {
                 right: parent.right; rightMargin: Size.pixel12;
                 verticalCenter: parent.verticalCenter
@@ -185,7 +189,7 @@ Rectangle{
         },
         State {
             name: "hovered-filled"
-            when: _hoverHandler.hovered && _textField.type == MTextField.Type.Filled
+            when: _textField.hoverHandler.hovered && _textField.type == MTextField.Type.Filled
             PropertyChanges { target: _textField; color: Theme.main.transparent.p16; border { color: Theme.text.primary} }
             PropertyChanges { target: _label; color: Theme.text.disabled }
             PropertyChanges { target: _textInput; color: Theme.text.primary }
@@ -222,7 +226,7 @@ Rectangle{
         },
         State {
             name: "hovered-outlined"
-            when: _hoverHandler.hovered && _textField.type == MTextField.Type.Outlined
+            when: _textField.hoverHandler.hovered && _textField.type == MTextField.Type.Outlined
             PropertyChanges { target: _textField; color: Theme.background.paper; border { color: Theme.text.primary} }
             PropertyChanges { target: _label; color: Theme.text.disabled }
             PropertyChanges { target: _textInput; color: Theme.text.primary }
@@ -259,7 +263,7 @@ Rectangle{
         },
         State {
             name: "hovered"
-            when: _hoverHandler.hovered
+            when: _textField.hoverHandler.hovered
             PropertyChanges { target: _textField; color: "transparent"; border { color: Theme.text.primary} }
             PropertyChanges { target: _label; color: Theme.text.disabled }
             PropertyChanges { target: _textInput; color: Theme.text.primary }

@@ -88,6 +88,7 @@ Rectangle{
     Component{ id: listItemShowcase; ListItemShowcase{ } }
     Component{ id: progressShowcase; ProgressShowcase{ } }
     Component{ id: textFieldShowcase; TextFieldShowcase{ } }
+    Component{ id: dropdownShowcase; DropdownShowcase{ } }
 
     // Buttons
     Component{ id: buttonShowcase; ButtonShowcase{  } }

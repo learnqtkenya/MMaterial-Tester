@@ -54,6 +54,8 @@ qt_add_qml_module(appMaterialTester
         Showcase/ButtonShowcase/SwitchShowcase.qml
         Showcase/TextFieldShowcase/TextFieldShowcase.qml
         Showcase/TextFieldShowcase/TextFieldGroup.qml
+        Showcase/TextFieldShowcase/DropdownShowcase.qml
+        Showcase/TextFieldShowcase/DropdownGroup.qml
 
     SOURCES
         DevTools/FileWatcher.h

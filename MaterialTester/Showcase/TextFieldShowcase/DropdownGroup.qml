@@ -19,25 +19,22 @@ ColumnLayout{
         title.text: qsTr("States")
         grid.columns: groupRoot.columnCount
 
-        MTextField{
+        MDropdown{
             type: groupRoot.type
             accent: Theme.primary
         }
-        MTextField{
+        MDropdown{
             type: groupRoot.type
             accent: Theme.primary
-            text: qsTr("Value (Enabled)")
         }
-        MTextField{
+        MDropdown{
             enabled: false
             type: groupRoot.type
             accent: Theme.primary
-            text: qsTr("Value (Disabled)")
         }
-        MTextField{
+        MDropdown{
             type: groupRoot.type
             accent: Theme.primary
-            text: qsTr("Value (Incorrect)")
             input.validator: RegularExpressionValidator{ regularExpression: /^[\d]+$/ }
         }
 
@@ -47,24 +44,19 @@ ColumnLayout{
         title.text: qsTr("Icon")
         grid.columns: groupRoot.columnCount
 
-        MTextField{
+        MDropdown{
             type: groupRoot.type
             accent: Theme.primary
-            text: qsTr("Left Icon")
             leftIcon.path: IconList.logo
         }
-        MTextField{
+        MDropdown{
             type: groupRoot.type
             accent: Theme.primary
-            text: qsTr("Left and Right Icon")
             leftIcon.path: IconList.logo
-            rightIcon.path: IconList.logo
         }
-        MTextField{
+        MDropdown{
             type: groupRoot.type
             accent: Theme.primary
-            text: qsTr("Right Icon")
-            rightIcon.path: IconList.logo
         }
     }
     Item{ Layout.fillHeight: true; }

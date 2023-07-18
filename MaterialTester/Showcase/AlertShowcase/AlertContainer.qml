@@ -18,6 +18,7 @@ RowLayout{
         width: parent.width
         height: Size.pixel40
         color: Theme.text.disabled
+        visible: Window.width > 600
         font {
             pixelSize: Size.pixel12
             capitalization: Font.AllUppercase

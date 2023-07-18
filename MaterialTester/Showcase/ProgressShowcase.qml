@@ -9,6 +9,8 @@ import "../Components/Common"
 
 Flickable{
     contentHeight: _progressShowcase.implicitHeight
+
+    ScrollIndicator.vertical: MScrollIndicator{}
     ColumnLayout {
         id: _progressShowcase
         anchors.fill: parent
@@ -34,7 +36,7 @@ Flickable{
             text: qsTr("Progress Bar")
         }
         TitleRow{
-            title: qsTr("Color")
+            title.text: qsTr("Color")
             width: parent.width
             spacing: Size.pixel36
             grid.columns: 1
@@ -46,7 +48,7 @@ Flickable{
             MProgressBar{ progress: _progressShowcase.progress; accent: Theme.error; }
         }
         TitleRow{
-            title: qsTr("Label")
+            title.text: qsTr("Label")
             width: parent.width
             spacing: Size.pixel36
             grid.columns: 1
@@ -57,7 +59,7 @@ Flickable{
             text: qsTr("Circular Progress Bar")
         }
         TitleRow{
-            title: qsTr("Color")
+            title.text: qsTr("Color")
             width: parent.width
             spacing: Size.pixel36
             MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.primary; }
@@ -68,7 +70,7 @@ Flickable{
             MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.error; }
         }
         TitleRow{
-            title: qsTr("Label")
+            title.text: qsTr("Label")
             width: parent.width
             spacing: Size.pixel36
             grid.columns: 1

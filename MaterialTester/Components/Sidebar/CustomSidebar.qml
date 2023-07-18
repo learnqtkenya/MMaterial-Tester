@@ -89,7 +89,8 @@ Sidebar {
             icon.path: IconList.edit;
             category: "components"
             model: [
-                {text : "TextField", onClicked: function(){ showcaseLoader.sourceComponent = textFieldShowcase}}
+                {text : "TextField", onClicked: function(){ showcaseLoader.sourceComponent = textFieldShowcase}},
+                {text : "Dropdown", onClicked: function(){ showcaseLoader.sourceComponent = dropdownShowcase}}
             ];
         }
     }
@@ -173,7 +174,8 @@ Sidebar {
             icon.path: IconList.edit;
             category: "components"
             model: [
-                {text : "TextField", onClicked: function(){ showcaseLoader.sourceComponent = textFieldShowcase}}
+                {text : "TextField", onClicked: function(){ showcaseLoader.sourceComponent = textFieldShowcase}},
+                {text : "Dropdown", onClicked: function(){ showcaseLoader.sourceComponent = dropdownShowcase}}
             ];
         }
     }

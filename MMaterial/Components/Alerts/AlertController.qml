@@ -45,12 +45,13 @@ ListView{
             id: _timer
             running: visible
             interval: _alertComponent.closeTime
-            onTriggered: listModel.remove(index)
+            onTriggered: {
+                if(index >= 0)
+                    listModel.remove(index)
+            }
         }
 
         onClose: {
-            if(_timer.running)
-                _timer.stop()
             listModel.remove(index)
         }
     }

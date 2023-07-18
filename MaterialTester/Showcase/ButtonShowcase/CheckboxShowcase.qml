@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Layouts
+import QtQuick.Controls
 
 import MMaterial
 
@@ -8,6 +9,7 @@ import "../../Components/Common"
 Flickable{
     objectName: "Checkbox"
     contentHeight: _mainLayout.implicitHeight
+    ScrollIndicator.vertical: MScrollIndicator{}
     ColumnLayout {
         id: _mainLayout
         anchors.fill: parent
@@ -15,7 +17,7 @@ Flickable{
         spacing: Size.pixel40
         Subtitle1{ text: "Checkbox" }
         TitleRow{
-            title: qsTr("Default")
+            title.text: qsTr("Default")
             width: parent.width
             spacing: Size.pixel36
             Layout.topMargin: Size.pixel10
@@ -24,7 +26,7 @@ Flickable{
             MCheckbox{ accent: Theme.primary; checked: true; }
         }
         TitleRow{
-            title: qsTr("Color")
+            title.text: qsTr("Color")
             width: parent.width
             spacing: Size.pixel36
 
@@ -36,7 +38,7 @@ Flickable{
             MCheckbox{ accent: Theme.error; checked: true; }
         }
         TitleRow{
-            title: qsTr("States")
+            title.text: qsTr("States")
             width: parent.width
             spacing: Size.pixel36
 
