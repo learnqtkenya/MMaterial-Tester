@@ -84,6 +84,14 @@ Sidebar {
             category: "components"
             onClicked: showcaseLoader.sourceComponent = progressShowcase;
         }
+        SidebarItem{
+            text: "Inputs";
+            icon.path: IconList.edit;
+            category: "components"
+            model: [
+                {text : "TextField", onClicked: function(){ showcaseLoader.sourceComponent = textFieldShowcase}}
+            ];
+        }
     }
 
     compactSidebar.model: ObjectModel{
@@ -159,6 +167,14 @@ Sidebar {
             icon.path: IconList.stonks;
             category: "components"
             onClicked: showcaseLoader.sourceComponent = progressShowcase;
+        }
+        SidebarCompactItem{
+            text: "Inputs";
+            icon.path: IconList.edit;
+            category: "components"
+            model: [
+                {text : "TextField", onClicked: function(){ showcaseLoader.sourceComponent = textFieldShowcase}}
+            ];
         }
     }
 }

@@ -12,6 +12,7 @@ import "./Showcase/ButtonShowcase"
 import "./Showcase/AlertShowcase"
 import "./Showcase/ListItemShowcase"
 import "./Showcase/PaginationShowcase"
+import "./Showcase/TextFieldShowcase"
 
 import "./Components/AppSettings"
 import "./Components/Sidebar"
@@ -86,6 +87,7 @@ Rectangle{
     Component{ id: alertShowcase; AlertShowcase{ } }
     Component{ id: listItemShowcase; ListItemShowcase{ } }
     Component{ id: progressShowcase; ProgressShowcase{ } }
+    Component{ id: textFieldShowcase; TextFieldShowcase{ } }
 
     // Buttons
     Component{ id: buttonShowcase; ButtonShowcase{  } }

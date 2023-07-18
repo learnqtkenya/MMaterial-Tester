@@ -43,6 +43,7 @@ list(APPEND MODULE_ASSETS
     ${SVG_PATH}/pages.svg
     ${SVG_PATH}/gamepad.svg
     ${SVG_PATH}/settings.svg
+    ${SVG_PATH}/edit.svg
 
     # Images
     ${PNG_PATH}/programmer-female.png
@@ -165,6 +166,7 @@ qt_add_qml_module(MMaterialLib
     VERSION 1.0
     QML_FILES ${MODULE_QML_FILES}
     RESOURCES ${MODULE_ASSETS}
+    QML_FILES Components/Inputs/MTextField.qml
 )
 
 

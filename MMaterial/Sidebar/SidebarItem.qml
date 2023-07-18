@@ -20,9 +20,6 @@ Item{
 
     property real openingSpeed: 150
 
-    onIsOpenChanged: {
-        _listView.currentIndex = -1;
-    }
     onCheckedChanged: {
         if(!checked)
             _listView.currentIndex = -1;

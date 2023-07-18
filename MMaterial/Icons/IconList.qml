@@ -29,6 +29,7 @@ QtObject{
     readonly property string call: iconBasePath + "call.svg"
     readonly property string pages: iconBasePath + "pages.svg"
     readonly property string gamepad: iconBasePath + "gamepad.svg"
+    readonly property string edit: iconBasePath + "edit.svg"
 
     readonly property string info: iconBasePath + "info.svg"
     readonly property string success: iconBasePath + "success.svg"
