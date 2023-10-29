@@ -4,6 +4,7 @@ import "../../Colors"
 
 Text {
     id: _text
+
     color: Theme.text.primary
 
     HoverHandler{

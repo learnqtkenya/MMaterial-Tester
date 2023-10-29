@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick 
 import QtQuick.Layouts
 
 import MMaterial
@@ -6,13 +6,6 @@ import MMaterial
 RowLayout{
     id: _progress
 
-    height: recommendedHeight
-    width: recommendedWidth
-    Layout.preferredHeight: recommendedHeight
-    Layout.preferredWidth: recommendedWidth
-
-    property real recommendedWidth: 300
-    property real recommendedHeight: Size.pixel10
     property real lineWidth: Size.pixel4
 
     property var accent: Theme.primary
@@ -25,6 +18,8 @@ RowLayout{
 
     property int progress: 50
 
+    implicitWidth: 300
+    implicitHeight: Size.pixel10
 
     Rectangle{
         id: _bar
@@ -32,31 +27,38 @@ RowLayout{
         Layout.alignment: Qt.AlignVCenter
         Layout.fillWidth: true
         Layout.preferredHeight: _progress.lineWidth
+
         color: _progress.backgroundColor
         radius: 50
 
         Rectangle{
             id: _innerBar
 
-            Behavior on width { SmoothedAnimation { duration: 50;} }
             anchors {
                 top: parent.top
                 left: parent.left
                 bottom: parent.bottom
             }
+
             width: _progress.progress * parent.width / 100
+
             color: _progress.foregroundColor
             radius: _bar.radius
+
+            Behavior on width { SmoothedAnimation { duration: 50;} }
         }
     }
     Caption{
         id: _label
+
+        Layout.preferredWidth: contentWidth
+        Layout.alignment: Qt.AlignVCenter
+
         visible: _progress.showLabel
         color: Theme.text.secondary
         text: _progress.progress + "%"
-        Layout.preferredWidth: contentWidth
-        onContentWidthChanged: font.pixelSize * 2.6
-        Layout.alignment: Qt.AlignVCenter
         verticalAlignment: Qt.AlignVCenter
+
+        onContentWidthChanged: font.pixelSize * 2.6
     }
 }

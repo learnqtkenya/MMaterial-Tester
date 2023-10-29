@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Controls.Material
@@ -11,53 +11,35 @@ import "../Colors"
 Rectangle{
     id: _button
 
-    readonly property real recommendedHeight: _private.oneOrLessChildrenVisible ? _title.contentHeight + _button.verticalPadding * 2 : _title.contentHeight + _button.verticalPadding * 2
-    readonly property real recommendedWidth:  {
-        if(_private.oneOrLessChildrenVisible)
-            return recommendedHeight;
-        else
-            return _title.implicitWidth + (_leftIcon.visible ? _leftIcon.implicitWidth + _mainLayout.spacing : 0) + (_rightIcon.visible ? _rightIcon.implicitWidth + _mainLayout.spacing : 0) + _button.horizontalPadding * 2
-    }
-
-    Layout.preferredHeight: recommendedHeight
-    Layout.preferredWidth: recommendedWidth
-    height: recommendedHeight
-    width: recommendedWidth
-
-    radius: 8
-    opacity: mouseArea.pressed ? 0.7 : 1 //TODO replace with ripple effect when OpacityMask is fixed in Qt6
-    color: _private.backgroundColor
-    border.color: _private.borderColor
-
     property alias mouseArea: mouseArea
     property alias title: _title
     property var accent: Theme.primary //Needs to be PaletteBasic type
 
     property int pixelSize: {
-        if(size == Size.Grade.L)
+        if(_button.size == Size.Grade.L)
             return Size.pixel15
-        if(size == Size.Grade.M)
+        if(_button.size == Size.Grade.M)
             return Size.pixel14
         return Size.pixel13
     }
     property real horizontalPadding: {
-        if(size == Size.Grade.L)
+        if(_button.size == Size.Grade.L)
             return Size.pixel22;
-        if(size == Size.Grade.M)
+        if(_button.size == Size.Grade.M)
             return Size.pixel16;
         return Size.pixel10;
     }
     property real verticalPadding: {
-        if(size == Size.Grade.L)
+        if(_button.size == Size.Grade.L)
             return Size.pixel12;
-        if(size == Size.Grade.M)
+        if(_button.size == Size.Grade.M)
             return Size.pixel6;
         return Size.pixel4;
     }
 
     property bool isLoading: false
-    property string text: "Button"
     property bool backgroundVisible: true
+    property string text: "Button"
 
     property int type: MButton.Type.Contained
     property int size: Size.Grade.L
@@ -75,72 +57,18 @@ Rectangle{
         Custom
     }
 
-    Item{
-        id: _body
-        visible: !_button.isLoading
-        anchors {
-            fill: parent
-            leftMargin: _private.oneOrLessChildrenVisible ? 0 : _button.horizontalPadding; rightMargin: _private.oneOrLessChildrenVisible ? 0 : _button.horizontalPadding
-            topMargin: _button.verticalPadding; bottomMargin: _button.verticalPadding
-        }
-        RowLayout{
-            id: _mainLayout
-            anchors.fill: parent
-            spacing: Size.pixel8
-            Icon{
-                id: _leftIcon
-                visible: path != ""
-                sourceSize.height: _title.contentHeight * 0.55
-                Layout.alignment: _title.visible ? Qt.AlignLeft : Qt.AlignCenter
-            }
-            H2{
-                id: _title
-                visible: text !== ""
-                font.pixelSize: _button.pixelSize
-                text: _button.text
-                color: _private.textColor
-                font{
-                    capitalization: Font.Capitalize
-                    bold: true
-                }
-                verticalAlignment: Qt.AlignVCenter
-                horizontalAlignment: Qt.AlignHCenter
-                Layout.alignment: Qt.AlignCenter
-            }
-            Icon{
-                id: _rightIcon
-                visible: path != ""
-                sourceSize.height: _title.contentHeight * 0.55
-                Layout.alignment: _title.visible ? Qt.AlignRight : Qt.AlignCenter
-            }
-        }
+    implicitHeight: _private.oneOrLessChildrenVisible ? _title.contentHeight + _button.verticalPadding * 2 : _title.contentHeight + _button.verticalPadding * 2
+    implicitWidth:  {
+        if(_private.oneOrLessChildrenVisible)
+            return _button.implicitHeight;
+        else
+            return _title.implicitWidth + (_leftIcon.visible ? _leftIcon.implicitWidth + _mainLayout.spacing : 0) + (_rightIcon.visible ? _rightIcon.implicitWidth + _mainLayout.spacing : 0) + _button.horizontalPadding * 2
     }
 
-    BusyIndicator{
-        Material.accent: _title.color
-        visible: _button.isLoading
-        height: parent.height* 0.7
-        width: height
-        anchors.centerIn: parent
-    }
-
-    //Non-Visual elements
-    MouseArea{
-        id: mouseArea
-        anchors.fill: parent
-        hoverEnabled: _button.enabled
-        cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
-        enabled: !_button.isLoading
-        onClicked: { _button.clicked(); }
-    }
-
-    QtObject{
-        id: _private
-        property color backgroundColor: "#FFFFFF"
-        property color textColor: "#FFFFFF"
-        property color borderColor: "#FFFFFF"
-        property bool oneOrLessChildrenVisible: !_title.visible && (!_leftIcon.visible || !_rightIcon.visible)
-    }
+    radius: 8
+    opacity: mouseArea.pressed ? 0.7 : 1 //TODO replace with ripple effect when OpacityMask is fixed in Qt6
+    color: _private.backgroundColor
+    border.color: _private.borderColor
 
     state: "contained"
     states: [
@@ -201,4 +129,91 @@ Rectangle{
             name: "custom"
         }
     ]
+
+    QtObject{
+        id: _private
+
+        property color backgroundColor: "#FFFFFF"
+        property color textColor: "#FFFFFF"
+        property color borderColor: "#FFFFFF"
+        property bool oneOrLessChildrenVisible: !_title.visible && (!_leftIcon.visible || !_rightIcon.visible)
+    }
+
+    Item{
+        id: _body
+
+        anchors {
+            fill: parent
+            leftMargin: _private.oneOrLessChildrenVisible ? 0 : _button.horizontalPadding; rightMargin: _private.oneOrLessChildrenVisible ? 0 : _button.horizontalPadding
+            topMargin: _button.verticalPadding; bottomMargin: _button.verticalPadding
+        }
+
+        visible: !_button.isLoading
+
+        RowLayout{
+            id: _mainLayout
+
+            anchors.fill: parent
+
+            spacing: Size.pixel8
+
+            Icon{
+                id: _leftIcon
+
+                Layout.alignment: _title.visible ? Qt.AlignLeft : Qt.AlignCenter
+                sourceSize.height: _title.contentHeight * 0.55
+                visible: path != ""
+            }
+
+            H2{
+                id: _title
+
+                Layout.alignment: Qt.AlignCenter
+
+                visible: text !== ""
+                font.pixelSize: _button.pixelSize
+                text: _button.text
+                color: _private.textColor
+
+                horizontalAlignment: Qt.AlignHCenter
+                verticalAlignment: Qt.AlignVCenter
+
+                font{
+                    capitalization: Font.Capitalize
+                    bold: true
+                }
+            }
+
+            Icon{
+                id: _rightIcon
+
+                Layout.alignment: _title.visible ? Qt.AlignRight : Qt.AlignCenter
+
+                visible: path != ""
+                sourceSize.height: _title.contentHeight * 0.55
+            }
+        }
+    }
+
+    BusyIndicator{
+        anchors.centerIn: parent
+
+        height: parent.height* 0.7
+        width: height
+
+        Material.accent: _title.color
+        visible: _button.isLoading
+    }
+
+    MouseArea{
+        id: mouseArea
+
+        anchors.fill: parent
+
+        hoverEnabled: _button.enabled
+        cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
+        enabled: !_button.isLoading
+
+        onClicked: { _button.clicked(); }
+    }
 }

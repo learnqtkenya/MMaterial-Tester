@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick 
 import QtQuick.Layouts
 
 import "../Settings"
@@ -6,24 +6,12 @@ import "../Icons"
 import "../Colors"
 
 Rectangle{
-    id: _button
-
-    Layout.preferredHeight: recommendedHeight
-    Layout.preferredWidth: recommendedWidth
-    height: recommendedHeight
-    width: recommendedWidth
-
-    radius: 8
-    opacity: mouseArea.pressed ? 0.7 : 1 //TODO replace with ripple effect when OpacityMask is fixed in Qt6
-    border.width: Size.pixel1
+    id: _root
 
     property bool checked: false
     property alias mouseArea: mouseArea
     property var accent: Theme.primary //Needs to be PaletteBasic type
     property bool customCheckImplementation: false
-
-    property real recommendedHeight
-    property real recommendedWidth
 
     property int size: Size.Grade.L
 
@@ -31,8 +19,35 @@ Rectangle{
 
     signal clicked
 
+    radius: 8
+    opacity: mouseArea.pressed ? 0.7 : 1 //TODO replace with ripple effect when OpacityMask is fixed in Qt6
+    border.width: Size.pixel1
+
+    state: ""
+    states: [
+        State{
+            when: !_root.enabled
+            name: "Disabled"
+            PropertyChanges{ target: _root; opacity: 1; border.color: Theme.action.disabledBackground; color: Theme.action.selected }
+            PropertyChanges{ target: _icon; color: Theme.action.disabled; }
+        },
+        State{
+            when: _root.checked
+            name: "Checked"
+            PropertyChanges{ target: _root; opacity: 1; border.color: _root.accent.main; color: _root.accent.transparent.p8 }
+            PropertyChanges{ target: _icon; color: _root.accent.main; }
+        },
+        State{
+            when: !_root.checked
+            name: "Unchecked"
+            PropertyChanges{ target: _root; opacity: 1; border.color: Theme.main.transparent.p24; color: "transparent" }
+            PropertyChanges{ target: _icon; color: Theme.action.active; }
+        }
+    ]
+
     Icon{
         id: _icon
+
         anchors.centerIn: parent
         path: IconList.logo
         visible: path != ""
@@ -41,37 +56,41 @@ Rectangle{
     //Non-Visual elements
     MouseArea{
         id: mouseArea
+
         anchors.fill: parent
+
         hoverEnabled: true
         cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
-        enabled: !_button.isLoading
+        enabled: !_root.isLoading
+
         onClicked: {
-            _button.clicked();
-            if(!_button.customCheckImplementation)
-                _button.checked = !_button.checked;
+            _root.clicked();
+            if(!_root.customCheckImplementation)
+                _root.checked = !_root.checked;
         }
     }
 
     Item{
         id: _sizeStates
+
         state: "L"
         states: [
             State{
-                when: _button.size == Size.Grade.L
+                when: _root.size == Size.Grade.L
                 name: "L"
-                PropertyChanges{ target: _button; recommendedHeight: 56 * Size.scale; recommendedWidth: recommendedHeight }
+                PropertyChanges{ target: _root; implicitHeight: 56 * Size.scale; implicitWidth: implicitHeight }
                 PropertyChanges{ target: _icon; sourceSize.width: Size.pixel24 }
             },
             State{
-                when: _button.size == Size.Grade.M
+                when: _root.size == Size.Grade.M
                 name: "M"
-                PropertyChanges{ target: _button; recommendedHeight: 48 * Size.scale; recommendedWidth: recommendedHeight }
+                PropertyChanges{ target: _root; implicitHeight: 48 * Size.scale; implicitWidth: implicitHeight }
                 PropertyChanges{ target: _icon; sourceSize.width: Size.pixel24 }
             },
             State{
-                when: _button.size == Size.Grade.S
+                when: _root.size == Size.Grade.S
                 name: "S"
-                PropertyChanges{ target: _button; recommendedHeight: 36 * Size.scale; recommendedWidth: recommendedHeight }
+                PropertyChanges{ target: _root; implicitHeight: 36 * Size.scale; implicitWidth: implicitHeight }
                 PropertyChanges{ target: _icon; sourceSize.width: Size.pixel20 }
             },
             State{
@@ -80,26 +99,4 @@ Rectangle{
             }
         ]
     }
-
-    state: ""
-    states: [
-        State{
-            when: !_button.enabled
-            name: "Disabled"
-            PropertyChanges{ target: _button; opacity: 1; border.color: Theme.action.disabledBackground; color: Theme.action.selected }
-            PropertyChanges{ target: _icon; color: Theme.action.disabled; }
-        },
-        State{
-            when: _button.checked
-            name: "Checked"
-            PropertyChanges{ target: _button; opacity: 1; border.color: _button.accent.main; color: _button.accent.transparent.p8 }
-            PropertyChanges{ target: _icon; color: _button.accent.main; }
-        },
-        State{
-            when: !_button.checked
-            name: "Unchecked"
-            PropertyChanges{ target: _button; opacity: 1; border.color: Theme.main.transparent.p24; color: "transparent" }
-            PropertyChanges{ target: _icon; color: Theme.action.active; }
-        }
-    ]
 }

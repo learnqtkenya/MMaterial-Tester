@@ -6,42 +6,39 @@ import MMaterial
 
 Rectangle {
     id: _paginator
-    anchors {
-        bottom: parent.bottom
-    }
-    radius: 8
-    height: recommendedHeight
-    width: recommendedWidth
-
-    Layout.preferredWidth: recommendedWidth
-    Layout.preferredHeight: recommendedHeight
-
-    color: Theme.main.p800
-
-    readonly property real recommendedWidth: height * 3 - Size.pixel4
-    readonly property real recommendedHeight: Size.pixel32
 
     required property SwipeView indexView
 
     property int numberOfPages: indexView.count
 
+    implicitWidth: height * 3 - Size.pixel4
+    implicitHeight: Size.pixel32
+
+    anchors.bottom: parent.bottom
+
+    radius: 8
+    color: Theme.main.p800
+
     Item{
         id: _leftArrow
+
+        anchors.left: parent.left
+
         height: parent.height
         width: height
-        anchors {
-            left: parent.left
-        }
+
         Icon{
+            anchors.centerIn: parent
+
             path: IconList.arrow
             color: Theme.common.white
             sourceSize.height: parent.height * 0.2
-            anchors.centerIn: parent
             rotation: 90
             interactive: true
-            onClicked: _paginator.indexView.decrementCurrentIndex();
             enabled: _paginator.indexView.currentIndex > 0
             opacity: enabled ? 1 : 0.48
+
+            onClicked: _paginator.indexView.decrementCurrentIndex();
         }
     }
 
@@ -50,11 +47,15 @@ Rectangle {
             left: _leftArrow.right
             right: _rightArrow.left
         }
+
         height: parent.height
+
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: Qt.AlignHCenter
+
         text: _paginator.indexView.currentIndex + 1 + "/" + _paginator.numberOfPages
         color: Theme.common.white
+
         font {
             bold: true
             pixelSize: parent.height * 0.45
@@ -63,21 +64,24 @@ Rectangle {
 
     Item{
         id: _rightArrow
+
+        anchors.right: parent.right
+
         height: parent.height
         width: height
-        anchors {
-            right: parent.right
-        }
+
         Icon{
+            anchors.centerIn: parent
+
             path: IconList.arrow
             color: Theme.common.white
             sourceSize.height: parent.height * 0.2
-            anchors.centerIn: parent
             rotation: -90
             interactive: true
-            onClicked: _paginator.indexView.incrementCurrentIndex();
             enabled: _paginator.indexView.currentIndex < _paginator.indexView.count - 1
             opacity: enabled ? 1 : 0.48
+
+            onClicked: _paginator.indexView.incrementCurrentIndex();
         }
     }
 }

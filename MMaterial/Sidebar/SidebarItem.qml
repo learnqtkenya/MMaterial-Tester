@@ -6,26 +6,17 @@ import MMaterial
 Item{
     id: _sidebarItem
 
-    property bool checked: ListView.isCurrentItem
-    height: _listView.height + _listView.anchors.topMargin + _mainItem.height
-    width: ListView.view ? ListView.view.width : 0
-
-    required property string category
-
     property alias icon: _icon
     property alias text: _title.text
-    property bool isOpen: false
     property alias model: _listView.model
     property alias list: _listView
 
+    property bool checked: ListView.isCurrentItem
+    property bool isOpen: false
+
+    required property string category
+
     property real openingSpeed: 150
-
-    onCheckedChanged: {
-        if(!checked)
-            _listView.currentIndex = -1;
-    }
-
-    signal clicked
 
     function selectItem(){
         if(typeof index !== "undefined")
@@ -34,10 +25,48 @@ Item{
             ListView.view.currentIndex = ObjectModel.index;
     }
 
+    signal clicked
+
+    height: _listView.height + _listView.anchors.topMargin + _mainItem.height
+    width: ListView.view ? ListView.view.width : 0
+
+    onCheckedChanged: {
+        if(!checked)
+            _listView.currentIndex = -1;
+    }
+
+    states: [
+        State{
+            when: _sidebarItem.isOpen
+            name: "open"
+            PropertyChanges{ target: _listView; height: _listView.contentHeight }
+        },
+        State{
+            when: !_sidebarItem.isOpen
+            name: "closed"
+            PropertyChanges{ target: _listView; height: 0; }
+        }
+    ]
+
+    transitions: [
+        Transition {
+            from: "*"
+            to: "open"
+            NumberAnimation { target: _listView; property: "height"; duration: _sidebarItem.openingSpeed; easing.type: Easing.InOutQuad }
+        },
+        Transition {
+            from: "*"
+            to: "closed"
+            NumberAnimation { target: _listView; property: "height"; duration: _sidebarItem.openingSpeed; easing.type: Easing.InOutQuad }
+        }
+    ]
+
     Checkable {
         id: _mainItem
+
         height: 50 * Size.scale
         width: parent.width
+
         customCheckImplementation: true
         radius: 8
 
@@ -50,43 +79,6 @@ Item{
             _sidebarItem.clicked();
         }
 
-        RowLayout{
-            anchors{
-                fill: parent
-                leftMargin: Size.pixel16
-                rightMargin: Size.pixel12
-            }
-            spacing: Size.pixel8
-
-            Icon{
-                id: _icon
-                visible: path != ""
-                sourceSize.height: Size.pixel24
-                Layout.alignment: Qt.AlignVCenter
-                color: _title.color
-            }
-
-            Subtitle2{
-                id: _title
-                Layout.leftMargin: _icon.visible ? Size.pixel8 : 0
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignVCenter
-                verticalAlignment: Qt.AlignVCenter
-            }
-
-            Icon{
-                id: _arrow
-                visible: _sidebarItem.model ? _sidebarItem.model.length > 0 : 0
-                sourceSize.height: Size.pixel6
-                sourceSize.width: Size.pixel6
-                Layout.alignment: Qt.AlignVCenter
-                path: IconList.arrow
-                rotation: _sidebarItem.isOpen ? 0 : -90
-
-                Behavior on rotation { SmoothedAnimation { duration: _sidebarItem.openingSpeed;} }
-
-            }
-        }
         states: [
             State {
                 name: "disabled"
@@ -114,20 +106,70 @@ Item{
             }
         ]
 
+        RowLayout{
+            anchors{
+                fill: parent
+                leftMargin: Size.pixel16
+                rightMargin: Size.pixel12
+            }
+
+            spacing: Size.pixel8
+
+            Icon{
+                id: _icon
+
+                Layout.alignment: Qt.AlignVCenter
+
+                visible: path != ""
+                sourceSize.height: Size.pixel24
+                color: _title.color
+            }
+
+            Subtitle2{
+                id: _title
+
+                Layout.leftMargin: _icon.visible ? Size.pixel8 : 0
+                Layout.fillWidth: true
+                Layout.alignment: Qt.AlignVCenter
+
+                verticalAlignment: Qt.AlignVCenter
+            }
+
+            Icon{
+                id: _arrow
+
+                Layout.alignment: Qt.AlignVCenter
+
+                visible: _sidebarItem.model ? _sidebarItem.model.length > 0 : 0
+                path: IconList.arrow
+                rotation: _sidebarItem.isOpen ? 0 : -90
+
+                sourceSize {
+                    height: Size.pixel6
+                    width: Size.pixel6
+                }
+
+                Behavior on rotation { SmoothedAnimation { duration: _sidebarItem.openingSpeed;} }
+            }
+        }
     }
 
     ListView{
         id: _listView
+
         anchors{
             top: _mainItem.bottom; topMargin: Size.pixel4
             left: parent.left; right: parent.right
         }
+
         currentIndex: -1
         spacing: Size.pixel4
         interactive: false
         clip: true
+
         delegate: Rectangle{
             id: _subItem
+
             property bool checked: ListView.isCurrentItem
             property string text: modelData.text
 
@@ -136,40 +178,6 @@ Item{
             height: 36 * Size.scale
             width: _listView.width
             color: _subItemMouseArea.containsMouse ? Theme.background.neutral : "transparent"
-            RowLayout{
-                anchors {
-                    fill: parent
-                    leftMargin: Size.pixel16
-                    rightMargin: Size.pixel12
-                }
-                spacing: Size.pixel16
-                Item{
-                    Layout.preferredHeight: Size.pixel24
-                    Layout.preferredWidth: height
-                    Layout.alignment: Qt.AlignVCenter
-                    Rectangle{ id: _dot; height: Size.pixel4; width: Size.pixel4; anchors.centerIn: parent; radius: 100 }
-                }
-
-                Subtitle2{
-                    id: _label
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignVCenter
-                    verticalAlignment: Qt.AlignVCenter
-                    text: _subItem.text
-                }
-
-            }
-            MouseArea{
-                id: _subItemMouseArea
-                anchors.fill: parent
-                hoverEnabled: parent.enabled
-                cursorShape: Qt.PointingHandCursor
-                onClicked: {
-                    _listView.currentIndex = index;
-                    _sidebarItem.selectItem();
-                    modelData.onClicked();
-                }
-            }
 
             states: [
                 State {
@@ -211,33 +219,50 @@ Item{
                     NumberAnimation { target: _dot; property: "scale"; duration: 300; easing.type: Easing.InOutQuad }
                 }
             ]
-        }
 
+            RowLayout{
+                anchors {
+                    fill: parent
+                    leftMargin: Size.pixel16
+                    rightMargin: Size.pixel12
+                }
+
+                spacing: Size.pixel16
+
+                Item{
+                    Layout.preferredHeight: Size.pixel24
+                    Layout.preferredWidth: height
+                    Layout.alignment: Qt.AlignVCenter
+
+                    Rectangle{ id: _dot; height: Size.pixel4; width: Size.pixel4; anchors.centerIn: parent; radius: 100 }
+                }
+
+                Subtitle2{
+                    id: _label
+
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignVCenter
+
+                    verticalAlignment: Qt.AlignVCenter
+
+                    text: _subItem.text
+                }
+
+            }
+            MouseArea{
+                id: _subItemMouseArea
+
+                anchors.fill: parent
+
+                hoverEnabled: parent.enabled
+                cursorShape: Qt.PointingHandCursor
+
+                onClicked: {
+                    _listView.currentIndex = index;
+                    _sidebarItem.selectItem();
+                    modelData.onClicked();
+                }
+            }
+        }
     }
-
-    states: [
-        State{
-            when: _sidebarItem.isOpen
-            name: "open"
-            PropertyChanges{ target: _listView; height: _listView.contentHeight }
-        },
-        State{
-            when: !_sidebarItem.isOpen
-            name: "closed"
-            PropertyChanges{ target: _listView; height: 0; }
-        }
-    ]
-
-    transitions: [
-        Transition {
-            from: "*"
-            to: "open"
-            NumberAnimation { target: _listView; property: "height"; duration: _sidebarItem.openingSpeed; easing.type: Easing.InOutQuad }
-        },
-        Transition {
-            from: "*"
-            to: "closed"
-            NumberAnimation { target: _listView; property: "height"; duration: _sidebarItem.openingSpeed; easing.type: Easing.InOutQuad }
-        }
-    ]
 }

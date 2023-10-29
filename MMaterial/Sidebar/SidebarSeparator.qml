@@ -3,9 +3,10 @@ import QtQuick
 import MMaterial
 
 Item {
+    anchors.horizontalCenter: parent ? parent.horizontalCenter : null
+
     width: Size.pixel24
     height: Size.pixel10
-    anchors.horizontalCenter: parent ? parent.horizontalCenter : null
 
     Rectangle{
         anchors.centerIn: parent

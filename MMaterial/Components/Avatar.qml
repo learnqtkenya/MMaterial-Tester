@@ -1,34 +1,34 @@
-import QtQuick 2.15
+import QtQuick 
 import QtQuick.Layouts
 
-import "../Colors"
-import "../Settings"
-import "../Fonts/Texts"
+import MMaterial
 
 Rectangle{
     id: _avatar
+
+    property string title: "A"
+    property PaletteBasic accent: Theme.primary
+
     color: enabled ? accent.main : Theme.action.disabled
     radius: 100
-    property string title: "A"
-    property var accent: Theme.primary
 
-    property real recommendedHeight: Size.pixel48
-    property real recommendedWidth: Size.pixel48
-
-    height: recommendedHeight
-    width: recommendedWidth
-
-    Layout.preferredHeight: recommendedHeight
-    Layout.preferredWidth: recommendedWidth
+    implicitHeight: Size.pixel48
+    implicitWidth: Size.pixel48
 
     Subtitle2{
         id: _title
+
         anchors.centerIn: parent
-        font.pixelSize: parent.height * 0.4
-        color: _avatar.accent.contrastText
+
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: Qt.AlignHCenter
-        font.capitalization: Font.AllUppercase
+
+        color: _avatar.accent.contrastText
         text: _avatar.title.length >= 1 ?_avatar.title[0] : ""
+
+        font {
+            pixelSize: parent.height * 0.4
+            capitalization: Font.AllUppercase
+        }
     }
 }

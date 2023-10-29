@@ -1,7 +1,8 @@
-import QtQuick 2.15
+pragma Singleton
+
+import QtQuick
 
 import "../BaseObjects"
-pragma Singleton
 
 PaletteBasic{
     lighter: "#D6E4FF"

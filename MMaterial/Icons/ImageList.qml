@@ -10,5 +10,4 @@ QtObject{
     readonly property string womanSitting: iconBasePath + "programmer-female2.png"
     readonly property string man: iconBasePath + "programmer-male.png"
     readonly property string manSitting: iconBasePath + "programmer-male2.png"
-
 }

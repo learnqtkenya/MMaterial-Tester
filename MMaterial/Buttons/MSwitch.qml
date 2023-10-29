@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick
 import QtQuick.Layouts
 
 import MMaterial
@@ -6,68 +6,34 @@ import MMaterial
 Item{
     id: _switchRoot
 
-    height: recommendedHeight
-    width: recommendedWidth
-    Layout.preferredHeight: recommendedHeight
-    Layout.preferredWidth: recommendedWidth
-
-    property real recommendedWidth: height*1.6 + _label.anchors.leftMargin + _label.implicitWidth
-    property real recommendedHeight: {
-        if(size == Size.Grade.M)
-            return Size.pixel20
-        return Size.pixel16
-    }
-
     property int size: Size.Grade.M
 
-    property var accent: Theme.primary
+    property PaletteBasic accent: Theme.primary
+
     property alias checked: _switch.checked
     property alias customCheckImplementaiton: _switch.customCheckImplementation
     property alias text: _label.text
     property alias label: _label
 
+    implicitWidth: _switch.width + _label.anchors.leftMargin + _label.implicitWidth
+    implicitHeight: {
+        if(size == Size.Grade.M)
+            return Size.pixel20
+
+        return Size.pixel16
+    }
+
     signal clicked
 
     Checkable{
         id: _switch
+
         height: parent.height
         width: height * 1.6
+
         radius: 100
 
         onClicked: _switchRoot.clicked();
-
-        Item{
-            anchors{
-                fill: parent
-                margins: _switch.height * 0.15
-            }
-
-            Rectangle{
-                id: _innerCircle
-                anchors{
-                    top: parent.top
-                    bottom: parent.bottom
-                }
-                width: height
-                radius: _switch.radius
-                color: Theme.main.p100
-
-                Rectangle{
-                    id: _highlight
-                    anchors {
-                        centerIn: parent
-                    }
-                    height: _switch.mouseArea.containsMouse ? parent.height * 2.7 : 0
-                    width: height
-                    radius: height
-                    visible: height != 0
-                    opacity: _switch.mouseArea.pressed ? 0.7 : 1
-                    color: _switch.checked ? _switchRoot.accent.transparent.p8 : Theme.action.hover
-
-                    Behavior on height { SmoothedAnimation { duration: 150; easing.type: Easing.InOutQuad} }
-                }
-            }
-        }
 
         states: [
             State {
@@ -115,16 +81,57 @@ Item{
                 ColorAnimation { target: _switch; duration: 250; easing.type: Easing.InOutQuad }
             }
         ]
+
+        Item{
+            anchors{
+                fill: parent
+                margins: _switch.height * 0.15
+            }
+
+            Rectangle{
+                id: _innerCircle
+
+                anchors{
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+
+                width: height
+
+                radius: _switch.radius
+                color: Theme.main.p100
+
+                Rectangle{
+                    id: _highlight
+
+                    anchors.centerIn: parent
+
+                    height: _switch.mouseArea.containsMouse ? parent.height * 2.7 : 0
+                    width: height
+
+                    radius: height
+                    visible: height > 0
+                    opacity: _switch.mouseArea.pressed ? 0.7 : 1
+                    color: _switch.checked ? _switchRoot.accent.transparent.p8 : Theme.action.hover
+
+                    Behavior on height { SmoothedAnimation { duration: 150; easing.type: Easing.InOutQuad} }
+                }
+            }
+        }
     }
+
     B2{
         id: _label
-        visible: text != ""
+
         anchors{
             left: _switch.right; leftMargin: Size.pixel12
             right: parent.right
         }
-        verticalAlignment: Qt.AlignVCenter
+
         height: parent.height
+
+        visible: text.length > 0
+        verticalAlignment: Qt.AlignVCenter
         maximumLineCount: 1
         elide: Text.ElideRight
         wrapMode: Text.NoWrap

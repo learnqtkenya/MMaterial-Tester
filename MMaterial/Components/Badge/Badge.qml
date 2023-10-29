@@ -1,15 +1,12 @@
-import QtQuick 2.15
+import QtQuick 
 
 import "../../Colors"
 import "../../Icons"
 import "../../Settings"
-//For easest usage, don't change the size of width and height, but
-//change the size of icon.sourceSize.widht/height
+//change the value of icon.sourceSize.widht / height
 
 Item{
     id: _badge
-    width: _icon.width
-    height: _icon.height
 
     property alias icon: _icon
     property var accent: Theme.info //Needs to be PaletteBasic type
@@ -20,45 +17,10 @@ Item{
 
     signal clicked
 
-    enum Type {
-        Dot,
-        Number
-    }
+    enum Type { Dot, Number }
 
-    Icon{
-        id: _icon
-        path: IconList.mail
-        sourceSize.height: Size.pixel32
-        color: Theme.text.primary
-        interactive: true
-        onClicked: _badge.clicked()
-    }
-    Loader{
-        id: _badgeLoader
-        asynchronous: true
-        active: quantity > 0
-        anchors {
-            bottom: _icon.top
-            left: _icon.right
-        }
-    }
-
-    Component{
-        id: _iconBadge
-        BadgeNumber{
-            quantity: _badge.quantity
-            maxQuantity: _badge.maxQuantity
-            pixelSize: _icon.height * 0.6
-            accent: _badge.accent
-        }
-    }
-    Component{
-        id: _iconDot
-        BadgeDot{
-            pixelSize: _icon.height * 0.42
-            accent: _badge.accent
-        }
-    }
+    implicitHeight: _icon.height
+    implicitWidth: _icon.width
 
     states: [
         State{
@@ -86,4 +48,46 @@ Item{
             }
         }
     ]
+
+    Icon{
+        id: _icon
+
+        path: IconList.mail
+        sourceSize.height: Size.pixel32
+        color: Theme.text.primary
+        interactive: true
+
+        onClicked: _badge.clicked()
+    }
+    Loader{
+        id: _badgeLoader
+
+        anchors {
+            bottom: _icon.top
+            left: _icon.right
+        }
+
+        asynchronous: true
+        active: quantity > 0
+    }
+
+    Component{
+        id: _iconBadge
+
+        BadgeNumber{
+            quantity: _badge.quantity
+            maxQuantity: _badge.maxQuantity
+            pixelSize: _icon.height * 0.6
+            accent: _badge.accent
+        }
+    }
+
+    Component{
+        id: _iconDot
+
+        BadgeDot{
+            pixelSize: _icon.height * 0.42
+            accent: _badge.accent
+        }
+    }
 }

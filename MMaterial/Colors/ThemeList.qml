@@ -1,9 +1,9 @@
+pragma Singleton
+
 import QtQuick
 
 import "./Themes"
 import "./BaseObjects"
-
-pragma Singleton
 
 QtObject{
     property ThemeBase light: LightTheme

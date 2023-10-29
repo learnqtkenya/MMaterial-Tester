@@ -1,6 +1,8 @@
-import QtQuick 2.15
-import "../BaseObjects"
 pragma Singleton
+
+import QtQuick
+
+import "../BaseObjects"
 
 PaletteBasic{
     main: "#33adff"

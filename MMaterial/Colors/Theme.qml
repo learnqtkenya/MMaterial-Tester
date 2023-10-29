@@ -1,11 +1,18 @@
+pragma Singleton
+
 import QtQuick
 
 import "./BaseObjects"
 import "./Themes"
 
-pragma Singleton
-
 ThemeBase{
+    property ThemeBase currentTheme: LightTheme
+
+    function setTheme(theme){
+        console.log("Theme switched to " + theme.objectName)
+        currentTheme = theme;
+    }
+
     primary: currentTheme ? currentTheme.primary : null
     secondary: currentTheme ? currentTheme.secondary : null
     info: currentTheme ? currentTheme.info : null
@@ -20,11 +27,4 @@ ThemeBase{
     action: currentTheme ? currentTheme.action : null
     common: currentTheme ? currentTheme.common : null
     defaultNeutral: currentTheme ? currentTheme.defaultNeutral : null
-
-    property ThemeBase currentTheme: LightTheme
-
-    function setTheme(theme){
-        console.log("Theme switched to " + theme.objectName)
-        currentTheme = theme;
-    }
 }

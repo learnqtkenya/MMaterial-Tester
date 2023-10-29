@@ -1,17 +1,11 @@
-import QtQuick 2.15
+import QtQuick
 import QtQuick.Layouts
 
-import "../../Colors"
-import "../../Icons"
-import "../../Settings"
-import "../../Buttons"
-import "../../Fonts/Texts"
+import MMaterial
 
 Rectangle{
     id: _alert
-    radius: 8
-    height: _text.implicitHeight > _private.recommendedHeight ? _text.implicitHeight + _mainLayout.anchors.margins*2 : _private.recommendedHeight
-    width: 720
+
     enum Severity { Info, Success, Warning, Error }
     enum Variant { Standard, Filled, Outlined }
 
@@ -39,79 +33,10 @@ Rectangle{
     signal clicked
     signal close
 
-    QtObject{
-        id: _private
-        readonly property int recommendedHeight: Size.scale * 50
-    }
+    implicitHeight: _text.implicitHeight > _private.recommendedHeight ? _text.implicitHeight + _mainLayout.anchors.margins*2 : _private.recommendedHeight
+    implicitWidth: 720
 
-    MouseArea{
-        id: mouseArea
-        anchors.fill: parent
-        onClicked: _alert.clicked()
-    }
-
-    RowLayout{
-        id: _mainLayout
-        anchors{
-            fill: parent
-            margins: Size.pixel8
-        }
-
-        Icon{
-            id: _icon
-            Layout.alignment: _text.lineCount <= 1 ? Qt.AlignVCenter : Qt.AlignTop
-            Layout.topMargin: _text.lineCount <= 1 ? 0 : Size.pixel6
-            Layout.leftMargin: Size.pixel8
-            sourceSize.height: Size.pixel24
-            path: _alert.icon
-        }
-        B2{
-            id: _text
-//            Layout.preferredHeight: parent.height
-            Layout.fillWidth: true
-            text: _alert.text
-            color: Theme.info.darker
-            verticalAlignment: Qt.AlignVCenter
-            Layout.leftMargin: Size.pixel12
-            elide: Text.ElideNone
-            wrapMode: Text.WordWrap
-            lineHeight: 1
-        }
-        MButton{
-            id: _actionButton
-            type: MButton.Type.Contained
-            size: Size.S
-            text: ""
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            Layout.preferredHeight: recommendedHeight
-            Layout.preferredWidth: recommendedWidth
-            accent: _alert.accent
-            visible: text != ""
-        }
-        MButton{
-            id: _dismissButton
-            type: MButton.Type.Outlined
-            size: Size.S
-            text: ""
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            Layout.preferredHeight: recommendedHeight
-            Layout.preferredWidth: recommendedWidth
-            accent: _alert.accent
-            visible: text != ""
-            onClicked: _alert.close()
-        }
-        Icon{
-            id: _closeIcon
-            Layout.alignment: _text.lineCount <= 1 ? Qt.AlignVCenter : Qt.AlignTop
-            Layout.topMargin: _text.lineCount <= 1 ? 0 : Size.pixel6
-            Layout.rightMargin: Size.pixel8
-            visible: !_actionButton.visible && !_dismissButton.visible
-            sourceSize.height: Size.pixel12
-            path: IconList.closeX
-            interactive: true
-            onClicked: _alert.close()
-        }
-    }
+    radius: 8
 
     state: "standard"
     states: [
@@ -142,5 +67,97 @@ Rectangle{
             PropertyChanges{ target: _text; color: _alert.accent.dark}
         }
     ]
+
+    QtObject{
+        id: _private
+
+        readonly property int recommendedHeight: Size.scale * 50
+    }
+
+    MouseArea{
+        id: mouseArea
+
+        anchors.fill: parent
+
+        onClicked: _alert.clicked()
+    }
+
+    RowLayout{
+        id: _mainLayout
+
+        anchors{
+            fill: parent
+            margins: Size.pixel8
+        }
+
+        Icon{
+            id: _icon
+
+            Layout.alignment: _text.lineCount <= 1 ? Qt.AlignVCenter : Qt.AlignTop
+            Layout.topMargin: _text.lineCount <= 1 ? 0 : Size.pixel6
+            Layout.leftMargin: Size.pixel8
+
+            sourceSize.height: Size.pixel24
+            path: _alert.icon
+        }
+
+        B2{
+            id: _text
+
+            Layout.fillWidth: true
+            Layout.leftMargin: Size.pixel12
+
+            text: _alert.text
+            color: Theme.info.darker
+            verticalAlignment: Qt.AlignVCenter
+            elide: Text.ElideNone
+            wrapMode: Text.WordWrap
+            lineHeight: 1
+        }
+
+        MButton{
+            id: _actionButton
+
+            type: MButton.Type.Contained
+            size: Size.S
+            text: ""
+            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+            Layout.preferredHeight: _actionButton.implicitHeight
+            Layout.preferredWidth: _actionButton.implicitWidth
+            accent: _alert.accent
+            visible: text != ""
+        }
+
+        MButton{
+            id: _dismissButton
+
+            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+            Layout.preferredHeight: _dismissButton.implicitHeight
+            Layout.preferredWidth: _dismissButton.implicitWidth
+
+            type: MButton.Type.Outlined
+            size: Size.S
+            text: ""
+            accent: _alert.accent
+            visible: text != ""
+
+            onClicked: _alert.close()
+        }
+
+        Icon{
+            id: _closeIcon
+
+            Layout.alignment: _text.lineCount <= 1 ? Qt.AlignVCenter : Qt.AlignTop
+            Layout.topMargin: _text.lineCount <= 1 ? 0 : Size.pixel6
+            Layout.rightMargin: Size.pixel8
+
+            visible: !_actionButton.visible && !_dismissButton.visible
+            sourceSize.height: Size.pixel12
+            path: IconList.closeX
+            interactive: true
+
+            onClicked: _alert.close()
+        }
+    }
 }
 

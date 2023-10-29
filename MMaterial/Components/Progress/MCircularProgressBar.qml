@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick 
 import QtQuick.Layouts
 
 import MMaterial
@@ -17,22 +17,21 @@ Item {
 
     property int animationDuration: 80
 
-    width: size
-    height: size
-    Layout.preferredHeight: size
-    Layout.preferredWidth: size
+    implicitHeight: size
+    implicitWidth: size
 
-    onProgressChanged: {
-        canvas.degree = (progress/100) * 360;
-    }
+    onProgressChanged: canvas.degree = (progress/100) * 360;
+
 
     Caption{
-        visible: _progressCircle.showLabel
         anchors.centerIn: parent
-        font.pixelSize: _progressCircle.height* 0.25
-        verticalAlignment: Qt.AlignVCenter
+
         text: _progressCircle.progress + "%"
+        visible: _progressCircle.showLabel
+        font.pixelSize: _progressCircle.height* 0.25
         color: Theme.text.primary
+
+        verticalAlignment: Qt.AlignVCenter
     }
 
     Canvas {
@@ -43,9 +42,7 @@ Item {
         anchors.fill: parent
         antialiasing: true
 
-        onDegreeChanged: {
-            requestPaint();
-        }
+        onDegreeChanged: requestPaint();
 
         onPaint: {
             var ctx = getContext("2d");

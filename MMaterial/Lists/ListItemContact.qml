@@ -1,55 +1,62 @@
-import QtQuick 2.15
+import QtQuick 
 import QtQuick.Layouts
 
-import "../Settings"
-import "../Icons"
-import "../Colors"
-import "../Fonts/Texts"
-import "../Components"
+import MMaterial
 
 AbstractListItem{
     id: _listItem
-    height: 68 * Size.scale
 
     default property alias container: _mainLayout.data
+
     property alias title: _title.text
     property alias subtitle: _subtitle.text
     property alias icon: _icon
     property alias avatar: _avatar
     property alias layout: _mainLayout
 
+    height: 68 * Size.scale
+
     containsMouse: mouseArea.containsMouse || _icon.containsMouse
 
     RowLayout{
         id: _mainLayout
+
         anchors{
             fill: parent
             margins: Size.pixel12
             leftMargin: Size.pixel16; rightMargin: Size.pixel16
         }
+
         Avatar{
             id: _avatar
+
             Layout.rightMargin: Size.pixel16
             Layout.fillHeight: true
             Layout.preferredWidth: height
+
             title: _title.text
         }
 
         ColumnLayout{
             Layout.fillWidth: true
             Layout.fillHeight: true
+
             Subtitle2{
                 id: _title
+
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+
                 verticalAlignment: Qt.AlignTop
                 color: Theme.text.primary
                 text: "John Doe"
             }
             B2{
                 id: _subtitle
+
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+
                 verticalAlignment: Qt.AlignBottom
                 color: Theme.text.secondary
                 text: "johhny_doe@gmail.com"
@@ -58,6 +65,7 @@ AbstractListItem{
 
         Icon{
             id: _icon
+
             Layout.alignment: Qt.AlignVCenter
             color: Theme.action.active
             visible: path != ""

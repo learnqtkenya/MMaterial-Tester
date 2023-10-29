@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick
 import QtQuick.Controls 2.1
 import QtQuick.Layouts
 
@@ -6,15 +6,17 @@ import "../../Settings"
 
 ListView{
     id: _listView
+
     anchors {
         right: parent.right
         bottom: parent.bottom
         margins: Size.pixel20
     }
 
+    implicitWidth: 300
+    implicitHeight: 300 * Size.scale
+
     z: 99
-    width: parent.width * 0.4
-    height: 300 * Size.scale
     verticalLayoutDirection: ListView.BottomToTop
     spacing: Size.pixel4
     interactive: false
@@ -22,6 +24,7 @@ ListView{
     model: ListModel {
         id: listModel
     }
+
     delegate: Alert{
         id: _alertComponent
         property var item: listModel.get(index)

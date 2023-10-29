@@ -1,14 +1,9 @@
-import QtQuick 2.15
-import "../../Fonts/Texts"
-import "../../Colors"
-import "../../Settings"
+import QtQuick 
+
+import MMaterial
 
 Rectangle{
     id: _badge
-    radius: 100
-    color: _badge.accent.main
-    height: number.implicitHeight + verticalPadding
-    width: Math.max(number.implicitWidth + horizontalPadding, height)
 
     property real verticalPadding: pixelSize/2
     property real horizontalPadding: pixelSize
@@ -17,9 +12,17 @@ Rectangle{
     property int maxQuantity: 999
     property int pixelSize: Size.pixel24
 
+    height: number.implicitHeight + verticalPadding
+    width: Math.max(number.implicitWidth + horizontalPadding, height)
+
+    radius: 100
+    color: _badge.accent.main
+
     H4{
         id: number
+
         anchors.centerIn: parent
+
         text: _badge.quantity > _badge.maxQuantity ? _badge.maxQuantity + "+" : _badge.quantity
         color: _badge.accent.contrastText
         font.pixelSize: _badge.pixelSize

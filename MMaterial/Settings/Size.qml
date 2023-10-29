@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick 
 
 pragma Singleton
 
@@ -27,17 +27,9 @@ Item {
     readonly property real pixel48: 48 * scale
     readonly property real pixel64: 64 * scale
 
-    enum Grade {
-        S,
-        M,
-        L,
-        Custom
-    }
+    enum Grade { S, M, L, Custom }
 
-    enum Format {
-        Extended,
-        Compact
-    }
+    enum Format { Extended, Compact }
 
     property int format: Size.Format.Extended
 

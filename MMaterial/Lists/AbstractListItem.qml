@@ -1,29 +1,21 @@
-import QtQuick 2.15
+import QtQuick 
 import "../Colors"
 
 Rectangle {
-    opacity: 1
-    radius: 8
-
     property bool containsMouse: _mouseArea.containsMouse
     property alias mouseArea: _mouseArea
     property bool selected: ListView.isCurrentItem
 
     signal clicked
 
+    opacity: 1
+    radius: 8
+
     onClicked: {
-        if(typeof index !== "undefined")
+        if(typeof index !== "undefined")
             ListView.view.currentIndex = index;
         else if(typeof ObjectModel.index !== "undefined")
             ListView.view.currentIndex = ObjectModel.index;
-    }
-
-    MouseArea{
-        id: _mouseArea
-        anchors.fill: parent
-        hoverEnabled: _listItem.enabled
-        cursorShape: Qt.PointingHandCursor
-        onClicked: _listItem.clicked()
     }
 
     states: [
@@ -70,4 +62,15 @@ Rectangle {
             }
         }
     ]
+
+    MouseArea{
+        id: _mouseArea
+
+        anchors.fill: parent
+
+        hoverEnabled: _listItem.enabled
+        cursorShape: Qt.PointingHandCursor
+
+        onClicked: _listItem.clicked()
+    }
 }

@@ -3,10 +3,11 @@ import "../"
 import "../../Settings"
 
 BaseText {
+    lineHeight: 1.5
+    elide: Text.ElideRight
+
     font {
         family: PublicSans.bold
         pixelSize: Size.pixel32
     }
-    lineHeight: 1.5
-    elide: Text.ElideRight
 }

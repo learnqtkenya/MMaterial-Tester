@@ -2,17 +2,10 @@ import QtQuick
 import QtQuick.Effects
 import QtQuick.Layouts
 
-import "../Settings"
-import "../Colors"
-import "../Icons"
-import "../Fonts/Texts"
-import "../Buttons"
-import "../Components"
+import MMaterial
 
 Rectangle {
     id: _sidebar
-    height: parent.height
-    color: Theme.background.main
 
     property string name
     property string role
@@ -20,15 +13,10 @@ Rectangle {
     property alias extendedSidebar: _extendedSidebar
     property alias compactSidebar: _compactSidebar
 
-    ExtendedSidebar{
-        id: _extendedSidebar
-        title.text: _sidebar.name
-        subtitle.text: _sidebar.role
-    }
+    implicitHeight: parent.height
 
-    CompactSidebar{
-        id: _compactSidebar
-    }
+    color: Theme.background.main
+    state: "extended"
 
     onStateChanged: {
         let oldSidebar = state === "extended" ? _compactSidebar.list : _extendedSidebar.list;
@@ -41,7 +29,6 @@ Rectangle {
             newSidebar.currentItem.list.currentIndex = oldSidebar.currentItem.list.currentIndex;
     }
 
-    state: "extended"
     states: [
         State {
             name: "extended"
@@ -76,4 +63,14 @@ Rectangle {
             }
         }
     ]
+
+    ExtendedSidebar{
+        id: _extendedSidebar
+        title.text: _sidebar.name
+        subtitle.text: _sidebar.role
+    }
+
+    CompactSidebar{
+        id: _compactSidebar
+    }
 }

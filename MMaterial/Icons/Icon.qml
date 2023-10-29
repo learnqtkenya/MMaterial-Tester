@@ -19,8 +19,8 @@ Image{
     fillMode: Image.PreserveAspectFit
     source: visible ? path : ""
 
-    layer.enabled: _icon.color != ""
     layer {
+        enabled: _icon.color != ""
         effect: MultiEffect {
             colorizationColor: _icon.color
             colorization: 1
@@ -31,21 +31,7 @@ Image{
     ToolTip.text: description
     ToolTip.visible: description != "" && tooltipEnabled && tooltipTime >= 2 ? containsMouse : false
 
-    Timer {
-        id: tooltipTimer
-        interval: 500; running: tooltipEnabled && mouseArea.containsMouse; repeat: true
-        onTriggered: tooltipTime+=1;
-        onRunningChanged: if(!running){ tooltipTime = 0; }
-    }
     Keys.onPressed: if((event.key == Qt.Key_Return || event.key == Qt.Key_Enter) && _icon.interactive){ accepted(); confirmed();}
-    MouseArea{
-        id: mouseArea
-        visible: _icon.interactive || _icon.tooltipEnabled
-        anchors.fill: parent
-        onClicked: if(_icon.interactive){ _icon.clicked(); }
-        hoverEnabled: hoverable
-        cursorShape: containsMouse && _icon.interactive ? Qt.PointingHandCursor : Qt.ArrowCursor
-    }
 
     states: [
         State {
@@ -69,6 +55,27 @@ Image{
             NumberAnimation { target: _icon; properties: "scale"; duration: 70; }
         }
     ]
+
+    Timer {
+        id: tooltipTimer
+
+        interval: 500; running: tooltipEnabled && mouseArea.containsMouse; repeat: true
+
+        onTriggered: tooltipTime+=1;
+        onRunningChanged: if(!running){ tooltipTime = 0; }
+    }
+
+    MouseArea{
+        id: mouseArea
+
+        anchors.fill: parent
+
+        visible: _icon.interactive || _icon.tooltipEnabled
+        hoverEnabled: hoverable
+        cursorShape: containsMouse && _icon.interactive ? Qt.PointingHandCursor : Qt.ArrowCursor
+
+        onClicked: if(_icon.interactive){ _icon.clicked(); }
+    }
 }
 
 

@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick 
 import QtQuick.Layouts
 import QtQuick.Effects
 
@@ -9,14 +9,16 @@ import "../Settings"
 
 Rectangle{
     id: _accordion
-    radius: 8
-    clip: true
-    color: Theme.background.paper
 
     property bool isOpen: false
     property real padding: Size.pixel20
     property string title: "Accordion Item"
     property string subtitle: "Donec id justo. Curabitur blandit mollis lacus. Vivamus quis mi. In ut quam vitae odio lacinia tincidunt. In consectetuer turpis ut velit."
+
+    radius: 8
+    clip: true
+    color: Theme.background.paper
+
     layer{
         enabled: _accordion.isOpen
         effect: MultiEffect{
@@ -27,56 +29,6 @@ Rectangle{
 
         }
     }
-
-    RowLayout{
-        id: _titleLayout
-        anchors{
-            top: parent.top
-            left: parent.left
-            right: parent.right
-            margins: _accordion.padding
-        }
-        Subtitle1{
-            id: _title
-            text: _accordion.title
-            color: Theme.text.primary
-            Layout.fillWidth: true
-            maximumLineCount: 1
-            verticalAlignment: Qt.AlignVCenter
-        }
-        Icon{
-            id: _arrow
-            sourceSize.width: Size.pixel14
-            path: IconList.arrow
-            interactive: true
-            onClicked: _accordion.isOpen = !_accordion.isOpen
-            color: Theme.text.primary
-        }
-    }
-
-    B1{
-        id: _subtitle
-        anchors{
-            top: _titleLayout.bottom
-            bottom: parent.bottom
-            left: parent.left
-            right: parent.right
-            margins: _accordion.padding
-            topMargin: _accordion.padding/2
-        }
-        verticalAlignment: Qt.AlignBottom
-        color: Theme.text.primary
-        text: _accordion.subtitle
-        visible: opacity > 0
-    }
-
-    MouseArea{
-        anchors.fill: parent
-        onClicked: _accordion.isOpen = !_accordion.isOpen
-        cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
-        hoverEnabled: true
-    }
-
     state: "closed"
     states: [
         State {
@@ -160,4 +112,63 @@ Rectangle{
             }
         }
     ]
+
+    RowLayout{
+        id: _titleLayout
+
+        anchors{
+            top: parent.top
+            left: parent.left
+            right: parent.right
+            margins: _accordion.padding
+        }
+
+        Subtitle1{
+            id: _title
+
+            Layout.fillWidth: true
+
+            verticalAlignment: Qt.AlignVCenter
+            text: _accordion.title
+            color: Theme.text.primary
+            maximumLineCount: 1
+        }
+
+        Icon{
+            id: _arrow
+
+            sourceSize.width: Size.pixel14
+            path: IconList.arrow
+            interactive: true
+            color: Theme.text.primary
+
+            onClicked: _accordion.isOpen = !_accordion.isOpen
+        }
+    }
+
+    B1{
+        id: _subtitle
+
+        anchors{
+            top: _titleLayout.bottom; topMargin: _accordion.padding / 2
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+            margins: _accordion.padding
+        }
+
+        verticalAlignment: Qt.AlignBottom
+        color: Theme.text.primary
+        text: _accordion.subtitle
+        visible: opacity > 0
+    }
+
+    MouseArea{
+        anchors.fill: parent
+
+        cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
+        hoverEnabled: true
+
+        onClicked: _accordion.isOpen = !_accordion.isOpen
+    }
 }

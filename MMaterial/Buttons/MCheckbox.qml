@@ -8,17 +8,32 @@ import "../Colors"
 Checkable{
     id: _checkbox
 
-    Layout.preferredHeight: Size.pixel24
-    Layout.preferredWidth: Size.pixel24
-    height: Size.pixel24
-    width: Size.pixel24
+    property var accent: Theme.primary
+
+    implicitHeight: Size.pixel24
+    implicitWidth: Size.pixel24
+
     radius: 6
 
-    property var accent: Theme.primary
+    state: "unchecked"
+    states: [
+        State {
+            name: "checked"
+            when: _checkbox.checked
+            PropertyChanges { target: _checkbox; color: _checkbox.enabled ? _checkbox.accent.main : Theme.action.disabled; border.width: 0; }
+        },
+        State {
+            name: "unchecked"
+            when: !_checkbox.checked
+            PropertyChanges { target: _checkbox; color: "transparent"; border { width: Size.pixel1*2; color: _checkbox.enabled ? Theme.action.active : Theme.action.disabled } }
+        }
+    ]
 
     Icon{
         id: _icon
+
         anchors.centerIn: parent
+
         sourceSize.height: _checkbox.height * 0.7
         path: IconList.checkmark
         color: Theme.background.main;
@@ -27,11 +42,12 @@ Checkable{
 
     Rectangle{
         id: _highlight
-        anchors {
-            centerIn: parent
-        }
+
+        anchors.centerIn: parent
+
         height: _checkbox.height * 1.9
         width: height
+
         radius: height
         visible: _checkbox.mouseArea.containsMouse
         color: _checkbox.accent.transparent.p8
@@ -39,6 +55,7 @@ Checkable{
 
     Item{
         id: _substates
+
         state: "default"
         states: [
             State {
@@ -67,18 +84,4 @@ Checkable{
             }
         ]
     }
-
-    state: "unchecked"
-    states: [
-        State {
-            name: "checked"
-            when: _checkbox.checked
-            PropertyChanges { target: _checkbox; color: _checkbox.enabled ? _checkbox.accent.main : Theme.action.disabled; border.width: 0; }
-        },
-        State {
-            name: "unchecked"
-            when: !_checkbox.checked
-            PropertyChanges { target: _checkbox; color: "transparent"; border { width: Size.pixel1*2; color: _checkbox.enabled ? Theme.action.active : Theme.action.disabled } }
-        }
-    ]
 }

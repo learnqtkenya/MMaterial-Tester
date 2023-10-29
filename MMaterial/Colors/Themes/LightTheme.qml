@@ -1,13 +1,15 @@
+pragma Singleton
+
 import "../BaseObjects"
 import "../BasicPalettes"
 
-pragma Singleton
 
 ThemeBase{
     objectName: "Light Theme"
 
     primary: BasicGreen
     secondary: BasicBlue
+
     info: PaletteBasic{
         lighter: "#CAFDF5"
         light: "#61F3F3"
@@ -16,6 +18,7 @@ ThemeBase{
         darker: "#003768"
         contrastText: "#FFFFFF"
     }
+
     success: PaletteBasic{
         lighter: "#D8FBDE"
         light: "#86E8AB"
@@ -24,6 +27,7 @@ ThemeBase{
         darker: "#0A5554"
         contrastText: "#FFFFFF"
     }
+
     warning: PaletteBasic{
         lighter: "#FFF5CC"
         light: "#FFD666"
@@ -32,6 +36,7 @@ ThemeBase{
         darker: "#7A4100"
         contrastText: "#212B36"
     }
+
     error: PaletteBasic{
         lighter: "#FFE9D5"
         light: "#FFAC82"
@@ -40,22 +45,26 @@ ThemeBase{
         darker: "#7A0916"
         contrastText: "#FFFFFF"
     }
+
     social: PaletteSocial{
         facebook: "#1877F2"
         twitter: "#00AAEC"
         instagram: "#E02D69"
         linkedin: "#007EBB"
     }
+
     text: PaletteText{
         primary: "#212B36"
         secondary: "#637381"
         disabled: "#919EAB"
     }
+
     background: PaletteBackground{
         main: "#FFFFFF"
         paper: "#FFFFFF"
         neutral: "#F4F6F8"
     }
+
     action: PaletteAction{
         active: "#637381"
         hover: Qt.rgba(0, 0, 0, 0.03)
@@ -64,6 +73,7 @@ ThemeBase{
         disabledBackground: Qt.rgba(0, 0, 0, 0.05)
         focus: Qt.rgba(0, 0, 0, 0.14)
     }
+
     other: PaletteOther{
         divider: "#919EAB"
         outline: Qt.rgba(145, 158, 171, 0.32)
