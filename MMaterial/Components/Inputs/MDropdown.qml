@@ -4,7 +4,7 @@ import QtQuick.Controls
 import MMaterial
 
 MTextField {
-    id: _dropdown
+    id: _root
 
     property var model: ["Label 1", "Label 2", "Label 3"]
     property alias delegate: _repeater.delegate
@@ -24,7 +24,7 @@ MTextField {
 
     rightIcon {
         path: IconList.arrow
-        onClicked: _dropdown.toggle();
+        onClicked: _root.toggle();
     }
 
     input {
@@ -36,7 +36,7 @@ MTextField {
     TapHandler{
         id: _tapHandler
 
-        onTapped: _dropdown.toggle();
+        onTapped: _root.toggle();
     }
     HoverHandler{
         id: _hoverHandler
@@ -47,13 +47,13 @@ MTextField {
     Menu {
         id: _contextMenu
 
-        y: _dropdown.height + 1
+        y: _root.height + 1
         closePolicy: Menu.CloseOnEscape | Menu.CloseOnReleaseOutsideParent
 
         Repeater {
             id: _repeater
 
-            model: _dropdown.model
+            model: _root.model
 
             delegate: ListItem {
                 text: modelData
@@ -65,7 +65,7 @@ MTextField {
         }
 
         background: Rectangle {
-            implicitWidth: _dropdown.width
+            implicitWidth: _root.width
 
             radius: 12
             color: Theme.background.main
@@ -73,15 +73,17 @@ MTextField {
         }
 
         contentItem: Item {
+            id: _contentItem
+
             implicitHeight: _listView.height + Size.pixel8
 
             ListView {
                 id: _listView
 
-                anchors.centerIn: parent
+                anchors.centerIn: _contentItem
 
-                width: parent.width - Size.pixel8
-                height: count > _dropdown.delegateCount ? _dropdown.delegateCount * Size.pixel46 : contentHeight
+                width: _contentItem.width - Size.pixel8
+                height: count > _root.delegateCount ? _root.delegateCount * Size.pixel46 : contentHeight
 
                 model: _contextMenu.contentModel
 

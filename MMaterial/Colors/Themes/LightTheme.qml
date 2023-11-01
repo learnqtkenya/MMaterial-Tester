@@ -3,7 +3,6 @@ pragma Singleton
 import "../BaseObjects"
 import "../BasicPalettes"
 
-
 ThemeBase{
     objectName: "Light Theme"
 

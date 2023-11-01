@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import MMaterial
 
 Rectangle {
-    id: _sidebar
+    id: _root
 
     property string name
     property string role
@@ -34,7 +34,7 @@ Rectangle {
             name: "extended"
             when: Size.format == Size.Format.Extended
             PropertyChanges {
-                target: _sidebar
+                target: _root
                 width: 280 * Size.scale
             }
             PropertyChanges {
@@ -50,7 +50,7 @@ Rectangle {
             name: "compact"
             when: true //Size.format == Size.Format.Contained
             PropertyChanges {
-                target: _sidebar
+                target: _root
                 width: 86 * Size.scale
             }
             PropertyChanges {
@@ -66,8 +66,8 @@ Rectangle {
 
     ExtendedSidebar{
         id: _extendedSidebar
-        title.text: _sidebar.name
-        subtitle.text: _sidebar.role
+        title.text: _root.name
+        subtitle.text: _root.role
     }
 
     CompactSidebar{

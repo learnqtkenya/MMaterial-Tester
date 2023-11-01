@@ -1,7 +1,9 @@
-import QtQuick 
+import QtQuick
 import "../Colors"
 
 Rectangle {
+    id: _root
+
     property bool containsMouse: _mouseArea.containsMouse
     property alias mouseArea: _mouseArea
     property bool selected: ListView.isCurrentItem
@@ -19,12 +21,12 @@ Rectangle {
     }
 
     states: [
-        //states based on this _mouseArea.pressed || selected ? Theme.action.selected : _listItem.containsMouse ? Theme.action.hover : Theme.background.main
+        //states based on this _mouseArea.pressed || selected ? Theme.action.selected : _root.containsMouse ? Theme.action.hover : Theme.background.main
         State {
             name: "disabled"
-            when: !_listItem.enabled
+            when: !_root.enabled
             PropertyChanges {
-                target: _listItem
+                target: _root
                 color: Theme.action.disabled
                 opacity: 0.4
             }
@@ -33,31 +35,31 @@ Rectangle {
             name: "pressed"
             when: _mouseArea.pressed
             PropertyChanges {
-                target: _listItem
+                target: _root
                 color: Theme.action.selected
             }
         },
         State {
             name: "hovered"
-            when: _listItem.containsMouse && !_mouseArea.pressed
+            when: _root.containsMouse && !_mouseArea.pressed
             PropertyChanges {
-                target: _listItem
+                target: _root
                 color: Theme.action.hover
             }
         },
         State {
             name: "selected"
-            when: _listItem.selected
+            when: _root.selected
             PropertyChanges {
-                target: _listItem
+                target: _root
                 color: Theme.action.selected
             }
         },
         State {
             name: "enabled"
-            when: _listItem.enabled
+            when: _root.enabled
             PropertyChanges {
-                target: _listItem
+                target: _root
                 color: Theme.background.main
             }
         }
@@ -66,11 +68,11 @@ Rectangle {
     MouseArea {
         id: _mouseArea
 
-        anchors.fill: parent
+        anchors.fill: _root
 
-        hoverEnabled: _listItem.enabled
+        hoverEnabled: _root.enabled
         cursorShape: Qt.PointingHandCursor
 
-        onClicked: _listItem.clicked()
+        onClicked: _root.clicked()
     }
 }

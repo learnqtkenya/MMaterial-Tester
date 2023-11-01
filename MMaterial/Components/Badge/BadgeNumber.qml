@@ -3,7 +3,7 @@ import QtQuick
 import MMaterial
 
 Rectangle {
-    id: _badge
+    id: _root
 
     property real verticalPadding: pixelSize/2
     property real horizontalPadding: pixelSize
@@ -16,16 +16,16 @@ Rectangle {
     width: Math.max(number.implicitWidth + horizontalPadding, height)
 
     radius: 100
-    color: _badge.accent.main
+    color: _root.accent.main
 
     H4 {
         id: number
 
-        anchors.centerIn: parent
+        anchors.centerIn: _root
 
-        text: _badge.quantity > _badge.maxQuantity ? _badge.maxQuantity + "+" : _badge.quantity
-        color: _badge.accent.contrastText
-        font.pixelSize: _badge.pixelSize
+        text: _root.quantity > _root.maxQuantity ? _root.maxQuantity + "+" : _root.quantity
+        color: _root.accent.contrastText
+        font.pixelSize: _root.pixelSize
         verticalAlignment: Qt.AlignVCenter
         font.bold: true
         lineHeight: 1

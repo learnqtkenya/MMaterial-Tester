@@ -5,7 +5,7 @@ import QtQuick.Controls
 import MMaterial
 
 ListView {
-    id: _pagination
+    id: _root
 
     required property SwipeView indexView
 
@@ -25,17 +25,19 @@ ListView {
     onCurrentIndexChanged: positionViewAtIndex(currentIndex, ListView.Center);
 
     delegate: Item {
-        height: _pagination.height
+        id: _delegateItem
+
+        height: _root.height
         width: height
 
         Rectangle {
             id: _dot
 
-            property bool checked: _pagination.currentIndex === index
+            property bool checked: _root.currentIndex === index
 
-            anchors.centerIn: parent
+            anchors.centerIn: _delegateItem
 
-            height: _pagination.height / 3
+            height: _root.height / 3
             width: height
 
             radius: 100
@@ -81,11 +83,11 @@ ListView {
         }
 
         MouseArea {
-            anchors.fill: parent
+            anchors.fill: _delegateItem
 
             cursorShape: Qt.PointingHandCursor
 
-            onClicked: _pagination.indexView.currentIndex = index;
+            onClicked: _root.indexView.currentIndex = index;
         }
     }
 }

@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import MMaterial
 
 Rectangle {
+    id: _root
 
     default property alias container: _sidebarLayout.data
 
@@ -29,7 +30,7 @@ Rectangle {
 
     ColumnLayout {
         anchors {
-            fill: parent
+            fill: _root
             margins: Size.pixel6
             topMargin: Size.pixel24
         }

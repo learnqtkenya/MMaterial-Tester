@@ -9,30 +9,30 @@ import "../Fonts/Texts"
 import "../Colors"
 
 Rectangle {
-    id: _button
+    id: _root
 
     property alias mouseArea: mouseArea
     property alias title: _title
     property var accent: Theme.primary //Needs to be PaletteBasic type
 
     property int pixelSize: {
-        if(_button.size == Size.Grade.L)
+        if(_root.size == Size.Grade.L)
             return Size.pixel15
-        if(_button.size == Size.Grade.M)
+        if(_root.size == Size.Grade.M)
             return Size.pixel14
         return Size.pixel13
     }
     property real horizontalPadding: {
-        if(_button.size == Size.Grade.L)
+        if(_root.size == Size.Grade.L)
             return Size.pixel22;
-        if(_button.size == Size.Grade.M)
+        if(_root.size == Size.Grade.M)
             return Size.pixel16;
         return Size.pixel10;
     }
     property real verticalPadding: {
-        if(_button.size == Size.Grade.L)
+        if(_root.size == Size.Grade.L)
             return Size.pixel12;
-        if(_button.size == Size.Grade.M)
+        if(_root.size == Size.Grade.M)
             return Size.pixel6;
         return Size.pixel4;
     }
@@ -57,12 +57,12 @@ Rectangle {
         Custom
     }
 
-    implicitHeight: _private.oneOrLessChildrenVisible ? _title.contentHeight + _button.verticalPadding * 2 : _title.contentHeight + _button.verticalPadding * 2
+    implicitHeight: _private.oneOrLessChildrenVisible ? _title.contentHeight + _root.verticalPadding * 2 : _title.contentHeight + _root.verticalPadding * 2
     implicitWidth:  {
         if(_private.oneOrLessChildrenVisible)
-            return _button.implicitHeight;
+            return _root.implicitHeight;
         else
-            return _title.implicitWidth + (_leftIcon.visible ? _leftIcon.implicitWidth + _mainLayout.spacing : 0) + (_rightIcon.visible ? _rightIcon.implicitWidth + _mainLayout.spacing : 0) + _button.horizontalPadding * 2
+            return _title.implicitWidth + (_leftIcon.visible ? _leftIcon.implicitWidth + _mainLayout.spacing : 0) + (_rightIcon.visible ? _rightIcon.implicitWidth + _mainLayout.spacing : 0) + _root.horizontalPadding * 2
     }
 
     radius: 8
@@ -73,52 +73,52 @@ Rectangle {
     state: "contained"
     states: [
         State{
-            when: _button.type == MButton.Type.Contained
+            when: _root.type == MButton.Type.Contained
             name: "contained"
-            PropertyChanges { target: _button; border.width: 0 }
+            PropertyChanges { target: _root; border.width: 0 }
             PropertyChanges {
                 target: _private;
-                backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.dark : _button.accent.main) : Theme.action.disabledBackground
-                textColor: _button.enabled ? _button.accent.contrastText : Theme.action.disabled
+                backgroundColor: _root.enabled ? (mouseArea.containsMouse ? _root.accent.dark : _root.accent.main) : Theme.action.disabledBackground
+                textColor: _root.enabled ? _root.accent.contrastText : Theme.action.disabled
                 borderColor: "transparent"
             }
             PropertyChanges{ target: _leftIcon; color: _private.textColor }
             PropertyChanges{ target: _rightIcon; color: _private.textColor }
         },
         State{
-            when: _button.type == MButton.Type.Outlined
+            when: _root.type == MButton.Type.Outlined
             name: "outlined"
-            PropertyChanges { target: _button; border.width: 1; }
+            PropertyChanges { target: _root; border.width: 1; }
             PropertyChanges {
                 target: _private;
-                backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent.p8 : "transparent") : "transparent"
-                textColor: _button.enabled ? _button.accent.main : Theme.action.disabled
-                borderColor:  _button.enabled ? (_button.mouseArea.containsMouse ? _button.accent.main : _button.accent.transparent.p48) : Theme.action.disabled
+                backgroundColor: _root.enabled ? (mouseArea.containsMouse ? _root.accent.transparent.p8 : "transparent") : "transparent"
+                textColor: _root.enabled ? _root.accent.main : Theme.action.disabled
+                borderColor:  _root.enabled ? (_root.mouseArea.containsMouse ? _root.accent.main : _root.accent.transparent.p48) : Theme.action.disabled
             }
             PropertyChanges{ target: _leftIcon; color: _private.textColor }
             PropertyChanges{ target: _rightIcon; color: _private.textColor }
         },
         State{
-            when: _button.type == MButton.Type.Text
+            when: _root.type == MButton.Type.Text
             name: "text"
-            PropertyChanges { target: _button;  border.width: 0; }
+            PropertyChanges { target: _root;  border.width: 0; }
             PropertyChanges {
                 target: _private;
-                backgroundColor: mouseArea.containsMouse ? _button.accent.transparent.p8 : "transparent"
-                textColor:  _button.enabled ? _button.accent.main : Theme.action.disabled
+                backgroundColor: mouseArea.containsMouse ? _root.accent.transparent.p8 : "transparent"
+                textColor:  _root.enabled ? _root.accent.main : Theme.action.disabled
                 borderColor: "transparent"
             }
             PropertyChanges{ target: _leftIcon; color: _private.textColor }
             PropertyChanges{ target: _rightIcon; color: _private.textColor }
         },
         State{
-            when: _button.type == MButton.Type.Soft
+            when: _root.type == MButton.Type.Soft
             name: "soft"
-            PropertyChanges { target: _button; border.width: 0; }
+            PropertyChanges { target: _root; border.width: 0; }
             PropertyChanges {
                 target: _private;
-                backgroundColor: _button.enabled ? (mouseArea.containsMouse ? _button.accent.transparent.p32 : _button.accent.transparent.p16) : Theme.action.disabledBackground
-                textColor:  _button.enabled ? _button.accent.dark : Theme.action.disabled
+                backgroundColor: _root.enabled ? (mouseArea.containsMouse ? _root.accent.transparent.p32 : _root.accent.transparent.p16) : Theme.action.disabledBackground
+                textColor:  _root.enabled ? _root.accent.dark : Theme.action.disabled
                 borderColor: "transparent"
             }
             PropertyChanges{ target: _leftIcon; color: _private.textColor }
@@ -143,17 +143,17 @@ Rectangle {
         id: _body
 
         anchors {
-            fill: parent
-            leftMargin: _private.oneOrLessChildrenVisible ? 0 : _button.horizontalPadding; rightMargin: _private.oneOrLessChildrenVisible ? 0 : _button.horizontalPadding
-            topMargin: _button.verticalPadding; bottomMargin: _button.verticalPadding
+            fill: _root
+            leftMargin: _private.oneOrLessChildrenVisible ? 0 : _root.horizontalPadding; rightMargin: _private.oneOrLessChildrenVisible ? 0 : _root.horizontalPadding
+            topMargin: _root.verticalPadding; bottomMargin: _root.verticalPadding
         }
 
-        visible: !_button.isLoading
+        visible: !_root.isLoading
 
         RowLayout {
             id: _mainLayout
 
-            anchors.fill: parent
+            anchors.fill: _body
 
             spacing: Size.pixel8
 
@@ -171,8 +171,8 @@ Rectangle {
                 Layout.alignment: Qt.AlignCenter
 
                 visible: text !== ""
-                font.pixelSize: _button.pixelSize
-                text: _button.text
+                font.pixelSize: _root.pixelSize
+                text: _root.text
                 color: _private.textColor
 
                 horizontalAlignment: Qt.AlignHCenter
@@ -196,24 +196,24 @@ Rectangle {
     }
 
     BusyIndicator{
-        anchors.centerIn: parent
+        anchors.centerIn: _root
 
-        height: parent.height* 0.7
+        height: _root.height* 0.7
         width: height
 
         Material.accent: _title.color
-        visible: _button.isLoading
+        visible: _root.isLoading
     }
 
     MouseArea {
         id: mouseArea
 
-        anchors.fill: parent
+        anchors.fill: _root
 
-        hoverEnabled: _button.enabled
+        hoverEnabled: _root.enabled
         cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
-        enabled: !_button.isLoading
+        enabled: !_root.isLoading
 
-        onClicked: { _button.clicked(); }
+        onClicked: { _root.clicked(); }
     }
 }

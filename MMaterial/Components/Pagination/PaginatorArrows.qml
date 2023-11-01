@@ -4,7 +4,7 @@ import QtQuick.Controls
 import MMaterial
 
 Item {
-    id: _paginator
+    id: _root
 
     required property SwipeView indexView
 
@@ -20,12 +20,12 @@ Item {
     Rectangle {
         id: _leftArrow
 
-        anchors.left: parent.left
+        anchors.left: _root.left
 
-        height: parent.height
+        height: _root.height
         width: height
 
-        enabled: _paginator.indexView.currentIndex > 0
+        enabled: _root.indexView.currentIndex > 0
         color: _leftMouseArea.pressed ? Theme.main.p700 : Theme.main.p800
         radius: 10
         opacity: enabled ? 1 : 0.48
@@ -35,54 +35,54 @@ Item {
 
             path: IconList.arrow
             color: Theme.common.white
-            sourceSize.height: parent.height * 0.2
-            anchors.centerIn: parent
+            sourceSize.height: _leftArrow.height * 0.2
+            anchors.centerIn: _leftArrow
             rotation: 90
         }
 
         MouseArea {
             id: _leftMouseArea
 
-            anchors.fill: parent
+            anchors.fill: _leftArrow
 
-            hoverEnabled: parent.enabled
+            hoverEnabled: _leftArrow.enabled
             cursorShape: Qt.PointingHandCursor
 
-            onClicked: _paginator.indexView.decrementCurrentIndex();
+            onClicked: _root.indexView.decrementCurrentIndex();
         }
     }
 
     Rectangle {
         id: _rightArrow
 
-        anchors.right: parent.right
+        anchors.right: _root.right
 
-        height: parent.height
+        height: _root.height
         width: height
 
         color: _rightMouseArea.pressed ? Theme.main.p700 : Theme.main.p800
         radius: 10
 
-        enabled: _paginator.indexView.currentIndex < _paginator.indexView.count - 1
+        enabled: _root.indexView.currentIndex < _root.indexView.count - 1
         opacity: enabled ? 1 : 0.48
 
         Icon {
             path: IconList.arrow
             color: Theme.common.white
-            sourceSize.height: parent.height * 0.2
-            anchors.centerIn: parent
+            sourceSize.height: _rightArrow.height * 0.2
+            anchors.centerIn: _rightArrow
             rotation: -90
         }
 
         MouseArea {
             id: _rightMouseArea
 
-            anchors.fill: parent
+            anchors.fill: _rightArrow
 
-            hoverEnabled: parent.enabled
+            hoverEnabled: _rightArrow.enabled
             cursorShape: Qt.PointingHandCursor
 
-            onClicked: _paginator.indexView.incrementCurrentIndex();
+            onClicked: _root.indexView.incrementCurrentIndex();
         }
     }
 }

@@ -4,7 +4,7 @@ import QtQuick.Controls
 import MMaterial
 
 Checkable {
-    id: _sidebarItem
+    id: _root
 
     required property string category
 
@@ -32,7 +32,7 @@ Checkable {
     onVisibleChanged: { if(_contextMenu.opened){ _contextMenu.close(); }}
     onCheckedChanged: if(!checked){ _listView.currentIndex = -1; }
     onClicked: {
-        if(_sidebarItem.model.length > 0)
+        if(_root.model.length > 0)
             _contextMenu.open();
         else
             selectItem();
@@ -41,24 +41,24 @@ Checkable {
     states: [
         State {
             name: "disabled"
-            when: !_sidebarItem.enabled
-            PropertyChanges{ target: _sidebarItem; color: "transparent"; opacity: 0.64; }
+            when: !_root.enabled
+            PropertyChanges{ target: _root; color: "transparent"; opacity: 0.64; }
             PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
             PropertyChanges{ target: _icon; color: Theme.text.secondary }
             PropertyChanges{ target: _arrow; color: Theme.text.secondary }
         },
         State {
             name: "checked"
-            when: _sidebarItem.checked
-            PropertyChanges{ target: _sidebarItem; color: _sidebarItem.mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; opacity: 1;}
+            when: _root.checked
+            PropertyChanges{ target: _root; color: _root.mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; opacity: 1;}
             PropertyChanges { target: _title; font.family: PublicSans.semiBold; color: Theme.primary.main; }
             PropertyChanges{ target: _icon; color: Theme.primary.main }
             PropertyChanges{ target: _arrow; color: Theme.primary.main; }
         },
         State {
             name: "unchecked"
-            when: !_sidebarItem.checked
-            PropertyChanges{ target: _sidebarItem; color: _sidebarItem.mouseArea.containsMouse ? Theme.background.neutral : "transparent"; opacity: 1;}
+            when: !_root.checked
+            PropertyChanges{ target: _root; color: _root.mouseArea.containsMouse ? Theme.background.neutral : "transparent"; opacity: 1;}
             PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
             PropertyChanges{ target: _icon; color: Theme.text.secondary }
             PropertyChanges{ target: _arrow; color: Theme.text.secondary }
@@ -69,8 +69,8 @@ Checkable {
         id: _icon
 
         anchors {
-            horizontalCenter: parent.horizontalCenter
-            top: parent.top; topMargin: Size.pixel8
+            horizontalCenter: _root.horizontalCenter
+            top: _root.top; topMargin: Size.pixel8
         }
 
         sourceSize.width: Size.pixel22
@@ -82,11 +82,11 @@ Checkable {
         id: _title
 
         anchors {
-            horizontalCenter: parent.horizontalCenter
-            bottom: parent.bottom; bottomMargin: Size.pixel4
+            horizontalCenter: _root.horizontalCenter
+            bottom: _root.bottom; bottomMargin: Size.pixel4
         }
 
-        width: parent.width
+        width: _root.width
         height: Size.pixel16
 
         verticalAlignment: Qt.AlignVCenter
@@ -103,7 +103,7 @@ Checkable {
             left: _icon.right; leftMargin: Size.pixel6
         }
 
-        visible: _sidebarItem.model ? _sidebarItem.model.length > 0 : 0
+        visible: _root.model ? _root.model.length > 0 : 0
         path: IconList.arrow
         rotation: -90
 
@@ -117,19 +117,19 @@ Checkable {
     Menu {
         id: _contextMenu
 
-        x: _sidebarItem.x + _sidebarItem.width
+        x: _root.x + _root.width
 
         Repeater {
-            model: _sidebarItem.model
+            model: _root.model
 
             ListItem {
-                property var modelItem: _sidebarItem.model[index]
+                property var modelItem: _root.model[index]
 
                 text: modelItem.text
                 width: _listView.width
 
                 onClicked: {
-                    _sidebarItem.selectItem();
+                    _root.selectItem();
                     modelItem.onClicked();
                     _contextMenu.close();
                 }
@@ -146,14 +146,16 @@ Checkable {
         }
 
         contentItem: Item {
+            id: _contentItem
+
             implicitHeight: _listView.contentHeight + Size.pixel8
 
             ListView {
                 id: _listView
 
-                anchors.centerIn: parent
+                anchors.centerIn: _contentItem
 
-                width: parent.width - Size.pixel8
+                width: _contentItem.width - Size.pixel8
                 implicitHeight: contentHeight
 
                 model: _contextMenu.contentModel

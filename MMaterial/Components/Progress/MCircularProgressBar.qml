@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import MMaterial
 
 Item {
-    id: _progressCircle
+    id: _root
 
     property int size: Size.pixel48 * 2
     property int lineWidth: Size.pixel4
@@ -24,11 +24,11 @@ Item {
 
 
     Caption{
-        anchors.centerIn: parent
+        anchors.centerIn: _root
 
-        text: _progressCircle.progress + "%"
-        visible: _progressCircle.showLabel
-        font.pixelSize: _progressCircle.height* 0.25
+        text: _root.progress + "%"
+        visible: _root.showLabel
+        font.pixelSize: _root.height* 0.25
         color: Theme.text.primary
 
         verticalAlignment: Qt.AlignVCenter
@@ -39,7 +39,7 @@ Item {
 
         property real degree: 0
 
-        anchors.fill: parent
+        anchors.fill: _root
         antialiasing: true
 
         onDegreeChanged: requestPaint();
@@ -47,31 +47,31 @@ Item {
         onPaint: {
             var ctx = getContext("2d");
 
-            var x = _progressCircle.width/2;
-            var y = _progressCircle.height/2;
+            var x = _root.width/2;
+            var y = _root.height/2;
 
-            var radius = _progressCircle.size/2 - _progressCircle.lineWidth
+            var radius = _root.size/2 - _root.lineWidth
             var startAngle = (Math.PI/180) * 270;
             var fullAngle = (Math.PI/180) * (270 + 360);
             var progressAngle = (Math.PI/180) * (270 + degree);
 
             ctx.reset()
-            ctx.lineWidth = _progressCircle.lineWidth;
+            ctx.lineWidth = _root.lineWidth;
 
             ctx.beginPath();
             ctx.arc(x, y, radius, startAngle, fullAngle);
-            ctx.strokeStyle = _progressCircle.secondaryColor;
+            ctx.strokeStyle = _root.secondaryColor;
             ctx.stroke();
 
             ctx.beginPath();
             ctx.arc(x, y, radius, startAngle, progressAngle);
-            ctx.strokeStyle = _progressCircle.primaryColor;
+            ctx.strokeStyle = _root.primaryColor;
             ctx.stroke();
         }
 
         Behavior on degree {
             NumberAnimation {
-                duration: _progressCircle.animationDuration
+                duration: _root.animationDuration
             }
         }
     }

@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import MMaterial
 
 AbstractListItem{
-    id: _listItem
+    id: _root
 
     default property alias container: _mainLayout.data
 
@@ -22,7 +22,7 @@ AbstractListItem{
         id: _mainLayout
 
         anchors{
-            fill: parent
+            fill: _root
             margins: Size.pixel12
             leftMargin: Size.pixel16; rightMargin: Size.pixel16
         }

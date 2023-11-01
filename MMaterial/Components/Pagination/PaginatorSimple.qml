@@ -5,7 +5,7 @@ import QtQuick.Controls
 import MMaterial
 
 Rectangle {
-    id: _paginator
+    id: _root
 
     required property SwipeView indexView
 
@@ -22,23 +22,23 @@ Rectangle {
     Item {
         id: _leftArrow
 
-        anchors.left: parent.left
+        anchors.left: _root.left
 
-        height: parent.height
+        height: _root.height
         width: height
 
         Icon {
-            anchors.centerIn: parent
+            anchors.centerIn: _leftArrow
 
             path: IconList.arrow
             color: Theme.common.white
-            sourceSize.height: parent.height * 0.2
+            sourceSize.height: _leftArrow.height * 0.2
             rotation: 90
             interactive: true
-            enabled: _paginator.indexView.currentIndex > 0
+            enabled: _root.indexView.currentIndex > 0
             opacity: enabled ? 1 : 0.48
 
-            onClicked: _paginator.indexView.decrementCurrentIndex();
+            onClicked: _root.indexView.decrementCurrentIndex();
         }
     }
 
@@ -48,40 +48,40 @@ Rectangle {
             right: _rightArrow.left
         }
 
-        height: parent.height
+        height: _root.height
 
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: Qt.AlignHCenter
 
-        text: _paginator.indexView.currentIndex + 1 + "/" + _paginator.numberOfPages
+        text: _root.indexView.currentIndex + 1 + "/" + _root.numberOfPages
         color: Theme.common.white
 
         font {
             bold: true
-            pixelSize: parent.height * 0.45
+            pixelSize: _root.height * 0.45
         }
     }
 
     Item {
         id: _rightArrow
 
-        anchors.right: parent.right
+        anchors.right: _root.right
 
-        height: parent.height
+        height: _root.height
         width: height
 
         Icon {
-            anchors.centerIn: parent
+            anchors.centerIn: _rightArrow
 
             path: IconList.arrow
             color: Theme.common.white
-            sourceSize.height: parent.height * 0.2
+            sourceSize.height: _rightArrow.height * 0.2
             rotation: -90
             interactive: true
-            enabled: _paginator.indexView.currentIndex < _paginator.indexView.count - 1
+            enabled: _root.indexView.currentIndex < _root.indexView.count - 1
             opacity: enabled ? 1 : 0.48
 
-            onClicked: _paginator.indexView.incrementCurrentIndex();
+            onClicked: _root.indexView.incrementCurrentIndex();
         }
     }
 }

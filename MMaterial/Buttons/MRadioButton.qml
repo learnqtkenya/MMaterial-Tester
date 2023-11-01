@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import MMaterial
 
 Item {
-    id: _radioButtonRoot
+    id: _root
 
     property var accent: Theme.primary
     property alias checked: _radioButton.checked
@@ -20,7 +20,7 @@ Item {
     Checkable{
         id: _radioButton
 
-        height: parent.height
+        height: _root.height
         width: height
 
         radius: 100
@@ -28,10 +28,10 @@ Item {
 
         border{
             width: Size.pixel1
-            color: _radioButtonRoot.enabled ?  (_radioButton.checked ? _radioButtonRoot.accent.main : Theme.action.active) : Theme.action.disabled
+            color: _root.enabled ?  (_radioButton.checked ? _root.accent.main : Theme.action.active) : Theme.action.disabled
         }
 
-        onClicked: _radioButtonRoot.clicked();
+        onClicked: _root.clicked();
 
         states: [
             //pressed and released
@@ -78,25 +78,25 @@ Item {
         Rectangle {
             id: _highlight
 
-            anchors.centerIn: parent
+            anchors.centerIn: _radioButton
 
             height: _radioButton.height * 1.9
             width: height
 
             radius: height
             visible: _radioButton.mouseArea.containsMouse
-            color: _radioButton.checked ? _radioButtonRoot.accent.transparent.p8 : Theme.action.hover
+            color: _radioButton.checked ? _root.accent.transparent.p8 : Theme.action.hover
         }
 
         Rectangle {
             id: _innerCircle
 
             anchors{
-                fill: parent
-                margins: parent.height * 0.2
+                fill: _radioButton
+                margins: _radioButton.height * 0.2
             }
 
-            radius: parent.radius
+            radius: _radioButton.radius
             color: _radioButton.border.color
 
             states: [
@@ -147,10 +147,10 @@ Item {
 
         anchors{
             left: _radioButton.right; leftMargin: Size.pixel12
-            right: parent.right
+            right: _root.right
         }
 
-        height: parent.height
+        height: _root.height
 
         visible: text != ""
         verticalAlignment: Qt.AlignVCenter

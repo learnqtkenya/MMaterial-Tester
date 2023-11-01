@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import MMaterial
 
 RowLayout {
-    id: _progress
+    id: _root
 
     property real lineWidth: Size.pixel4
 
@@ -26,23 +26,23 @@ RowLayout {
 
         Layout.alignment: Qt.AlignVCenter
         Layout.fillWidth: true
-        Layout.preferredHeight: _progress.lineWidth
+        Layout.preferredHeight: _root.lineWidth
 
-        color: _progress.backgroundColor
+        color: _root.backgroundColor
         radius: 50
 
         Rectangle {
             id: _innerBar
 
             anchors {
-                top: parent.top
-                left: parent.left
-                bottom: parent.bottom
+                top: _bar.top
+                left: _bar.left
+                bottom: _bar.bottom
             }
 
-            width: _progress.progress * parent.width / 100
+            width: _root.progress * _bar.width / 100
 
-            color: _progress.foregroundColor
+            color: _root.foregroundColor
             radius: _bar.radius
 
             Behavior on width { SmoothedAnimation { duration: 50;} }
@@ -54,9 +54,9 @@ RowLayout {
         Layout.preferredWidth: contentWidth
         Layout.alignment: Qt.AlignVCenter
 
-        visible: _progress.showLabel
+        visible: _root.showLabel
         color: Theme.text.secondary
-        text: _progress.progress + "%"
+        text: _root.progress + "%"
         verticalAlignment: Qt.AlignVCenter
 
         onContentWidthChanged: font.pixelSize * 2.6

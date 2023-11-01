@@ -1,7 +1,7 @@
 import QtQuick 
 
 Rectangle {
-    id: _checkable
+    id: _root
 
     property bool checked: false
     property bool customCheckImplementation: false
@@ -13,15 +13,15 @@ Rectangle {
     MouseArea {
         id: mouseArea
 
-        anchors.fill: parent
+        anchors.fill: _root
 
-        hoverEnabled: _checkable.enabled
+        hoverEnabled: _root.enabled
         cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
 
         onClicked: {
-            _checkable.clicked();
-            if(!_checkable.customCheckImplementation)
-                _checkable.checked = !_checkable.checked;
+            _root.clicked();
+            if(!_root.customCheckImplementation)
+                _root.checked = !_root.checked;
         }
     }
 }

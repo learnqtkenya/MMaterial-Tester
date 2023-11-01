@@ -8,7 +8,7 @@ import "../Colors"
 import "../Settings"
 
 Rectangle {
-    id: _accordion
+    id: _root
 
     property bool isOpen: false
     property real padding: Size.pixel20
@@ -20,7 +20,7 @@ Rectangle {
     color: Theme.background.paper
 
     layer{
-        enabled: _accordion.isOpen
+        enabled: _root.isOpen
         effect: MultiEffect{
             shadowEnabled: true
             shadowBlur: 3
@@ -33,14 +33,14 @@ Rectangle {
     states: [
         State {
             name: "open"
-            when: _accordion.isOpen
+            when: _root.isOpen
             PropertyChanges {
                 target: _arrow
                 rotation: 180
             }
             PropertyChanges {
-                target: _accordion
-                height: _title.contentHeight + _accordion.padding * 3 + _subtitle.contentHeight
+                target: _root
+                height: _title.contentHeight + _root.padding * 3 + _subtitle.contentHeight
             }
             PropertyChanges {
                 target: _subtitle
@@ -50,14 +50,14 @@ Rectangle {
         },
         State {
             name: "closed"
-            when: !_accordion.isOpen
+            when: !_root.isOpen
             PropertyChanges {
                 target: _arrow
                 rotation: 0
             }
             PropertyChanges {
-                target: _accordion
-                height: _title.contentHeight + _accordion.padding * 2
+                target: _root
+                height: _title.contentHeight + _root.padding * 2
             }
             PropertyChanges {
                 target: _subtitle
@@ -117,10 +117,10 @@ Rectangle {
         id: _titleLayout
 
         anchors{
-            top: parent.top
-            left: parent.left
-            right: parent.right
-            margins: _accordion.padding
+            top: _root.top
+            left: _root.left
+            right: _root.right
+            margins: _root.padding
         }
 
         Subtitle1 {
@@ -129,7 +129,7 @@ Rectangle {
             Layout.fillWidth: true
 
             verticalAlignment: Qt.AlignVCenter
-            text: _accordion.title
+            text: _root.title
             color: Theme.text.primary
             maximumLineCount: 1
         }
@@ -142,7 +142,7 @@ Rectangle {
             interactive: true
             color: Theme.text.primary
 
-            onClicked: _accordion.isOpen = !_accordion.isOpen
+            onClicked: _root.isOpen = !_root.isOpen
         }
     }
 
@@ -150,25 +150,25 @@ Rectangle {
         id: _subtitle
 
         anchors{
-            top: _titleLayout.bottom; topMargin: _accordion.padding / 2
-            bottom: parent.bottom
-            left: parent.left
-            right: parent.right
-            margins: _accordion.padding
+            top: _titleLayout.bottom; topMargin: _root.padding / 2
+            bottom: _root.bottom
+            left: _root.left
+            right: _root.right
+            margins: _root.padding
         }
 
         verticalAlignment: Qt.AlignBottom
         color: Theme.text.primary
-        text: _accordion.subtitle
+        text: _root.subtitle
         visible: opacity > 0
     }
 
     MouseArea {
-        anchors.fill: parent
+        anchors.fill: _root
 
         cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
         hoverEnabled: true
 
-        onClicked: _accordion.isOpen = !_accordion.isOpen
+        onClicked: _root.isOpen = !_root.isOpen
     }
 }

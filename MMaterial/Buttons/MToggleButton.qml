@@ -48,7 +48,7 @@ Rectangle {
     Icon {
         id: _icon
 
-        anchors.centerIn: parent
+        anchors.centerIn: _root
         path: IconList.logo
         visible: path != ""
     }
@@ -57,7 +57,7 @@ Rectangle {
     MouseArea {
         id: mouseArea
 
-        anchors.fill: parent
+        anchors.fill: _root
 
         hoverEnabled: true
         cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor

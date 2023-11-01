@@ -1,7 +1,7 @@
 import QtQuick
 
 QtObject{
-    id: _paletteBasic
+    id: _root
 
     required property color main
     required property color contrastText
@@ -12,6 +12,6 @@ QtObject{
     property color darker: Qt.darker(main, 1.6)
 
     property PaletteTransparent transparent: PaletteTransparent{
-        mainColor: _paletteBasic.main
+        mainColor: _root.main
     }
 }

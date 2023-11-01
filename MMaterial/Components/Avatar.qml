@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import MMaterial
 
 Rectangle {
-    id: _avatar
+    id: _root
 
     property string title: "A"
     property PaletteBasic accent: Theme.primary
@@ -18,16 +18,16 @@ Rectangle {
     Subtitle2 {
         id: _title
 
-        anchors.centerIn: parent
+        anchors.centerIn: _root
 
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: Qt.AlignHCenter
 
-        color: _avatar.accent.contrastText
-        text: _avatar.title.length >= 1 ?_avatar.title[0] : ""
+        color: _root.accent.contrastText
+        text: _root.title.length >= 1 ?_root.title[0] : ""
 
         font {
-            pixelSize: parent.height * 0.4
+            pixelSize: _root.height * 0.4
             capitalization: Font.AllUppercase
         }
     }

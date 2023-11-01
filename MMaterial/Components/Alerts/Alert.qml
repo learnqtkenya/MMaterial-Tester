@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import MMaterial
 
 Rectangle {
-    id: _alert
+    id: _root
 
     enum Severity { Info, Success, Warning, Error }
     enum Variant { Standard, Filled, Outlined }
@@ -17,17 +17,17 @@ Rectangle {
 
     property string text: ""
     property string icon: {
-        if(_alert.severity == Alert.Severity.Info) return IconList.info;
-        if(_alert.severity == Alert.Severity.Success) return IconList.success;
-        if(_alert.severity == Alert.Severity.Warning) return IconList.alert;
-        if(_alert.severity == Alert.Severity.Error) return IconList.info;
+        if(_root.severity == Alert.Severity.Info) return IconList.info;
+        if(_root.severity == Alert.Severity.Success) return IconList.success;
+        if(_root.severity == Alert.Severity.Warning) return IconList.alert;
+        if(_root.severity == Alert.Severity.Error) return IconList.info;
     }
 
     property var accent: {
-        if(_alert.severity == Alert.Severity.Info) return Theme.info;
-        if(_alert.severity == Alert.Severity.Success) return Theme.success;
-        if(_alert.severity == Alert.Severity.Warning) return Theme.warning;
-        if(_alert.severity == Alert.Severity.Error) return Theme.error;
+        if(_root.severity == Alert.Severity.Info) return Theme.info;
+        if(_root.severity == Alert.Severity.Success) return Theme.success;
+        if(_root.severity == Alert.Severity.Warning) return Theme.warning;
+        if(_root.severity == Alert.Severity.Error) return Theme.error;
     }
 
     signal clicked
@@ -42,29 +42,29 @@ Rectangle {
     states: [
         State{
             name: "standard"
-            when: _alert.variant == Alert.Variant.Standard
-            PropertyChanges{ target: _alert; color: _alert.accent.lighter; border.width: 0}
-            PropertyChanges{ target: _icon; color: _alert.accent.main}
-            PropertyChanges{ target: _closeIcon; color: _alert.accent.main}
-            PropertyChanges{ target: _text; color: _alert.accent.darker}
+            when: _root.variant == Alert.Variant.Standard
+            PropertyChanges{ target: _root; color: _root.accent.lighter; border.width: 0}
+            PropertyChanges{ target: _icon; color: _root.accent.main}
+            PropertyChanges{ target: _closeIcon; color: _root.accent.main}
+            PropertyChanges{ target: _text; color: _root.accent.darker}
         },
         State{
             name: "filled"
-            when: _alert.variant == Alert.Variant.Filled
-            PropertyChanges{ target: _alert; color: _alert.accent.main; border.width: 0}
-            PropertyChanges{ target: _icon; color: _alert.accent.contrastText}
-            PropertyChanges{ target: _closeIcon; color: _alert.accent.contrastText}
-            PropertyChanges{ target: _text; color: _alert.accent.contrastText}
-            PropertyChanges{ target: _dismissButton; title.color: _alert.accent.contrastText; border.color: _alert.accent.contrastText }
+            when: _root.variant == Alert.Variant.Filled
+            PropertyChanges{ target: _root; color: _root.accent.main; border.width: 0}
+            PropertyChanges{ target: _icon; color: _root.accent.contrastText}
+            PropertyChanges{ target: _closeIcon; color: _root.accent.contrastText}
+            PropertyChanges{ target: _text; color: _root.accent.contrastText}
+            PropertyChanges{ target: _dismissButton; title.color: _root.accent.contrastText; border.color: _root.accent.contrastText }
             PropertyChanges{ target: _actionButton; title.color: Theme.main.p800; color: Theme.common.white; }
         },
         State{
             name: "outlined"
-            when: _alert.variant == Alert.Variant.Outlined
-            PropertyChanges{ target: _alert; color: Theme.background.main; border.width: Size.pixel1; border.color: accent.dark}
-            PropertyChanges{ target: _icon; color: _alert.accent.main}
-            PropertyChanges{ target: _closeIcon; color: _alert.accent.main}
-            PropertyChanges{ target: _text; color: _alert.accent.dark}
+            when: _root.variant == Alert.Variant.Outlined
+            PropertyChanges{ target: _root; color: Theme.background.main; border.width: Size.pixel1; border.color: accent.dark}
+            PropertyChanges{ target: _icon; color: _root.accent.main}
+            PropertyChanges{ target: _closeIcon; color: _root.accent.main}
+            PropertyChanges{ target: _text; color: _root.accent.dark}
         }
     ]
 
@@ -77,16 +77,16 @@ Rectangle {
     MouseArea {
         id: mouseArea
 
-        anchors.fill: parent
+        anchors.fill: _root
 
-        onClicked: _alert.clicked()
+        onClicked: _root.clicked()
     }
 
     RowLayout {
         id: _mainLayout
 
         anchors{
-            fill: parent
+            fill: _root
             margins: Size.pixel8
         }
 
@@ -98,7 +98,7 @@ Rectangle {
             Layout.leftMargin: Size.pixel8
 
             sourceSize.height: Size.pixel24
-            path: _alert.icon
+            path: _root.icon
         }
 
         B2 {
@@ -107,7 +107,7 @@ Rectangle {
             Layout.fillWidth: true
             Layout.leftMargin: Size.pixel12
 
-            text: _alert.text
+            text: _root.text
             color: Theme.info.darker
             verticalAlignment: Qt.AlignVCenter
             elide: Text.ElideNone
@@ -124,7 +124,7 @@ Rectangle {
             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             Layout.preferredHeight: _actionButton.implicitHeight
             Layout.preferredWidth: _actionButton.implicitWidth
-            accent: _alert.accent
+            accent: _root.accent
             visible: text != ""
         }
 
@@ -138,10 +138,10 @@ Rectangle {
             type: MButton.Type.Outlined
             size: Size.S
             text: ""
-            accent: _alert.accent
+            accent: _root.accent
             visible: text != ""
 
-            onClicked: _alert.close()
+            onClicked: _root.close()
         }
 
         Icon {
@@ -156,7 +156,7 @@ Rectangle {
             path: IconList.closeX
             interactive: true
 
-            onClicked: _alert.close()
+            onClicked: _root.close()
         }
     }
 }

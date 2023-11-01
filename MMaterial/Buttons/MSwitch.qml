@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import MMaterial
 
 Item {
-    id: _switchRoot
+    id: _root
 
     property int size: Size.Grade.M
 
@@ -28,32 +28,32 @@ Item {
     Checkable{
         id: _switch
 
-        height: parent.height
+        height: _root.height
         width: height * 1.6
 
         radius: 100
 
-        onClicked: _switchRoot.clicked();
+        onClicked: _root.clicked();
 
         states: [
             State {
-                when: !_switchRoot.enabled
+                when: !_root.enabled
                 name: "disabled"
-                PropertyChanges { target: _switchRoot; opacity: 0.48 }
+                PropertyChanges { target: _root; opacity: 0.48 }
                 PropertyChanges { target: _switch; color: Theme.main.transparent.p48 }
-                PropertyChanges { target: _innerCircle; x: _switchRoot.checked ? _innerCircle.parent.width - _innerCircle.width : 0 }
+                PropertyChanges { target: _innerCircle; x: _root.checked ? _innerCircle.parent.width - _innerCircle.width : 0 }
             },
             State {
                 when: _switch.checked
                 name: "checked"
-                PropertyChanges { target: _switchRoot; opacity: 1 }
-                PropertyChanges { target: _switch; color: _switchRoot.accent.main }
+                PropertyChanges { target: _root; opacity: 1 }
+                PropertyChanges { target: _switch; color: _root.accent.main }
                 PropertyChanges { target: _innerCircle; x: _innerCircle.parent.width - _innerCircle.width }
             },
             State {
                 when: true
                 name: "unchecked"
-                PropertyChanges { target: _switchRoot; opacity: 1 }
+                PropertyChanges { target: _root; opacity: 1 }
                 PropertyChanges { target: _switch; color: Theme.main.transparent.p48 }
                 PropertyChanges{ target: _innerCircle; x: 0 }
             }
@@ -83,8 +83,10 @@ Item {
         ]
 
         Item {
+            id: _container
+
             anchors{
-                fill: parent
+                fill: _switch
                 margins: _switch.height * 0.15
             }
 
@@ -92,8 +94,8 @@ Item {
                 id: _innerCircle
 
                 anchors{
-                    top: parent.top
-                    bottom: parent.bottom
+                    top: _container.top
+                    bottom: _container.bottom
                 }
 
                 width: height
@@ -104,15 +106,15 @@ Item {
                 Rectangle {
                     id: _highlight
 
-                    anchors.centerIn: parent
+                    anchors.centerIn: _innerCircle
 
-                    height: _switch.mouseArea.containsMouse ? parent.height * 2.7 : 0
+                    height: _switch.mouseArea.containsMouse ? _innerCircle.height * 2.7 : 0
                     width: height
 
                     radius: height
                     visible: height > 0
                     opacity: _switch.mouseArea.pressed ? 0.7 : 1
-                    color: _switch.checked ? _switchRoot.accent.transparent.p8 : Theme.action.hover
+                    color: _switch.checked ? _root.accent.transparent.p8 : Theme.action.hover
 
                     Behavior on height { SmoothedAnimation { duration: 150; easing.type: Easing.InOutQuad} }
                 }
@@ -125,10 +127,10 @@ Item {
 
         anchors{
             left: _switch.right; leftMargin: Size.pixel12
-            right: parent.right
+            right: _root.right
         }
 
-        height: parent.height
+        height: _root.height
 
         visible: text.length > 0
         verticalAlignment: Qt.AlignVCenter

@@ -4,6 +4,8 @@ import QtQuick.Layouts
 import MMaterial
 
 Item {
+    id: _root
+
     property alias text: _label.text
 
     height: Size.scale * 50
@@ -12,7 +14,7 @@ Item {
         id: _label
 
         anchors{
-            fill: parent
+            fill: _root
             bottomMargin: Size.pixel8
             leftMargin: Size.pixel16
         }

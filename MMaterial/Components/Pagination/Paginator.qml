@@ -5,7 +5,7 @@ import QtQuick.Controls
 import MMaterial
 
 Item {
-    id: _pagination
+    id: _root
 
     implicitWidth: _decrementButton.width + _incrementButton.width + (Math.min(visiblePageCount, _listView.count) * (Size.pixel40 + _listView.spacing) + _listView.spacing)
     implicitHeight: Size.pixel40
@@ -21,15 +21,15 @@ Item {
     MFabButton {
         id: _decrementButton
 
-        anchors.left: parent.left
+        anchors.left: _root.left
 
-        height: parent.height
+        height: _root.height
         width: height
 
         horizontalPadding: 0
         verticalPadding: 0
 
-        radius: _pagination.radius
+        radius: _root.radius
         type: MFabButton.Type.Text
         enabled: _listView.currentIndex > 0
         accent: Theme.defaultNeutral
@@ -40,7 +40,7 @@ Item {
             sourceSize.height: _listView.height * 0.15
         }
 
-        onClicked: _pagination.indexView.decrementCurrentIndex();
+        onClicked: _root.indexView.decrementCurrentIndex();
     }
 
     ListView {
@@ -52,10 +52,10 @@ Item {
             margins: _listView.spacing
         }
 
-        height: parent.height
+        height: _root.height
 
-        model: _pagination.numberOfPages
-        currentIndex: _pagination.indexView.currentIndex
+        model: _root.numberOfPages
+        currentIndex: _root.indexView.currentIndex
         spacing: Size.pixel6
         orientation: ListView.Horizontal
         clip: true
@@ -63,13 +63,13 @@ Item {
         onCurrentIndexChanged: positionViewAtIndex(currentIndex, ListView.Center);
 
         delegate: MFabButton {
-            height: _pagination.height
+            height: _root.height
             width: height
 
-            radius: _pagination.radius
+            radius: _root.radius
             text: (modelData+1)
             accent: ListView.isCurrentItem ? Theme.primary : Theme.defaultNeutral
-            type: ListView.isCurrentItem ? _pagination.selectedType : MFabButton.Type.Text
+            type: ListView.isCurrentItem ? _root.selectedType : MFabButton.Type.Text
 
             horizontalPadding: 0
             verticalPadding: 0
@@ -79,7 +79,7 @@ Item {
                 family: ListView.isCurrentItem ? PublicSans.semiBold : PublicSans.regular
             }
 
-            onClicked: _pagination.indexView.currentIndex = index;
+            onClicked: _root.indexView.currentIndex = index;
 
         }
     }
@@ -87,15 +87,15 @@ Item {
     MFabButton {
         id: _incrementButton
 
-        anchors.right: parent.right
+        anchors.right: _root.right
 
-        height: parent.height
+        height: _root.height
         width: height
 
         horizontalPadding: 0
         verticalPadding: 0
 
-        radius: _pagination.radius
+        radius: _root.radius
         accent: Theme.defaultNeutral
         type: MFabButton.Type.Text
         enabled: _listView.currentIndex < _listView.count-1
@@ -106,6 +106,6 @@ Item {
             sourceSize.height: _listView.height * 0.15
         }
 
-        onClicked: _pagination.indexView.incrementCurrentIndex();
+        onClicked: _root.indexView.incrementCurrentIndex();
     }
 }

@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Effects
 
 Image{
-    id: _icon
+    id: _root
 
     property string color: ""
     property string path: ""
@@ -20,9 +20,9 @@ Image{
     source: visible ? path : ""
 
     layer {
-        enabled: _icon.color != ""
+        enabled: _root.color != ""
         effect: MultiEffect {
-            colorizationColor: _icon.color
+            colorizationColor: _root.color
             colorization: 1
             brightness: 1
         }
@@ -31,28 +31,28 @@ Image{
     ToolTip.text: description
     ToolTip.visible: description != "" && tooltipEnabled && tooltipTime >= 2 ? containsMouse : false
 
-    Keys.onPressed: if((event.key == Qt.Key_Return || event.key == Qt.Key_Enter) && _icon.interactive){ accepted(); confirmed();}
+    Keys.onPressed: if((event.key == Qt.Key_Return || event.key == Qt.Key_Enter) && _root.interactive){ accepted(); confirmed();}
 
     states: [
         State {
-            when: mouseArea.pressed && _icon.interactive
+            when: mouseArea.pressed && _root.interactive
             name: "pressed"
-            PropertyChanges { target: _icon; scale: 0.8; }
+            PropertyChanges { target: _root; scale: 0.8; }
         },
         State {
-            when: _icon.interactive
+            when: _root.interactive
             name: "default"
-            PropertyChanges { target: _icon; scale: 1; }
+            PropertyChanges { target: _root; scale: 1; }
         }
     ]
     transitions: [
         Transition {
             from: "pressed"
-            NumberAnimation { id: _clickedAnimation; target: _icon; properties: "scale"; duration: 1150; easing.type: Easing.OutElastic; }
+            NumberAnimation { id: _clickedAnimation; target: _root; properties: "scale"; duration: 1150; easing.type: Easing.OutElastic; }
         },
         Transition {
             from: "default"
-            NumberAnimation { target: _icon; properties: "scale"; duration: 70; }
+            NumberAnimation { target: _root; properties: "scale"; duration: 70; }
         }
     ]
 
@@ -68,13 +68,13 @@ Image{
     MouseArea {
         id: mouseArea
 
-        anchors.fill: parent
+        anchors.fill: _root
 
-        visible: _icon.interactive || _icon.tooltipEnabled
+        visible: _root.interactive || _root.tooltipEnabled
         hoverEnabled: hoverable
-        cursorShape: containsMouse && _icon.interactive ? Qt.PointingHandCursor : Qt.ArrowCursor
+        cursorShape: containsMouse && _root.interactive ? Qt.PointingHandCursor : Qt.ArrowCursor
 
-        onClicked: if(_icon.interactive){ _icon.clicked(); }
+        onClicked: if(_root.interactive){ _root.clicked(); }
     }
 }
 

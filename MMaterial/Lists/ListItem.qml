@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import MMaterial
 
 AbstractListItem{
-    id: _listItem
+    id: _root
 
     default property alias container: _mainLayout.data
 
@@ -18,7 +18,7 @@ AbstractListItem{
         id: _mainLayout
 
         anchors{
-            fill: parent
+            fill: _root
             leftMargin: Size.pixel16; rightMargin: Size.pixel12
         }
 
@@ -39,8 +39,8 @@ AbstractListItem{
             Layout.alignment: Qt.AlignVCenter
 
             verticalAlignment: Qt.AlignVCenter
-            font.family: _listItem.selected ? PublicSans.semiBold : PublicSans.regular
-            color: _listItem.selected ? Theme.text.primary : Theme.text.secondary
+            font.family: _root.selected ? PublicSans.semiBold : PublicSans.regular
+            color: _root.selected ? Theme.text.primary : Theme.text.secondary
         }
     }
 }

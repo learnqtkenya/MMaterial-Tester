@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import MMaterial
 
 Item {
-    id: _sidebarItem
+    id: _root
 
     property alias icon: _icon
     property alias text: _title.text
@@ -37,12 +37,12 @@ Item {
 
     states: [
         State{
-            when: _sidebarItem.isOpen
+            when: _root.isOpen
             name: "open"
             PropertyChanges{ target: _listView; height: _listView.contentHeight }
         },
         State{
-            when: !_sidebarItem.isOpen
+            when: !_root.isOpen
             name: "closed"
             PropertyChanges{ target: _listView; height: 0; }
         }
@@ -52,12 +52,12 @@ Item {
         Transition {
             from: "*"
             to: "open"
-            NumberAnimation { target: _listView; property: "height"; duration: _sidebarItem.openingSpeed; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: _listView; property: "height"; duration: _root.openingSpeed; easing.type: Easing.InOutQuad }
         },
         Transition {
             from: "*"
             to: "closed"
-            NumberAnimation { target: _listView; property: "height"; duration: _sidebarItem.openingSpeed; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: _listView; property: "height"; duration: _root.openingSpeed; easing.type: Easing.InOutQuad }
         }
     ]
 
@@ -65,24 +65,24 @@ Item {
         id: _mainItem
 
         height: 50 * Size.scale
-        width: parent.width
+        width: _root.width
 
         customCheckImplementation: true
         radius: 8
 
         onClicked: {
-            if (_sidebarItem.model && _sidebarItem.model.length > 0) {
-                _sidebarItem.isOpen = !_sidebarItem.isOpen;
+            if (_root.model && _root.model.length > 0) {
+                _root.isOpen = !_root.isOpen;
             } else {
-                _sidebarItem.selectItem();
+                _root.selectItem();
             }
-            _sidebarItem.clicked();
+            _root.clicked();
         }
 
         states: [
             State {
                 name: "disabled"
-                when: !_sidebarItem.enabled
+                when: !_root.enabled
                 PropertyChanges{ target: _mainItem; color: "transparent"; opacity: 0.64; }
                 PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
                 PropertyChanges{ target: _icon; color: Theme.text.secondary }
@@ -90,7 +90,7 @@ Item {
             },
             State {
                 name: "checked"
-                when: _sidebarItem.checked
+                when: _root.checked
                 PropertyChanges{ target: _mainItem; color: _mainItem.mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; opacity: 1;}
                 PropertyChanges { target: _title; font.family: PublicSans.semiBold; color: Theme.primary.main; }
                 PropertyChanges{ target: _icon; color: Theme.primary.main }
@@ -98,7 +98,7 @@ Item {
             },
             State {
                 name: "unchecked"
-                when: !_sidebarItem.checked
+                when: !_root.checked
                 PropertyChanges{ target: _mainItem; color: _mainItem.mouseArea.containsMouse ? Theme.background.neutral : "transparent"; opacity: 1;}
                 PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
                 PropertyChanges{ target: _icon; color: Theme.text.secondary }
@@ -108,7 +108,7 @@ Item {
 
         RowLayout {
             anchors{
-                fill: parent
+                fill: _mainItem
                 leftMargin: Size.pixel16
                 rightMargin: Size.pixel12
             }
@@ -140,16 +140,16 @@ Item {
 
                 Layout.alignment: Qt.AlignVCenter
 
-                visible: _sidebarItem.model ? _sidebarItem.model.length > 0 : 0
+                visible: _root.model ? _root.model.length > 0 : 0
                 path: IconList.arrow
-                rotation: _sidebarItem.isOpen ? 0 : -90
+                rotation: _root.isOpen ? 0 : -90
 
                 sourceSize {
                     height: Size.pixel6
                     width: Size.pixel6
                 }
 
-                Behavior on rotation { SmoothedAnimation { duration: _sidebarItem.openingSpeed;} }
+                Behavior on rotation { SmoothedAnimation { duration: _root.openingSpeed;} }
             }
         }
     }
@@ -159,7 +159,7 @@ Item {
 
         anchors{
             top: _mainItem.bottom; topMargin: Size.pixel4
-            left: parent.left; right: parent.right
+            left: _root.left; right: _root.right
         }
 
         currentIndex: -1
@@ -222,7 +222,7 @@ Item {
 
             RowLayout {
                 anchors {
-                    fill: parent
+                    fill: _subItem
                     leftMargin: Size.pixel16
                     rightMargin: Size.pixel12
                 }
@@ -230,11 +230,13 @@ Item {
                 spacing: Size.pixel16
 
                 Item {
+                    id: _dotContainer
+
                     Layout.preferredHeight: Size.pixel24
                     Layout.preferredWidth: height
                     Layout.alignment: Qt.AlignVCenter
 
-                    Rectangle { id: _dot; height: Size.pixel4; width: Size.pixel4; anchors.centerIn: parent; radius: 100 }
+                    Rectangle { id: _dot; height: Size.pixel4; width: Size.pixel4; anchors.centerIn: _dotContainer; radius: 100 }
                 }
 
                 Subtitle2 {
@@ -252,14 +254,14 @@ Item {
             MouseArea {
                 id: _subItemMouseArea
 
-                anchors.fill: parent
+                anchors.fill: _subItem
 
-                hoverEnabled: parent.enabled
+                hoverEnabled: _subItem.enabled
                 cursorShape: Qt.PointingHandCursor
 
                 onClicked: {
                     _listView.currentIndex = index;
-                    _sidebarItem.selectItem();
+                    _root.selectItem();
                     modelData.onClicked();
                 }
             }

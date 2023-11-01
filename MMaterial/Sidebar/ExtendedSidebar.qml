@@ -5,6 +5,8 @@ import QtQuick.Layouts
 import MMaterial
 
 Rectangle {
+    id: _root
+
     property alias logo: _logo
     property alias list: _sidebarLayout
     property alias avatar: _avatar
@@ -29,7 +31,7 @@ Rectangle {
 
     ColumnLayout {
         anchors {
-            fill: parent
+            fill: _root
             margins: Size.pixel16
             topMargin: Size.pixel24
         }
@@ -44,6 +46,7 @@ Rectangle {
         }
 
         Rectangle {
+            id: _avatarRect
             Layout.leftMargin: Size.pixel4
             Layout.rightMargin: Size.pixel4
             Layout.topMargin: Size.pixel32
@@ -57,9 +60,9 @@ Rectangle {
                 id: _avatar
 
                 anchors{
-                    left: parent.left; leftMargin: Size.pixel20;
-                    top: parent.top; topMargin: Size.pixel16;
-                    bottom: parent.bottom; bottomMargin: Size.pixel16
+                    left: _avatarRect.left; leftMargin: Size.pixel20;
+                    top: _avatarRect.top; topMargin: Size.pixel16;
+                    bottom: _avatarRect.bottom; bottomMargin: Size.pixel16
                 }
 
                 height: Size.pixel40
@@ -73,8 +76,8 @@ Rectangle {
 
                 anchors{
                     left: _avatar.right; leftMargin: Size.pixel16;
-                    top: parent.top; topMargin: Size.pixel16;
-                    right: parent.right; rightMargin: Size.pixel20;
+                    top: _avatarRect.top; topMargin: Size.pixel16;
+                    right: _avatarRect.right; rightMargin: Size.pixel20;
                 }
 
                 text: "John Doe"
@@ -88,8 +91,8 @@ Rectangle {
 
                 anchors {
                     left: _avatar.right; leftMargin: Size.pixel16;
-                    bottom: parent.bottom; bottomMargin: Size.pixel16;
-                    right: parent.right; rightMargin: Size.pixel20;
+                    bottom: _avatarRect.bottom; bottomMargin: Size.pixel16;
+                    right: _avatarRect.right; rightMargin: Size.pixel20;
                 }
 
                 verticalAlignment: Qt.AlignBottom
@@ -113,6 +116,7 @@ Rectangle {
                 property: "category"
                 delegate: SidebarCategoryLabel{
                     required property string section
+
                     text: section
                 }
             }

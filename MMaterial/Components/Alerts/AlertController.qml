@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import "../../Settings"
 
 ListView {
-    id: _listView
+    id: _root
 
     anchors {
         right: parent.right
@@ -30,7 +30,7 @@ ListView {
         property var item: listModel.get(index)
         property int closeTime: item ? item.closeTime : 0
 
-        width: _listView.width
+        width: _root.width
         text: item && item.text ? item.text : ""
         severity: item && item.severity ? item.severity : severity
         variant: item && item.variant ? item.variant : variant
@@ -60,7 +60,7 @@ ListView {
     }
 
     add: Transition {
-        NumberAnimation { properties: "x"; from: _listView.width; duration: 500; easing.type: Easing.OutBack }
+        NumberAnimation { properties: "x"; from: _root.width; duration: 500; easing.type: Easing.OutBack }
     }
     displaced: Transition {
         NumberAnimation { properties: "x,y"; duration: 500; easing.type: Easing.OutBack }
@@ -89,7 +89,7 @@ ListView {
         if(details.actionButton)
             alertObject.actionButton = details.actionButton;
 
-        _listView.model.append(alertObject);
+        _root.model.append(alertObject);
     }
 
 }

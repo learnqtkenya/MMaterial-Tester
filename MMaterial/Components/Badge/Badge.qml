@@ -6,7 +6,7 @@ import "../../Settings"
 //change the value of icon.sourceSize.widht / height
 
 Item {
-    id: _badge
+    id: _root
 
     property alias icon: _icon
     property var accent: Theme.info //Needs to be PaletteBasic type
@@ -25,9 +25,9 @@ Item {
     states: [
         State{
             name: "dot"
-            when: _badge.type == Badge.Type.Dot
+            when: _root.type == Badge.Type.Dot
             PropertyChanges{
-                target: _badgeLoader
+                target: _rootLoader
                 sourceComponent: _iconDot
                 anchors{
                     bottomMargin: -_icon.height * 0.05
@@ -37,9 +37,9 @@ Item {
         },
         State{
             name: "number"
-            when: _badge.type == Badge.Type.Number
+            when: _root.type == Badge.Type.Number
             PropertyChanges{
-                target: _badgeLoader
+                target: _rootLoader
                 sourceComponent: _iconBadge
                 anchors{
                     bottomMargin: -_icon.height * 0.47
@@ -57,10 +57,10 @@ Item {
         color: Theme.text.primary
         interactive: true
 
-        onClicked: _badge.clicked()
+        onClicked: _root.clicked()
     }
     Loader {
-        id: _badgeLoader
+        id: _rootLoader
 
         anchors {
             bottom: _icon.top
@@ -75,10 +75,10 @@ Item {
         id: _iconBadge
 
         BadgeNumber{
-            quantity: _badge.quantity
-            maxQuantity: _badge.maxQuantity
+            quantity: _root.quantity
+            maxQuantity: _root.maxQuantity
             pixelSize: _icon.height * 0.6
-            accent: _badge.accent
+            accent: _root.accent
         }
     }
 
@@ -87,7 +87,7 @@ Item {
 
         BadgeDot{
             pixelSize: _icon.height * 0.42
-            accent: _badge.accent
+            accent: _root.accent
         }
     }
 }
