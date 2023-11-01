@@ -1,102 +1,123 @@
-import QtQuick 
+import QtQuick
 import QtQuick.Layouts
 import MMaterial
 
-ColumnLayout{
+ColumnLayout {
     objectName: "List Items"
+
     visible: showcaseLoader.status == Loader.Ready
     spacing: Size.pixel22
-    Overline{
+
+    Overline {
+        Layout.fillWidth: true
+
         text: "List Item"
         color: Theme.text.disabled
-        Layout.fillWidth: true
         font.capitalization: Font.AllUppercase
     }
-    GridLayout {
-        rowSpacing: Size.pixel22
-        columnSpacing: Size.pixel22
-        columns: Window.width > 1300 * Size.scale ? 3 : (Window.width > 900 * Size.scale ? 2 : 1)
 
+    GridLayout {
         Layout.fillWidth: true
         Layout.alignment: Qt.AlignTop
-        ListBorders{
+
+        rowSpacing: Size.pixel22
+        columnSpacing: Size.pixel22
+
+        columns: Window.width > 1300 * Size.scale ? 3 : (Window.width > 900 * Size.scale ? 2 : 1)
+
+        ListBorders {
             id: _plainListView
+
             Layout.alignment: Qt.AlignTop
-            listView{
+
+            listView {
                 model: 4
-                delegate: ListItem{
+
+                delegate: ListItem {
                     width: _plainListView.listView.width
                     text: "List Item " + index
                 }
             }
         }
-        ListBorders{
+
+
+        ListBorders {
             id: _iconListView
+
             Layout.alignment: Qt.AlignTop
-            listView{
-                model: _iconObjectModel
-            }
-            ObjectModel{
+
+            listView.model: _iconObjectModel
+
+            ObjectModel {
                 id: _iconObjectModel
 
-                ListItem{ width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.alert }
-                ListItem{ width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.mail }
-                ListItem{ width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.stonks }
-                ListItem{ width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.logo }
+                ListItem { width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.alert }
+                ListItem { width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.mail }
+                ListItem { width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.stonks }
+                ListItem { width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.logo }
             }
         }
 
-        ListBorders{
+        ListBorders {
             id: _advancedListView
+
             Layout.alignment: Qt.AlignTop
+
             listView.model: _advancedObjectModel
 
-            ObjectModel{
+            ObjectModel {
                 id: _advancedObjectModel
 
-                ListItem{
+                ListItem {
                     width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.alert;
                     containsMouse: mouseArea.containsMouse || _button1.mouseArea.containsMouse
-                    MButton{ id: _button1; size: Size.Grade.M;  }
+                    MButton { id: _button1; size: Size.Grade.M;  }
                 }
-                ListItem{
+
+                ListItem {
                     width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.mail;
                     containsMouse: mouseArea.containsMouse || _button2.mouseArea.containsMouse
-                    MButton{ id: _button2; size: Size.Grade.M; type: MButton.Type.Outlined }
+                    MButton { id: _button2; size: Size.Grade.M; type: MButton.Type.Outlined }
                 }
-                ListItem{
+
+                ListItem {
                     width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.stonks;
                     containsMouse: mouseArea.containsMouse || _button3.mouseArea.containsMouse
-                    MButton{ id: _button3; size: Size.Grade.M }
+                    MButton { id: _button3; size: Size.Grade.M }
                 }
-                ListItem{
+
+                ListItem {
                     width: _iconListView.listView.width; text: "List Item"; icon.path: IconList.logo;
                     containsMouse: mouseArea.containsMouse || _button4.mouseArea.containsMouse
-                    MButton{ id: _button4; size: Size.Grade.M; type: MButton.Type.Outlined }
+                    MButton { id: _button4; size: Size.Grade.M; type: MButton.Type.Outlined }
                 }
             }
         }
     }
 
-    Overline{
-        text: "List Item Contact"
-        color: Theme.text.disabled
+    Overline {
         Layout.fillWidth: true
         Layout.topMargin: Size.pixel32
+
+        text: "List Item Contact"
+        color: Theme.text.disabled
         font.capitalization: Font.AllUppercase
     }
-    ListBorders{
+
+    ListBorders {
         id: _avatarList
+
+        property real delegateHeight: 68 * Size.scale
+
         listView {
             model: _avatarObjectModel
             delegate: ListItemContact{}
         }
-        property real delegateHeight: 68 * Size.scale
 
-        ObjectModel{
+        ObjectModel {
             id: _avatarObjectModel
-            ListItemContact { enabled: false
-                width: _avatarList.listView.width; title: "John Doe"; subtitle: "johhny_doe@gmail.com" }
+
+            ListItemContact { width: _avatarList.listView.width; title: "John Doe"; subtitle: "johhny_doe@gmail.com"; enabled: false; }
             ListItemContact { width: _avatarList.listView.width; title: "Susan Banks"; subtitle: "susan_banks11@gmail.com"; avatar.accent: Theme.info; }
             ListItemContact { width: _avatarList.listView.width; title: "Jeremy Hill"; subtitle: "jeremy99@gmail.com"; avatar.accent: Theme.warning; }
             ListItemContact { width: _avatarList.listView.width; title: "Karen Johnson"; subtitle: "karen_j@gmail.com"; avatar.accent: Theme.error; }
@@ -104,5 +125,5 @@ ColumnLayout{
         }
     }
 
-    Item{ Layout.fillHeight: true; }
+    Item { Layout.fillHeight: true; }
 }

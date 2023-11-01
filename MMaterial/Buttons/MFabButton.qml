@@ -1,6 +1,6 @@
 import QtQuick 
 
-MButton{
+MButton {
     radius: 100
     text: ""
 }

@@ -6,31 +6,31 @@ import QtQuick.Layouts
 Item {
     visible: showcaseLoader.status == Loader.Ready
 
-    Rectangle{
+    Rectangle {
         id: _avatar
-        color: accent.main
-        radius: 100
+
         property string title: "A"
         property var accent: Theme.primary
 
-        property real recommendedHeight: Size.pixel48
-        property real recommendedWidth: Size.pixel48
+        implicitHeight: Size.pixel48
+        implicitWidth: Size.pixel48
 
-        height: recommendedHeight
-        width: recommendedWidth
+        radius: 100
+        color: accent.main
 
-        Layout.preferredHeight: recommendedHeight
-        Layout.preferredWidth: recommendedWidth
-
-        Subtitle2{
+        Subtitle2 {
             id: _title
+
             anchors.centerIn: parent
-            font.pixelSize: parent.height * 0.4
+
             color: _avatar.accent.contrastText
             verticalAlignment: Qt.AlignVCenter
-            font.capitalization: Font.AllUppercase
             text: _avatar.title.length >= 1 ?_avatar.title[0] : ""
+
+            font {
+                capitalization: Font.AllUppercase
+                pixelSize: parent.height * 0.4
+            }
         }
     }
-
 }

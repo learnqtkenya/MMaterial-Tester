@@ -2,11 +2,14 @@ import QtQuick
 
 import MMaterial
 
-Alert{
+Alert {
+    width: standardContainer.container.width;
+
     severity: Alert.Severity.Error;
     variant: Alert.Variant.Standard;
-    width: standardContainer.container.width;
+
     text: alertTextInput.text;
+
     actionButton.text: qsTr("Action")
     dismissButton.text: qsTr("Dismiss")
 }

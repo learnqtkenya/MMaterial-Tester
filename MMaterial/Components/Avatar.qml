@@ -3,7 +3,7 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Rectangle{
+Rectangle {
     id: _avatar
 
     property string title: "A"
@@ -15,7 +15,7 @@ Rectangle{
     implicitHeight: Size.pixel48
     implicitWidth: Size.pixel48
 
-    Subtitle2{
+    Subtitle2 {
         id: _title
 
         anchors.centerIn: parent

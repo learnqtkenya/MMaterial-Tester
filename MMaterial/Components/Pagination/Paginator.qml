@@ -4,7 +4,7 @@ import QtQuick.Controls
 
 import MMaterial
 
-Item{
+Item {
     id: _pagination
 
     implicitWidth: _decrementButton.width + _incrementButton.width + (Math.min(visiblePageCount, _listView.count) * (Size.pixel40 + _listView.spacing) + _listView.spacing)
@@ -18,7 +18,7 @@ Item{
     property int selectedType: MFabButton.Type.Soft
     property int radius: 10
 
-    MFabButton{
+    MFabButton {
         id: _decrementButton
 
         anchors.left: parent.left
@@ -43,7 +43,7 @@ Item{
         onClicked: _pagination.indexView.decrementCurrentIndex();
     }
 
-    ListView{
+    ListView {
         id: _listView
 
         anchors{
@@ -62,7 +62,7 @@ Item{
 
         onCurrentIndexChanged: positionViewAtIndex(currentIndex, ListView.Center);
 
-        delegate: MFabButton{
+        delegate: MFabButton {
             height: _pagination.height
             width: height
 
@@ -84,7 +84,7 @@ Item{
         }
     }
 
-    MFabButton{
+    MFabButton {
         id: _incrementButton
 
         anchors.right: parent.right

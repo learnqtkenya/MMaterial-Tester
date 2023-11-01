@@ -4,7 +4,7 @@ import QtQuick.Layouts
 
 import "../../Settings"
 
-ListView{
+ListView {
     id: _listView
 
     anchors {
@@ -25,7 +25,7 @@ ListView{
         id: listModel
     }
 
-    delegate: Alert{
+    delegate: Alert {
         id: _alertComponent
         property var item: listModel.get(index)
         property int closeTime: item ? item.closeTime : 0
@@ -44,7 +44,7 @@ ListView{
             text: item && item.actionButton && item.actionButton.text && item.actionButton.text ? item.actionButton.text : actionButton.text
             onClicked: item && item.actionButton && item.actionButton.onClicked ? item.actionButton.onClicked() : null
         }
-        Timer{
+        Timer {
             id: _timer
             running: visible
             interval: _alertComponent.closeTime

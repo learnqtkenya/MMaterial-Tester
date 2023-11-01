@@ -2,7 +2,7 @@ import QtQuick
 
 import MMaterial
 
-Rectangle{
+Rectangle {
     id: _badge
 
     property real verticalPadding: pixelSize/2
@@ -18,7 +18,7 @@ Rectangle{
     radius: 100
     color: _badge.accent.main
 
-    H4{
+    H4 {
         id: number
 
         anchors.centerIn: parent

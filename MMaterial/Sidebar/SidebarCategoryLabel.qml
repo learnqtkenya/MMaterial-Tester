@@ -3,7 +3,7 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Item{
+Item {
     property alias text: _label.text
 
     height: Size.scale * 50

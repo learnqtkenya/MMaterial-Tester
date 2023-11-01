@@ -3,7 +3,7 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Rectangle{
+Rectangle {
     id: _alert
 
     enum Severity { Info, Success, Warning, Error }
@@ -74,7 +74,7 @@ Rectangle{
         readonly property int recommendedHeight: Size.scale * 50
     }
 
-    MouseArea{
+    MouseArea {
         id: mouseArea
 
         anchors.fill: parent
@@ -82,7 +82,7 @@ Rectangle{
         onClicked: _alert.clicked()
     }
 
-    RowLayout{
+    RowLayout {
         id: _mainLayout
 
         anchors{
@@ -90,7 +90,7 @@ Rectangle{
             margins: Size.pixel8
         }
 
-        Icon{
+        Icon {
             id: _icon
 
             Layout.alignment: _text.lineCount <= 1 ? Qt.AlignVCenter : Qt.AlignTop
@@ -101,7 +101,7 @@ Rectangle{
             path: _alert.icon
         }
 
-        B2{
+        B2 {
             id: _text
 
             Layout.fillWidth: true
@@ -115,7 +115,7 @@ Rectangle{
             lineHeight: 1
         }
 
-        MButton{
+        MButton {
             id: _actionButton
 
             type: MButton.Type.Contained
@@ -128,7 +128,7 @@ Rectangle{
             visible: text != ""
         }
 
-        MButton{
+        MButton {
             id: _dismissButton
 
             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
@@ -144,7 +144,7 @@ Rectangle{
             onClicked: _alert.close()
         }
 
-        Icon{
+        Icon {
             id: _closeIcon
 
             Layout.alignment: _text.lineCount <= 1 ? Qt.AlignVCenter : Qt.AlignTop

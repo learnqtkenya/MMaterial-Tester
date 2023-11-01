@@ -3,7 +3,7 @@ import QtQuick.Controls
 
 import MMaterial
 
-MTextField{
+MTextField {
     id: _dropdown
 
     property var model: ["Label 1", "Label 2", "Label 3"]
@@ -50,12 +50,12 @@ MTextField{
         y: _dropdown.height + 1
         closePolicy: Menu.CloseOnEscape | Menu.CloseOnReleaseOutsideParent
 
-        Repeater{
+        Repeater {
             id: _repeater
 
             model: _dropdown.model
 
-            delegate: ListItem{
+            delegate: ListItem {
                 text: modelData
                 width: _listView.width
                 onClicked: {
@@ -64,7 +64,7 @@ MTextField{
             }
         }
 
-        background: Rectangle{
+        background: Rectangle {
             implicitWidth: _dropdown.width
 
             radius: 12
@@ -72,7 +72,7 @@ MTextField{
             border.color: Theme.action.disabledBackground
         }
 
-        contentItem: Item{
+        contentItem: Item {
             implicitHeight: _listView.height + Size.pixel8
 
             ListView {

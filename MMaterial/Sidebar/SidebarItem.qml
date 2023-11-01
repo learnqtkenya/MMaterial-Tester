@@ -3,7 +3,7 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Item{
+Item {
     id: _sidebarItem
 
     property alias icon: _icon
@@ -19,7 +19,7 @@ Item{
     property real openingSpeed: 150
 
     function selectItem(){
-        if(typeof index !== "undefined")
+        if(typeof index !== "undefined")
             ListView.view.currentIndex = index;
         else if(typeof ObjectModel.index !== "undefined")
             ListView.view.currentIndex = ObjectModel.index;
@@ -106,7 +106,7 @@ Item{
             }
         ]
 
-        RowLayout{
+        RowLayout {
             anchors{
                 fill: parent
                 leftMargin: Size.pixel16
@@ -115,7 +115,7 @@ Item{
 
             spacing: Size.pixel8
 
-            Icon{
+            Icon {
                 id: _icon
 
                 Layout.alignment: Qt.AlignVCenter
@@ -125,7 +125,7 @@ Item{
                 color: _title.color
             }
 
-            Subtitle2{
+            Subtitle2 {
                 id: _title
 
                 Layout.leftMargin: _icon.visible ? Size.pixel8 : 0
@@ -135,7 +135,7 @@ Item{
                 verticalAlignment: Qt.AlignVCenter
             }
 
-            Icon{
+            Icon {
                 id: _arrow
 
                 Layout.alignment: Qt.AlignVCenter
@@ -154,7 +154,7 @@ Item{
         }
     }
 
-    ListView{
+    ListView {
         id: _listView
 
         anchors{
@@ -167,7 +167,7 @@ Item{
         interactive: false
         clip: true
 
-        delegate: Rectangle{
+        delegate: Rectangle {
             id: _subItem
 
             property bool checked: ListView.isCurrentItem
@@ -220,7 +220,7 @@ Item{
                 }
             ]
 
-            RowLayout{
+            RowLayout {
                 anchors {
                     fill: parent
                     leftMargin: Size.pixel16
@@ -229,15 +229,15 @@ Item{
 
                 spacing: Size.pixel16
 
-                Item{
+                Item {
                     Layout.preferredHeight: Size.pixel24
                     Layout.preferredWidth: height
                     Layout.alignment: Qt.AlignVCenter
 
-                    Rectangle{ id: _dot; height: Size.pixel4; width: Size.pixel4; anchors.centerIn: parent; radius: 100 }
+                    Rectangle { id: _dot; height: Size.pixel4; width: Size.pixel4; anchors.centerIn: parent; radius: 100 }
                 }
 
-                Subtitle2{
+                Subtitle2 {
                     id: _label
 
                     Layout.fillWidth: true
@@ -249,7 +249,7 @@ Item{
                 }
 
             }
-            MouseArea{
+            MouseArea {
                 id: _subItemMouseArea
 
                 anchors.fill: parent

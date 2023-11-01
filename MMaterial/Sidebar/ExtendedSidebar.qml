@@ -27,14 +27,14 @@ Rectangle {
         }
     }
 
-    ColumnLayout{
+    ColumnLayout {
         anchors {
             fill: parent
             margins: Size.pixel16
             topMargin: Size.pixel24
         }
 
-        Icon{
+        Icon {
             id: _logo
             color: Theme.primary.main
             sourceSize.height: Size.pixel32
@@ -43,7 +43,7 @@ Rectangle {
             path: IconList.logo
         }
 
-        Rectangle{
+        Rectangle {
             Layout.leftMargin: Size.pixel4
             Layout.rightMargin: Size.pixel4
             Layout.topMargin: Size.pixel32
@@ -68,7 +68,7 @@ Rectangle {
                 title: _title.text
             }
 
-            Subtitle2{
+            Subtitle2 {
                 id: _title
 
                 anchors{
@@ -83,7 +83,7 @@ Rectangle {
                 color: Theme.text.primary
             }
 
-            B2{
+            B2 {
                 id: _subtitle
 
                 anchors {

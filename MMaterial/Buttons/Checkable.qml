@@ -10,7 +10,7 @@ Rectangle {
 
     signal clicked
 
-    MouseArea{
+    MouseArea {
         id: mouseArea
 
         anchors.fill: parent

@@ -7,7 +7,7 @@ import "../Fonts/Texts"
 import "../Colors"
 import "../Settings"
 
-Rectangle{
+Rectangle {
     id: _accordion
 
     property bool isOpen: false
@@ -113,7 +113,7 @@ Rectangle{
         }
     ]
 
-    RowLayout{
+    RowLayout {
         id: _titleLayout
 
         anchors{
@@ -123,7 +123,7 @@ Rectangle{
             margins: _accordion.padding
         }
 
-        Subtitle1{
+        Subtitle1 {
             id: _title
 
             Layout.fillWidth: true
@@ -134,7 +134,7 @@ Rectangle{
             maximumLineCount: 1
         }
 
-        Icon{
+        Icon {
             id: _arrow
 
             sourceSize.width: Size.pixel14
@@ -163,7 +163,7 @@ Rectangle{
         visible: opacity > 0
     }
 
-    MouseArea{
+    MouseArea {
         anchors.fill: parent
 
         cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor

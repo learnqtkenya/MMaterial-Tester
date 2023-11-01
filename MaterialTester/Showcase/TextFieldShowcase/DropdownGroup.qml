@@ -5,59 +5,65 @@ import MMaterial
 
 import "../../Components/Common"
 
-ColumnLayout{
+ColumnLayout {
     id: groupRoot
     required property int type
     required property string title
 
     property int columnCount: Window.width > (1920 * Size.scale) ? 4 : (Window.width > 1180 * Size.scale ? 2 : 1)
-    Subtitle1{
+
+    Subtitle1 {
         text: groupRoot.title
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("States")
         grid.columns: groupRoot.columnCount
 
-        MDropdown{
+        MDropdown {
             type: groupRoot.type
             accent: Theme.primary
         }
-        MDropdown{
+
+        MDropdown {
             type: groupRoot.type
             accent: Theme.primary
         }
-        MDropdown{
+
+        MDropdown {
             enabled: false
             type: groupRoot.type
             accent: Theme.primary
         }
-        MDropdown{
+
+        MDropdown {
             type: groupRoot.type
             accent: Theme.primary
             input.validator: RegularExpressionValidator{ regularExpression: /^[\d]+$/ }
         }
-
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("Icon")
         grid.columns: groupRoot.columnCount
 
-        MDropdown{
+        MDropdown {
             type: groupRoot.type
             accent: Theme.primary
             leftIcon.path: IconList.logo
         }
-        MDropdown{
+
+        MDropdown {
             type: groupRoot.type
             accent: Theme.primary
             leftIcon.path: IconList.logo
         }
-        MDropdown{
+
+        MDropdown {
             type: groupRoot.type
             accent: Theme.primary
         }
     }
-    Item{ Layout.fillHeight: true; }
+
+    Item { Layout.fillHeight: true; }
 }

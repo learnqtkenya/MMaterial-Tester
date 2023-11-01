@@ -18,7 +18,7 @@ AbstractListItem{
 
     containsMouse: mouseArea.containsMouse || _icon.containsMouse
 
-    RowLayout{
+    RowLayout {
         id: _mainLayout
 
         anchors{
@@ -37,11 +37,11 @@ AbstractListItem{
             title: _title.text
         }
 
-        ColumnLayout{
+        ColumnLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            Subtitle2{
+            Subtitle2 {
                 id: _title
 
                 Layout.fillWidth: true
@@ -51,7 +51,7 @@ AbstractListItem{
                 color: Theme.text.primary
                 text: "John Doe"
             }
-            B2{
+            B2 {
                 id: _subtitle
 
                 Layout.fillWidth: true
@@ -63,7 +63,7 @@ AbstractListItem{
             }
         }
 
-        Icon{
+        Icon {
             id: _icon
 
             Layout.alignment: Qt.AlignVCenter

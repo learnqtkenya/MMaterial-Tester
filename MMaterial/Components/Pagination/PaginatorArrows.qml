@@ -3,7 +3,7 @@ import QtQuick.Controls
 
 import MMaterial
 
-Item{
+Item {
     id: _paginator
 
     required property SwipeView indexView
@@ -17,7 +17,7 @@ Item{
 
     height: Size.pixel36
 
-    Rectangle{
+    Rectangle {
         id: _leftArrow
 
         anchors.left: parent.left
@@ -30,7 +30,7 @@ Item{
         radius: 10
         opacity: enabled ? 1 : 0.48
 
-        Icon{
+        Icon {
             id: _leftIcon
 
             path: IconList.arrow
@@ -40,7 +40,7 @@ Item{
             rotation: 90
         }
 
-        MouseArea{
+        MouseArea {
             id: _leftMouseArea
 
             anchors.fill: parent
@@ -52,7 +52,7 @@ Item{
         }
     }
 
-    Rectangle{
+    Rectangle {
         id: _rightArrow
 
         anchors.right: parent.right
@@ -66,7 +66,7 @@ Item{
         enabled: _paginator.indexView.currentIndex < _paginator.indexView.count - 1
         opacity: enabled ? 1 : 0.48
 
-        Icon{
+        Icon {
             path: IconList.arrow
             color: Theme.common.white
             sourceSize.height: parent.height * 0.2
@@ -74,7 +74,7 @@ Item{
             rotation: -90
         }
 
-        MouseArea{
+        MouseArea {
             id: _rightMouseArea
 
             anchors.fill: parent

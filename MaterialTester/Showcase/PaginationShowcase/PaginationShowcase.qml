@@ -8,7 +8,7 @@ Item {
     objectName: "Pagination"
     visible: showcaseLoader.status == Loader.Ready
 
-    Item{
+    Item {
         anchors {
             fill: parent
             margins: Math.min(Window.width * 0.1, Window.height * 0.1)
@@ -16,19 +16,22 @@ Item {
 
         CustomSwipeView {
             id: _paginatorSwipeView
+
             anchors {
                 bottomMargin: _paginator.height + Size.pixel10
                 fill: parent
             }
         }
-        Paginator{
+
+        Paginator {
             id: _paginator
-            indexView: _paginatorSwipeView
+
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 bottom: parent.bottom
             }
+
+            indexView: _paginatorSwipeView
         }
     }
-
 }

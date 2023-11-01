@@ -5,96 +5,22 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Item{
+Item {
     id: _appSettings
-    width: 300 * Size.scale
-    height: parent.height
+
+    property bool isOpen: false
+
+    function toggle(){
+        _appSettings.isOpen = !_appSettings.isOpen;
+    }
+
     anchors{
         right: parent.right
         rightMargin: 0
     }
 
-    property bool isOpen: false
-
-    Rectangle{
-        id: _background
-        anchors.fill: parent
-        color: Theme.background.paper //TODO: Add shadow
-    }
-
-    RowLayout{
-        id: _header
-        height: Size.scale * 80
-        anchors{
-            left: parent.left; leftMargin: Size.pixel18
-            right: parent.right; rightMargin: Size.pixel12
-            top: parent.top
-        }
-
-        H4{
-            id: _title
-            text: qsTr("Settings")
-            color: Theme.text.primary
-            font.bold: true
-            Layout.preferredHeight: parent.height
-            verticalAlignment: Qt.AlignVCenter
-            Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-            Layout.fillWidth: true
-        }
-
-        Icon{
-            path: IconList.closeX
-            sourceSize.height: Size.pixel14
-            color: Theme.main.p600
-            Layout.alignment: Qt.AlignVCenter
-            interactive: true
-            onClicked: _appSettings.toggle()
-        }
-    }
-
-    Rectangle{ id: _splitter; height: Size.pixel1; width: parent.width; color: Theme.main.p600; anchors { top: _header.bottom; topMargin: Size.pixel4 } }
-
-    ColumnLayout{
-        anchors {
-            top: _header.bottom; bottom: parent.bottom
-            left: parent.left; right: parent.right
-            margins: Size.pixel18
-        }
-
-        TwoChoices{
-            text: qsTr("Mode")
-            leftButton {
-                icon.path: IconList.sun
-                onClicked: Theme.currentTheme = LightTheme;
-                checked: Theme.currentTheme == LightTheme;
-            }
-            rightButton {
-                icon.path: IconList.moon
-                onClicked: Theme.currentTheme = DarkTheme;
-                checked: Theme.currentTheme == DarkTheme;
-            }
-        }
-
-        SubTitle{
-            text: qsTr("Presets")
-        }
-
-        GridLayout{
-            Layout.fillWidth: true
-            columns: 3
-            rowSpacing: Size.pixel16
-            columnSpacing: Size.pixel16
-
-            PresetButton{ accent: BasicBlue }
-            PresetButton{ accent: BasicGreen }
-            PresetButton{ accent: BasicLightBlue }
-            PresetButton{ accent: BasicOrange }
-            PresetButton{ accent: BasicPurple }
-            PresetButton{ accent: BasicRed }
-        }
-
-        Item{ Layout.fillHeight: true; }
-    }
+    width: 300 * Size.scale
+    height: parent.height
 
     layer{
         effect: MultiEffect{
@@ -104,10 +30,6 @@ Item{
             shadowVerticalOffset: 5
 
         }
-    }
-
-    function toggle(){
-        _appSettings.isOpen = !_appSettings.isOpen;
     }
 
     states: [
@@ -179,4 +101,96 @@ Item{
             }
         }
     ]
+
+    Rectangle {
+        id: _background
+
+        anchors.fill: parent
+
+        color: Theme.background.paper //TODO: Add shadow
+    }
+
+    RowLayout {
+        id: _header
+
+        anchors{
+            left: parent.left; leftMargin: Size.pixel18
+            right: parent.right; rightMargin: Size.pixel12
+            top: parent.top
+        }
+
+        height: Size.scale * 80
+
+        H4 {
+            id: _title
+
+            Layout.preferredHeight: parent.height
+            Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+            Layout.fillWidth: true
+
+            text: qsTr("Settings")
+            verticalAlignment: Qt.AlignVCenter
+            color: Theme.text.primary
+            font.bold: true
+        }
+
+        Icon {
+            Layout.alignment: Qt.AlignVCenter
+
+            path: IconList.closeX
+            sourceSize.height: Size.pixel14
+            color: Theme.main.p600
+            interactive: true
+
+            onClicked: _appSettings.toggle()
+        }
+    }
+
+    Rectangle { id: _splitter; height: Size.pixel1; width: parent.width; color: Theme.main.p600; anchors { top: _header.bottom; topMargin: Size.pixel4 } }
+
+    ColumnLayout {
+        anchors {
+            top: _header.bottom; bottom: parent.bottom
+            left: parent.left; right: parent.right
+            margins: Size.pixel18
+        }
+
+        TwoChoices {
+            text: qsTr("Mode")
+
+            leftButton {
+                icon.path: IconList.sun
+                onClicked: Theme.currentTheme = LightTheme;
+                checked: Theme.currentTheme == LightTheme;
+            }
+
+            rightButton {
+                icon.path: IconList.moon
+                onClicked: Theme.currentTheme = DarkTheme;
+                checked: Theme.currentTheme == DarkTheme;
+            }
+        }
+
+        SubTitle {
+            text: qsTr("Presets")
+        }
+
+        GridLayout {
+            Layout.fillWidth: true
+
+            columns: 3
+
+            rowSpacing: Size.pixel16
+            columnSpacing: Size.pixel16
+
+            PresetButton{ accent: BasicBlue }
+            PresetButton{ accent: BasicGreen }
+            PresetButton{ accent: BasicLightBlue }
+            PresetButton{ accent: BasicOrange }
+            PresetButton{ accent: BasicPurple }
+            PresetButton{ accent: BasicRed }
+        }
+
+        Item { Layout.fillHeight: true; }
+    }
 }

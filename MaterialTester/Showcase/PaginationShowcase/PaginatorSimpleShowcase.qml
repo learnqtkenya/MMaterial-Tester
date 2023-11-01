@@ -4,7 +4,8 @@ import MMaterial
 Item {
     objectName: "Pagination Simple"
     visible: showcaseLoader.status == Loader.Ready
-    Item{
+
+    Item {
         anchors {
             fill: parent
             margins: Size.pixel32
@@ -12,18 +13,22 @@ Item {
 
         CustomSwipeView {
             id: _simpleSwipeView
+
             anchors {
                 fill: parent
             }
         }
-        PaginatorSimple{
+
+        PaginatorSimple {
             id: _simplePaginator
-            indexView: _simpleSwipeView
+
             anchors {
                 margins: Size.pixel14
                 right: parent.right
                 bottom: parent.bottom
             }
+
+            indexView: _simpleSwipeView
         }
     }
 }

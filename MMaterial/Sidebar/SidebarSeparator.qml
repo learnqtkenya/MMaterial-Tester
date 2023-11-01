@@ -8,7 +8,7 @@ Item {
     width: Size.pixel24
     height: Size.pixel10
 
-    Rectangle{
+    Rectangle {
         anchors.centerIn: parent
         width: parent.width
         height: Size.pixel1

@@ -3,26 +3,30 @@ import QtQuick.Window
 
 Window {
     id: window
+
     width: 1440
     height: 1200
+
     visible: true
     title: qsTr("MMaterial")
 
-    Loader{
+    Loader {
         id: mainLoader
-        anchors.centerIn: parent
-        height: parent.height; width: parent.width;
-
-        source: "./MainWindow.qml"
 
         function reload(){
             mainLoader.source = "";
             QmlEngine.clearCache();
             mainLoader.source = "./MainWindow.qml";
         }
+
+        anchors.centerIn: parent
+
+        height: parent.height; width: parent.width;
+
+        source: "./MainWindow.qml"
     }
 
-    Connections{
+    Connections {
         target: QmlEngine
 
         function onReloadUI(){

@@ -5,58 +5,66 @@ import MMaterial
 
 import "../../Components/Common"
 
-ColumnLayout{
+ColumnLayout {
     id: groupRoot
+
     required property int buttonType
     required property string title
-    Subtitle1{
+
+    Subtitle1 {
         text: groupRoot.title
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("Color")
 
-        MFabButton{
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Primary"
         }
-        MFabButton{
+
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.secondary
             text: "Secondary"
         }
-        MFabButton{
+
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.info
             text: "Info"
         }
-        MFabButton{
+
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.success
             text: "Success"
         }
-        MFabButton{
+
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.warning
             text: "Warning"
         }
-        MFabButton{
+
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.error
             text: "Error"
         }
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("States")
 
-        MFabButton{
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: mouseArea.containsMouse ? "Hovered" : "Enabled"
         }
-        MFabButton{
+
+        MFabButton {
             enabled: false
             type: groupRoot.buttonType
             accent: Theme.primary
@@ -64,56 +72,62 @@ ColumnLayout{
         }
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("Icon")
 
-        MFabButton{
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Left Icon"
             leftIcon.path: IconList.logo
         }
-        MFabButton{
+
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Left and Right Icon"
             leftIcon.path: IconList.logo
             rightIcon.path: IconList.logo
         }
-        MFabButton{
+
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Right Icon"
             rightIcon.path: IconList.logo
         }
-        MFabButton{
+
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             rightIcon.path: IconList.logo
         }
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("Size")
 
-        MFabButton{
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             size: Size.Grade.L
             text: "Large"
         }
-        MFabButton{
+
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             size: Size.Grade.M
             text: "Medium"
         }
-        MFabButton{
+
+        MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             size: Size.Grade.S
             text: "Small"
         }
     }
-    Item{ Layout.fillHeight: true; }
+
+    Item { Layout.fillHeight: true; }
 }

@@ -3,7 +3,7 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Item{
+Item {
     id: _radioButtonRoot
 
     property var accent: Theme.primary
@@ -75,7 +75,7 @@ Item{
             }
         ]
 
-        Rectangle{
+        Rectangle {
             id: _highlight
 
             anchors.centerIn: parent
@@ -88,7 +88,7 @@ Item{
             color: _radioButton.checked ? _radioButtonRoot.accent.transparent.p8 : Theme.action.hover
         }
 
-        Rectangle{
+        Rectangle {
             id: _innerCircle
 
             anchors{
@@ -142,7 +142,7 @@ Item{
         }
     }
 
-    B2{
+    B2 {
         id: _label
 
         anchors{

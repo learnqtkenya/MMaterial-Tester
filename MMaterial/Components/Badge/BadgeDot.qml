@@ -2,7 +2,7 @@ import QtQuick
 
 import MMaterial
 
-Rectangle{
+Rectangle {
     id: badge
 
     property var accent: Theme.error //Needs to be PaletteBasic type

@@ -29,7 +29,7 @@ Checkable{
         }
     ]
 
-    Icon{
+    Icon {
         id: _icon
 
         anchors.centerIn: parent
@@ -40,7 +40,7 @@ Checkable{
         visible: _checkbox.checked
     }
 
-    Rectangle{
+    Rectangle {
         id: _highlight
 
         anchors.centerIn: parent
@@ -53,7 +53,7 @@ Checkable{
         color: _checkbox.accent.transparent.p8
     }
 
-    Item{
+    Item {
         id: _substates
 
         state: "default"

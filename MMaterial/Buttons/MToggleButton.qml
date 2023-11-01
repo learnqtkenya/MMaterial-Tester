@@ -5,7 +5,7 @@ import "../Settings"
 import "../Icons"
 import "../Colors"
 
-Rectangle{
+Rectangle {
     id: _root
 
     property bool checked: false
@@ -45,7 +45,7 @@ Rectangle{
         }
     ]
 
-    Icon{
+    Icon {
         id: _icon
 
         anchors.centerIn: parent
@@ -54,7 +54,7 @@ Rectangle{
     }
 
     //Non-Visual elements
-    MouseArea{
+    MouseArea {
         id: mouseArea
 
         anchors.fill: parent
@@ -70,7 +70,7 @@ Rectangle{
         }
     }
 
-    Item{
+    Item {
         id: _sizeStates
 
         state: "L"

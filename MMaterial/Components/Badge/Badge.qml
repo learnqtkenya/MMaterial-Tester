@@ -5,7 +5,7 @@ import "../../Icons"
 import "../../Settings"
 //change the value of icon.sourceSize.widht / height
 
-Item{
+Item {
     id: _badge
 
     property alias icon: _icon
@@ -49,7 +49,7 @@ Item{
         }
     ]
 
-    Icon{
+    Icon {
         id: _icon
 
         path: IconList.mail
@@ -59,7 +59,7 @@ Item{
 
         onClicked: _badge.clicked()
     }
-    Loader{
+    Loader {
         id: _badgeLoader
 
         anchors {
@@ -71,7 +71,7 @@ Item{
         active: quantity > 0
     }
 
-    Component{
+    Component {
         id: _iconBadge
 
         BadgeNumber{
@@ -82,7 +82,7 @@ Item{
         }
     }
 
-    Component{
+    Component {
         id: _iconDot
 
         BadgeDot{

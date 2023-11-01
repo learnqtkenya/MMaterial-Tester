@@ -3,7 +3,7 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Item{
+Item {
     id: _switchRoot
 
     property int size: Size.Grade.M
@@ -82,13 +82,13 @@ Item{
             }
         ]
 
-        Item{
+        Item {
             anchors{
                 fill: parent
                 margins: _switch.height * 0.15
             }
 
-            Rectangle{
+            Rectangle {
                 id: _innerCircle
 
                 anchors{
@@ -101,7 +101,7 @@ Item{
                 radius: _switch.radius
                 color: Theme.main.p100
 
-                Rectangle{
+                Rectangle {
                     id: _highlight
 
                     anchors.centerIn: parent
@@ -120,7 +120,7 @@ Item{
         }
     }
 
-    B2{
+    B2 {
         id: _label
 
         anchors{

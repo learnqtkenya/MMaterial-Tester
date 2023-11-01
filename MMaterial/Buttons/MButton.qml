@@ -8,7 +8,7 @@ import "../Icons"
 import "../Fonts/Texts"
 import "../Colors"
 
-Rectangle{
+Rectangle {
     id: _button
 
     property alias mouseArea: mouseArea
@@ -139,7 +139,7 @@ Rectangle{
         property bool oneOrLessChildrenVisible: !_title.visible && (!_leftIcon.visible || !_rightIcon.visible)
     }
 
-    Item{
+    Item {
         id: _body
 
         anchors {
@@ -150,14 +150,14 @@ Rectangle{
 
         visible: !_button.isLoading
 
-        RowLayout{
+        RowLayout {
             id: _mainLayout
 
             anchors.fill: parent
 
             spacing: Size.pixel8
 
-            Icon{
+            Icon {
                 id: _leftIcon
 
                 Layout.alignment: _title.visible ? Qt.AlignLeft : Qt.AlignCenter
@@ -184,7 +184,7 @@ Rectangle{
                 }
             }
 
-            Icon{
+            Icon {
                 id: _rightIcon
 
                 Layout.alignment: _title.visible ? Qt.AlignRight : Qt.AlignCenter
@@ -205,7 +205,7 @@ Rectangle{
         visible: _button.isLoading
     }
 
-    MouseArea{
+    MouseArea {
         id: mouseArea
 
         anchors.fill: parent

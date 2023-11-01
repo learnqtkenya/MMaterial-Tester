@@ -3,7 +3,7 @@ import QtQuick.Layouts
 
 import MMaterial
 
-RowLayout{
+RowLayout {
     id: _progress
 
     property real lineWidth: Size.pixel4
@@ -21,7 +21,7 @@ RowLayout{
     implicitWidth: 300
     implicitHeight: Size.pixel10
 
-    Rectangle{
+    Rectangle {
         id: _bar
 
         Layout.alignment: Qt.AlignVCenter
@@ -31,7 +31,7 @@ RowLayout{
         color: _progress.backgroundColor
         radius: 50
 
-        Rectangle{
+        Rectangle {
             id: _innerBar
 
             anchors {

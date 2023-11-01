@@ -14,7 +14,7 @@ AbstractListItem{
 
     height: Size.pixel46
 
-    RowLayout{
+    RowLayout {
         id: _mainLayout
 
         anchors{
@@ -22,7 +22,7 @@ AbstractListItem{
             leftMargin: Size.pixel16; rightMargin: Size.pixel12
         }
 
-        Icon{
+        Icon {
             id: _icon
 
             Layout.rightMargin: Size.pixel16
@@ -32,7 +32,7 @@ AbstractListItem{
             visible: path != ""
         }
 
-        B2{
+        B2 {
             id: _title
 
             Layout.fillWidth: true

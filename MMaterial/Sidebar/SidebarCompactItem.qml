@@ -15,7 +15,7 @@ Checkable {
     property var model: []
 
     function selectItem(){
-        if(typeof index !== "undefined")
+        if(typeof index !== "undefined")
             ListView.view.currentIndex = index;
         else if(typeof ObjectModel.index !== "undefined")
             ListView.view.currentIndex = ObjectModel.index;
@@ -65,7 +65,7 @@ Checkable {
         }
     ]
 
-    Icon{
+    Icon {
         id: _icon
 
         anchors {
@@ -78,7 +78,7 @@ Checkable {
         path: IconList.star
     }
 
-    B2{
+    B2 {
         id: _title
 
         anchors {
@@ -95,7 +95,7 @@ Checkable {
         font.pixelSize: Size.pixel10
     }
 
-    Icon{
+    Icon {
         id: _arrow
 
         anchors {
@@ -119,10 +119,10 @@ Checkable {
 
         x: _sidebarItem.x + _sidebarItem.width
 
-        Repeater{
+        Repeater {
             model: _sidebarItem.model
 
-            ListItem{
+            ListItem {
                 property var modelItem: _sidebarItem.model[index]
 
                 text: modelItem.text
@@ -137,7 +137,7 @@ Checkable {
 
         }
 
-        background: Rectangle{
+        background: Rectangle {
             radius: 12
             color: Theme.background.main
             implicitWidth: 200
@@ -145,7 +145,7 @@ Checkable {
             border.color: Theme.action.disabledBackground
         }
 
-        contentItem: Item{
+        contentItem: Item {
             implicitHeight: _listView.contentHeight + Size.pixel8
 
             ListView {

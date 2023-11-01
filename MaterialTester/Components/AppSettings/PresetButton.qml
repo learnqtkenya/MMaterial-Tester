@@ -3,24 +3,33 @@ import QtQuick.Layouts
 
 import MMaterial
 
-MToggleButton{
+MToggleButton {
     id: _button
+
+    property var accent: BasicBlue
+
     Layout.fillWidth: true;
     Layout.preferredHeight: width * 0.8
+
     customCheckImplementation: true
     checked: Theme.primary == accent
-    property var accent: BasicBlue
     icon.visible: false
 
-    Rectangle{
+    onClicked: Theme.currentTheme.primary = _button.accent
+
+    Rectangle {
         id: _circle
+
         anchors.centerIn: parent
+
         height: parent.height * 0.2
         width: height
+
         color: _button.accent.main
         radius: 100
 
         state: "off"
+
         states: [
             State {
                 name: "on"
@@ -44,6 +53,4 @@ MToggleButton{
             }
         ]
     }
-
-    onClicked: Theme.currentTheme.primary = _button.accent
 }

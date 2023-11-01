@@ -10,39 +10,50 @@ Sidebar {
     extendedSidebar.list.currentIndex: -1;
     compactSidebar.list.currentIndex: -1;
 
-    extendedSidebar.model: ObjectModel{
+    extendedSidebar.model: ObjectModel {
         id: extendedModel
-        SidebarItem{
+
+        SidebarItem {
             text: "Project";
             icon.path: IconList.info;
-            onClicked: showcaseLoader.sourceComponent = projectInfo;
             category: "introduction"
+
+            onClicked: showcaseLoader.sourceComponent = projectInfo;
         }
-        SidebarItem{
+
+        SidebarItem {
             text: "Fonts";
             icon.path: IconList.font;
-            onClicked: showcaseLoader.sourceComponent = fontShowcase;
             category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = fontShowcase;
         }
-        SidebarItem{
+
+        SidebarItem {
             text: "Colors";
             icon.path: IconList.palette;
-            onClicked: showcaseLoader.sourceComponent = colorShowcase;
             category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = colorShowcase;
         }
-        SidebarItem{
+
+        SidebarItem {
             text: "Badge";
             icon.path: IconList.verified;
-            onClicked: showcaseLoader.sourceComponent = badgeShowcase;
             category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = badgeShowcase;
         }
-        SidebarItem{
+
+        SidebarItem {
             text: "Accordion";
             icon.path: IconList.star;
-            onClicked: showcaseLoader.sourceComponent = accordionShowcase;
             category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = accordionShowcase;
         }
-        SidebarItem{
+
+        SidebarItem {
             text: "Buttons";
             icon.path: IconList.gamepad;
             category: "components"
@@ -55,19 +66,22 @@ Sidebar {
                 {text : "Switch", onClicked: function(){ showcaseLoader.sourceComponent = switchShowcase }}
             ];
         }
-        SidebarItem{
+
+        SidebarItem {
             text: "Alerts";
             icon.path: IconList.alert;
             onClicked: showcaseLoader.sourceComponent = alertShowcase;
             category: "components"
         }
-        SidebarItem{
+
+        SidebarItem {
             text: "List Items";
             icon.path: IconList.list;
             onClicked: showcaseLoader.sourceComponent = listItemShowcase;
             category: "components"
         }
-        SidebarItem{
+
+        SidebarItem {
             text: "Pagination";
             icon.path: IconList.pages;
             category: "components"
@@ -78,13 +92,15 @@ Sidebar {
                 {text : "Arrows", onClicked: function(){ showcaseLoader.sourceComponent = paginationArrowsShowcase }}
             ];
         }
-        SidebarItem{
+
+        SidebarItem {
             text: "Progress";
             icon.path: IconList.stonks;
             category: "components"
             onClicked: showcaseLoader.sourceComponent = progressShowcase;
         }
-        SidebarItem{
+
+        SidebarItem {
             text: "Inputs";
             icon.path: IconList.edit;
             category: "components"
@@ -95,39 +111,49 @@ Sidebar {
         }
     }
 
-    compactSidebar.model: ObjectModel{
+    compactSidebar.model: ObjectModel {
         id: compactModel
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "Project";
             icon.path: IconList.info;
-            onClicked: showcaseLoader.sourceComponent = projectInfo;
             category: "introduction"
+
+            onClicked: showcaseLoader.sourceComponent = projectInfo;
         }
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "Fonts";
             icon.path: IconList.font;
-            onClicked: showcaseLoader.sourceComponent = fontShowcase;
             category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = fontShowcase;
         }
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "Colors";
             icon.path: IconList.palette;
             onClicked: showcaseLoader.sourceComponent = colorShowcase;
             category: "components"
         }
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "Badge";
             icon.path: IconList.verified;
-            onClicked: showcaseLoader.sourceComponent = badgeShowcase;
             category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = badgeShowcase;
         }
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "Accordion";
             icon.path: IconList.star;
-            onClicked: showcaseLoader.sourceComponent = accordionShowcase;
             category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = accordionShowcase;
         }
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "Buttons";
             icon.path: IconList.gamepad;
             category: "components"
@@ -140,19 +166,24 @@ Sidebar {
                 {text : "Switch", onClicked: function(){ showcaseLoader.sourceComponent = switchShowcase }}
             ];
         }
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "Alerts";
             icon.path: IconList.alert;
-            onClicked: showcaseLoader.sourceComponent = alertShowcase;
             category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = alertShowcase;
         }
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "List Items";
             icon.path: IconList.list;
-            onClicked: showcaseLoader.sourceComponent = listItemShowcase;
             category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = listItemShowcase;
         }
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "Pagination";
             icon.path: IconList.pages;
             category: "components"
@@ -163,13 +194,16 @@ Sidebar {
                 {text : "Arrows", onClicked: function(){ showcaseLoader.sourceComponent = paginationArrowsShowcase }}
             ];
         }
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "Progress";
             icon.path: IconList.stonks;
             category: "components"
+
             onClicked: showcaseLoader.sourceComponent = progressShowcase;
         }
-        SidebarCompactItem{
+
+        SidebarCompactItem {
             text: "Inputs";
             icon.path: IconList.edit;
             category: "components"

@@ -3,7 +3,7 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Rectangle{
+Rectangle {
     id: _textField
 
 
@@ -152,7 +152,7 @@ Rectangle{
         property bool isStandardType: !isFilledType && !isOutlinedType
     }
 
-    Rectangle{
+    Rectangle {
         anchors.bottom: parent.bottom
 
         width: parent.width
@@ -162,7 +162,7 @@ Rectangle{
         visible: _textField.type !== MTextField.Type.Outlined && _textField.type !== MTextField.Type.Filled
     }
 
-    Rectangle{
+    Rectangle {
         id: _labelContainer
 
         anchors {
@@ -177,7 +177,7 @@ Rectangle{
         radius: 8
     }
 
-    B2{
+    B2 {
         id: _label
 
         verticalAlignment: Qt.AlignVCenter
@@ -221,7 +221,7 @@ Rectangle{
         ]
     }
 
-    Item{
+    Item {
         id: _mainContainer
 
         anchors {
@@ -229,7 +229,7 @@ Rectangle{
             topMargin: _textField.type === MTextField.Type.Outlined ? 0 : (_textInput.isInForeground ? Size.pixel16 : 0)
         }
 
-        Icon{
+        Icon {
             id: _leftIcon
 
             anchors {
@@ -274,7 +274,7 @@ Rectangle{
             }
         }
 
-        Icon{
+        Icon {
             id: _rightIcon
 
             anchors {

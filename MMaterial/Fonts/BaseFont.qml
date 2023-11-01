@@ -1,6 +1,6 @@
 import QtQuick 2.10
 
-Item{
+Item {
     property string fontName
 
     readonly property string extraBold: extraBoldFont.name

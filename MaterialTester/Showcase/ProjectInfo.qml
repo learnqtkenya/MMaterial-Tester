@@ -7,19 +7,25 @@ Item {
     objectName: "Project Info"
     visible: showcaseLoader.status == Loader.Ready
 
-    ColumnLayout{
+    ColumnLayout {
         anchors.fill: parent
+
         spacing: Size.pixel24
-        H3{
-            color: Theme.text.primary
+
+        H3 {
             Layout.fillWidth: true
+
+            color: Theme.text.primary
             text: "About the project"
             font.bold: true
         }
-        ListView{
+
+        ListView {
             id: _listView
+
             Layout.fillWidth: true
             Layout.fillHeight: true
+
             spacing: Size.pixel24
             clip: true
 
@@ -29,7 +35,8 @@ Item {
                 "MMaterial is a testament to my dedication and passion for UI design and development.\nBy naming the project after myself, Marko, combined with the 'Material' reference, I hope to create a unique and recognizable brand that resonates with the community. It's my way of contributing to the thriving open-source ecosystem while leaving a personal touch on this exciting endeavor.",
                 "Please note that this is a work in progress and is subdue to changes.\nI'm working hard to bring more components and features to MMaterial, so stay tuned for more updates!"
             ]
-            delegate: B2{
+
+            delegate: B2 {
                 color: index == _listView.count -1 ? Theme.text.primary : Theme.text.secondary
                 width: _listView.width
                 text: modelData
@@ -38,7 +45,7 @@ Item {
             }
         }
 
-        H6{
+        H6 {
             color: Theme.text.secondary
             Layout.fillWidth: true
             horizontalAlignment: Qt.AlignRight

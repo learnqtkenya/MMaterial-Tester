@@ -5,67 +5,74 @@ import MMaterial
 
 import "../../Components/Common"
 
-ColumnLayout{
+ColumnLayout {
     id: groupRoot
+
     required property int type
     required property string title
 
     property int columnCount: Window.width > (1920 * Size.scale) ? 4 : (Window.width > 1180 * Size.scale ? 2 : 1)
-    Subtitle1{
+
+    Subtitle1 {
         text: groupRoot.title
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("States")
         grid.columns: groupRoot.columnCount
 
-        MTextField{
+        MTextField {
             type: groupRoot.type
             accent: Theme.primary
         }
-        MTextField{
+
+        MTextField {
             type: groupRoot.type
             accent: Theme.primary
             text: qsTr("Value (Enabled)")
         }
-        MTextField{
+
+        MTextField {
             enabled: false
             type: groupRoot.type
             accent: Theme.primary
             text: qsTr("Value (Disabled)")
         }
-        MTextField{
+
+        MTextField {
             type: groupRoot.type
             accent: Theme.primary
             text: qsTr("Value (Incorrect)")
             input.validator: RegularExpressionValidator{ regularExpression: /^[\d]+$/ }
         }
-
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("Icon")
         grid.columns: groupRoot.columnCount
 
-        MTextField{
+        MTextField {
             type: groupRoot.type
             accent: Theme.primary
             text: qsTr("Left Icon")
             leftIcon.path: IconList.logo
         }
-        MTextField{
+
+        MTextField {
             type: groupRoot.type
             accent: Theme.primary
             text: qsTr("Left and Right Icon")
             leftIcon.path: IconList.logo
             rightIcon.path: IconList.logo
         }
-        MTextField{
+
+        MTextField {
             type: groupRoot.type
             accent: Theme.primary
             text: qsTr("Right Icon")
             rightIcon.path: IconList.logo
         }
     }
-    Item{ Layout.fillHeight: true; }
+
+    Item { Layout.fillHeight: true; }
 }

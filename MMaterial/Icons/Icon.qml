@@ -65,7 +65,7 @@ Image{
         onRunningChanged: if(!running){ tooltipTime = 0; }
     }
 
-    MouseArea{
+    MouseArea {
         id: mouseArea
 
         anchors.fill: parent

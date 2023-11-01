@@ -4,18 +4,21 @@ import QtQuick.Layouts
 import QtQuick.Effects
 Rectangle {
     objectName: "Accordion"
+
     visible: showcaseLoader.status == Loader.Ready
     color: Theme.background.main
 
-    ListView{
+    ListView {
         id: listview
-        anchors{
-            fill: parent
-        }
+
+        anchors.fill: parent
+
         model: 5
         spacing: Size.pixel8
-        delegate: Accordion{
+
+        delegate: Accordion {
             width: listview.width
+
             title: "Accordion " + index
             subtitle: "Donec id justo. Curabitur blandit mollis lacus. Vivamus quis mi. In ut quam vitae odio lacinia tincidunt. In consectetuer turpis ut velit."
         }

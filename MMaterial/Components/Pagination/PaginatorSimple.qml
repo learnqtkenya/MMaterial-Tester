@@ -19,7 +19,7 @@ Rectangle {
     radius: 8
     color: Theme.main.p800
 
-    Item{
+    Item {
         id: _leftArrow
 
         anchors.left: parent.left
@@ -27,7 +27,7 @@ Rectangle {
         height: parent.height
         width: height
 
-        Icon{
+        Icon {
             anchors.centerIn: parent
 
             path: IconList.arrow
@@ -42,7 +42,7 @@ Rectangle {
         }
     }
 
-    Subtitle2{
+    Subtitle2 {
         anchors{
             left: _leftArrow.right
             right: _rightArrow.left
@@ -62,7 +62,7 @@ Rectangle {
         }
     }
 
-    Item{
+    Item {
         id: _rightArrow
 
         anchors.right: parent.right
@@ -70,7 +70,7 @@ Rectangle {
         height: parent.height
         width: height
 
-        Icon{
+        Icon {
             anchors.centerIn: parent
 
             path: IconList.arrow

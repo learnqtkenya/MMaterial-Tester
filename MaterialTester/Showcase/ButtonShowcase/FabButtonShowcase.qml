@@ -2,16 +2,17 @@ import QtQuick
 
 import MMaterial
 
-Item{
+Item {
     objectName: "FAB Button"
     visible: showcaseLoader.status == Loader.Ready
-    ListView{
+
+    ListView {
         id: listView
+
+        anchors.fill: parent
+
         spacing: 80 * Size.scale
         clip: true
-        anchors {
-            fill: parent
-        }
 
         model: [
             { "type": MButton.Type.Contained, "name" : "Contained Button" },
@@ -20,13 +21,18 @@ Item{
             { "type": MButton.Type.Soft, "name" : "Soft Button" }
 
         ]
-        delegate: Item{
+
+        delegate: Item {
+            property int i: index
+
             width: listView.width
             height: buttonGroup.height
-            property int i: index
-            FABButtonGroup{
+
+            FABButtonGroup {
                 id: buttonGroup
+
                 width: listView.width
+
                 buttonType: listView.model[parent.i].type
                 title: listView.model[parent.i].name
             }

@@ -27,14 +27,14 @@ Rectangle {
         }
     }
 
-    ColumnLayout{
+    ColumnLayout {
         anchors {
             fill: parent
             margins: Size.pixel6
             topMargin: Size.pixel24
         }
 
-        Icon{
+        Icon {
             id: _logo
 
             Layout.alignment: Qt.AlignHCenter

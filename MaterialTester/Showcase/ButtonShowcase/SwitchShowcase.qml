@@ -6,29 +6,34 @@ import MMaterial
 
 import "../../Components/Common"
 
-Flickable{
+Flickable {
     objectName: "Radio Button"
     contentHeight: _mainLayout.implicitHeight
 
     ScrollIndicator.vertical: MScrollIndicator{}
+
     ColumnLayout {
         id: _mainLayout
+
         anchors.fill: parent
+
         visible: showcaseLoader.status == Loader.Ready
         spacing: Size.pixel40
-        Subtitle1{ text: "Radio Button" }
-        TitleRow{
-            title.text: qsTr("Default")
-            width: parent.width
-            spacing: Size.pixel36
+
+        Subtitle1 { text: "Radio Button" }
+
+        TitleRow {
             Layout.topMargin: Size.pixel10
+
+            title.text: qsTr("Default")
+            spacing: Size.pixel36
 
             MSwitch{ accent: Theme.primary; checked: false; }
             MSwitch{ accent: Theme.primary; checked: true; }
         }
-        TitleRow{
+
+        TitleRow {
             title.text: qsTr("Color")
-            width: parent.width
             spacing: Size.pixel36
 
             MSwitch{ accent: Theme.primary; checked: true; }
@@ -38,9 +43,9 @@ Flickable{
             MSwitch{ accent: Theme.warning; checked: true; }
             MSwitch{ accent: Theme.error; checked: true; }
         }
-        TitleRow{
+
+        TitleRow {
             title.text: qsTr("States")
-            width: parent.width
             spacing: Size.pixel36
 
             MSwitch{ accent: Theme.primary; checked: false; }
@@ -48,9 +53,9 @@ Flickable{
             MSwitch{ accent: Theme.primary; checked: false; enabled: false; }
             MSwitch{ accent: Theme.primary; checked: true; enabled: false; }
         }
-        TitleRow{
+
+        TitleRow {
             title.text: qsTr("Size")
-            width: parent.width
             spacing: Size.pixel36
 
             MSwitch{ accent: Theme.primary; checked: false; size: Size.Grade.S; }
@@ -58,17 +63,18 @@ Flickable{
             MSwitch{ accent: Theme.primary; checked: true; size: Size.Grade.S; }
             MSwitch{ accent: Theme.primary; checked: true; size: Size.Grade.M; }
         }
-        TitleRow{
-            title.text: qsTr("Label")
-            width: parent.width
-            spacing: Size.pixel36
+
+        TitleRow {
             Layout.topMargin: Size.pixel10
+
+            title.text: qsTr("Label")
+            spacing: Size.pixel36
 
             MSwitch{ accent: Theme.primary; checked: false; text: qsTr("Label"); }
             MSwitch{ accent: Theme.primary; checked: true; text: qsTr("Label"); }
         }
-        Item{ Layout.fillHeight: true; }
 
+        Item { Layout.fillHeight: true; }
     }
 }
 

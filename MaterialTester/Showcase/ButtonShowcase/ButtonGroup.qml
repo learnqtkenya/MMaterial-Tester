@@ -5,59 +5,68 @@ import MMaterial
 
 import "../../Components/Common"
 
-ColumnLayout{
+ColumnLayout {
     id: groupRoot
+
     required property int buttonType
     required property string title
-    Subtitle1{
+
+    Subtitle1 {
         text: groupRoot.title
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("Color")
 
-        MButton{
+        MButton {
+            Layout.alignment: Qt.AlignLeft
+
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Primary"
-            Layout.alignment: Qt.AlignLeft
         }
-        MButton{
+
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.secondary
             text: "Secondary"
         }
-        MButton{
+
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.info
             text: "Info"
         }
-        MButton{
+
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.success
             text: "Success"
         }
-        MButton{
+
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.warning
             text: "Warning"
         }
-        MButton{
+
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.error
             text: "Error"
         }
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("States")
 
-        MButton{
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: mouseArea.containsMouse ? "Hovered" : "Enabled"
         }
-        MButton{
+
+        MButton {
             enabled: false
             type: groupRoot.buttonType
             accent: Theme.primary
@@ -65,23 +74,25 @@ ColumnLayout{
         }
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("Icon")
 
-        MButton{
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Left Icon"
             leftIcon.path: IconList.logo
         }
-        MButton{
+
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Left and Right Icon"
             leftIcon.path: IconList.logo
             rightIcon.path: IconList.logo
         }
-        MButton{
+
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Right Icon"
@@ -89,27 +100,30 @@ ColumnLayout{
         }
     }
 
-    TitleRow{
+    TitleRow {
         title.text: qsTr("Size")
 
-        MButton{
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             size: Size.Grade.L
             text: "Large"
         }
-        MButton{
+
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             size: Size.Grade.M
             text: "Medium"
         }
-        MButton{
+
+        MButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             size: Size.Grade.S
             text: "Small"
         }
     }
-    Item{ Layout.fillHeight: true; }
+
+    Item { Layout.fillHeight: true; }
 }

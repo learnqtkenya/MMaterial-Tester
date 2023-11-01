@@ -7,39 +7,49 @@ import MMaterial
 
 import "../Components/Common"
 
-Flickable{
+Flickable {
     contentHeight: _progressShowcase.implicitHeight
 
     ScrollIndicator.vertical: MScrollIndicator{}
+
     ColumnLayout {
         id: _progressShowcase
-        anchors.fill: parent
+
         property int progress: 0
-        NumberAnimation on progress {
-            id: _progressAnimation
-            loops: Animation.Infinite
-            running: true
-            from: 0; to: 100
-            duration: 5000
-        }
-        Timer{
-            id: _animationTimer
-            interval: 300
-            onTriggered: _progressAnimation.restart();
-        }
+
+        anchors.fill: parent
 
         onWidthChanged: {
             _progressAnimation.stop();
             _animationTimer.restart();
         }
-        H6{
-            text: qsTr("Progress Bar")
+
+        NumberAnimation on progress {
+            id: _progressAnimation
+
+            loops: Animation.Infinite
+            running: true
+            from: 0; to: 100
+            duration: 5000
         }
-        TitleRow{
-            title.text: qsTr("Color")
+
+        Timer {
+            id: _animationTimer
+
+            interval: 300
+
+            onTriggered: _progressAnimation.restart();
+        }
+
+        H6 { text: qsTr("Progress Bar") }
+
+        TitleRow {
             width: parent.width
+
+            title.text: qsTr("Color")
             spacing: Size.pixel36
             grid.columns: 1
+
             MProgressBar{ progress: _progressShowcase.progress; accent: Theme.primary; }
             MProgressBar{ progress: _progressShowcase.progress; accent: Theme.secondary; }
             MProgressBar{ progress: _progressShowcase.progress; accent: Theme.info; }
@@ -47,21 +57,29 @@ Flickable{
             MProgressBar{ progress: _progressShowcase.progress; accent: Theme.warning; }
             MProgressBar{ progress: _progressShowcase.progress; accent: Theme.error; }
         }
-        TitleRow{
-            title.text: qsTr("Label")
+
+        TitleRow {
             width: parent.width
+
+            title.text: qsTr("Label")
             spacing: Size.pixel36
             grid.columns: 1
+
             MProgressBar{ progress: _progressShowcase.progress; accent: Theme.primary; showLabel: true }
         }
-        H6{
+
+        H6 {
             Layout.topMargin: Size.pixel48
+
             text: qsTr("Circular Progress Bar")
         }
-        TitleRow{
-            title.text: qsTr("Color")
+
+        TitleRow {
             width: parent.width
+
+            title.text: qsTr("Color")
             spacing: Size.pixel36
+
             MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.primary; }
             MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.secondary; }
             MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.info; }
@@ -69,14 +87,17 @@ Flickable{
             MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.warning; }
             MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.error; }
         }
-        TitleRow{
-            title.text: qsTr("Label")
+        TitleRow {
             width: parent.width
+
+            title.text: qsTr("Label")
             spacing: Size.pixel36
             grid.columns: 1
+
             MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.primary; showLabel: true }
         }
-        Item{ Layout.fillHeight: true; }
+
+        Item { Layout.fillHeight: true; }
     }
 }
 
