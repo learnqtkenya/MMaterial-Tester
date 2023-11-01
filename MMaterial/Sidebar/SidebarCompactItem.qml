@@ -14,7 +14,7 @@ Checkable {
     property alias list: _listView
     property var model: []
 
-    function selectItem(){
+    function selectItem() : void {
         if(typeof index !== "undefined")
             ListView.view.currentIndex = index;
         else if(typeof ObjectModel.index !== "undefined")

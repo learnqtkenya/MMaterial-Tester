@@ -8,7 +8,7 @@ QtObject {
     property var checkables: []
     property var checkedButton: null
 
-    function check(clickedCheckable){
+    function check(clickedCheckable: Checkable) : void{
         for(let checkable of _root.checkables)
             if(checkable !== clickedCheckable)
                 checkable.checked = false;

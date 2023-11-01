@@ -13,7 +13,7 @@ SwipeView {
         ImageList.womanSitting
     ]
 
-    function preventResizing(){
+    function preventResizing() : void {
         _swipeView.visible = false;
         _resizingPreventionTimer.restart();
     }

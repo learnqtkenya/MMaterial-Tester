@@ -8,7 +8,7 @@ import "./Themes"
 ThemeBase{
     property ThemeBase currentTheme: LightTheme
 
-    function setTheme(theme){
+    function setTheme(theme: ThemeBase) : void {
         console.log("Theme switched to " + theme.objectName)
         currentTheme = theme;
     }

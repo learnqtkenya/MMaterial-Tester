@@ -13,7 +13,7 @@ Window {
     Loader {
         id: mainLoader
 
-        function reload(){
+        function reload() : void {
             mainLoader.source = "";
             QmlEngine.clearCache();
             mainLoader.source = "./MainWindow.qml";
@@ -29,7 +29,7 @@ Window {
     Connections {
         target: QmlEngine
 
-        function onReloadUI(){
+        function onReloadUI() : void {
             console.log("Reloading UI")
             mainLoader.reload();
         }

@@ -10,7 +10,7 @@ Item {
 
     property bool isOpen: false
 
-    function toggle(){
+    function toggle() : void {
         _appSettings.isOpen = !_appSettings.isOpen;
     }
 

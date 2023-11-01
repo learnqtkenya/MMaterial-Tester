@@ -104,7 +104,7 @@ Item {
                     }
 
                     ColumnLayout {
-                        Layout.preferredWidth: implicitWidth
+                        Layout.fillWidth: true
 
                         H6 {
                             Layout.topMargin: Size.pixel20
@@ -127,10 +127,12 @@ Item {
                         MRadioButton { id: successButton; text: qsTr("Success"); property int severity: Alert.Severity.Success }
                         MRadioButton { id: warningButton; text: qsTr("Warning"); property int severity: Alert.Severity.Warning }
                         MRadioButton { id: errorButton; text: qsTr("Error"); property int severity: Alert.Severity.Error }
+
+                        Item { Layout.fillHeight: true }
                     }
 
                     ColumnLayout {
-                        Layout.preferredWidth: implicitWidth
+                        Layout.fillWidth: true
 
                         H6 {
                             Layout.alignment: Qt.AlignTop
@@ -152,10 +154,12 @@ Item {
                         MRadioButton { id: filledButton; text: qsTr("Filled"); checked: true; property int variant: Alert.Variant.Filled}
                         MRadioButton { id: standardButton; text: qsTr("Standard"); property int variant: Alert.Variant.Standard}
                         MRadioButton { id: outlinedButton; text: qsTr("Outlined"); property int variant: Alert.Variant.Outlined }
+
+                        Item { Layout.fillHeight: true }
                     }
 
                     ColumnLayout {
-                        Layout.preferredWidth: implicitWidth
+                        Layout.fillWidth: true
 
                         H6 {
                             Layout.alignment: Qt.AlignTop
@@ -176,6 +180,36 @@ Item {
 
                         MRadioButton { id: yesButton; text: qsTr("Yes"); checked: true; }
                         MRadioButton { id: noButton; text: qsTr("No"); }
+
+                        Item { Layout.fillHeight: true }
+                    }
+
+                    ColumnLayout {
+                        Layout.fillWidth: true
+
+                        H6 {
+                            Layout.topMargin: Size.pixel20
+                            Layout.alignment: Qt.AlignTop
+                            Layout.fillWidth: true
+
+                            width: parent.width
+                            height: Size.pixel40
+
+                            text: "Edge Of"
+                            color: Theme.text.disabled
+
+                            font {
+                                pixelSize: Size.pixel12
+                                capitalization: Font.AllUppercase
+                            }
+                        }
+
+                        MRadioButton { id: bottomLeftButton; text: qsTr("Bottom Left"); checked: alerts.edgeOf == Item.BottomLeft; customCheckImplementaiton: true; onClicked: { alerts.edgeOf = Item.BottomLeft } }
+                        MRadioButton { id: bottomRightButton; text: qsTr("Bottom Right"); checked: alerts.edgeOf == Item.BottomRight; customCheckImplementaiton: true; onClicked: { alerts.edgeOf = Item.BottomRight } }
+                        MRadioButton { id: topLeftButton; text: qsTr("Top Left"); checked: alerts.edgeOf == Item.TopLeft; customCheckImplementaiton: true; onClicked: { alerts.edgeOf = Item.TopLeft } }
+                        MRadioButton { id: topRightButton; text: qsTr("Top Right"); checked: alerts.edgeOf == Item.TopRight; customCheckImplementaiton: true; onClicked: { alerts.edgeOf = Item.TopRight } }
+
+                        Item { Layout.fillHeight: true }
                     }
                 }
 

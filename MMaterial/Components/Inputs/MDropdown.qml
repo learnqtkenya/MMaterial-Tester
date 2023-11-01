@@ -10,7 +10,7 @@ MTextField {
     property alias delegate: _repeater.delegate
     property int delegateCount: 5
 
-    function toggle(){
+    function toggle() : void {
         if(_contextMenu.opened)
             _contextMenu.close();
         else

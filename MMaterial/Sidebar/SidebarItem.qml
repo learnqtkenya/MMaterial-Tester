@@ -18,7 +18,7 @@ Item {
 
     property real openingSpeed: 150
 
-    function selectItem(){
+    function selectItem() : void {
         if(typeof index !== "undefined")
             ListView.view.currentIndex = index;
         else if(typeof ObjectModel.index !== "undefined")
