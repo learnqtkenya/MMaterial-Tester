@@ -1,15 +1,12 @@
 import QtQuick 
 
-import "../../Colors"
-import "../../Icons"
-import "../../Settings"
-//change the value of icon.sourceSize.widht / height
+import MMaterial
 
 Item {
     id: _root
 
     property alias icon: _icon
-    property var accent: Theme.info //Needs to be PaletteBasic type
+    property PaletteBasic accent: Theme.info
     property int type: Badge.Type.Dot
 
     property int quantity: 1
@@ -52,8 +49,8 @@ Item {
     Icon {
         id: _icon
 
-        path: IconList.mail
-        sourceSize.height: Size.pixel32
+        iconData: Icons.light.mail
+        size: Size.pixel32
         color: Theme.text.primary
         interactive: true
 

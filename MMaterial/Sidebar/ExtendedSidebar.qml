@@ -38,15 +38,17 @@ Rectangle {
 
         Icon {
             id: _logo
-            color: Theme.primary.main
-            sourceSize.height: Size.pixel32
-            sourceSize.width: Size.pixel32
+
             Layout.leftMargin: Size.pixel8
-            path: IconList.logo
+
+            color: Theme.primary.main
+            size: Size.pixel32
+            iconData: Icons.heavy.logo
         }
 
         Rectangle {
             id: _avatarRect
+
             Layout.leftMargin: Size.pixel4
             Layout.rightMargin: Size.pixel4
             Layout.topMargin: Size.pixel32

@@ -16,6 +16,8 @@ list(APPEND MODULE_ASSETS
     Fonts/Families/PublicSans/PublicSans-Light.ttf
     Fonts/Families/PublicSans/PublicSans-ExtraLight.ttf
 
+    Icons/assets/icomoon.ttf
+
     # Icons
     ${SVG_PATH}/android.svg
     ${SVG_PATH}/mail.svg
@@ -94,8 +96,13 @@ list(APPEND MODULE_QML_FILES
 
     # Icons
     Icons/Icon.qml
-    Icons/IconList.qml
-    Icons/ImageList.qml
+    Icons/Icons.qml
+    Icons/Images.qml
+    Icons/LightIcon.qml
+    Icons/IconFont.qml
+    Icons/IconData.qml
+    Icons/HeavyIcon.qml
+    Icons/IconBase.qml
 
     # Components
     Components/Badge/BadgeNumber.qml
@@ -157,9 +164,10 @@ set_source_files_properties(
     Colors/BasicPalettes/BasicOrange.qml
     Colors/BasicPalettes/BasicLightBlue.qml
 
+    Icons/IconFont.qml
     Fonts/PublicSans.qml
-    Icons/IconList.qml
-    Icons/ImageList.qml
+    Icons/Icons.qml
+    Icons/Images.qml
     Settings/Size.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE
 )

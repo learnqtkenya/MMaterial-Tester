@@ -30,9 +30,9 @@ Rectangle {
         Icon {
             anchors.centerIn: _leftArrow
 
-            path: IconList.arrow
+            iconData: Icons.light.arrow
             color: Theme.common.white
-            sourceSize.height: _leftArrow.height * 0.2
+            size: _leftArrow.height * 0.3
             rotation: 90
             interactive: true
             enabled: _root.indexView.currentIndex > 0
@@ -73,9 +73,9 @@ Rectangle {
         Icon {
             anchors.centerIn: _rightArrow
 
-            path: IconList.arrow
+            iconData: Icons.light.arrow
             color: Theme.common.white
-            sourceSize.height: _rightArrow.height * 0.2
+            size: _rightArrow.height * 0.3
             rotation: -90
             interactive: true
             enabled: _root.indexView.currentIndex < _root.indexView.count - 1

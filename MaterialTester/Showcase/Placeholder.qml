@@ -8,10 +8,10 @@ Item {
     Icon {
         id: _logo
 
-        sourceSize.height: Math.min(Window.width, Window.height) * 0.3
+        size: Math.min(Window.width, Window.height) * 0.3
         anchors.centerIn: parent
 
-        path: IconList.logo
+        iconData: Icons.heavy.logo
         color: Theme.primary.main
     }
 

@@ -55,22 +55,22 @@ ColumnLayout {
             type: groupRoot.type
             accent: Theme.primary
             text: qsTr("Left Icon")
-            leftIcon.path: IconList.logo
+            leftIcon.iconData: Icons.light.logo
         }
 
         MTextField {
             type: groupRoot.type
             accent: Theme.primary
             text: qsTr("Left and Right Icon")
-            leftIcon.path: IconList.logo
-            rightIcon.path: IconList.logo
+            leftIcon.iconData: Icons.light.logo
+            rightIcon.iconData: Icons.light.logo
         }
 
         MTextField {
             type: groupRoot.type
             accent: Theme.primary
             text: qsTr("Right Icon")
-            rightIcon.path: IconList.logo
+            rightIcon.iconData: Icons.light.logo
         }
     }
 

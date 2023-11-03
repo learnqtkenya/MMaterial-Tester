@@ -33,9 +33,9 @@ Item {
         Icon {
             id: _leftIcon
 
-            path: IconList.arrow
+            iconData: Icons.light.arrow
             color: Theme.common.white
-            sourceSize.height: _leftArrow.height * 0.2
+            size: _leftArrow.height * 0.3
             anchors.centerIn: _leftArrow
             rotation: 90
         }
@@ -67,9 +67,9 @@ Item {
         opacity: enabled ? 1 : 0.48
 
         Icon {
-            path: IconList.arrow
+            iconData: Icons.light.arrow
             color: Theme.common.white
-            sourceSize.height: _rightArrow.height * 0.2
+            size: _rightArrow.height * 0.3
             anchors.centerIn: _rightArrow
             rotation: -90
         }

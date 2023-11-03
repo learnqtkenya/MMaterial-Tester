@@ -49,8 +49,9 @@ Rectangle {
         id: _icon
 
         anchors.centerIn: _root
-        path: IconList.logo
-        visible: path != ""
+        iconData: Icons.light.logo
+        visible: iconData.path != ""
+        size: _root.height * 0.7
     }
 
     //Non-Visual elements
@@ -79,19 +80,19 @@ Rectangle {
                 when: _root.size == Size.Grade.L
                 name: "L"
                 PropertyChanges{ target: _root; implicitHeight: 56 * Size.scale; implicitWidth: implicitHeight }
-                PropertyChanges{ target: _icon; sourceSize.width: Size.pixel24 }
+                PropertyChanges{ target: _icon; size: Size.pixel24 }
             },
             State{
                 when: _root.size == Size.Grade.M
                 name: "M"
                 PropertyChanges{ target: _root; implicitHeight: 48 * Size.scale; implicitWidth: implicitHeight }
-                PropertyChanges{ target: _icon; sourceSize.width: Size.pixel24 }
+                PropertyChanges{ target: _icon; size: Size.pixel24 }
             },
             State{
                 when: _root.size == Size.Grade.S
                 name: "S"
                 PropertyChanges{ target: _root; implicitHeight: 36 * Size.scale; implicitWidth: implicitHeight }
-                PropertyChanges{ target: _icon; sourceSize.width: Size.pixel20 }
+                PropertyChanges{ target: _icon; size: Size.pixel20 }
             },
             State{
                 when: true

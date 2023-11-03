@@ -6,6 +6,7 @@
 
 int main(int argc, char *argv[])
 {
+//    qputenv("QSG_VISUALIZE", "batches");
     qputenv("MAIN_QML","../MaterialTester/Main.qml");
     QGuiApplication app(argc, argv);
 

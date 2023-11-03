@@ -7,6 +7,7 @@ import MMaterial
 
 import "./Showcase"
 import "./Showcase/ColorShowcase"
+import "./Showcase/IconShowcase"
 import "./Showcase/AvatarShowcase"
 import "./Showcase/ButtonShowcase"
 import "./Showcase/AlertShowcase"
@@ -18,6 +19,8 @@ import "./Components/AppSettings"
 import "./Components/Sidebar"
 
 Rectangle {
+    id: _root
+
     color: Theme.background.main
 
     onWidthChanged: Size.format = Window.width > 800 ? Size.Format.Extended : Size.Format.Compact
@@ -44,8 +47,8 @@ Rectangle {
         }
 
         Icon {
-            path: IconList.settings
-            sourceSize.height: parent.height/2
+            iconData: Icons.light.settings
+            size: header.height / 2
             interactive: true
             color: Theme.text.secondary
 
@@ -54,10 +57,10 @@ Rectangle {
     }
 
     Rectangle {
-        anchors.bottom: parent.bottom
+        anchors.bottom: _root.bottom
 
         height: 1
-        width: parent.width
+        width: _root.width
 
         color: Theme.other.divider
     }
@@ -69,16 +72,16 @@ Rectangle {
             margins: Size.pixel32
             leftMargin: Size.pixel46
             top: header.bottom
-            bottom: parent.bottom
+            bottom: _root.bottom
             left: sidebar.right
-            right: parent.right
+            right: _root.right
         }
 
         asynchronous: true
         sourceComponent: placeholder
 
         BusyIndicator{
-            anchors.centerIn: parent
+            anchors.centerIn: showcaseLoader
 
             height: Size.pixel48 * 2
             width: height
@@ -90,6 +93,7 @@ Rectangle {
 
     Component { id: placeholder; Placeholder{ } }
     Component { id: projectInfo; ProjectInfo{ } }
+    Component { id: iconShowcase;  IconShowcase{ } }
     Component { id: fontShowcase;  FontShowcase{ } }
     Component { id: colorShowcase; ColorShowcase{ } }
     Component { id: avatarShowcase; AvatarShowcase{ } }

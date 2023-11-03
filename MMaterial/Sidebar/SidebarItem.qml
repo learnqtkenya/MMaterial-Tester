@@ -120,8 +120,8 @@ Item {
 
                 Layout.alignment: Qt.AlignVCenter
 
-                visible: path != ""
-                sourceSize.height: Size.pixel24
+                visible: iconData.path != ""
+                size: Size.pixel24
                 color: _title.color
             }
 
@@ -141,13 +141,10 @@ Item {
                 Layout.alignment: Qt.AlignVCenter
 
                 visible: _root.model ? _root.model.length > 0 : 0
-                path: IconList.arrow
+                iconData: Icons.light.arrow
                 rotation: _root.isOpen ? 0 : -90
 
-                sourceSize {
-                    height: Size.pixel6
-                    width: Size.pixel6
-                }
+                size: Size.pixel6
 
                 Behavior on rotation { SmoothedAnimation { duration: _root.openingSpeed;} }
             }

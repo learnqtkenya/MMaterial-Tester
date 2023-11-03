@@ -1,83 +1,60 @@
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Effects
+import QtQuick.Layouts
 
-Image{
+import MMaterial
+
+Loader {
     id: _root
 
+    property IconData iconData
+    readonly property bool containsMouse: _root.item?.containsMouse ?? false
+
+    property real size: Size.pixel30
     property string color: ""
-    property string path: ""
-    property string description: "" //Shown in tooltip
+
     property bool interactive: false
     property bool hoverable: true
-    property bool containsMouse: mouseArea.containsMouse
-    property bool tooltipEnabled: false
-    property int tooltipTime: 0
 
     signal clicked
 
-    fillMode: Image.PreserveAspectFit
-    source: visible ? path : ""
+    height: _root.size
+    width: _root.size
 
-    layer {
-        enabled: _root.color != ""
-        effect: MultiEffect {
-            colorizationColor: _root.color
-            colorization: 1
-            brightness: 1
+    Layout.preferredHeight: _root.size
+    Layout.preferredWidth: _root.size
+
+    sourceComponent: iconData?.type == IconData.Light ? lightIcon : heavyIcon
+    asynchronous: true
+
+    Component {
+        id: lightIcon
+
+        LightIcon {
+            iconData: _root.iconData
+            size: _root.size
+            color: _root.color
+            interactive: _root.interactive
+            hoverable: _root.hoverable
+
+            onClicked: _root.clicked()
         }
     }
 
-    ToolTip.text: description
-    ToolTip.visible: description != "" && tooltipEnabled && tooltipTime >= 2 ? containsMouse : false
+    Component {
+        id: heavyIcon
 
-    Keys.onPressed: if((event.key == Qt.Key_Return || event.key == Qt.Key_Enter) && _root.interactive){ accepted(); confirmed();}
+        HeavyIcon {
+            iconData: _root.iconData
+            size: _root.size
+            color: _root.color
+            interactive: _root.interactive
+            hoverable: _root.hoverable
 
-    states: [
-        State {
-            when: mouseArea.pressed && _root.interactive
-            name: "pressed"
-            PropertyChanges { target: _root; scale: 0.8; }
-        },
-        State {
-            when: _root.interactive
-            name: "default"
-            PropertyChanges { target: _root; scale: 1; }
+            onClicked: _root.clicked()
         }
-    ]
-    transitions: [
-        Transition {
-            from: "pressed"
-            NumberAnimation { id: _clickedAnimation; target: _root; properties: "scale"; duration: 1150; easing.type: Easing.OutElastic; }
-        },
-        Transition {
-            from: "default"
-            NumberAnimation { target: _root; properties: "scale"; duration: 70; }
-        }
-    ]
-
-    Timer {
-        id: tooltipTimer
-
-        interval: 500; running: tooltipEnabled && mouseArea.containsMouse; repeat: true
-
-        onTriggered: tooltipTime+=1;
-        onRunningChanged: if(!running){ tooltipTime = 0; }
-    }
-
-    MouseArea {
-        id: mouseArea
-
-        anchors.fill: _root
-
-        visible: _root.interactive || _root.tooltipEnabled
-        hoverEnabled: hoverable
-        cursorShape: containsMouse && _root.interactive ? Qt.PointingHandCursor : Qt.ArrowCursor
-
-        onClicked: if(_root.interactive){ _root.clicked(); }
     }
 }
-
 
 
 

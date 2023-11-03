@@ -15,15 +15,23 @@ Sidebar {
 
         SidebarItem {
             text: "Project";
-            icon.path: IconList.info;
+            icon.iconData: Icons.light.info;
             category: "introduction"
 
             onClicked: showcaseLoader.sourceComponent = projectInfo;
         }
 
         SidebarItem {
+            text: "Icons";
+            icon.iconData: Icons.light.logo;
+            category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = iconShowcase;
+        }
+
+        SidebarItem {
             text: "Fonts";
-            icon.path: IconList.font;
+            icon.iconData: Icons.light.font;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = fontShowcase;
@@ -31,7 +39,7 @@ Sidebar {
 
         SidebarItem {
             text: "Colors";
-            icon.path: IconList.palette;
+            icon.iconData: Icons.light.palette;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = colorShowcase;
@@ -39,7 +47,7 @@ Sidebar {
 
         SidebarItem {
             text: "Badge";
-            icon.path: IconList.verified;
+            icon.iconData: Icons.light.verified;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = badgeShowcase;
@@ -47,7 +55,7 @@ Sidebar {
 
         SidebarItem {
             text: "Accordion";
-            icon.path: IconList.star;
+            icon.iconData: Icons.light.star;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = accordionShowcase;
@@ -55,7 +63,7 @@ Sidebar {
 
         SidebarItem {
             text: "Buttons";
-            icon.path: IconList.gamepad;
+            icon.iconData: Icons.light.gamepad;
             category: "components"
             model: [
                 {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}},
@@ -69,21 +77,21 @@ Sidebar {
 
         SidebarItem {
             text: "Alerts";
-            icon.path: IconList.alert;
+            icon.iconData: Icons.light.alert;
             onClicked: showcaseLoader.sourceComponent = alertShowcase;
             category: "components"
         }
 
         SidebarItem {
             text: "List Items";
-            icon.path: IconList.list;
+            icon.iconData: Icons.light.list;
             onClicked: showcaseLoader.sourceComponent = listItemShowcase;
             category: "components"
         }
 
         SidebarItem {
             text: "Pagination";
-            icon.path: IconList.pages;
+            icon.iconData: Icons.light.pages;
             category: "components"
             model: [
                 {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = paginationShowcase }},
@@ -95,14 +103,14 @@ Sidebar {
 
         SidebarItem {
             text: "Progress";
-            icon.path: IconList.stonks;
+            icon.iconData: Icons.light.stonks;
             category: "components"
             onClicked: showcaseLoader.sourceComponent = progressShowcase;
         }
 
         SidebarItem {
             text: "Inputs";
-            icon.path: IconList.edit;
+            icon.iconData: Icons.light.edit;
             category: "components"
             model: [
                 {text : "TextField", onClicked: function(){ showcaseLoader.sourceComponent = textFieldShowcase}},
@@ -116,7 +124,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Project";
-            icon.path: IconList.info;
+            icon.iconData: Icons.light.info;
             category: "introduction"
 
             onClicked: showcaseLoader.sourceComponent = projectInfo;
@@ -124,7 +132,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Fonts";
-            icon.path: IconList.font;
+            icon.iconData: Icons.light.font;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = fontShowcase;
@@ -132,14 +140,14 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Colors";
-            icon.path: IconList.palette;
+            icon.iconData: Icons.light.palette;
             onClicked: showcaseLoader.sourceComponent = colorShowcase;
             category: "components"
         }
 
         SidebarCompactItem {
             text: "Badge";
-            icon.path: IconList.verified;
+            icon.iconData: Icons.light.verified;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = badgeShowcase;
@@ -147,7 +155,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Accordion";
-            icon.path: IconList.star;
+            icon.iconData: Icons.light.star;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = accordionShowcase;
@@ -155,7 +163,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Buttons";
-            icon.path: IconList.gamepad;
+            icon.iconData: Icons.light.gamepad;
             category: "components"
             model: [
                 {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}},
@@ -169,7 +177,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Alerts";
-            icon.path: IconList.alert;
+            icon.iconData: Icons.light.alert;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = alertShowcase;
@@ -177,7 +185,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "List Items";
-            icon.path: IconList.list;
+            icon.iconData: Icons.light.list;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = listItemShowcase;
@@ -185,7 +193,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Pagination";
-            icon.path: IconList.pages;
+            icon.iconData: Icons.light.pages;
             category: "components"
             model: [
                 {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = paginationShowcase }},
@@ -197,7 +205,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Progress";
-            icon.path: IconList.stonks;
+            icon.iconData: Icons.light.stonks;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = progressShowcase;
@@ -205,7 +213,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Inputs";
-            icon.path: IconList.edit;
+            icon.iconData: Icons.light.edit;
             category: "components"
             model: [
                 {text : "TextField", onClicked: function(){ showcaseLoader.sourceComponent = textFieldShowcase}},

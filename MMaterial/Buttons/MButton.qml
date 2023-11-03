@@ -3,17 +3,14 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Controls.Material
 
-import "../Settings"
-import "../Icons"
-import "../Fonts/Texts"
-import "../Colors"
+import MMaterial
 
 Rectangle {
     id: _root
 
     property alias mouseArea: mouseArea
     property alias title: _title
-    property var accent: Theme.primary //Needs to be PaletteBasic type
+    property PaletteBasic accent: Theme.primary //Needs to be PaletteBasic type
 
     property int pixelSize: {
         if(_root.size == Size.Grade.L)
@@ -58,12 +55,7 @@ Rectangle {
     }
 
     implicitHeight: _private.oneOrLessChildrenVisible ? _title.contentHeight + _root.verticalPadding * 2 : _title.contentHeight + _root.verticalPadding * 2
-    implicitWidth:  {
-        if(_private.oneOrLessChildrenVisible)
-            return _root.implicitHeight;
-        else
-            return _title.implicitWidth + (_leftIcon.visible ? _leftIcon.implicitWidth + _mainLayout.spacing : 0) + (_rightIcon.visible ? _rightIcon.implicitWidth + _mainLayout.spacing : 0) + _root.horizontalPadding * 2
-    }
+    implicitWidth:  _mainLayout.implicitWidth + _root.horizontalPadding * 2
 
     radius: 8
     opacity: mouseArea.pressed ? 0.7 : 1 //TODO replace with ripple effect when OpacityMask is fixed in Qt6
@@ -139,71 +131,64 @@ Rectangle {
         property bool oneOrLessChildrenVisible: !_title.visible && (!_leftIcon.visible || !_rightIcon.visible)
     }
 
-    Item {
-        id: _body
-
-        anchors {
-            fill: _root
-            leftMargin: _private.oneOrLessChildrenVisible ? 0 : _root.horizontalPadding; rightMargin: _private.oneOrLessChildrenVisible ? 0 : _root.horizontalPadding
-            topMargin: _root.verticalPadding; bottomMargin: _root.verticalPadding
-        }
-
-        visible: !_root.isLoading
-
-        RowLayout {
-            id: _mainLayout
-
-            anchors.fill: _body
-
-            spacing: Size.pixel8
-
-            Icon {
-                id: _leftIcon
-
-                Layout.alignment: _title.visible ? Qt.AlignLeft : Qt.AlignCenter
-                sourceSize.height: _title.contentHeight * 0.55
-                visible: path != ""
-            }
-
-            H2{
-                id: _title
-
-                Layout.alignment: Qt.AlignCenter
-
-                visible: text !== ""
-                font.pixelSize: _root.pixelSize
-                text: _root.text
-                color: _private.textColor
-
-                horizontalAlignment: Qt.AlignHCenter
-                verticalAlignment: Qt.AlignVCenter
-
-                font{
-                    capitalization: Font.Capitalize
-                    bold: true
-                }
-            }
-
-            Icon {
-                id: _rightIcon
-
-                Layout.alignment: _title.visible ? Qt.AlignRight : Qt.AlignCenter
-
-                visible: path != ""
-                sourceSize.height: _title.contentHeight * 0.55
-            }
-        }
+    Behavior on implicitWidth {
+        NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
     }
 
-    BusyIndicator{
+    RowLayout {
+        id: _mainLayout
+
         anchors.centerIn: _root
 
-        height: _root.height* 0.7
-        width: height
+        spacing: Size.pixel8
 
-        Material.accent: _title.color
-        visible: _root.isLoading
+        Icon {
+            id: _leftIcon
+
+            Layout.alignment: _title.visible ? Qt.AlignLeft : Qt.AlignCenter
+            size: _title.contentHeight * 0.55
+            visible: iconData && !_root.isLoading
+        }
+
+        H2{
+            id: _title
+
+            Layout.alignment: Qt.AlignCenter
+
+            visible: text !== "" && !_root.isLoading
+            font.pixelSize: _root.pixelSize
+            text: _root.text
+            color: _private.textColor
+
+            horizontalAlignment: Qt.AlignHCenter
+            verticalAlignment: Qt.AlignVCenter
+
+            font{
+                capitalization: Font.Capitalize
+                bold: true
+            }
+        }
+
+        Icon {
+            id: _rightIcon
+
+            Layout.alignment: _title.visible ? Qt.AlignRight : Qt.AlignCenter
+
+            visible: iconData && !_root.isLoading
+            size: _title.contentHeight * 0.55
+        }
+
+        BusyIndicator{
+            Layout.alignment: Qt.AlignCenter
+
+            Layout.preferredHeight: _root.height* 0.7
+            Layout.preferredWidth: height
+
+            Material.accent: _title.color
+            visible: _root.isLoading
+        }
     }
+
 
     MouseArea {
         id: mouseArea

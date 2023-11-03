@@ -28,8 +28,9 @@ AbstractListItem{
             Layout.rightMargin: Size.pixel16
             Layout.alignment: Qt.AlignVCenter
 
+            iconData: IconData{}
             color: _title.color
-            visible: path != ""
+            visible: iconData.path != ""
         }
 
         B2 {

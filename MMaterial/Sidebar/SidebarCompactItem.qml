@@ -73,9 +73,9 @@ Checkable {
             top: _root.top; topMargin: Size.pixel8
         }
 
-        sourceSize.width: Size.pixel22
+        size: Size.pixel22
         color: Theme.primary.main
-        path: IconList.star
+        iconData: Icons.light.star
     }
 
     B2 {
@@ -104,13 +104,10 @@ Checkable {
         }
 
         visible: _root.model ? _root.model.length > 0 : 0
-        path: IconList.arrow
+        iconData: Icons.light.arrow
         rotation: -90
 
-        sourceSize {
-            height: Size.pixel6
-            width: Size.pixel6
-        }
+        size: Size.pixel6
     }
 
     //Popup

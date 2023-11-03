@@ -137,8 +137,8 @@ Item {
         Icon {
             Layout.alignment: Qt.AlignVCenter
 
-            path: IconList.closeX
-            sourceSize.height: Size.pixel14
+            iconData: Icons.light.closeX
+            size: Size.pixel14
             color: Theme.main.p600
             interactive: true
 
@@ -159,13 +159,13 @@ Item {
             text: qsTr("Mode")
 
             leftButton {
-                icon.path: IconList.sun
+                icon.iconData: Icons.heavy.sun
                 onClicked: Theme.currentTheme = LightTheme;
                 checked: Theme.currentTheme == LightTheme;
             }
 
             rightButton {
-                icon.path: IconList.moon
+                icon.iconData: Icons.heavy.moon
                 onClicked: Theme.currentTheme = DarkTheme;
                 checked: Theme.currentTheme == DarkTheme;
             }

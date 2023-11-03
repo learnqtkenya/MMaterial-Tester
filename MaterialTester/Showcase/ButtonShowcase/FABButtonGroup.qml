@@ -22,36 +22,48 @@ ColumnLayout {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Primary"
+
+            onClicked: isLoading = !isLoading
         }
 
         MFabButton {
             type: groupRoot.buttonType
             accent: Theme.secondary
             text: "Secondary"
+
+            onClicked: isLoading = !isLoading
         }
 
         MFabButton {
             type: groupRoot.buttonType
             accent: Theme.info
             text: "Info"
+
+            onClicked: isLoading = !isLoading
         }
 
         MFabButton {
             type: groupRoot.buttonType
             accent: Theme.success
             text: "Success"
+
+            onClicked: isLoading = !isLoading
         }
 
         MFabButton {
             type: groupRoot.buttonType
             accent: Theme.warning
             text: "Warning"
+
+            onClicked: isLoading = !isLoading
         }
 
         MFabButton {
             type: groupRoot.buttonType
             accent: Theme.error
             text: "Error"
+
+            onClicked: isLoading = !isLoading
         }
     }
 
@@ -79,28 +91,28 @@ ColumnLayout {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Left Icon"
-            leftIcon.path: IconList.logo
+            leftIcon.iconData: Icons.light.logo
         }
 
         MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Left and Right Icon"
-            leftIcon.path: IconList.logo
-            rightIcon.path: IconList.logo
+            leftIcon.iconData: Icons.light.logo
+            rightIcon.iconData: Icons.light.logo
         }
 
         MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Right Icon"
-            rightIcon.path: IconList.logo
+            rightIcon.iconData: Icons.light.logo
         }
 
         MFabButton {
             type: groupRoot.buttonType
             accent: Theme.primary
-            rightIcon.path: IconList.logo
+            rightIcon.iconData: Icons.light.logo
         }
     }
 

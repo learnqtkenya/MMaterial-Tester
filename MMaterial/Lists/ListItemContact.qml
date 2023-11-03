@@ -68,8 +68,8 @@ AbstractListItem{
 
             Layout.alignment: Qt.AlignVCenter
             color: Theme.action.active
-            visible: path != ""
-            path: IconList.call
+            visible: iconData.path != ""
+            iconData: Icons.light.call
             interactive: true
         }
     }

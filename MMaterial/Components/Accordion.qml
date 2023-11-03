@@ -137,8 +137,8 @@ Rectangle {
         Icon {
             id: _arrow
 
-            sourceSize.width: Size.pixel14
-            path: IconList.arrow
+            size: Size.pixel14
+            iconData: Icons.light.arrow
             interactive: true
             color: Theme.text.primary
 

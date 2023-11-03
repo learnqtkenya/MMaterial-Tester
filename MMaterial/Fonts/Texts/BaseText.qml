@@ -5,16 +5,19 @@ import "../../Colors"
 Text {
     id: _root
 
+    property string tooltipText: _root.text
+    property bool showTooltip: _root.truncated
+
     color: Theme.text.primary
 
     HoverHandler{
         id: _hoverHandler
-        enabled: _root.truncated
+        enabled: _root.showTooltip
     }
 
     ToolTip {
         visible: _hoverHandler.hovered
-        text: _root.text
-        delay: 0
+        text: _root.tooltipText
+        delay: 300
     }
 }

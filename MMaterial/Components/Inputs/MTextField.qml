@@ -237,8 +237,8 @@ Rectangle {
             }
 
             color: Theme.text.disabled
-            visible: path !== ""
-            sourceSize.height: path === "" ? 0 : _root.height * 0.3
+            visible: iconData
+            size: !visible ? 0 : _root.height * 0.3
         }
 
         TextInput{
@@ -282,9 +282,9 @@ Rectangle {
             }
 
             color: Theme.action.active
-            visible: path !== ""
+            visible: iconData
             interactive: true
-            sourceSize.width: path === "" ? 0 : _root.height * 0.3
+            size: !visible ? 0 : _root.height * 0.3
         }
     }
 }

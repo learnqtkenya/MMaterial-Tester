@@ -16,11 +16,11 @@ Rectangle {
     property int variant: Alert.Variant.Filled
 
     property string text: ""
-    property string icon: {
-        if(_root.severity == Alert.Severity.Info) return IconList.info;
-        if(_root.severity == Alert.Severity.Success) return IconList.success;
-        if(_root.severity == Alert.Severity.Warning) return IconList.alert;
-        if(_root.severity == Alert.Severity.Error) return IconList.info;
+    property IconData icon: {
+        if(_root.severity == Alert.Severity.Info) return Icons.light.info;
+        if(_root.severity == Alert.Severity.Success) return Icons.light.success;
+        if(_root.severity == Alert.Severity.Warning) return Icons.light.alert;
+        if(_root.severity == Alert.Severity.Error) return Icons.light.info;
     }
 
     property var accent: {
@@ -97,8 +97,8 @@ Rectangle {
             Layout.topMargin: _text.lineCount <= 1 ? 0 : Size.pixel6
             Layout.leftMargin: Size.pixel8
 
-            sourceSize.height: Size.pixel24
-            path: _root.icon
+            size: Size.pixel24
+            iconData: _root.icon
         }
 
         B2 {
@@ -152,8 +152,8 @@ Rectangle {
             Layout.rightMargin: Size.pixel8
 
             visible: !_actionButton.visible && !_dismissButton.visible
-            sourceSize.height: Size.pixel12
-            path: IconList.closeX
+            size: Size.pixel12
+            iconData: Icons.light.closeX
             interactive: true
 
             onClicked: _root.close()

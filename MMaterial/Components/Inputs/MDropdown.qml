@@ -23,7 +23,8 @@ MTextField {
     hoverHandler: _hoverHandler
 
     rightIcon {
-        path: IconList.arrow
+        rotation: _contextMenu.opened ? 180 : 0
+        iconData: Icons.light.arrow
         onClicked: _root.toggle();
     }
 
@@ -33,11 +34,14 @@ MTextField {
         text: _listView.currentItem ? _listView.currentItem.text : ""
     }
 
+    Behavior on rightIcon.rotation { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
+
     TapHandler{
         id: _tapHandler
 
         onTapped: _root.toggle();
     }
+
     HoverHandler{
         id: _hoverHandler
 

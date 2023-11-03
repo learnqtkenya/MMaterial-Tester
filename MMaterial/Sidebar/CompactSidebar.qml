@@ -40,11 +40,10 @@ Rectangle {
 
             Layout.alignment: Qt.AlignHCenter
 
-            sourceSize.height: Size.pixel32
-            sourceSize.width: Size.pixel32
+            size: Size.pixel32
 
             color: Theme.primary.main
-            path: IconList.logo
+            iconData: Icons.heavy.logo
         }
 
         ListView {

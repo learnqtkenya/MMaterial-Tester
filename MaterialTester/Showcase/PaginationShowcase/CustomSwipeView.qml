@@ -6,11 +6,11 @@ import MMaterial
 SwipeView {
     id: _swipeView
 
-    property var images: [
-        ImageList.man,
-        ImageList.manSitting,
-        ImageList.woman,
-        ImageList.womanSitting
+    property list<IconData> images: [
+        Images.man,
+        Images.manSitting,
+        Images.woman,
+        Images.womanSitting
     ]
 
     function preventResizing() : void {
@@ -45,14 +45,14 @@ SwipeView {
                 width: Size.pixel1*2
             }
 
-            Icon {
+            HeavyIcon {
                 anchors {
                     margins: parent.border.width
                     fill: parent
                 }
 
-                path: _swipeView.images[index]
-                sourceSize.height: parent.height
+                iconData: _swipeView.images[index]
+                size: parent.height
             }
         }
     }
