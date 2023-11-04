@@ -16,6 +16,9 @@ Item {
 
     signal clicked
 
+    implicitHeight: size
+    implicitWidth: size
+
     states: [
         State {
             when: mouseArea.pressed && _root.interactive

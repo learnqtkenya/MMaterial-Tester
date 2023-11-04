@@ -49,6 +49,7 @@ Rectangle {
         id: _icon
 
         anchors.centerIn: _root
+
         iconData: Icons.light.logo
         visible: iconData.path != ""
         size: _root.height * 0.7

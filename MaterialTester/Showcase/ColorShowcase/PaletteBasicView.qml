@@ -5,12 +5,10 @@ import QtQuick.Controls
 import MMaterial
 
 ColumnLayout {
-    id: basicViewRoot
+    id: _basicViewRoot
 
     required property string title
-    required property var palette
-
-    Layout.fillWidth: true
+    required property PaletteBasic palette
 
     spacing: 16
 
@@ -18,7 +16,7 @@ ColumnLayout {
         Layout.minimumHeight: Size.pixel18
         Layout.fillWidth: true
 
-        text: basicViewRoot.title
+        text: _basicViewRoot.title
         verticalAlignment: Qt.AlignVCenter
     }
 
@@ -34,19 +32,19 @@ ColumnLayout {
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            color: basicViewRoot.palette.main
+            color: _basicViewRoot.palette.main
         }
 
         ColumnLayout {
             Layout.fillHeight: true
             Layout.minimumWidth: Size.pixel20
-            Layout.maximumWidth: parent.width/3
+            Layout.maximumWidth: Size.pixel40 * 2
             Layout.fillWidth: true
 
             spacing: 8
 
             Repeater {
-                model: [basicViewRoot.palette.lighter, basicViewRoot.palette.light, basicViewRoot.palette.dark, basicViewRoot.palette.darker]
+                model: [_basicViewRoot.palette.lighter, _basicViewRoot.palette.light, _basicViewRoot.palette.dark, _basicViewRoot.palette.darker]
 
                 ColorRect {
                     Layout.fillWidth: true
