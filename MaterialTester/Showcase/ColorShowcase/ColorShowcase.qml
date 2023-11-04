@@ -73,7 +73,7 @@ Item {
         ColumnLayout {
             Layout.fillWidth: true
             Layout.preferredHeight: parent.height * 0.34
-            Layout.topMargin: 40
+            Layout.topMargin: Size.pixel40
 
             H6 {
                 Layout.minimumHeight: 18
@@ -98,6 +98,7 @@ Item {
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignBottom
                         Layout.fillHeight: true
+                        Layout.minimumWidth: Size.pixel10
 
                         color: modelData
                     }

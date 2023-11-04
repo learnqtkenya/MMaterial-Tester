@@ -117,6 +117,14 @@ Sidebar {
                 {text : "Dropdown", onClicked: function(){ showcaseLoader.sourceComponent = dropdownShowcase}}
             ];
         }
+
+        SidebarItem {
+            text: "Slider";
+            icon.iconData: Icons.light.stonks;
+            category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = sliderShowcase;
+        }
     }
 
     compactSidebar.model: ObjectModel {
@@ -128,6 +136,14 @@ Sidebar {
             category: "introduction"
 
             onClicked: showcaseLoader.sourceComponent = projectInfo;
+        }
+
+        SidebarCompactItem {
+            text: "Icons";
+            icon.iconData: Icons.light.logo;
+            category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = iconShowcase;
         }
 
         SidebarCompactItem {
@@ -219,6 +235,14 @@ Sidebar {
                 {text : "TextField", onClicked: function(){ showcaseLoader.sourceComponent = textFieldShowcase}},
                 {text : "Dropdown", onClicked: function(){ showcaseLoader.sourceComponent = dropdownShowcase}}
             ];
+        }
+
+        SidebarCompactItem {
+            text: "Slider";
+            icon.iconData: Icons.light.stonks;
+            category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = sliderShowcase;
         }
     }
 }

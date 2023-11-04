@@ -60,6 +60,7 @@ qt_add_qml_module(appMaterialTester
         Showcase/IconShowcase/IconSpeedComparison.qml
         Showcase/IconShowcase/IconOverview.qml
         Showcase/IconShowcase/IconGeneratorTimer.qml
+        Showcase/SliderShowcase.qml
 
     SOURCES
         DevTools/FileWatcher.h

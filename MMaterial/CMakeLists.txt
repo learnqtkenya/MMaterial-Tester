@@ -120,6 +120,7 @@ list(APPEND MODULE_QML_FILES
     Components/Common/MScrollIndicator.qml
     Components/Common/MToolTip.qml
     Components/Common/MLoader.qml
+    Components/Common/MSlider.qml
 
     # Settings
     Settings/Size.qml

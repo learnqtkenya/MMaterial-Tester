@@ -95,6 +95,7 @@ Rectangle {
     Component { id: progressShowcase; ProgressShowcase{ } }
     Component { id: textFieldShowcase; TextFieldShowcase{ } }
     Component { id: dropdownShowcase; DropdownShowcase{ } }
+    Component { id: sliderShowcase; SliderShowcase{ } }
 
     // Buttons
     Component { id: buttonShowcase; ButtonShowcase{  } }

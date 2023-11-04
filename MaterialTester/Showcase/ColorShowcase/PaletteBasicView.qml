@@ -39,6 +39,7 @@ ColumnLayout {
 
         ColumnLayout {
             Layout.fillHeight: true
+            Layout.minimumWidth: Size.pixel20
             Layout.maximumWidth: parent.width/3
             Layout.fillWidth: true
 

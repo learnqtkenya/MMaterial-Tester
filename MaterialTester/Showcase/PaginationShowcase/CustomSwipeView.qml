@@ -6,6 +6,30 @@ import MMaterial
 SwipeView {
     id: _swipeView
 
+    component ImagePreview: Rectangle {
+
+        property alias iconData: _icon.iconData
+
+        color: Theme.common.white
+        radius: 10
+
+        border {
+            color: Theme.primary.main
+            width: Size.pixel1*2
+        }
+
+        Icon {
+            id: _icon
+            anchors {
+                margins: parent.border.width
+                fill: parent
+            }
+
+            iconData: _swipeView.images[index]
+            size: parent.height
+        }
+    }
+
     property list<IconData> images: [
         Images.man,
         Images.manSitting,
@@ -33,27 +57,9 @@ SwipeView {
         onTriggered: _swipeView.visible = true
     }
 
-    Repeater {
-        model: _swipeView.images.length
-
-        delegate: Rectangle {
-            color: Theme.common.white
-            radius: 10
-
-            border {
-                color: Theme.primary.main
-                width: Size.pixel1*2
-            }
-
-            Icon {
-                anchors {
-                    margins: parent.border.width
-                    fill: parent
-                }
-
-                iconData: _swipeView.images[index]
-                size: parent.height
-            }
-        }
-    }
+    //Using a repeater causes the currentIndex to go to the last element in an async loader
+    ImagePreview { iconData: _swipeView.images[0] }
+    ImagePreview { iconData: _swipeView.images[1] }
+    ImagePreview { iconData: _swipeView.images[2] }
+    ImagePreview { iconData: _swipeView.images[3] }
 }

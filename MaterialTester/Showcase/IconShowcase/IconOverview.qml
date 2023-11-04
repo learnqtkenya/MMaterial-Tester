@@ -45,7 +45,33 @@ ColumnLayout {
         Layout.preferredHeight: contentHeight
         Layout.fillWidth: true
 
+        interactive: false
         spacing: Size.pixel8
+
+        header: RowLayout {
+            height: Size.pixel32
+            width: _comparisonList.width
+
+            Overline {
+                Layout.alignment: Qt.AlignTop
+                Layout.fillWidth: true
+
+                color: Theme.text.disabled
+                font.capitalization: Font.AllUppercase
+                text: qsTr("Heavy Icons")
+                horizontalAlignment: Qt.AlignHCenter
+            }
+
+            Overline {
+                Layout.alignment: Qt.AlignTop
+                Layout.fillWidth: true
+
+                color: Theme.text.disabled
+                font.capitalization: Font.AllUppercase
+                text: qsTr("Light Icons")
+                horizontalAlignment: Qt.AlignHCenter
+            }
+        }
 
         model: ListModel {
             ListElement {

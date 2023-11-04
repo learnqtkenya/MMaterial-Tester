@@ -9,20 +9,12 @@ import "../../Components/Common"
 ColumnLayout {
     id: _root
 
-    H2 {
-        Layout.fillWidth: true
-
-        horizontalAlignment: Qt.AlignHCenter
-        text: qsTr("Heavy vs Light Icons")
-    }
-
     RowLayout {
         id: _header
 
         Layout.minimumWidth: _root.width
 
         MButton {
-
             type: _stack.item?.objectName === "overview" ? MButton.Type.Contained : MButton.Type.Outlined
             text: qsTr("Overview")
 
@@ -30,7 +22,6 @@ ColumnLayout {
         }
 
         MButton {
-
             type: _stack.item?.objectName === "overview" ? MButton.Type.Outlined : MButton.Type.Contained
             text: qsTr("Speed comparison")
 

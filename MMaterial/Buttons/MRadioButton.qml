@@ -34,7 +34,6 @@ Item {
         onClicked: _root.clicked();
 
         states: [
-            //pressed and released
             State {
                 when: _radioButton.mouseArea.pressed
                 name: "pressed"

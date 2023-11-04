@@ -32,5 +32,33 @@ Item {
 
             indexView: _paginatorSwipeView
         }
+
+        RowLayout {
+            anchors {
+                top: _paginator.bottom; topMargin: Size.pixel28
+                horizontalCenter: _paginator.horizontalCenter
+            }
+
+            MFabButton {
+                text: "Contained"
+                type: MButton.Type.Contained
+
+                onClicked: _paginator.selectedType = type
+            }
+
+            MFabButton {
+                text: "Outlined"
+                type: MButton.Type.Outlined
+
+                onClicked: _paginator.selectedType = type
+            }
+
+            MFabButton {
+                text: "Soft"
+                type: MButton.Type.Soft
+
+                onClicked: _paginator.selectedType = type
+            }
+        }
     }
 }

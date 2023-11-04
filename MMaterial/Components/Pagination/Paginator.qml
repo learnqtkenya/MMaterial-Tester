@@ -37,7 +37,6 @@ Item {
         leftIcon {
             rotation: 90
             iconData: Icons.light.arrow
-            size: _listView.height * 0.15
         }
 
         onClicked: _root.indexView.decrementCurrentIndex();
@@ -80,7 +79,6 @@ Item {
             }
 
             onClicked: _root.indexView.currentIndex = index;
-
         }
     }
 
@@ -103,7 +101,6 @@ Item {
         leftIcon {
             rotation: -90
             iconData: Icons.light.arrow
-            size: _listView.height * 0.15
         }
 
         onClicked: _root.indexView.incrementCurrentIndex();
