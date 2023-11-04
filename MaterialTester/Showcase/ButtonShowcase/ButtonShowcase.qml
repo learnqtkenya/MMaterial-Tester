@@ -4,7 +4,6 @@ import MMaterial
 
 Item {
     objectName: "Button"
-    visible: showcaseLoader.status == Loader.Ready
 
     ListView {
         id: listView

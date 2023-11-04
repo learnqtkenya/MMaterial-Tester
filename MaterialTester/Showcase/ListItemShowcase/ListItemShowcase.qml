@@ -5,7 +5,6 @@ import MMaterial
 ColumnLayout {
     objectName: "List Items"
 
-    visible: showcaseLoader.status == Loader.Ready
     spacing: Size.pixel22
 
     Overline {

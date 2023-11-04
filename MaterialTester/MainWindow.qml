@@ -65,8 +65,9 @@ Rectangle {
         color: Theme.other.divider
     }
 
-    Loader {
+    MLoader {
         id: showcaseLoader
+        objectName: "Main Loader"
 
         anchors{
             margins: Size.pixel32
@@ -79,22 +80,12 @@ Rectangle {
 
         asynchronous: true
         sourceComponent: placeholder
-
-        BusyIndicator{
-            anchors.centerIn: showcaseLoader
-
-            height: Size.pixel48 * 2
-            width: height
-
-            visible: showcaseLoader.status == Loader.Loading
-            Material.accent: Theme.primary.main
-        }
     }
 
     Component { id: placeholder; Placeholder{ } }
     Component { id: projectInfo; ProjectInfo{ } }
-    Component { id: iconShowcase;  IconShowcase{ } }
-    Component { id: fontShowcase;  FontShowcase{ } }
+    Component { id: iconShowcase; IconShowcase{ } }
+    Component { id: fontShowcase; FontShowcase{ } }
     Component { id: colorShowcase; ColorShowcase{ } }
     Component { id: avatarShowcase; AvatarShowcase{ } }
     Component { id: badgeShowcase; BadgeShowcase{ } }

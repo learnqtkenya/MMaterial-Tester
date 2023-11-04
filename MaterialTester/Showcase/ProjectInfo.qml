@@ -5,7 +5,6 @@ import MMaterial
 
 Item {
     objectName: "Project Info"
-    visible: showcaseLoader.status == Loader.Ready
 
     ColumnLayout {
         anchors.fill: parent

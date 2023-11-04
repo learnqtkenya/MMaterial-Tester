@@ -5,7 +5,6 @@ import QtQuick.Effects
 Rectangle {
     objectName: "Accordion"
 
-    visible: showcaseLoader.status == Loader.Ready
     color: Theme.background.main
 
     ListView {

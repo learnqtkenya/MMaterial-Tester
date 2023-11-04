@@ -8,14 +8,16 @@ Rectangle {
     id: colorRectRoot
     radius: 8
 
-    ToolTip.visible: mouseArea.containsMouse
-    ToolTip.text: color
-    ToolTip.delay: 0
-    ToolTip.timeout: 5000
-
     border {
         color: Theme.currentTheme.objectName === "Dark Theme" ? Qt.lighter(color, 1.5) : Qt.darker(color, 1.5)
         width: mouseArea.containsMouse ? 2 : 0
+    }
+
+    MToolTip {
+        visible: mouseArea.containsMouse
+        text: color
+        delay: 0
+        timeout: 5000
     }
 
     MouseArea {

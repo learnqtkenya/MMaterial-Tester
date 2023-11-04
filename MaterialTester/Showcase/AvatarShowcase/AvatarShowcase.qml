@@ -4,7 +4,6 @@ import MMaterial
 import QtQuick.Effects
 import QtQuick.Layouts
 Item {
-    visible: showcaseLoader.status == Loader.Ready
 
     Rectangle {
         id: _avatar

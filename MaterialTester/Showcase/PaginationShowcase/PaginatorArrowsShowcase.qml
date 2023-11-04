@@ -4,7 +4,6 @@ import MMaterial
 
 Item {
     objectName: "Pagination Arrows"
-    visible: showcaseLoader.status == Loader.Ready
 
     Item {
         anchors {

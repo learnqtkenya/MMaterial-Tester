@@ -9,8 +9,6 @@ import "../Components/Common"
 Flickable {
     objectName: "Typography"
 
-    visible: showcaseLoader.status == Loader.Ready
-
     contentHeight: _mainLayout.implicitHeight
     contentWidth: parent.width
 

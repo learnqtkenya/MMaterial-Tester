@@ -9,7 +9,7 @@ ColumnLayout {
     property string lightResult: ""
     property string heavyResult: ""
 
-    Loader {
+    MLoader {
         id: _loader
 
         Layout.topMargin: Size.pixel30

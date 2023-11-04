@@ -6,7 +6,6 @@ import MMaterial
 
 Item {
     objectName: "Pagination"
-    visible: showcaseLoader.status == Loader.Ready
 
     Item {
         anchors {

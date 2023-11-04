@@ -118,6 +118,8 @@ list(APPEND MODULE_QML_FILES
     Components/Inputs/MTextField.qml
     Components/Inputs/MDropdown.qml
     Components/Common/MScrollIndicator.qml
+    Components/Common/MToolTip.qml
+    Components/Common/MLoader.qml
 
     # Settings
     Settings/Size.qml
@@ -178,6 +180,3 @@ qt_add_qml_module(MMaterialLib
     QML_FILES ${MODULE_QML_FILES}
     RESOURCES ${MODULE_ASSETS}
 )
-
-
-

@@ -4,7 +4,6 @@ import MMaterial
 
 Item {
     objectName: "Textfield"
-    visible: showcaseLoader.status == Loader.Ready
 
     ListView {
         id: listView

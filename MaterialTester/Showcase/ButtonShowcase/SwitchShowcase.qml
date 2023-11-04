@@ -17,7 +17,6 @@ Flickable {
 
         anchors.fill: parent
 
-        visible: showcaseLoader.status == Loader.Ready
         spacing: Size.pixel40
 
         Subtitle1 { text: "Radio Button" }

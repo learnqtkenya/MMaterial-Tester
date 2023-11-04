@@ -30,7 +30,7 @@ ColumnLayout {
             text: _comparisonRoot.title
             color: _comparisonRoot.checked ? Theme.primary.contrastText : Theme.main.p100
 
-            ToolTip {
+            MToolTip {
                 visible: _comparator.containsMouse
                 delay: 0
                 text: _comparisonRoot.description

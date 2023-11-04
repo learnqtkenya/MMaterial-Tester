@@ -40,7 +40,7 @@ ColumnLayout {
         Item { Layout.fillWidth: true }
     }
 
-    Loader {
+    MLoader {
         id: _stack
 
         Layout.topMargin: Size.pixel30

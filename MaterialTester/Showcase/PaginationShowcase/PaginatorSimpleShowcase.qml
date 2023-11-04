@@ -1,9 +1,9 @@
 import QtQuick 
 
 import MMaterial
+
 Item {
     objectName: "Pagination Simple"
-    visible: showcaseLoader.status == Loader.Ready
 
     Item {
         anchors {

@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls
+
 import "../../Colors"
+import "../../Components/Common"
 
 Text {
     id: _root
@@ -15,7 +17,7 @@ Text {
         enabled: _root.showTooltip
     }
 
-    ToolTip {
+    MToolTip {
         visible: _hoverHandler.hovered
         text: _root.tooltipText
         delay: 300

@@ -45,7 +45,7 @@ SwipeView {
                 width: Size.pixel1*2
             }
 
-            HeavyIcon {
+            Icon {
                 anchors {
                     margins: parent.border.width
                     fill: parent

@@ -3,10 +3,9 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 import MMaterial
+
 Item {
     objectName: "Colors"
-
-    visible: showcaseLoader.status == Loader.Ready
 
     ColumnLayout {
         id: rootLayout

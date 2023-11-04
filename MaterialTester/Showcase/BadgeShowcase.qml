@@ -6,8 +6,6 @@ import MMaterial
 Item {
     objectName: "Badge"
 
-    visible: showcaseLoader.status == Loader.Ready
-
     ColumnLayout {
         anchors.fill: parent
 

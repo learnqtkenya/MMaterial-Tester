@@ -11,7 +11,6 @@ Flickable {
     objectName: "Toggle Button"
 
     contentHeight: _mainLayout.implicitHeight
-    visible: showcaseLoader.status == Loader.Ready
 
     ScrollIndicator.vertical: MScrollIndicator{}
 

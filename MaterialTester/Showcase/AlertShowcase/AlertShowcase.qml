@@ -4,7 +4,6 @@ import QtQuick.Controls
 import MMaterial
 Item {
     objectName: "Alerts"
-    visible: showcaseLoader.status == Loader.Ready
 
     Flickable {
         anchors.fill: parent

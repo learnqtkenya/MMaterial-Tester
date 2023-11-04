@@ -4,7 +4,6 @@ import MMaterial
 
 Item {
     objectName: "Dropdown"
-    visible: showcaseLoader.status == Loader.Ready
 
     ListView {
         id: listView

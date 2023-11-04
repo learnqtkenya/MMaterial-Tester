@@ -4,7 +4,6 @@ import MMaterial
 
 Item {
     objectName: "Pagination Bubble"
-    visible: showcaseLoader.status == Loader.Ready
 
     Item {
         anchors {
