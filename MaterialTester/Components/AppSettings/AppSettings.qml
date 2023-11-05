@@ -5,109 +5,31 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Item {
+Drawer {
     id: _appSettings
 
-    property bool isOpen: false
-
     function toggle() : void {
-        _appSettings.isOpen = !_appSettings.isOpen;
+        if(_appSettings.opened)
+            _appSettings.close();
+        else
+            _appSettings.open();
     }
 
-    anchors{
-        right: parent.right
-        rightMargin: 0
-    }
+    edge: Qt.RightEdge
+    interactive: false
+    modal: false
+    dim: false
 
     width: 300 * Size.scale
-    height: parent.height
+    height: Screen.height
 
-    layer{
-        effect: MultiEffect{
-            shadowEnabled: true
-            shadowBlur: 3
-            shadowHorizontalOffset: 2
-            shadowVerticalOffset: 5
+    background: Rectangle {
+        gradient: Gradient {
+            orientation: Gradient.Vertical
 
+            GradientStop { position: 0.0; color: Theme.background.paper }
+            GradientStop { position: 1.0; color: Theme.background.main }
         }
-    }
-
-    states: [
-        State{
-            when: _appSettings.isOpen
-            name: "open"
-            PropertyChanges{
-                target: _appSettings
-                anchors.rightMargin: 0
-                visible: true
-                layer.enabled: true
-            }
-        },
-        State{
-            when: true
-            name: "closed"
-            PropertyChanges{
-                target: _appSettings
-                visible: false
-                anchors.rightMargin: -_appSettings.width
-                layer.enabled: false
-            }
-        }
-    ]
-
-    transitions: [
-        Transition{
-            from: "open"
-            to: "closed"
-            SequentialAnimation{
-                NumberAnimation{
-                    target: _appSettings
-                    property: "anchors.rightMargin"
-                    duration: 200
-                    easing.type: Easing.InOutQuad
-                }
-                NumberAnimation{
-                    target: _appSettings
-                    property: "visible"
-                    duration: 0
-                }
-                NumberAnimation{
-                    target: _appSettings
-                    property: "layer.enabled"
-                    duration: 0
-                }
-            }
-        },
-        Transition{
-            from: "closed"
-            to: "open"
-            SequentialAnimation{
-                NumberAnimation{
-                    target: _appSettings
-                    property: "layer.enabled"
-                    duration: 0
-                }
-                NumberAnimation{
-                    target: _appSettings
-                    property: "visible"
-                    duration: 0
-                }
-                NumberAnimation{
-                    target: _appSettings
-                    property: "anchors.rightMargin"
-                    duration: 200
-                    easing.type: Easing.InOutQuad
-                }
-            }
-        }
-    ]
-
-    Rectangle {
-        id: _background
-
-        anchors.fill: parent
-
-        color: Theme.background.paper //TODO: Add shadow
     }
 
     RowLayout {
@@ -115,23 +37,23 @@ Item {
 
         anchors{
             left: parent.left; leftMargin: Size.pixel18
-            right: parent.right; rightMargin: Size.pixel12
+            right: parent.right; rightMargin: Size.pixel18
             top: parent.top
         }
 
-        height: Size.scale * 80
+        height: Size.scale * 60
 
-        H4 {
+        Overline {
             id: _title
 
-            Layout.preferredHeight: parent.height
+            Layout.preferredHeight: _header.height
             Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             Layout.fillWidth: true
 
             text: qsTr("Settings")
             verticalAlignment: Qt.AlignVCenter
-            color: Theme.text.primary
-            font.bold: true
+            color: Theme.text.secondary
+            font.pixelSize: Size.pixel16
         }
 
         Icon {
@@ -146,7 +68,7 @@ Item {
         }
     }
 
-    Rectangle { id: _splitter; height: Size.pixel1; width: parent.width; color: Theme.main.p600; anchors { top: _header.bottom; topMargin: Size.pixel4 } }
+    Rectangle { id: _splitter; height: Size.pixel1; width: parent.width; color: Theme.main.p300; anchors { top: _header.bottom; topMargin: Size.pixel4 } }
 
     ColumnLayout {
         anchors {

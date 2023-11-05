@@ -20,7 +20,7 @@ Item {
         width: _root.width
         color: Theme.text.disabled
         font.capitalization: Font.AllUppercase
-        text: "Slider"
+        text: "MSlider"
     }
 
     ColumnLayout {

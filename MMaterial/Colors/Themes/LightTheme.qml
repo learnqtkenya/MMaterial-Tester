@@ -60,7 +60,7 @@ ThemeBase{
 
     background: PaletteBackground{
         main: "#FFFFFF"
-        paper: "#FFFFFF"
+        paper: "#fafafa"
         neutral: "#F4F6F8"
     }
 

@@ -125,6 +125,14 @@ Sidebar {
 
             onClicked: showcaseLoader.sourceComponent = sliderShowcase;
         }
+
+        SidebarItem {
+            text: "Rectangle";
+            icon.iconData: Icons.light.stonks;
+            category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = rectangleShowcase;
+        }
     }
 
     compactSidebar.model: ObjectModel {
@@ -243,6 +251,14 @@ Sidebar {
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = sliderShowcase;
+        }
+
+        SidebarCompactItem {
+            text: "Rectangle";
+            icon.iconData: Icons.light.stonks;
+            category: "components"
+
+            onClicked: showcaseLoader.sourceComponent = rectangleShowcase;
         }
     }
 }

@@ -121,6 +121,9 @@ list(APPEND MODULE_QML_FILES
     Components/Common/MToolTip.qml
     Components/Common/MLoader.qml
     Components/Common/MSlider.qml
+    Components/MRectangle.qml
+    Components/MBorder.qml
+    Components/CornerRadii.qml
 
     # Settings
     Settings/Size.qml

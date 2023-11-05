@@ -1,8 +1,10 @@
 import QtQuick 
+import QtQuick.Controls
 
 import MMaterial
 
 Item {
+    id: _root
     objectName: "Intro"
 
     Icon {
