@@ -71,7 +71,8 @@ Sidebar {
                 {text : "Toggle", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonShowcase }},
                 {text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }},
                 {text : "Radio", onClicked: function(){ showcaseLoader.sourceComponent = radioButtonShowcase }},
-                {text : "Switch", onClicked: function(){ showcaseLoader.sourceComponent = switchShowcase }}
+                {text : "Switch", onClicked: function(){ showcaseLoader.sourceComponent = switchShowcase }},
+                {text : "Tab", onClicked: function(){ showcaseLoader.sourceComponent = tabShowcase }}
             ];
         }
 
@@ -195,7 +196,8 @@ Sidebar {
                 {text : "Toggle", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonShowcase }},
                 {text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }},
                 {text : "Radio", onClicked: function(){ showcaseLoader.sourceComponent = radioButtonShowcase }},
-                {text : "Switch", onClicked: function(){ showcaseLoader.sourceComponent = switchShowcase }}
+                {text : "Switch", onClicked: function(){ showcaseLoader.sourceComponent = switchShowcase }},
+                {text : "Tab", onClicked: function(){ showcaseLoader.sourceComponent = tabShowcase }}
             ];
         }
 

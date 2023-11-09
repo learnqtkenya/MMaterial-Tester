@@ -14,6 +14,7 @@ import "./Showcase/AlertShowcase"
 import "./Showcase/ListItemShowcase"
 import "./Showcase/PaginationShowcase"
 import "./Showcase/TextFieldShowcase"
+import "./Showcase/TabShowcase"
 
 import "./Components/AppSettings"
 import "./Components/Sidebar"
@@ -105,6 +106,7 @@ Rectangle {
     Component { id: checkboxShowcase; CheckboxShowcase{ } }
     Component { id: radioButtonShowcase; RadioButtonShowcase{ } }
     Component { id: switchShowcase; SwitchShowcase{ } }
+    Component { id: tabShowcase; TabShowcase{ } }
 
     // Pagination
     Component { id: paginationShowcase; PaginationShowcase{ } }

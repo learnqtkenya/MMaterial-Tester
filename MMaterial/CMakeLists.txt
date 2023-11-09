@@ -137,6 +137,8 @@ list(APPEND MODULE_QML_FILES
     Buttons/Checkable.qml
     Buttons/MRadioButton.qml
     Buttons/MSwitch.qml
+    Buttons/MTabButton.qml
+    Buttons/MTabs.qml
 
     # Sidebar
     Sidebar/Sidebar.qml
@@ -156,6 +158,10 @@ list(APPEND MODULE_QML_FILES
     Components/Pagination/PaginatorSimple.qml
     Components/Pagination/PaginatorBubble.qml
     Components/Pagination/PaginatorArrows.qml
+
+    # Animations
+    Animations/EasedAnimation.qml
+    Animations/ElasticAnimation.qml
 )
 
 set_source_files_properties(
