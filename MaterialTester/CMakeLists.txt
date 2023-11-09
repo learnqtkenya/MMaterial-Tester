@@ -38,7 +38,7 @@ qt_add_qml_module(appMaterialTester
         Components/AppSettings/PresetButton.qml
         Showcase/ButtonShowcase/FabButtonShowcase.qml
         Showcase/ButtonShowcase/FABButtonGroup.qml
-        Components/Sidebar/CustomSidebar.qml
+        Components/Sidebar/SimpleSidebar.qml
         Showcase/ButtonShowcase/CheckboxShowcase.qml
         Showcase/ListItemShowcase/ListItemShowcase.qml
         Showcase/ListItemShowcase/ListBorders.qml
@@ -63,6 +63,7 @@ qt_add_qml_module(appMaterialTester
         Showcase/SliderShowcase.qml
         Showcase/RectangleShowcase.qml
         Showcase/TabShowcase/TabShowcase.qml
+        Components/Sidebar/CustomSidebar.qml
 
     SOURCES
         DevTools/FileWatcher.h

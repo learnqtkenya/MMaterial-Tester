@@ -118,7 +118,7 @@ Rectangle {
         id: appSettings
     }
 
-    CustomSidebar {
+    SimpleSidebar {
         id: sidebar
     }
 }

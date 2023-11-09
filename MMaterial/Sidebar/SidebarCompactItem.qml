@@ -6,13 +6,14 @@ import MMaterial
 Checkable {
     id: _root
 
-    required property string category
+    property string category
 
     property alias icon: _icon
     property alias text: _title.text
-    property bool isOpen: false
+    property alias model: _repeater.model
     property alias list: _listView
-    property var model: []
+
+    property bool isOpen: false
 
     function selectItem() : void {
         if(typeof index !== "undefined")
@@ -117,7 +118,7 @@ Checkable {
         x: _root.x + _root.width
 
         Repeater {
-            model: _root.model
+            id: _repeater
 
             ListItem {
                 property var modelItem: _root.model[index]

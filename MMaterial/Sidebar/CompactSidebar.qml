@@ -60,6 +60,19 @@ Rectangle {
             section.delegate: SidebarSeparator{
                 required property string section
             }
+
+            delegate: SidebarCompactItem {
+                id: _delegate
+
+                property SidebarItem data: _root.model[index]
+
+                text: _delegate.data.text;
+                icon.iconData: _delegate.data.icon
+                category: _delegate.data.category
+                model: _delegate.data.model ?? []
+
+                onClicked: typeof _delegate.data.onClicked === "function" ? _delegate.data.onClicked() : () => {}
+            }
         }
     } 
 }

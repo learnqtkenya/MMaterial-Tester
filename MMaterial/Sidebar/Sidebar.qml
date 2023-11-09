@@ -7,6 +7,8 @@ import MMaterial
 Rectangle {
     id: _root
 
+    default property list<SidebarItem> sidebarItems
+
     property string name
     property string role
 
@@ -66,11 +68,16 @@ Rectangle {
 
     ExtendedSidebar{
         id: _extendedSidebar
+
         title.text: _root.name
         subtitle.text: _root.role
+
+        model: _root.sidebarItems
     }
 
     CompactSidebar{
         id: _compactSidebar
+
+        model: _root.sidebarItems
     }
 }

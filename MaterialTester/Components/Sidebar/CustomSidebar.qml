@@ -3,6 +3,8 @@ import QtQuick.Layouts
 
 import MMaterial
 
+// Same as custom sidebar but more flexible for changes, by using objectModel
+
 Sidebar {
     name: "John Doe"
     role: "Admin"
@@ -13,7 +15,7 @@ Sidebar {
     extendedSidebar.model: ObjectModel {
         id: extendedModel
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Project";
             icon.iconData: Icons.light.info;
             category: "introduction"
@@ -21,7 +23,7 @@ Sidebar {
             onClicked: showcaseLoader.sourceComponent = projectInfo;
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Icons";
             icon.iconData: Icons.light.logo;
             category: "components"
@@ -29,7 +31,7 @@ Sidebar {
             onClicked: showcaseLoader.sourceComponent = iconShowcase;
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Fonts";
             icon.iconData: Icons.light.font;
             category: "components"
@@ -37,7 +39,7 @@ Sidebar {
             onClicked: showcaseLoader.sourceComponent = fontShowcase;
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Colors";
             icon.iconData: Icons.light.palette;
             category: "components"
@@ -45,7 +47,7 @@ Sidebar {
             onClicked: showcaseLoader.sourceComponent = colorShowcase;
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Badge";
             icon.iconData: Icons.light.verified;
             category: "components"
@@ -53,7 +55,7 @@ Sidebar {
             onClicked: showcaseLoader.sourceComponent = badgeShowcase;
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Accordion";
             icon.iconData: Icons.light.star;
             category: "components"
@@ -61,7 +63,7 @@ Sidebar {
             onClicked: showcaseLoader.sourceComponent = accordionShowcase;
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Buttons";
             icon.iconData: Icons.light.gamepad;
             category: "components"
@@ -76,21 +78,21 @@ Sidebar {
             ];
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Alerts";
             icon.iconData: Icons.light.alert;
             onClicked: showcaseLoader.sourceComponent = alertShowcase;
             category: "components"
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "List Items";
             icon.iconData: Icons.light.list;
             onClicked: showcaseLoader.sourceComponent = listItemShowcase;
             category: "components"
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Pagination";
             icon.iconData: Icons.light.pages;
             category: "components"
@@ -102,14 +104,14 @@ Sidebar {
             ];
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Progress";
             icon.iconData: Icons.light.stonks;
             category: "components"
             onClicked: showcaseLoader.sourceComponent = progressShowcase;
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Inputs";
             icon.iconData: Icons.light.edit;
             category: "components"
@@ -119,7 +121,7 @@ Sidebar {
             ];
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Slider";
             icon.iconData: Icons.light.stonks;
             category: "components"
@@ -127,7 +129,7 @@ Sidebar {
             onClicked: showcaseLoader.sourceComponent = sliderShowcase;
         }
 
-        SidebarItem {
+        SidebarExtendedItem {
             text: "Rectangle";
             icon.iconData: Icons.light.stonks;
             category: "components"
