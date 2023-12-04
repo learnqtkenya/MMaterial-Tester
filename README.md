@@ -6,19 +6,19 @@ The purpose of the library is to simplify everyday Qt use, to make apps look stu
 And to learn and improve along the way! All contributions (comments and code) are very welcome.
 
 ## To-do :white_check_mark:
-[ ] Menu
-[ ] Provide documentation
-[ ] Improve settings
-[ ] Add transitions
-[ ] Chips
-[ ] Avatars
-[ ] Calendar
-[ ] Clock
-[ ] Stepper
-[ ] Popover
-[ ] Timeline
-[ ] Charts
-[ ] Whitelabeling (related to settings) ? 
+- [ ] Menu
+- [ ] Provide documentation
+- [ ] Improve settings
+- [ ] Add transitions
+- [ ] Chips
+- [ ] Avatars
+- [ ] Calendar
+- [ ] Clock
+- [ ] Stepper
+- [ ] Popover
+- [ ] Timeline
+- [ ] Charts
+- [ ] Whitelabeling (related to settings) ? 
 
 ## Recommendation :point_up:
 Take a look at the MaterialTester app, it is not only showing all the components but also how to use them. ( Simplified examples coming soon )
