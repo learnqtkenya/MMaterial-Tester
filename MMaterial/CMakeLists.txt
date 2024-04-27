@@ -163,6 +163,11 @@ list(APPEND MODULE_QML_FILES
     # Animations
     Animations/EasedAnimation.qml
     Animations/ElasticAnimation.qml
+
+    # Menu
+    Components/Menu/Menu.qml
+    Components/Menu/MenuItem.qml
+    Components/Menu/MenuSeparator.qml
 )
 
 set_source_files_properties(
