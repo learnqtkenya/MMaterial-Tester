@@ -6,7 +6,7 @@ The purpose of the library is to simplify everyday Qt use, to make apps look stu
 And to learn and improve along the way! All contributions (comments and code) are very welcome.
 
 ## To-do :white_check_mark:
-- [ ] Menu
+- [x] Menu
 - [ ] Provide documentation
 - [ ] Improve settings
 - [ ] Add transitions

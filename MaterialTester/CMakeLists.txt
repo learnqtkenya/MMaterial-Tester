@@ -63,6 +63,7 @@ qt_add_qml_module(appMaterialTester
         Showcase/SliderShowcase.qml
         Showcase/RectangleShowcase.qml
         Showcase/TabShowcase/TabShowcase.qml
+        Showcase/MenuShowcase.qml
         Components/Sidebar/CustomSidebar.qml
 
     SOURCES

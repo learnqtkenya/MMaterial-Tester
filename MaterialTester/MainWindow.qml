@@ -98,6 +98,7 @@ Rectangle {
     Component { id: dropdownShowcase; DropdownShowcase{ } }
     Component { id: sliderShowcase; SliderShowcase{ } }
     Component { id: rectangleShowcase; RectangleShowcase{ } }
+    Component { id: menuShowcase; MenuShowcase{ } }
 
     // Buttons
     Component { id: buttonShowcase; ButtonShowcase{  } }

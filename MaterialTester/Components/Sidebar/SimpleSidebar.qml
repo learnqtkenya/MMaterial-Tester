@@ -133,4 +133,12 @@ Sidebar {
 
         onClicked: () => { showcaseLoader.sourceComponent = rectangleShowcase }
     }
+
+    SidebarItem {
+        text: "Menu";
+        icon: Icons.light.menu;
+        category: "components"
+
+        onClicked: () => { showcaseLoader.sourceComponent = menuShowcase }
+    }
 }
