@@ -8,7 +8,6 @@ import MMaterial
 import "./Showcase"
 import "./Showcase/ColorShowcase"
 import "./Showcase/IconShowcase"
-import "./Showcase/AvatarShowcase"
 import "./Showcase/ButtonShowcase"
 import "./Showcase/AlertShowcase"
 import "./Showcase/ListItemShowcase"
