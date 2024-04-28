@@ -46,6 +46,8 @@ list(APPEND MODULE_ASSETS
     ${SVG_PATH}/gamepad.svg
     ${SVG_PATH}/settings.svg
     ${SVG_PATH}/edit.svg
+    ${SVG_PATH}/dashedCircle.svg
+    ${SVG_PATH}/addPhoto.svg
 
     # Images
     ${PNG_PATH}/programmer-female.png
@@ -124,6 +126,8 @@ list(APPEND MODULE_QML_FILES
     Components/MRectangle.qml
     Components/MBorder.qml
     Components/CornerRadii.qml
+    Components/Inputs/AvatarInput.qml
+    Components/Common/MaskedImage.qml
 
     # Settings
     Settings/Size.qml
