@@ -88,7 +88,6 @@ Rectangle {
     Component { id: iconShowcase; IconShowcase{ } }
     Component { id: fontShowcase; FontShowcase{ } }
     Component { id: colorShowcase; ColorShowcase{ } }
-    Component { id: avatarShowcase; AvatarShowcase{ } }
     Component { id: badgeShowcase; BadgeShowcase{ } }
     Component { id: accordionShowcase; AccordionShowcase{ } }
     Component { id: alertShowcase; AlertShowcase{ } }
@@ -99,6 +98,7 @@ Rectangle {
     Component { id: sliderShowcase; SliderShowcase{ } }
     Component { id: rectangleShowcase; RectangleShowcase{ } }
     Component { id: menuShowcase; MenuShowcase{ } }
+    Component { id: avatarShowcase; AvatarShowcase{ } }
 
     // Buttons
     Component { id: buttonShowcase; ButtonShowcase{  } }

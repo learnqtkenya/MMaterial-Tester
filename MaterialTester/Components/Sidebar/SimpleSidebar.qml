@@ -141,4 +141,12 @@ Sidebar {
 
         onClicked: () => { showcaseLoader.sourceComponent = menuShowcase }
     }
+
+    SidebarItem {
+        text: "Avatar";
+        icon: Icons.heavy.addPhoto;
+        category: "components"
+
+        onClicked: () => { showcaseLoader.sourceComponent = avatarShowcase }
+    }
 }
