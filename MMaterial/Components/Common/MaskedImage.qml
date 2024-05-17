@@ -7,8 +7,13 @@ Item {
     id: control
 
     property alias source: sourceImageItem.source
-    property alias radius: mask.radius
     property alias fillMode: sourceImageItem.fillMode
+
+    property alias radius: mask.radius
+    property alias topLeftRadius: mask.topLeftRadius
+    property alias topRightRadius: mask.topRightRadius
+    property alias bottomLeftRadius: mask.bottomLeftRadius
+    property alias bottomRightRadius: mask.bottomRightRadius
 
     implicitHeight: MMaterial.Size.pixel48
     implicitWidth: MMaterial.Size.pixel48
@@ -16,10 +21,11 @@ Item {
     Image {
         id: sourceImageItem
 
+        fillMode: Image.PreserveAspectCrop
+
         anchors.fill: control
         visible: false
         asynchronous: true
-        fillMode: Image.PreserveAspectCrop
     }
 
     MultiEffect {

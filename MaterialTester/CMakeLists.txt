@@ -65,6 +65,7 @@ qt_add_qml_module(appMaterialTester
         Showcase/MenuShowcase.qml
         Components/Sidebar/CustomSidebar.qml
         Showcase/AvatarShowcase.qml
+        Showcase/DialogShowcase.qml
 
     SOURCES
         DevTools/FileWatcher.h

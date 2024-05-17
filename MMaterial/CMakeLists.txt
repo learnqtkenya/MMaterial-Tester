@@ -54,6 +54,9 @@ list(APPEND MODULE_ASSETS
     ${PNG_PATH}/programmer-female2.png
     ${PNG_PATH}/programmer-male.png
     ${PNG_PATH}/programmer-male2.png
+    ${PNG_PATH}/abstract_futuristic_3D_shape_1.jpeg
+    ${PNG_PATH}/abstract_futuristic_3D_shape_2.jpeg
+    ${PNG_PATH}/abstract_futuristic_3D_shape_3.jpeg
 )
 
 list(APPEND MODULE_QML_FILES
@@ -172,6 +175,13 @@ list(APPEND MODULE_QML_FILES
     Components/Menu/Menu.qml
     Components/Menu/MenuItem.qml
     Components/Menu/MenuSeparator.qml
+
+    # Dialogs
+    Components/Dialogs/Dialog.qml
+    Components/Dialogs/DialogButtonBox.qml
+    Components/Dialogs/LargeImageDialog.qml
+    Components/Dialogs/MediumImageDialog.qml
+    Components/Dialogs/InputDialog.qml
 )
 
 set_source_files_properties(

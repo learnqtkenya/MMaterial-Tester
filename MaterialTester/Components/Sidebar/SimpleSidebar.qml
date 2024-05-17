@@ -149,4 +149,12 @@ Sidebar {
 
         onClicked: () => { showcaseLoader.sourceComponent = avatarShowcase }
     }
+
+    SidebarItem {
+        text: "Dialogs";
+        icon: Icons.light.info;
+        category: "components"
+
+        onClicked: () => { showcaseLoader.sourceComponent = dialogShowcase }
+    }
 }
