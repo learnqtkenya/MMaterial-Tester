@@ -39,7 +39,7 @@ Item {
         State{
             when: _root.isOpen
             name: "open"
-            PropertyChanges{ target: _listView; height: _listView.contentHeight }
+            PropertyChanges{ target: _listView; height: _listView.count * (_listView.delegateHeight + _listView.spacing) - _listView.spacing; }
         },
         State{
             when: !_root.isOpen
@@ -144,7 +144,7 @@ Item {
                 iconData: Icons.light.arrow
                 rotation: _root.isOpen ? 0 : -90
 
-                size: Size.pixel6
+                size: Size.pixel10
 
                 Behavior on rotation { SmoothedAnimation { duration: _root.openingSpeed;} }
             }
@@ -153,6 +153,8 @@ Item {
 
     ListView {
         id: _listView
+
+        property real delegateHeight: 36 * Size.scale
 
         anchors{
             top: _mainItem.bottom; topMargin: Size.pixel4
@@ -172,7 +174,7 @@ Item {
 
             enabled: modelData.enabled === undefined ? true : modelData.enabled
             radius: _mainItem.radius
-            height: 36 * Size.scale
+            height: _listView.delegateHeight
             width: _listView.width
             color: _subItemMouseArea.containsMouse ? Theme.background.neutral : "transparent"
 
