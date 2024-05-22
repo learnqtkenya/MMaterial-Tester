@@ -9,9 +9,6 @@ Sidebar {
     name: "John Doe"
     role: "Admin"
 
-    extendedSidebar.list.currentIndex: -1;
-    compactSidebar.list.currentIndex: -1;
-
     SidebarItem {
         text: "Project";
         icon: Icons.light.info;

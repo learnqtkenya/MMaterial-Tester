@@ -18,22 +18,24 @@ Item {
 
     property real openingSpeed: 150
 
-    function selectItem() : void {
+    function selectItem(subindex) : void {
         if(typeof index !== "undefined")
             ListView.view.currentIndex = index;
         else if(typeof ObjectModel.index !== "undefined")
             ListView.view.currentIndex = ObjectModel.index;
+
+        if (ListView.view) {
+            SidebarData.currentIndex = ListView.view.currentIndex;
+
+            if (subindex)
+                SidebarData.currentSubIndex = subindex;
+        }
     }
 
     signal clicked
 
     height: _listView.height + _listView.anchors.topMargin + _mainItem.height
     width: ListView.view ? ListView.view.width : 0
-
-    onCheckedChanged: {
-        if(!checked)
-            _listView.currentIndex = -1;
-    }
 
     states: [
         State{
@@ -161,7 +163,7 @@ Item {
             left: _root.left; right: _root.right
         }
 
-        currentIndex: -1
+        currentIndex: _root.checked ? SidebarData.currentSubIndex : -1
         spacing: Size.pixel4
         interactive: false
         clip: true
@@ -260,7 +262,7 @@ Item {
 
                 onClicked: {
                     _listView.currentIndex = index;
-                    _root.selectItem();
+                    _root.selectItem(index);
                     modelData.onClicked();
                 }
             }

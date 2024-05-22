@@ -156,6 +156,7 @@ list(APPEND MODULE_QML_FILES
     Sidebar/SidebarSeparator.qml
     Sidebar/ExtendedSidebar.qml
     Sidebar/SidebarItem.qml
+    Sidebar/SidebarData.qml
 
     # Lists
     Lists/ListItem.qml
@@ -201,6 +202,8 @@ set_source_files_properties(
     Icons/Icons.qml
     Icons/Images.qml
     Settings/Size.qml
+    Sidebar/SidebarData.qml
+
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE
 )
 
