@@ -11,7 +11,7 @@ And to learn and improve along the way! All contributions (comments and code) ar
 - [ ] Improve settings
 - [ ] Add transitions
 - [ ] Chips
-- [ ] Avatars
+- [x] Avatars
 - [ ] Calendar
 - [ ] Clock
 - [ ] Stepper
@@ -28,3 +28,4 @@ https://markostanojevic12.github.io/appMaterialTester.html
 
 ## Dependencies :dependabot:
 Qt6::Quick, Qt::Gui
+Since Tag 1.1 (Qt 6.7+)
