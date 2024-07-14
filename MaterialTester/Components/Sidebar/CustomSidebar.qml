@@ -25,7 +25,7 @@ Sidebar {
 
         SidebarExtendedItem {
             text: "Icons";
-            icon.iconData: Icons.light.logo;
+            icon.iconData: Icons.heavy.logo;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = iconShowcase;
@@ -80,7 +80,7 @@ Sidebar {
 
         SidebarExtendedItem {
             text: "Alerts";
-            icon.iconData: Icons.light.alert;
+            icon.iconData: Icons.light.warning;
             onClicked: showcaseLoader.sourceComponent = alertShowcase;
             category: "components"
         }
@@ -151,7 +151,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Icons";
-            icon.iconData: Icons.light.logo;
+            icon.iconData: Icons.heavy.logo;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = iconShowcase;
@@ -205,7 +205,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Alerts";
-            icon.iconData: Icons.light.alert;
+            icon.iconData: Icons.light.warning;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = alertShowcase;

@@ -94,22 +94,22 @@ ColumnLayout {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Left Icon"
-            leftIcon.iconData: Icons.light.logo
+            leftIcon.iconData: Icons.heavy.logo
         }
 
         MButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Left and Right Icon"
-            leftIcon.iconData: Icons.light.logo
-            rightIcon.iconData: Icons.light.logo
+            leftIcon.iconData: Icons.heavy.logo
+            rightIcon.iconData: Icons.heavy.logo
         }
 
         MButton {
             type: groupRoot.buttonType
             accent: Theme.primary
             text: "Right Icon"
-            rightIcon.iconData: Icons.light.logo
+            rightIcon.iconData: Icons.heavy.logo
         }
     }
 

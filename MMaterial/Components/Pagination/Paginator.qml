@@ -35,8 +35,8 @@ Item {
         accent: Theme.defaultNeutral
 
         leftIcon {
-            rotation: 90
-            iconData: Icons.light.arrow
+            Layout.rightMargin: 1
+            iconData: Icons.light.chevronLeft
         }
 
         onClicked: _root.indexView.decrementCurrentIndex();
@@ -99,8 +99,8 @@ Item {
         enabled: _listView.currentIndex < _listView.count-1
 
         leftIcon {
-            rotation: -90
-            iconData: Icons.light.arrow
+            Layout.leftMargin: 1
+            iconData: Icons.light.chevronRight
         }
 
         onClicked: _root.indexView.incrementCurrentIndex();

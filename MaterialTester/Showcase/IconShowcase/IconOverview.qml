@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 import MMaterial
+import MaterialTester
 
 ColumnLayout {
     id: _root
@@ -36,6 +37,12 @@ ColumnLayout {
                 text: _comparisonRoot.description
             }
         }
+    }
+
+
+    IconList {
+        id: iconModel
+        iconList: Icons.getAll();
     }
 
     ListView {
@@ -124,7 +131,21 @@ ColumnLayout {
         }
     }
 
-    ListView {
+    MTextField {
+        id: searchInput
+
+        Layout.topMargin: Size.pixel24
+        Layout.fillWidth: true
+
+        type: MTextField.Type.Outlined
+        accent: Theme.primary
+        placeholder: qsTr("Search ...")
+        leftIcon.iconData: Icons.light.search
+
+        onTextChanged: iconList.model.setFilterRegularExpression(searchInput.text)
+    }
+
+    GridView {
         id: iconList
 
         Layout.topMargin: Size.pixel24
@@ -132,53 +153,79 @@ ColumnLayout {
         Layout.fillWidth: true
 
         clip: true
-        model: Icons.heavy.getAll()
+        model: iconModel.iconFilterProxyModel
+        flickDeceleration: 1000
+
+        cellHeight: Size.pixel46 * 2.5
+        cellWidth: Size.pixel64 * 2.5
+
+        cacheBuffer: 1000
 
         delegate: AbstractListItem {
             id: _delegate
-            height: Size.pixel46
-            width: iconList.width
+            height: iconList.cellHeight - Size.pixel12
+            width: iconList.cellWidth - Size.pixel12
 
-            RowLayout {
+            onClicked: {
+                Clipboard.setText(iconNameLabel.text)
+                alertsController.activate(qsTr("'%1' copied to clipboard.").arg(iconNameLabel.text))
+            }
+
+            ColumnLayout {
                 anchors {
-                    leftMargin: Size.pixel24
-                    rightMargin: Size.pixel24
                     fill: _delegate
+                    margins: Size.pixel8
                 }
 
-                Item { Layout.preferredWidth: iconList.width * 0.2 }
-                Icon {
-                    Layout.maximumWidth: Size.pixel30
-                    size: Size.pixel30
-                    iconData: Icons.heavy[modelData]
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: Size.pixel8
 
-                    color: Theme.text.primary
+                    Item { Layout.fillWidth: true }
+
+                    Icon {
+                        Layout.maximumWidth: Size.pixel30
+                        size: Size.pixel30
+                        iconData: Icons.heavy[model.display] ?? null
+
+                        color: Theme.text.primary
+                    }
+
+                    Rectangle {
+                        Layout.fillHeight: true
+                        Layout.preferredWidth: 1
+
+                        color: Theme.text.secondary
+                    }
+
+                    Icon {
+                        Layout.maximumWidth: Size.pixel30
+
+                        size: Size.pixel30
+                        iconData: Icons.light[model.display] ?? null
+
+                        color: Theme.text.primary
+                    }
+
+                    Item { Layout.fillWidth: true }
                 }
 
                 B2 {
-                    Layout.alignment: Qt.AlignCenter
+                    id: iconNameLabel
+
+                    Layout.alignment: Qt.AlignHCenter
                     Layout.fillWidth: true
 
-                    text: modelData
+                    text: model.display
                     horizontalAlignment: Qt.AlignHCenter
                     verticalAlignment: Qt.AlignVCenter
+                    color: Theme.text.secondary
 
                     font {
-                        capitalization: Font.Capitalize
-                        pixelSize: Size.pixel16
+                        capitalization: Font.MixedCase
+                        pixelSize: Size.pixel10
                     }
                 }
-
-                LightIcon {
-                    Layout.maximumWidth: Size.pixel30
-
-                    size: Size.pixel30
-                    iconData: Icons.light[modelData]
-
-                    color: Theme.text.primary
-                }
-
-                Item { Layout.preferredWidth: iconList.width * 0.2 }
             }
         }
     }

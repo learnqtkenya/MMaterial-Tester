@@ -35,7 +35,7 @@ Checkable{
         anchors.centerIn: _root
 
         size: _root.height * 0.8
-        iconData: Icons.light.checkmark
+        iconData: Icons.light.check
         color: Theme.background.main;
         visible: _root.checked
     }

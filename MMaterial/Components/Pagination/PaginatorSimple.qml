@@ -28,12 +28,14 @@ Rectangle {
         width: height
 
         Icon {
-            anchors.centerIn: _leftArrow
+            anchors {
+                centerIn: _leftArrow
+                horizontalCenterOffset: -1
+            }
 
-            iconData: Icons.light.arrow
+            iconData: Icons.light.chevronLeft
             color: Theme.common.white
-            size: _leftArrow.height * 0.3
-            rotation: 90
+            size: _leftArrow.height * 0.5
             interactive: true
             enabled: _root.indexView.currentIndex > 0
             opacity: enabled ? 1 : 0.48
@@ -71,12 +73,14 @@ Rectangle {
         width: height
 
         Icon {
-            anchors.centerIn: _rightArrow
+            anchors {
+                centerIn: _rightArrow
+                horizontalCenterOffset: 1
+            }
 
-            iconData: Icons.light.arrow
+            iconData: Icons.light.chevronRight
             color: Theme.common.white
-            size: _rightArrow.height * 0.3
-            rotation: -90
+            size: _rightArrow.height * 0.5
             interactive: true
             enabled: _root.indexView.currentIndex < _root.indexView.count - 1
             opacity: enabled ? 1 : 0.48

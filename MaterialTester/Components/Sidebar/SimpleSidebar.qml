@@ -19,7 +19,7 @@ Sidebar {
 
     SidebarItem {
         text: "Core";
-        icon: Icons.light.settings;
+        icon: Icons.light.dashboard;
         category: "components"
         model: [
             {text : "Icons", onClicked: function(){ showcaseLoader.sourceComponent = iconShowcase}},
@@ -30,7 +30,7 @@ Sidebar {
 
     SidebarItem {
         text: "Buttons";
-        icon: Icons.light.gamepad;
+        icon: Icons.light.sportsEsports;
         category: "components"
         model: [
             {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = buttonShowcase}},
@@ -45,7 +45,7 @@ Sidebar {
 
     SidebarItem {
         text: "Pagination";
-        icon: Icons.light.pages;
+        icon: Icons.light.fastForward;
         category: "components"
         model: [
             {text : "Basic", onClicked: function(){ showcaseLoader.sourceComponent = paginationShowcase }},
@@ -57,7 +57,7 @@ Sidebar {
 
     SidebarItem {
         text: "Controls";
-        icon: Icons.light.edit;
+        icon: Icons.light.category;
         category: "components"
         model: [
             {text : "ListItems", onClicked: function(){ showcaseLoader.sourceComponent = listItemShowcase}},
@@ -81,7 +81,7 @@ Sidebar {
 
     SidebarItem {
         text: "Other";
-        icon: Icons.light.list;
+        icon: Icons.light.atr;
         category: "components"
         model: [
             {text : "Badge", onClicked: function(){ showcaseLoader.sourceComponent = badgeShowcase}},

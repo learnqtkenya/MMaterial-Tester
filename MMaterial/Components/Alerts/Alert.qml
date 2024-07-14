@@ -18,8 +18,8 @@ Rectangle {
     property string text: ""
     property IconData icon: {
         if(_root.severity == Alert.Severity.Info) return Icons.light.info;
-        if(_root.severity == Alert.Severity.Success) return Icons.light.success;
-        if(_root.severity == Alert.Severity.Warning) return Icons.light.alert;
+        if(_root.severity == Alert.Severity.Success) return Icons.light.checkCircle;
+        if(_root.severity == Alert.Severity.Warning) return Icons.light.warning;
         if(_root.severity == Alert.Severity.Error) return Icons.light.info;
     }
 
@@ -153,7 +153,7 @@ Rectangle {
 
             visible: !_actionButton.visible && !_dismissButton.visible
             size: Size.pixel12
-            iconData: Icons.light.closeX
+            iconData: Icons.light.close
             interactive: true
 
             onClicked: _root.close()

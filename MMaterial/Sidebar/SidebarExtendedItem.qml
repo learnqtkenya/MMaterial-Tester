@@ -143,10 +143,10 @@ Item {
                 Layout.alignment: Qt.AlignVCenter
 
                 visible: _root.model ? _root.model.length > 0 : 0
-                iconData: Icons.light.arrow
-                rotation: _root.isOpen ? 0 : -90
+                iconData: Icons.light.chevronRight
+                rotation: _root.isOpen ? 90 : 0
 
-                size: Size.pixel10
+                size: Size.pixel16
 
                 Behavior on rotation { SmoothedAnimation { duration: _root.openingSpeed;} }
             }

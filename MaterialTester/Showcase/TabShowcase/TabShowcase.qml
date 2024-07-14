@@ -50,19 +50,19 @@ Flickable {
 
                 MTabButton {
                     text: "Icon tab 1"
-                    leftIcon.iconData: Icons.light.logo
+                    leftIcon.iconData: Icons.heavy.logo
                 }
                 MTabButton {
                     text: "Icon tab 2"
-                    leftIcon.iconData: Icons.light.logo
+                    leftIcon.iconData: Icons.heavy.logo
                 }
                 MTabButton {
                     text: "Icon tab 3"
-                    leftIcon.iconData: Icons.light.logo
+                    leftIcon.iconData: Icons.heavy.logo
                 }
                 MTabButton {
                     text: "Icon tab 4"
-                    leftIcon.iconData: Icons.light.logo
+                    leftIcon.iconData: Icons.heavy.logo
                 }
             }
         }
@@ -76,19 +76,19 @@ Flickable {
 
                 MTabButton {
                     text: "Icon tab 1"
-                    rightIcon.iconData: Icons.light.logo
+                    rightIcon.iconData: Icons.heavy.logo
                 }
                 MTabButton {
                     text: "Icon tab 2"
-                    rightIcon.iconData: Icons.light.logo
+                    rightIcon.iconData: Icons.heavy.logo
                 }
                 MTabButton {
                     text: "Icon tab 3"
-                    rightIcon.iconData: Icons.light.logo
+                    rightIcon.iconData: Icons.heavy.logo
                 }
                 MTabButton {
                     text: "Icon tab 4"
-                    rightIcon.iconData: Icons.light.logo
+                    rightIcon.iconData: Icons.heavy.logo
                 }
             }
         }
@@ -102,23 +102,23 @@ Flickable {
 
                 MTabButton {
                     text: "Icon tab 1"
-                    rightIcon.iconData: Icons.light.logo
-                    leftIcon.iconData: Icons.light.logo
+                    rightIcon.iconData: Icons.heavy.logo
+                    leftIcon.iconData: Icons.heavy.logo
                 }
                 MTabButton {
                     text: "Icon tab 2"
-                    rightIcon.iconData: Icons.light.logo
-                    leftIcon.iconData: Icons.light.logo
+                    rightIcon.iconData: Icons.heavy.logo
+                    leftIcon.iconData: Icons.heavy.logo
                 }
                 MTabButton {
                     text: "Icon tab 3"
-                    rightIcon.iconData: Icons.light.logo
-                    leftIcon.iconData: Icons.light.logo
+                    rightIcon.iconData: Icons.heavy.logo
+                    leftIcon.iconData: Icons.heavy.logo
                 }
                 MTabButton {
                     text: "Icon tab 4"
-                    rightIcon.iconData: Icons.light.logo
-                    leftIcon.iconData: Icons.light.logo
+                    rightIcon.iconData: Icons.heavy.logo
+                    leftIcon.iconData: Icons.heavy.logo
                 }
             }
         }

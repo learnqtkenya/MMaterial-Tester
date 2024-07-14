@@ -35,8 +35,7 @@ Popup {
 
         _contentRoot.model.append(alertObject);
     }
-
-    x: _root.edgeOf === Item.TopLeft || _root.edgeOf === Item.BottomLeft || _root.edgeOf === Item.Left ? 20 : Overlay.overlay.width - 20 - width
+ x: _root.edgeOf === Item.TopLeft || _root.edgeOf === Item.BottomLeft || _root.edgeOf === Item.Left ? 20 : Overlay.overlay.width - 20 - width
     y: _root.edgeOf === Item.TopLeft || _root.edgeOf === Item.TopRight || _root.edgeOf === Item.Top ? 20 : Overlay.overlay.height - 20 - height
 
     parent: Overlay.overlay

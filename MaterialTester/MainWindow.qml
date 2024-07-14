@@ -122,5 +122,12 @@ Rectangle {
     SimpleSidebar {
         id: sidebar
     }
+
+    AlertController {
+        id: alertsController
+
+        width: parent.width > 400 ? 400 * Size.scale : parent.width * 0.9
+        edgeOf: Item.BottomRight
+    }
 }
 

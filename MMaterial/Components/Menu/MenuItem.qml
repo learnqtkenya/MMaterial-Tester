@@ -80,7 +80,7 @@ T.MenuItem {
         y: control.topPadding + (control.availableHeight - height) / 2
 
         visible: control.checked
-        iconData: control.checkable ? MMaterial.Icons.light.checkmark : null
+        iconData: control.checkable ? MMaterial.Icons.light.check : null
         color: control.color
         size: control.icon.height + MMaterial.Size.pixel4
     }
@@ -91,7 +91,7 @@ T.MenuItem {
 
         size: control.icon.height - MMaterial.Size.pixel4
         visible: control.subMenu
-        iconData: control.subMenu ? MMaterial.Icons.light.arrow : null
+        iconData: control.subMenu ? MMaterial.Icons.light.chevronRight : null
         color: control.color
         rotation: -90
     }

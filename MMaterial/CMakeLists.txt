@@ -3,8 +3,21 @@ qt_add_library(MMaterialLib STATIC)
 set_target_properties(MMaterialLib PROPERTIES AUTOMOC ON)
 target_link_libraries(MMaterialLib PRIVATE Qt6::Quick)
 
-set(PNG_PATH Icons/assets/png)
-set(SVG_PATH Icons/assets/svg)
+# In order to update assets you need to:
+# 1. check RefreshAssets in Build Steps
+# 2. Rebuild project
+# 3. Run cmake (you have to rerun it after build)
+
+add_custom_target(RefreshAssets
+    COMMAND ${CMAKE_COMMAND} -E env python refresh_assets.py
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMENT "Running the Python script to refresh assets"
+    VERBATIM
+)
+
+# Read the contents of the file into a variable
+file(READ "./cmake_data/svgPaths.txt" SVG_ASSETS)
+file(READ "./cmake_data/pngPaths.txt" PNG_ASSETS)
 
 list(APPEND MODULE_ASSETS
     # Fonts
@@ -18,45 +31,8 @@ list(APPEND MODULE_ASSETS
 
     Icons/assets/icomoon.ttf
 
-    # Icons
-    ${SVG_PATH}/android.svg
-    ${SVG_PATH}/mail.svg
-    ${SVG_PATH}/arrow.svg
-    ${SVG_PATH}/logo.svg
-    ${SVG_PATH}/alternativeLogo.svg
-    ${SVG_PATH}/alert.svg
-    ${SVG_PATH}/info.svg
-    ${SVG_PATH}/success.svg
-    ${SVG_PATH}/closeX.svg
-    ${SVG_PATH}/menu.svg
-    ${SVG_PATH}/sun.svg
-    ${SVG_PATH}/moon.svg
-    ${SVG_PATH}/star.svg
-    ${SVG_PATH}/avatar.svg
-    ${SVG_PATH}/font.svg
-    ${SVG_PATH}/palette.svg
-    ${SVG_PATH}/verified.svg
-    ${SVG_PATH}/checkmark.svg
-    ${SVG_PATH}/list.svg
-    ${SVG_PATH}/search.svg
-    ${SVG_PATH}/send.svg
-    ${SVG_PATH}/stonks.svg
-    ${SVG_PATH}/call.svg
-    ${SVG_PATH}/pages.svg
-    ${SVG_PATH}/gamepad.svg
-    ${SVG_PATH}/settings.svg
-    ${SVG_PATH}/edit.svg
-    ${SVG_PATH}/dashedCircle.svg
-    ${SVG_PATH}/addPhoto.svg
-
-    # Images
-    ${PNG_PATH}/programmer-female.png
-    ${PNG_PATH}/programmer-female2.png
-    ${PNG_PATH}/programmer-male.png
-    ${PNG_PATH}/programmer-male2.png
-    ${PNG_PATH}/abstract_futuristic_3D_shape_1.jpeg
-    ${PNG_PATH}/abstract_futuristic_3D_shape_2.jpeg
-    ${PNG_PATH}/abstract_futuristic_3D_shape_3.jpeg
+    ${PNG_ASSETS}
+    ${SVG_ASSETS}
 )
 
 list(APPEND MODULE_QML_FILES

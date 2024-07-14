@@ -59,7 +59,7 @@ Drawer {
         Icon {
             Layout.alignment: Qt.AlignVCenter
 
-            iconData: Icons.light.closeX
+            iconData: Icons.light.close
             size: Size.pixel14
             color: Theme.main.p600
             interactive: true
@@ -81,13 +81,13 @@ Drawer {
             text: qsTr("Mode")
 
             leftButton {
-                icon.iconData: Icons.heavy.sun
+                icon.iconData: Icons.light.lightMode
                 onClicked: Theme.currentTheme = LightTheme;
                 checked: Theme.currentTheme == LightTheme;
             }
 
             rightButton {
-                icon.iconData: Icons.heavy.moon
+                icon.iconData: Icons.light.darkMode
                 onClicked: Theme.currentTheme = DarkTheme;
                 checked: Theme.currentTheme == DarkTheme;
             }

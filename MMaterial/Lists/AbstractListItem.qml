@@ -12,11 +12,12 @@ Rectangle {
 
     opacity: 1
     radius: 8
+    color: Theme.background.main
 
     onClicked: {
-        if(typeof index !== "undefined")
+        if(typeof index !== "undefined" && ListView.view)
             ListView.view.currentIndex = index;
-        else if(typeof ObjectModel.index !== "undefined")
+        else if(typeof ObjectModel.index !== "undefined" && ListView.view)
             ListView.view.currentIndex = ObjectModel.index;
     }
 
@@ -53,14 +54,6 @@ Rectangle {
             PropertyChanges {
                 target: _root
                 color: Theme.action.selected
-            }
-        },
-        State {
-            name: "enabled"
-            when: _root.enabled
-            PropertyChanges {
-                target: _root
-                color: Theme.background.main
             }
         }
     ]

@@ -50,10 +50,10 @@ ColumnLayout {
             ObjectModel {
                 id: _iconObjectModel
 
-                ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.alert }
+                ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.warning }
                 ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.mail }
                 ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.stonks }
-                ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.logo }
+                ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.heavy.logo }
             }
         }
 
@@ -68,7 +68,7 @@ ColumnLayout {
                 id: _advancedObjectModel
 
                 ListItem {
-                    width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.alert;
+                    width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.warning;
                     containsMouse: mouseArea.containsMouse || _button1.mouseArea.containsMouse
                     MButton { id: _button1; size: Size.Grade.M;  }
                 }
@@ -86,7 +86,7 @@ ColumnLayout {
                 }
 
                 ListItem {
-                    width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.logo;
+                    width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.heavy.logo;
                     containsMouse: mouseArea.containsMouse || _button4.mouseArea.containsMouse
                     MButton { id: _button4; size: Size.Grade.M; type: MButton.Type.Outlined }
                 }

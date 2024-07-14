@@ -72,6 +72,9 @@ qt_add_qml_module(appMaterialTester
         DevTools/FileWatcher.cpp
         DevTools/CustomEngine.h
         DevTools/CustomEngine.cpp
+        src/Icons/IconList.h
+        src/Icons/IconList.cpp
+        DevTools/Clipboard.h
 )
 set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../" ${CMAKE_BINARY_DIR}/imports CACHE STRING "MMaterial imports" FORCE)
 
@@ -82,6 +85,11 @@ list(APPEND ENV{QML_IMPORT_PATH} "${QML_IMPORT_PATH}")
 include_directories(${QML_IMPORT_PATH})
 
 add_subdirectory(../MMaterial ./MMaterial)
+
+target_include_directories(appMaterialTester PUBLIC
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Icons
+            )
+
 target_link_libraries(appMaterialTester
     PRIVATE Qt6::Quick Qt::Gui MMaterialLibplugin
 )

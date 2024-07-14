@@ -50,7 +50,7 @@ Rectangle {
 
         anchors.centerIn: _root
 
-        iconData: Icons.light.logo
+        iconData: Icons.heavy.logo
         visible: iconData.path != ""
         size: _root.height * 0.7
     }

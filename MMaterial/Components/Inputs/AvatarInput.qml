@@ -124,7 +124,7 @@ Item {
                 Layout.alignment: Qt.AlignHCenter
                 size: MMaterial.Size.pixel24
                 color: control.textColor
-                iconData: MMaterial.Icons.heavy.addPhoto
+                iconData: MMaterial.Icons.light.addAPhoto
             }
 
             MMaterial.Caption {

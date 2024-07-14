@@ -33,11 +33,14 @@ Item {
         Icon {
             id: _leftIcon
 
-            iconData: Icons.light.arrow
+            anchors {
+                centerIn: _leftArrow
+                horizontalCenterOffset: -1
+            }
+
+            iconData: Icons.light.chevronLeft
             color: Theme.common.white
-            size: _leftArrow.height * 0.3
-            anchors.centerIn: _leftArrow
-            rotation: 90
+            size: _leftArrow.height * 0.5
         }
 
         MouseArea {
@@ -67,11 +70,13 @@ Item {
         opacity: enabled ? 1 : 0.48
 
         Icon {
-            iconData: Icons.light.arrow
+            anchors {
+                centerIn: _rightArrow
+                horizontalCenterOffset: 1
+            }
+            iconData: Icons.light.chevronRight
             color: Theme.common.white
-            size: _rightArrow.height * 0.3
-            anchors.centerIn: _rightArrow
-            rotation: -90
+            size: _rightArrow.height * 0.5
         }
 
         MouseArea {

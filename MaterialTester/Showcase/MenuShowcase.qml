@@ -37,13 +37,13 @@ Item {
 
         MenuItem {
             text: "Icon Menu Item"
-            iconData: Icons.light.stonks
+            iconData: Icons.light.bluetooth
         }
 
         MenuItem {
             enabled: false
             text: "Disabled Icon Menu Item"
-            iconData: Icons.light.stonks
+            iconData: Icons.light.bluetooth
         }
 
         MenuSeparator {}
@@ -56,14 +56,14 @@ Item {
 
         MenuItem {
             text: "Icon Menu Item Checked"
-            iconData: Icons.light.stonks
+            iconData: Icons.light.bluetooth
             checkable: true
             checked: true
         }
 
         MenuItem {
             text: "Disabled Icon Menu Item Checked"
-            iconData: Icons.light.stonks
+            iconData: Icons.light.bluetooth
             checkable: true
             checked: true
             enabled: false

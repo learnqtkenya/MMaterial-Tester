@@ -26,7 +26,7 @@ ColumnLayout {
 
         IconGeneratorTimer {
             title: qsTr("Light icons");
-            iconData: Icons.light.logo
+            iconData: Icons.light.android
 
             onFinished: (result) => { _root.lightResult = result; _loader.sourceComponent = _heavyComponent }
         }
@@ -37,7 +37,7 @@ ColumnLayout {
 
         IconGeneratorTimer {
             title: qsTr("Heavy icons");
-            iconData: Icons.heavy.logo
+            iconData: Icons.heavy.android
 
             onFinished: (result) => { _root.heavyResult = result; _loader.sourceComponent = _resultComponent }
         }

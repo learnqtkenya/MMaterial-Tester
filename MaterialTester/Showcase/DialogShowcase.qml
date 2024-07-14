@@ -128,7 +128,7 @@ Item {
                 width: Math.min (440 * MMaterial.Size.scale, root.width / 2 - MMaterial.Size.pixel10)
                 title: qsTr("Delete Files?")
                 closePolicy: MMaterial.Dialog.NoAutoClose
-                iconData: MMaterial.Icons.light.alert
+                iconData: MMaterial.Icons.light.warning
                 text: qsTr("This is a destructive action, are you sure you want to delete those files?")
 
                 Component.onCompleted: open()

@@ -24,7 +24,7 @@ MTextField {
 
     rightIcon {
         rotation: _contextMenu.opened ? 180 : 0
-        iconData: Icons.light.arrow
+        iconData: Icons.light.keyboardArrowDown
         onClicked: _root.toggle();
     }
 

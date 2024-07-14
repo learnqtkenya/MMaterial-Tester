@@ -26,6 +26,7 @@ Loader {
 
     sourceComponent: iconData?.type == IconData.Light ? lightIcon : heavyIcon
     asynchronous: true
+    // visible: _root.status == Loader.Ready
 
     Component {
         id: lightIcon

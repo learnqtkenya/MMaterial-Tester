@@ -50,13 +50,13 @@ ColumnLayout {
         MDropdown {
             type: groupRoot.type
             accent: Theme.primary
-            leftIcon.iconData: Icons.light.logo
+            leftIcon.iconData: Icons.heavy.logo
         }
 
         MDropdown {
             type: groupRoot.type
             accent: Theme.primary
-            leftIcon.iconData: Icons.light.logo
+            leftIcon.iconData: Icons.heavy.logo
         }
 
         MDropdown {
