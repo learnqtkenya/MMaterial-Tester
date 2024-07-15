@@ -7,7 +7,7 @@ MTextField {
     id: _root
 
     property var model: ["Label 1", "Label 2", "Label 3"]
-    property alias delegate: _repeater.delegate
+    property alias delegate: _listView.delegate
     property int delegateCount: 5
 
     function toggle() : void {
@@ -16,6 +16,8 @@ MTextField {
         else
             _contextMenu.open();
     }
+
+    signal accepted(index : int)
 
     showPlaceholder: !input.focus && input.text === "" && !_contextMenu.opened
 
@@ -54,20 +56,6 @@ MTextField {
         y: _root.height + 1
         closePolicy: Menu.CloseOnEscape | Menu.CloseOnReleaseOutsideParent
 
-        Repeater {
-            id: _repeater
-
-            model: _root.model
-
-            delegate: ListItem {
-                text: modelData
-                width: _listView.width
-                onClicked: {
-                    _contextMenu.close();
-                }
-            }
-        }
-
         background: Rectangle {
             implicitWidth: _root.width
 
@@ -89,12 +77,21 @@ MTextField {
                 width: _contentItem.width - Size.pixel8
                 height: count > _root.delegateCount ? _root.delegateCount * Size.pixel46 : contentHeight
 
-                model: _contextMenu.contentModel
+                model: _root.model
 
                 clip: true
                 currentIndex: _contextMenu.currentIndex
 
                 ScrollIndicator.vertical: ScrollIndicator {}
+
+                delegate: ListItem {
+                    text: modelData
+                    width: _listView.width
+                    onClicked: {
+                        _contextMenu.close();
+                        _root.accepted(index);
+                    }
+                }
             }
         }
     }
