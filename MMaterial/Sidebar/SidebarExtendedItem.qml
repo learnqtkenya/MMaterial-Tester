@@ -6,6 +6,8 @@ import MMaterial
 Item {
     id: _root
 
+    property SidebarData sidebarData
+
     property string category
 
     property alias icon: _icon
@@ -13,22 +15,22 @@ Item {
     property alias model: _listView.model
     property alias list: _listView
 
-    property bool checked: ListView.isCurrentItem
+    property bool checked: index == _root.sidebarData.currentIndex
     property bool isOpen: false
 
     property real openingSpeed: 150
 
     function selectItem(subindex) : void {
-        if(typeof index !== "undefined")
-            ListView.view.currentIndex = index;
-        else if(typeof ObjectModel.index !== "undefined")
-            ListView.view.currentIndex = ObjectModel.index;
-
         if (ListView.view) {
-            SidebarData.currentIndex = ListView.view.currentIndex;
+            if(typeof index !== "undefined")
+                ListView.view.currentIndex = index;
+            else if(typeof ObjectModel.index !== "undefined")
+                ListView.view.currentIndex = ObjectModel.index;
 
-            if (subindex)
-                SidebarData.currentSubIndex = subindex;
+            _root.sidebarData.currentIndex = index;
+
+            if (subindex >= 0)
+                _root.sidebarData.currentSubIndex = subindex;
         }
     }
 
@@ -163,7 +165,7 @@ Item {
             left: _root.left; right: _root.right
         }
 
-        currentIndex: _root.checked ? SidebarData.currentSubIndex : -1
+        currentIndex: _root.checked ? _root.sidebarData.currentSubIndex : -1
         spacing: Size.pixel4
         interactive: false
         clip: true
@@ -171,7 +173,7 @@ Item {
         delegate: Rectangle {
             id: _subItem
 
-            property bool checked: ListView.isCurrentItem
+            property bool checked: _root.sidebarData.currentSubIndex == index
             property string text: modelData.text
 
             enabled: modelData.enabled === undefined ? true : modelData.enabled
@@ -190,14 +192,14 @@ Item {
                 },
                 State {
                     name: "checked"
-                    when: _listView.currentIndex === index
+                    when: _root.sidebarData.currentSubIndex === index && _root.checked
                     PropertyChanges{ target: _subItem; opacity: 1; }
                     PropertyChanges{ target: _dot; color: Theme.primary.main; scale: 3 }
                     PropertyChanges{ target: _label; color: Theme.text.primary; font.family: PublicSans.semiBold }
                 },
                 State {
                     name: "unchecked"
-                    when: _listView.currentIndex !== index
+                    when: true
                     PropertyChanges{ target: _subItem; opacity: 1; }
                     PropertyChanges{ target: _dot; color: Theme.text.secondary; scale: 1 }
                     PropertyChanges{ target: _label; color: Theme.text.secondary; font.family: PublicSans.regular }

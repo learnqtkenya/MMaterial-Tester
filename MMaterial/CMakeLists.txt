@@ -178,7 +178,6 @@ set_source_files_properties(
     Icons/Icons.qml
     Icons/Images.qml
     Settings/Size.qml
-    Sidebar/SidebarData.qml
 
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE
 )

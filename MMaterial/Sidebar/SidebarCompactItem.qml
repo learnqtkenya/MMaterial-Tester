@@ -6,6 +6,8 @@ import MMaterial
 Checkable {
     id: _root
 
+    property SidebarData sidebarData
+
     property string category
 
     property alias icon: _icon
@@ -16,16 +18,16 @@ Checkable {
     property bool isOpen: false
 
     function selectItem(subindex) : void {
-        if(typeof index !== "undefined")
-            ListView.view.currentIndex = index;
-        else if(typeof ObjectModel.index !== "undefined")
-            ListView.view.currentIndex = ObjectModel.index;
-
         if (ListView.view) {
-            SidebarData.currentIndex =ListView.view.currentIndex;
+            if(typeof index !== "undefined")
+                ListView.view.currentIndex = index;
+            else if(typeof ObjectModel.index !== "undefined")
+                ListView.view.currentIndex = ObjectModel.index;
 
-            if (subindex)
-                SidebarData.currentSubIndex = subindex;
+            _root.sidebarData.currentIndex = index;
+
+            if (subindex >= 0)
+                _root.sidebarData.currentSubIndex = subindex;
         }
     }
 
@@ -33,14 +35,18 @@ Checkable {
     implicitHeight: 54 * Size.scale
 
     radius: 8
-    checked: ListView.isCurrentItem
+    checked: _root.sidebarData.currentIndex === index
     customCheckImplementation: true
     state: "checked"
 
     onVisibleChanged: { if(_contextMenu.opened){ _contextMenu.close(); }}
     onClicked: {
-        if(_root.model.length > 0)
-            _contextMenu.open();
+        if(_root.model.length > 0){
+            if (_contextMenu.opened)
+                _contextMenu.close();
+            else
+                _contextMenu.open();
+        }
         else
             selectItem();
     }
@@ -111,10 +117,9 @@ Checkable {
         }
 
         visible: _root.model ? _root.model.length > 0 : 0
-        iconData: Icons.light.arrow
-        rotation: -90
+        iconData: Icons.light.chevronRight
 
-        size: Size.pixel6
+        size: Size.pixel16
     }
 
     //Popup
@@ -122,7 +127,8 @@ Checkable {
         id: _contextMenu
 
         x: _root.x + _root.width
-        currentIndex: _root.checked ? SidebarData.currentSubIndex : -1
+        currentIndex: _root.checked ? _root.sidebarData.currentSubIndex : -1
+        closePolicy: Popup.CloseOnPressOutsideParent
 
         background: Rectangle {
             radius: 12

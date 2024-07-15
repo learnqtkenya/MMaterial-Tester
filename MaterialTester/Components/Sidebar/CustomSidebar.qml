@@ -106,7 +106,7 @@ Sidebar {
 
         SidebarExtendedItem {
             text: "Progress";
-            icon.iconData: Icons.light.stonks;
+            icon.iconData: Icons.light.power;
             category: "components"
             onClicked: showcaseLoader.sourceComponent = progressShowcase;
         }
@@ -123,7 +123,7 @@ Sidebar {
 
         SidebarExtendedItem {
             text: "Slider";
-            icon.iconData: Icons.light.stonks;
+            icon.iconData: Icons.light.power;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = sliderShowcase;
@@ -131,7 +131,7 @@ Sidebar {
 
         SidebarExtendedItem {
             text: "Rectangle";
-            icon.iconData: Icons.light.stonks;
+            icon.iconData: Icons.light.power;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = rectangleShowcase;
@@ -233,7 +233,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Progress";
-            icon.iconData: Icons.light.stonks;
+            icon.iconData: Icons.light.power;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = progressShowcase;
@@ -251,7 +251,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Slider";
-            icon.iconData: Icons.light.stonks;
+            icon.iconData: Icons.light.power;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = sliderShowcase;
@@ -259,7 +259,7 @@ Sidebar {
 
         SidebarCompactItem {
             text: "Rectangle";
-            icon.iconData: Icons.light.stonks;
+            icon.iconData: Icons.light.power;
             category: "components"
 
             onClicked: showcaseLoader.sourceComponent = rectangleShowcase;

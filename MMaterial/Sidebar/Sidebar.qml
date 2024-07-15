@@ -85,6 +85,7 @@ Rectangle {
             subtitle.text: _root.role
 
             model: _root.sidebarItems
+            sidebarData: d.sidebarData
         }
     }
 
@@ -93,11 +94,14 @@ Rectangle {
 
         CompactSidebar{
             model: _root.sidebarItems
+            sidebarData: d.sidebarData
         }
     }
 
     QtObject {
         id: d
+
+        property SidebarData sidebarData: SidebarData {}
 
         function swapSources() {
             if ( Size.format == Size.Format.Extended )

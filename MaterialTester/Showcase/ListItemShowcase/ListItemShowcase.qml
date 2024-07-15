@@ -52,7 +52,7 @@ ColumnLayout {
 
                 ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.warning }
                 ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.mail }
-                ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.stonks }
+                ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.power }
                 ListItem { width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.heavy.logo }
             }
         }
@@ -80,7 +80,7 @@ ColumnLayout {
                 }
 
                 ListItem {
-                    width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.stonks;
+                    width: _iconListView.listView.width; text: "List Item"; icon.iconData: Icons.light.power;
                     containsMouse: mouseArea.containsMouse || _button3.mouseArea.containsMouse
                     MButton { id: _button3; size: Size.Grade.M }
                 }

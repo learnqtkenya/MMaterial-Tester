@@ -334,7 +334,7 @@ QtObject{
         readonly property IconData playArrow: IconData { path: '\ue935'; type: IconData.Light }
         readonly property IconData playCircle: IconData { path: '\ue936'; type: IconData.Light }
         readonly property IconData power: IconData { path: '\ue937'; type: IconData.Light }
-        readonly property IconData print: IconData { path: '\ue938'; type: IconData.Light }
+        readonly property IconData printElement: IconData { path: '\ue938'; type: IconData.Light }
         readonly property IconData priorityHigh: IconData { path: '\ue939'; type: IconData.Light }
         readonly property IconData publicElement: IconData { path: '\ue93a'; type: IconData.Light }
         readonly property IconData qrCode: IconData { path: '\ue93b'; type: IconData.Light }

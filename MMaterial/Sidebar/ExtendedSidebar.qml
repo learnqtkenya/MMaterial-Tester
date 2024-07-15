@@ -7,6 +7,8 @@ import MMaterial
 Item {
     id: _root
 
+    property SidebarData sidebarData
+
     property alias logo: _logo
     property alias list: _sidebarLayout
     property alias avatar: _avatar
@@ -101,7 +103,7 @@ Item {
 
             spacing: Size.pixel4
             clip: true
-            currentIndex: SidebarData.currentIndex
+            currentIndex: _root.sidebarData.currentIndex
 
             section {
                 property: "category"
@@ -117,6 +119,8 @@ Item {
 
                 property SidebarItem data: _root.model[index]
 
+                sidebarData: _root.sidebarData
+                isOpen: _delegate.sidebarData.currentIndex == index
                 text: _delegate.data.text;
                 icon.iconData: _delegate.data.icon
                 category: _delegate.data.category
