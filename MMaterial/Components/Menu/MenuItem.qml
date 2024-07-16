@@ -93,7 +93,6 @@ T.MenuItem {
         visible: control.subMenu
         iconData: control.subMenu ? MMaterial.Icons.light.chevronRight : null
         color: control.color
-        rotation: -90
     }
 
     background: Rectangle {
