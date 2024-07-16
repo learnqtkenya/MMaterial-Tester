@@ -35,8 +35,11 @@ Popup {
 
         _contentRoot.model.append(alertObject);
     }
- x: _root.edgeOf === Item.TopLeft || _root.edgeOf === Item.BottomLeft || _root.edgeOf === Item.Left ? 20 : Overlay.overlay.width - 20 - width
+
+    x: _root.edgeOf === Item.TopLeft || _root.edgeOf === Item.BottomLeft || _root.edgeOf === Item.Left ? 20 : Overlay.overlay.width - 20 - width
     y: _root.edgeOf === Item.TopLeft || _root.edgeOf === Item.TopRight || _root.edgeOf === Item.Top ? 20 : Overlay.overlay.height - 20 - height
+
+    enter: null
 
     parent: Overlay.overlay
     modal: false
@@ -49,7 +52,7 @@ Popup {
         id: _contentRoot
 
         implicitWidth: 300
-        implicitHeight: contentHeight
+        implicitHeight: Math.max(contentHeight, Size.pixel48)
 
         verticalLayoutDirection: d.verticalDirection == Item.Top ? ListView.TopToBottom : ListView.BottomToTop
         spacing: Size.pixel4
