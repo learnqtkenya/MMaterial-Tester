@@ -66,6 +66,7 @@ Sidebar {
             {text : "Dropdown", onClicked: function(){ showcaseLoader.sourceComponent = dropdownShowcase }},
             {text : "Slider", onClicked: function(){ showcaseLoader.sourceComponent = sliderShowcase }},
             {text : "Menu", onClicked: function(){ showcaseLoader.sourceComponent = menuShowcase }},
+            {text : "TimePicker", onClicked: function(){ showcaseLoader.sourceComponent = dateTimeShowcase }},
         ];
     }
 

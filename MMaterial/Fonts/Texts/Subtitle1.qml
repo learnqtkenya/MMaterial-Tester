@@ -4,7 +4,7 @@ import "../../Settings"
 
 BaseText {
     wrapMode: Text.WordWrap
-    lineHeight: 1.3
+    lineHeight: 1
 
     font {
         family: PublicSans.semiBold
