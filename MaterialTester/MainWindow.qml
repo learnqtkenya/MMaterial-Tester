@@ -99,6 +99,7 @@ Rectangle {
     Component { id: menuShowcase; MenuShowcase{ } }
     Component { id: avatarShowcase; AvatarShowcase{ } }
     Component { id: dialogShowcase; DialogShowcase{ } }
+    Component { id: dateTimeShowcase; DateTimeShowcase{ } }
 
     // Buttons
     Component { id: buttonShowcase; ButtonShowcase{  } }

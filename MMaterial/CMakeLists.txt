@@ -107,6 +107,7 @@ list(APPEND MODULE_QML_FILES
     Components/CornerRadii.qml
     Components/Inputs/AvatarInput.qml
     Components/Common/MaskedImage.qml
+    Components/Inputs/TimePicker.qml
 
     # Settings
     Settings/Size.qml

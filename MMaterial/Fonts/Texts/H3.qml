@@ -3,7 +3,7 @@ import "../"
 import "../../Settings"
 
 BaseText {
-    lineHeight: 1.5
+    lineHeight: 1
     elide: Text.ElideRight
 
     font {
