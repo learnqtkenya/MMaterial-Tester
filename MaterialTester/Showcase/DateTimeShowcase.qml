@@ -15,6 +15,15 @@ Item {
         onClicked: timePicker.open()
     }
 
+    MButton {
+        y: datePicker.y + Size.pixel12
+        x: datePicker.x + Size.pixel12
+        text: qsTr("Open Date Picker")
+        type: MButton.Type.Outlined
+
+        onClicked: datePicker.open()
+    }
+
     TimePicker {
         id: timePicker
 
@@ -29,11 +38,23 @@ Item {
     Overline {
         id: timeLabel
 
+        visible: timePicker.opened
         text: qsTr("Press OK")
         color: Theme.text.secondary
         width: timePicker.width
         horizontalAlignment: Qt.AlignHCenter
         x: timePicker.x
-        y: timePicker.y + timePicker.height + Size.pixel24
+        y: timePicker.y + timePicker.height + Size.pixel48
+    }
+
+    DatePicker {
+        id: datePicker
+
+        closePolicy: Popup.NoAutoClose
+        visible: true
+        x: timePicker.width + Size.pixel24
+        y: timePicker.y
+
+        onDateAccepted: (startDate, endDate) => {}
     }
 }

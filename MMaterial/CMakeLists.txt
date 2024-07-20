@@ -108,6 +108,9 @@ list(APPEND MODULE_QML_FILES
     Components/Inputs/AvatarInput.qml
     Components/Common/MaskedImage.qml
     Components/Inputs/TimePicker.qml
+    Components/Inputs/MCalendar.qml
+    Components/Common/Popup.qml
+    Components/Inputs/DatePicker.qml
 
     # Settings
     Settings/Size.qml
