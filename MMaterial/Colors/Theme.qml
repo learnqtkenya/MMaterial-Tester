@@ -6,7 +6,7 @@ import "./BaseObjects"
 import "./Themes"
 
 ThemeBase{
-    property ThemeBase currentTheme: LightTheme
+    property ThemeBase currentTheme: DarkTheme
 
     function setTheme(theme: ThemeBase) : void {
         console.log("Theme switched to " + theme.objectName)
