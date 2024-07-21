@@ -72,7 +72,6 @@ Item {
         width: _root.width
 
         customCheckImplementation: true
-        radius: 8
 
         onClicked: {
             if (_root.model && _root.model.length > 0) {
@@ -87,7 +86,7 @@ Item {
             State {
                 name: "disabled"
                 when: !_root.enabled
-                PropertyChanges{ target: _mainItem; color: "transparent"; opacity: 0.64; }
+                PropertyChanges{ target: _checkableBackground; color: "transparent"; opacity: 0.64; }
                 PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
                 PropertyChanges{ target: _icon; color: Theme.text.secondary }
                 PropertyChanges{ target: _arrow; color: Theme.text.secondary }
@@ -95,7 +94,7 @@ Item {
             State {
                 name: "checked"
                 when: _root.checked
-                PropertyChanges{ target: _mainItem; color: _mainItem.mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; opacity: 1;}
+                PropertyChanges{ target: _checkableBackground; color: _mainItem.mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; opacity: 1;}
                 PropertyChanges { target: _title; font.family: PublicSans.semiBold; color: Theme.primary.main; }
                 PropertyChanges{ target: _icon; color: Theme.primary.main }
                 PropertyChanges{ target: _arrow; color: Theme.primary.main; }
@@ -103,12 +102,19 @@ Item {
             State {
                 name: "unchecked"
                 when: !_root.checked
-                PropertyChanges{ target: _mainItem; color: _mainItem.mouseArea.containsMouse ? Theme.background.neutral : "transparent"; opacity: 1;}
+                PropertyChanges{ target: _checkableBackground; color: _mainItem.mouseArea.containsMouse ? Theme.background.neutral : "transparent"; opacity: 1;}
                 PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
                 PropertyChanges{ target: _icon; color: Theme.text.secondary }
                 PropertyChanges{ target: _arrow; color: Theme.text.secondary }
             }
         ]
+
+        Rectangle {
+            id: _checkableBackground
+
+            anchors.fill: _mainItem
+            radius: Size.pixel8
+        }
 
         RowLayout {
             anchors{
@@ -177,7 +183,7 @@ Item {
             property string text: modelData.text
 
             enabled: modelData.enabled === undefined ? true : modelData.enabled
-            radius: _mainItem.radius
+            radius: _checkableBackground.radius
             height: _listView.delegateHeight
             width: _listView.width
             color: _subItemMouseArea.containsMouse ? Theme.background.neutral : "transparent"

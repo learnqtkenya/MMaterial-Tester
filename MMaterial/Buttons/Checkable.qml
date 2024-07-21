@@ -1,6 +1,6 @@
 import QtQuick 
 
-Rectangle {
+Item {
     id: _root
 
     property bool checked: false

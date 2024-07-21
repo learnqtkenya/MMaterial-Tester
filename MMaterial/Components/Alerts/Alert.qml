@@ -152,7 +152,7 @@ Rectangle {
             Layout.rightMargin: Size.pixel8
 
             visible: !_actionButton.visible && !_dismissButton.visible
-            size: Size.pixel12
+            size: Size.pixel18
             iconData: Icons.light.close
             interactive: true
 

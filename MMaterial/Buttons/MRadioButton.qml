@@ -3,21 +3,17 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Item {
+Checkable {
     id: _root
 
     property var accent: Theme.primary
-    property alias checked: _radioButton.checked
-    property alias customCheckImplementaiton: _radioButton.customCheckImplementation
     property alias text: _label.text
     property alias label: _label
-
-    signal clicked
 
     implicitHeight: Size.pixel24
     implicitWidth: implicitHeight + (_label.visible ? (_label.anchors.leftMargin + _label.implicitWidth) : 0)
 
-    Checkable{
+    Rectangle {
         id: _radioButton
 
         height: _root.height
@@ -28,14 +24,12 @@ Item {
 
         border{
             width: Size.pixel1
-            color: _root.enabled ?  (_radioButton.checked ? _root.accent.main : Theme.action.active) : Theme.action.disabled
+            color: _root.enabled ?  (_root.checked ? _root.accent.main : Theme.action.active) : Theme.action.disabled
         }
-
-        onClicked: _root.clicked();
 
         states: [
             State {
-                when: _radioButton.mouseArea.pressed
+                when: _root.mouseArea.pressed
                 name: "pressed"
                 PropertyChanges {
                     target: _radioButton
@@ -43,7 +37,7 @@ Item {
                 }
             },
             State {
-                when: _radioButton.mouseArea.released
+                when: _root.mouseArea.released
                 name: "released"
                 PropertyChanges {
                     target: _radioButton
@@ -83,8 +77,8 @@ Item {
             width: height
 
             radius: height
-            visible: _radioButton.mouseArea.containsMouse
-            color: _radioButton.checked ? _root.accent.transparent.p8 : Theme.action.hover
+            visible: _root.mouseArea.containsMouse
+            color: _root.checked ? _root.accent.transparent.p8 : Theme.action.hover
         }
 
         Rectangle {
@@ -100,7 +94,7 @@ Item {
 
             states: [
                 State {
-                    when: _radioButton.checked
+                    when: _root.checked
                     name: "checked"
                     PropertyChanges {
                         target: _innerCircle

@@ -34,7 +34,6 @@ Checkable {
     implicitWidth: ListView.view ? ListView.view.width : 0
     implicitHeight: 54 * Size.scale
 
-    radius: 8
     checked: _root.sidebarData.currentIndex === index
     customCheckImplementation: true
     state: "checked"
@@ -55,7 +54,8 @@ Checkable {
         State {
             name: "disabled"
             when: !_root.enabled
-            PropertyChanges{ target: _root; color: "transparent"; opacity: 0.64; }
+            PropertyChanges{ target: _root; opacity: 0.64 }
+            PropertyChanges{ target: _background; color: "transparent" }
             PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
             PropertyChanges{ target: _icon; color: Theme.text.secondary }
             PropertyChanges{ target: _arrow; color: Theme.text.secondary }
@@ -63,7 +63,8 @@ Checkable {
         State {
             name: "checked"
             when: _root.checked
-            PropertyChanges{ target: _root; color: _root.mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; opacity: 1;}
+            PropertyChanges{ target: _root; opacity: 1;}
+            PropertyChanges{ target: _background; color: _root.mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; }
             PropertyChanges { target: _title; font.family: PublicSans.semiBold; color: Theme.primary.main; }
             PropertyChanges{ target: _icon; color: Theme.primary.main }
             PropertyChanges{ target: _arrow; color: Theme.primary.main; }
@@ -71,12 +72,20 @@ Checkable {
         State {
             name: "unchecked"
             when: !_root.checked
-            PropertyChanges{ target: _root; color: _root.mouseArea.containsMouse ? Theme.background.neutral : "transparent"; opacity: 1;}
+            PropertyChanges{ target: _root; opacity: 1;}
+            PropertyChanges{ target: _background; color: _root.mouseArea.containsMouse ? Theme.background.neutral : "transparent"; }
             PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
             PropertyChanges{ target: _icon; color: Theme.text.secondary }
             PropertyChanges{ target: _arrow; color: Theme.text.secondary }
         }
     ]
+
+    Rectangle {
+        id: _background
+
+        anchors.fill: _root
+        radius: Size.pixel8
+    }
 
     Icon {
         id: _icon

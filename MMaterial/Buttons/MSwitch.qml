@@ -3,15 +3,13 @@ import QtQuick.Layouts
 
 import MMaterial
 
-Item {
+Checkable {
     id: _root
 
     property int size: Size.Grade.M
 
     property PaletteBasic accent: Theme.primary
 
-    property alias checked: _switch.checked
-    property alias customCheckImplementaiton: _switch.customCheckImplementation
     property alias text: _label.text
     property alias label: _label
 
@@ -23,17 +21,13 @@ Item {
         return Size.pixel16
     }
 
-    signal clicked
-
-    Checkable{
+    Rectangle {
         id: _switch
 
         height: _root.height
         width: height * 1.6
 
         radius: 100
-
-        onClicked: _root.clicked();
 
         states: [
             State {
@@ -44,7 +38,7 @@ Item {
                 PropertyChanges { target: _innerCircle; x: _root.checked ? _innerCircle.parent.width - _innerCircle.width : 0 }
             },
             State {
-                when: _switch.checked
+                when: _root.checked
                 name: "checked"
                 PropertyChanges { target: _root; opacity: 1 }
                 PropertyChanges { target: _switch; color: _root.accent.main }
@@ -108,13 +102,13 @@ Item {
 
                     anchors.centerIn: _innerCircle
 
-                    height: _switch.mouseArea.containsMouse ? _innerCircle.height * 2.7 : 0
+                    height: _root.mouseArea.containsMouse ? _innerCircle.height * 2.7 : 0
                     width: height
 
                     radius: height
                     visible: height > 0
-                    opacity: _switch.mouseArea.pressed ? 0.7 : 1
-                    color: _switch.checked ? _root.accent.transparent.p8 : Theme.action.hover
+                    opacity: _root.mouseArea.pressed ? 0.7 : 1
+                    color: _root.checked ? _root.accent.transparent.p8 : Theme.action.hover
 
                     Behavior on height { SmoothedAnimation { duration: 150; easing.type: Easing.InOutQuad} }
                 }

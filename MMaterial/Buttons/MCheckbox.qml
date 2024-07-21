@@ -5,7 +5,7 @@ import "../Settings"
 import "../Icons"
 import "../Colors"
 
-Checkable{
+Checkable {
     id: _root
 
     property var accent: Theme.primary
@@ -13,21 +13,27 @@ Checkable{
     implicitHeight: Size.pixel24
     implicitWidth: Size.pixel24
 
-    radius: 6
-
     state: "unchecked"
     states: [
         State {
             name: "checked"
             when: _root.checked
-            PropertyChanges { target: _root; color: _root.enabled ? _root.accent.main : Theme.action.disabled; border.width: 0; }
+            PropertyChanges { target: _background; color: _root.enabled ? _root.accent.main : Theme.action.disabled; border.width: 0; }
         },
         State {
             name: "unchecked"
             when: !_root.checked
-            PropertyChanges { target: _root; color: "transparent"; border { width: Size.pixel1*2; color: _root.enabled ? Theme.action.active : Theme.action.disabled } }
+            PropertyChanges { target: _background; color: "transparent"; border { width: Size.pixel1*2; color: _root.enabled ? Theme.action.active : Theme.action.disabled } }
         }
     ]
+
+    Rectangle {
+        id: _background
+
+        anchors.fill: _root
+
+        radius: Size.pixel6
+    }
 
     Icon {
         id: _icon

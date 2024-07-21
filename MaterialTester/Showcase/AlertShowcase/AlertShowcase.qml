@@ -203,10 +203,10 @@ Item {
                             }
                         }
 
-                        MRadioButton { id: bottomLeftButton; text: qsTr("Bottom Left"); checked: alerts.edgeOf == Item.BottomLeft; customCheckImplementaiton: true; onClicked: { alerts.edgeOf = Item.BottomLeft } }
-                        MRadioButton { id: bottomRightButton; text: qsTr("Bottom Right"); checked: alerts.edgeOf == Item.BottomRight; customCheckImplementaiton: true; onClicked: { alerts.edgeOf = Item.BottomRight } }
-                        MRadioButton { id: topLeftButton; text: qsTr("Top Left"); checked: alerts.edgeOf == Item.TopLeft; customCheckImplementaiton: true; onClicked: { alerts.edgeOf = Item.TopLeft } }
-                        MRadioButton { id: topRightButton; text: qsTr("Top Right"); checked: alerts.edgeOf == Item.TopRight; customCheckImplementaiton: true; onClicked: { alerts.edgeOf = Item.TopRight } }
+                        MRadioButton { id: bottomLeftButton; text: qsTr("Bottom Left"); checked: alerts.edgeOf == Item.BottomLeft; customCheckImplementation: true; onClicked: { alerts.edgeOf = Item.BottomLeft } }
+                        MRadioButton { id: bottomRightButton; text: qsTr("Bottom Right"); checked: alerts.edgeOf == Item.BottomRight; customCheckImplementation: true; onClicked: { alerts.edgeOf = Item.BottomRight } }
+                        MRadioButton { id: topLeftButton; text: qsTr("Top Left"); checked: alerts.edgeOf == Item.TopLeft; customCheckImplementation: true; onClicked: { alerts.edgeOf = Item.TopLeft } }
+                        MRadioButton { id: topRightButton; text: qsTr("Top Right"); checked: alerts.edgeOf == Item.TopRight; customCheckImplementation: true; onClicked: { alerts.edgeOf = Item.TopRight } }
 
                         Item { Layout.fillHeight: true }
                     }
