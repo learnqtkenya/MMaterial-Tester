@@ -163,6 +163,13 @@ list(APPEND MODULE_QML_FILES
     Components/Dialogs/LargeImageDialog.qml
     Components/Dialogs/MediumImageDialog.qml
     Components/Dialogs/InputDialog.qml
+
+    # Charts
+    Charts/BarChart.qml
+)
+
+list(APPEND MODULE_SOURCES
+    ChartElement.h ChartElement.cpp
 )
 
 set_source_files_properties(
@@ -191,4 +198,5 @@ qt_add_qml_module(MMaterialLib
     VERSION 1.0
     QML_FILES ${MODULE_QML_FILES}
     RESOURCES ${MODULE_ASSETS}
+    SOURCES ${MODULE_SOURCES}
 )
