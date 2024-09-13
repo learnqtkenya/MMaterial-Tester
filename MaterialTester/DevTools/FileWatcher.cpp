@@ -19,8 +19,13 @@ FileWatcher::FileWatcher(QObject* parent) : QObject(parent)
     // connect timer to callback function
     QObject::connect(&m_timer, &QTimer::timeout, this, &FileWatcher::reloadUI);
 
+#ifdef Q_OS_WIN
     setDirectory(QDir::currentPath()+QDir::separator()+".."+QDir::separator()+ QString("MMaterial"));
     setDirectory(QDir::currentPath()+QDir::separator()+".."+QDir::separator()+ QString("MaterialTester"));
+#else
+	setDirectory(QDir::currentPath()+QDir::separator()+"../../../"+QDir::separator()+ QString("MMaterial"));
+	setDirectory(QDir::currentPath()+QDir::separator()+"../../../"+QDir::separator()+ QString("MaterialTester"));
+#endif
 }
 
 /**
