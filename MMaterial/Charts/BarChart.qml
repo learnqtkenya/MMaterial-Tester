@@ -10,11 +10,14 @@ Item {
     property alias orientation: chartList.orientation
     property alias spacing: chartList.spacing
     property alias graphContainer: rootContainer
-    property alias model: chartModel.model
+    property alias model: root.chartModel.model
 
-    property bool autoResize: false
+    property bool autoResize: true
     property real fontSize: MMaterial.Size.pixel12
     property real barContainerWidth: MMaterial.Size.pixel48
+
+    property MMaterial.ChartModel chartModel: MMaterial.ChartModel {}
+
 
     component VerticalBars: RowLayout {
         id: verticalDelRoot
@@ -132,7 +135,7 @@ Item {
     QtObject {
         id: d
 
-        property real biggestElement: chartModel.getMaxValue()
+        property real biggestElement: root.chartModel.getMaxValue()
         readonly property real verticalBarWidth: root.autoResize ? (chartList.width - (chartList.count - 1) * chartList.spacing) / chartList.count : root.barContainerWidth
         readonly property real horizontalBarHeight: root.autoResize ? (chartList.height - (chartList.count - 1) * chartList.spacing) / chartList.count : root.barContainerWidth
         readonly property list<MMaterial.PaletteBasic> defaultColorPatterns: [MMaterial.Theme.primary, MMaterial.Theme.secondary, MMaterial.Theme.info, MMaterial.Theme.success, MMaterial.Theme.warning, MMaterial.Theme.error]
@@ -161,9 +164,6 @@ Item {
         }
     }
 
-    MMaterial.ChartModel {
-        id: chartModel
-    }
 
     ListView {
         id: valueList
@@ -173,7 +173,7 @@ Item {
 
         verticalLayoutDirection: ListView.BottomToTop
         orientation: chartList.isHorizontalChart ? ListView.Vertical : ListView.Horizontal
-        model: d.generateSpreadNumbers(0, chartModel.getMaxValue(), 5)
+        model: d.generateSpreadNumbers(0, root.chartModel.getMaxValue(), 5)
         spacing: chartList.isHorizontalChart ? chartList.height / (valueList.count - 1) : chartList.width / (valueList.count - 1)
         opacity: 0
 
@@ -215,7 +215,7 @@ Item {
 
         verticalLayoutDirection: ListView.BottomToTop
         orientation: chartList.isHorizontalChart ? ListView.Horizontal : ListView.Vertical
-        model: chartModel
+        model: root.chartModel
         spacing: chartList.spacing
         opacity: 0
 
@@ -235,7 +235,7 @@ Item {
             width: nameList.delWidth
             horizontalAlignment: chartList.isHorizontalChart ? Qt.AlignHCenter : Qt.AlignRight
             verticalAlignment: chartList.isHorizontalChart ? Qt.AlignTop : Qt.AlignVCenter
-            text: modelData.name
+            text: name
             color: MMaterial.Theme.text.disabled
             font.pixelSize: root.fontSize
         }
@@ -284,7 +284,7 @@ Item {
 
             readonly property bool isHorizontalChart: chartList.orientation == ListView.Horizontal
 
-            model: chartModel
+            model: root.chartModel
             interactive: false
             spacing: MMaterial.Size.pixel12
             orientation: ListView.Horizontal

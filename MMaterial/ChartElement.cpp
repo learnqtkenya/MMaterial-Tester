@@ -94,6 +94,11 @@ void ChartElement::insert(int index, ChartElementBar* bar)
 	endInsertRows();
 }
 
+void ChartElement::insertEmpty(int index)
+{
+	insert(index, new ChartElementBar(this));
+}
+
 void ChartElement::remove(int index)
 {
 	beginRemoveRows(QModelIndex(), index, index);
@@ -132,6 +137,11 @@ ChartModel::ChartModel(QObject* parent)
 
 }
 
+int ChartModel::count()
+{
+	return m_elements.size();
+}
+
 int ChartModel::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent)
@@ -148,14 +158,33 @@ QVariant ChartModel::data(const QModelIndex& index, int role) const
 
 	if (role == ElementRole)
 		return QVariant::fromValue(m_elements.at(index.row()));
+	else if (role == NameRole)
+		return m_elements.at(index.row())->name();
 
 	return QVariant();
+}
+
+bool ChartModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+	if (!index.isValid())
+		return false;
+
+	if (index.row() >= m_elements.size())
+		return false;
+
+	if (role == NameRole)
+		m_elements.at(index.row())->setName(value.toString());
+
+	emit dataChanged(index, index, { role });
+
+	return true;
 }
 
 QHash<int, QByteArray> ChartModel::roleNames() const
 {
 	QHash<int, QByteArray> roles;
 	roles[ElementRole] = "element";
+	roles[NameRole] = "name";
 	return roles;
 }
 
@@ -176,6 +205,13 @@ void ChartModel::insert(int index, ChartElement* bar)
 	beginInsertRows(QModelIndex(), index, index);
 	m_elements.insert(index, bar);
 	endInsertRows();
+
+	emit countChanged();
+}
+
+void ChartModel::insertEmpty(int index)
+{
+	insert(index, new ChartElement(this));
 }
 
 void ChartModel::remove(int index)
@@ -183,6 +219,8 @@ void ChartModel::remove(int index)
 	beginRemoveRows(QModelIndex(), index, index);
 	m_elements.takeAt(index)->deleteLater();
 	endRemoveRows();
+
+	emit countChanged();
 }
 
 double ChartModel::getMinValue() const

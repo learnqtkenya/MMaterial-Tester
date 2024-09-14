@@ -32,6 +32,7 @@ Item {
             onClicked: elementRoot.clicked()
         }
     }
+
     QtObject {
         id: d
 
@@ -72,8 +73,9 @@ Item {
             Layout.maximumWidth: root.width / 2 - MMaterial.Size.pixel30
 
             footerPositioning: ListView.OverlayFooter
-            model: 5
+            model: barChart.chartModel
             spacing: MMaterial.Size.pixel10
+
 
             delegate: ListELement {
                 id: chartDelRoot
@@ -92,6 +94,9 @@ Item {
                         Layout.leftMargin: MMaterial.Size.pixel10
                         verticalAlignment: Qt.AlignVCenter
                         color: MMaterial.Theme.text.primary
+                        text: name
+
+                        onTextEdited: name = text
 
                         font {
                             family: MMaterial.PublicSans.regular
@@ -99,26 +104,82 @@ Item {
                         }
                     }
 
+                    Item { Layout.fillWidth: true }
+
                     ListView {
                         id: barRectList
 
-                        Layout.preferredHeight: MMaterial.Size.pixel32
+                        Layout.preferredHeight: MMaterial.Size.pixel28
                         Layout.alignment: Qt.AlignVCenter
-                        Layout.fillWidth: true
+                        Layout.preferredWidth: contentWidth
                         Layout.leftMargin: MMaterial.Size.pixel20
-                        Layout.maximumWidth: parent.width - input.width
+                        Layout.maximumWidth: parent.width - input.width + spacing
 
                         spacing: MMaterial.Size.pixel10
                         orientation: ListView.Horizontal
-                        layoutDirection: ListView.RightToLeft
                         interactive: false
-                        model: 4
+                        model: element
+                        clip: true
 
                         delegate: Rectangle {
-                            height: barRectList.height * 0.8
+                            id: barRect
+
+                            height: barRectList.height
                             width: height
-                            color: "yellow"
+                            color: barColor
                             radius: chartDelRoot.radius * 0.6
+
+                            border {
+                                width: rectMA.containsMouse ? 2 : 1
+                                color: MMaterial.Theme.text.primary
+                            }
+
+                            MouseArea {
+                                id: rectMA
+
+                                anchors.fill: barRect
+                                hoverEnabled: true
+
+                                onClicked: {}
+                            }
+                        }
+
+                        footer: Item {
+                            height: barRectList.height
+                            width: height + barRectList.spacing
+
+                            Rectangle {
+                                id: barRectFooter
+
+                                anchors.right: parent.right
+
+                                height: barRectList.height
+                                width: height
+
+                                color: "transparent"
+                                radius: chartDelRoot.radius * 0.6
+
+                                border {
+                                    width: rectFooterMA.containsMouse ? 2 : 1
+                                    color: MMaterial.Theme.text.primary
+                                }
+
+                                MMaterial.Icon {
+                                    anchors.centerIn: barRectFooter
+                                    size: MMaterial.Size.pixel14
+                                    iconData: MMaterial.Icons.light.add
+                                    color: MMaterial.Theme.text.disabled
+                                }
+
+                                MouseArea {
+                                    id: rectFooterMA
+
+                                    anchors.fill: barRectFooter
+                                    hoverEnabled: true
+
+                                    onClicked: element.insertEmpty(barRectList.count)
+                                }
+                            }
                         }
                     }
                 }
@@ -132,7 +193,10 @@ Item {
                     size: MMaterial.Size.pixel24
                     iconData: MMaterial.Icons.light.add
                     color: MMaterial.Theme.text.disabled
+
                 }
+
+                onClicked: barChart.chartModel.insertEmpty(barChart.chartModel.count)
             }
         }
 

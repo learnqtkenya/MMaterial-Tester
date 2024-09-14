@@ -44,6 +44,7 @@ class ChartElement : public QAbstractListModel
 
 	Q_PROPERTY(QQmlListProperty<ChartElementBar> bars READ model)
 	Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged FINAL)
+
 public:
 	ChartElement(QObject* parent = nullptr);
 
@@ -60,6 +61,7 @@ public:
 	QHash<int, QByteArray> roleNames() const override;
 
 	Q_INVOKABLE void insert(int index, ChartElementBar* bar);
+	Q_INVOKABLE void insertEmpty(int index);
 	Q_INVOKABLE void remove(int index);
 
 	QList<ChartElementBar*> bars() const;
@@ -83,27 +85,39 @@ class ChartModel : public QAbstractListModel
 	Q_OBJECT
 	QML_ELEMENT
 	Q_PROPERTY(QQmlListProperty<ChartElement> model READ model)
+	Q_PROPERTY(int count READ count NOTIFY countChanged)
+
 public:
 	ChartModel(QObject* parent = nullptr);
 
 	enum RoleNames {
-		ElementRole = Qt::UserRole + 1
+		ElementRole = Qt::UserRole + 1,
+		NameRole
 	};
 
+	int count();
 	int rowCount(const QModelIndex& parent) const override;
 	QVariant data(const QModelIndex& index, int role) const override;
+	bool setData(const QModelIndex &index, const QVariant &value, int role) override;
+
 	QHash<int, QByteArray> roleNames() const override;
 
 	QList<ChartElement*> elements() const;
 	void setElements(const QList<ChartElement*>& newElements);
 
 	Q_INVOKABLE void insert(int index, ChartElement* bar);
+	Q_INVOKABLE void insertEmpty(int index);
 	Q_INVOKABLE void remove(int index);
 
 	Q_INVOKABLE double getMinValue() const;
 	Q_INVOKABLE double getMaxValue() const;
 
 	QQmlListProperty<ChartElement> model();
+
+signals:
+	void countChanged();
+
 private:
 	QList<ChartElement*> m_elements;
+
 };
