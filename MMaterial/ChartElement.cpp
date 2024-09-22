@@ -77,6 +77,42 @@ QVariant ChartElement::data(const QModelIndex& index, int role) const
 	return QVariant();
 }
 
+bool ChartElement::setData(const QModelIndex& index, const QVariant& value, int role)
+{
+	if (!index.isValid())
+		return false;
+
+	if (index.row() >= m_bars.size())
+		return false;
+
+	if (role == NameRole)
+	{
+		m_name = value.toString();
+		emit dataChanged(index, index);
+		return true;
+	}
+	else if (role == BarNameRole)
+	{
+		m_bars.at(index.row())->setName(value.toString());
+		emit dataChanged(index, index);
+		return true;
+	}
+	else if (role == BarValueRole)
+	{
+		m_bars.at(index.row())->setValue(value.toDouble());
+		emit dataChanged(index, index);
+		return true;
+	}
+	else if (role == BarColorRole)
+	{
+		m_bars.at(index.row())->setColor(value.toString());
+		emit dataChanged(index, index);
+		return true;
+	}
+
+	return false;
+}
+
 QHash<int, QByteArray> ChartElement::roleNames() const
 {
 	QHash<int, QByteArray> roles;
@@ -220,6 +256,7 @@ void ChartModel::remove(int index)
 	m_elements.takeAt(index)->deleteLater();
 	endRemoveRows();
 
+	qDebug() << "Removed element at index" << index;
 	emit countChanged();
 }
 
@@ -239,7 +276,8 @@ double ChartModel::getMinValue() const
 
 double ChartModel::getMaxValue() const
 {
-	double max = std::numeric_limits<double>::min();
+	qDebug() << "called";
+	double max = m_elements.size() == 0 ? 0 : std::numeric_limits<double>::min();
 	for (auto element : m_elements)
 	{
 		for (auto bar : element->bars())

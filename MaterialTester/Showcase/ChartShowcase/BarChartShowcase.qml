@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
+import QtQuick.Controls.Material
 
 import MMaterial as MMaterial
 
@@ -10,6 +12,7 @@ Item {
     component ListELement: Rectangle {
         id: elementRoot
 
+        readonly property bool hovered: elementMA.containsMouse
         signal clicked
 
         height: MMaterial.Size.pixel40
@@ -33,14 +36,27 @@ Item {
         }
     }
 
+    ColorDialog {
+        id: colorDialog
+
+        property Item elementItem: null
+        selectedColor: "black"
+        onAccepted: {
+            if (colorDialog.elementItem)
+                elementItem.setBarColor(colorDialog.selectedColor);
+        }
+    }
+
     QtObject {
         id: d
 
-        readonly property bool isWide: root.width > root.height
+        readonly property bool isWide: false
     }
 
     ColumnLayout {
         id: controlLayout
+
+        readonly property real layoutLeftMargin: d.isWide ? 0 : controlLayout.width / 2 - chartEditorList.width / 2
 
         height: d.isWide ? root.height : root.height / 2 - MMaterial.Size.pixel30
         width: d.isWide ? root.width / 2 - MMaterial.Size.pixel30 : root.width
@@ -51,156 +67,333 @@ Item {
             top: root.top
         }
 
-        Item { Layout.fillHeight: true }
-
         MMaterial.MSwitch {
+            Layout.alignment: Qt.AlignVCenter
+            Layout.leftMargin: controlLayout.layoutLeftMargin
             text: qsTr("Orientation")
             checked: barChart.orientation == ListView.Horizontal
             onCheckedChanged: barChart.orientation = checked ? ListView.Horizontal : ListView.Vertical
         }
 
         MMaterial.MSwitch {
+            Layout.alignment: Qt.AlignVCenter
+            Layout.leftMargin: controlLayout.layoutLeftMargin
             text: qsTr("Auto Resize")
             checked: barChart.autoResize
             onCheckedChanged: barChart.autoResize = checked
         }
 
+        ListELement {
+            id: footerElement
+
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredHeight: MMaterial.Size.pixel36
+            Layout.preferredWidth: chartEditorList.width
+            enabled: chartEditorList.count < 7
+            opacity: enabled ? 1 : 0.5
+
+            MMaterial.Icon {
+                anchors.centerIn: parent
+                size: MMaterial.Size.pixel24
+                iconData: MMaterial.Icons.light.add
+                color: MMaterial.Theme.text.disabled
+
+            }
+
+            onClicked: {
+                barChart.chartModel.insertEmpty(barChart.chartModel.count)
+            }
+        }
+
         ListView {
             id: chartEditorList
 
+            Layout.alignment: Qt.AlignVCenter
             Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.maximumWidth: root.width / 2 - MMaterial.Size.pixel30
+            Layout.maximumHeight: d.isWide ? controlLayout.height : barChart.height - MMaterial.Size.pixel40
+            Layout.minimumHeight: MMaterial.Size.pixel40
+            Layout.preferredWidth: barChart.width
+            Layout.maximumWidth: d.isWide ? controlLayout.width : barChart.width
+            Layout.leftMargin: controlLayout.layoutLeftMargin
 
-            footerPositioning: ListView.OverlayFooter
+            footerPositioning: ListView.InlineFooter
             model: barChart.chartModel
             spacing: MMaterial.Size.pixel10
+            clip: true
 
+            onContentHeightChanged: chartEditorList.positionViewAtEnd()
+
+            add: Transition {
+                ParallelAnimation {
+                    NumberAnimation { properties: "opacity"; from: 0; to: 1; duration: 150 }
+                    NumberAnimation { properties: "height"; from: 0; to: MMaterial.Size.pixel40 * 2; duration: 250; easing.type: Easing.OutQuad }
+                }
+            }
+
+            remove: Transition {
+                ParallelAnimation {
+                    NumberAnimation { properties: "opacity"; to: 0; duration: 150 }
+                    NumberAnimation { properties: "height"; to: 0; duration: 250; easing.type: Easing.OutQuad }
+                }
+            }
+
+            displaced: Transition {
+                NumberAnimation { properties: "x, y, height, width"; duration: 250 }
+            }
 
             delegate: ListELement {
                 id: chartDelRoot
 
+                height: MMaterial.Size.pixel40 * 2
+
                 RowLayout {
                     anchors {
                         fill: chartDelRoot
+                        topMargin: MMaterial.Size.pixel10
+                        bottomMargin: MMaterial.Size.pixel10
                         leftMargin: MMaterial.Size.pixel10
                         rightMargin: MMaterial.Size.pixel10
                     }
 
-                    TextInput {
+                    MMaterial.MTextField {
                         id: input
-                        Layout.alignment: Qt.AlignVCenter
-                        Layout.preferredWidth: contentWidth
+
+                        Layout.alignment: Qt.AlignTop
+                        Layout.preferredWidth: chartDelRoot.width * 0.2
+                        Layout.maximumWidth: chartDelRoot.width * 0.25
                         Layout.leftMargin: MMaterial.Size.pixel10
-                        verticalAlignment: Qt.AlignVCenter
-                        color: MMaterial.Theme.text.primary
+
+                        placeholder: qsTr("Name")
                         text: name
 
-                        onTextEdited: name = text
+                        input {
+                            verticalAlignment: Qt.AlignVCenter
+                            font.pixelSize: MMaterial.Size.pixel16
 
-                        font {
-                            family: MMaterial.PublicSans.regular
-                            pixelSize: MMaterial.Size.pixel16
+                            onTextEdited: name = text
+                            onAccepted: {
+                                if (barRectList.count == 0) {
+                                    element.insertEmpty(barRectList.count)
+                                }
+                            }
                         }
-                    }
 
-                    Item { Layout.fillWidth: true }
+                        Component.onCompleted: input.input.forceActiveFocus()
+                    }
 
                     ListView {
                         id: barRectList
 
-                        Layout.preferredHeight: MMaterial.Size.pixel28
-                        Layout.alignment: Qt.AlignVCenter
-                        Layout.preferredWidth: contentWidth
-                        Layout.leftMargin: MMaterial.Size.pixel20
+                        Layout.fillHeight: true
+                        Layout.alignment: Qt.AlignTop | Qt.AlignRight
+                        Layout.fillWidth: true
+                        Layout.minimumWidth: height * 2 + spacing
                         Layout.maximumWidth: parent.width - input.width + spacing
+                        Layout.leftMargin: MMaterial.Size.pixel20
 
                         spacing: MMaterial.Size.pixel10
                         orientation: ListView.Horizontal
-                        interactive: false
+                        interactive: width < contentWidth
                         model: element
                         clip: true
 
-                        delegate: Rectangle {
-                            id: barRect
+                        onContentWidthChanged: barRectList.positionViewAtEnd()
+                        onCountChanged: {
+                            let barElement = barRectList.itemAtIndex(barRectList.count - 1);
+                            if (barElement)
+                                barElement.barNameInput.input.forceActiveFocus();
+                        }
 
-                            height: barRectList.height
-                            width: height
-                            color: barColor
-                            radius: chartDelRoot.radius * 0.6
-
-                            border {
-                                width: rectMA.containsMouse ? 2 : 1
-                                color: MMaterial.Theme.text.primary
-                            }
-
-                            MouseArea {
-                                id: rectMA
-
-                                anchors.fill: barRect
-                                hoverEnabled: true
-
-                                onClicked: {}
+                        add: Transition {
+                            ParallelAnimation {
+                                NumberAnimation { properties: "opacity"; from: 0; to: 1; duration: 150 }
+                                NumberAnimation { properties: "width"; from: 0; to: MMaterial.Size.pixel64 * 2; duration: 250; easing.type: Easing.OutQuad }
                             }
                         }
 
-                        footer: Item {
+                        remove: Transition {
+                            ParallelAnimation {
+                                NumberAnimation { properties: "opacity"; to: 0; duration: 150 }
+                                NumberAnimation { properties: "width"; to: 0; duration: 250; easing.type: Easing.OutQuad }
+                            }
+                        }
+
+                        displaced: Transition {
+                            NumberAnimation { properties: "x, y"; duration: 250 }
+                        }
+
+                        addDisplaced: Transition {
+                            NumberAnimation { properties: "x,y"; duration: 250 }
+                        }
+
+                        delegate: Item {
+                            id: rectDelegateRoot
+
+                            property alias barNameInput: barNameInput
+
+                            function setBarColor(color) {
+                                barColor = color
+                            }
+
                             height: barRectList.height
-                            width: height + barRectList.spacing
+                            width: MMaterial.Size.pixel64 * 2
 
-                            Rectangle {
-                                id: barRectFooter
+                            ColumnLayout {
+                                spacing: MMaterial.Size.pixel6
+                                anchors.fill: rectDelegateRoot
 
-                                anchors.right: parent.right
+                                RowLayout {
+                                    Layout.minimumWidth: rectDelegateRoot.width
+                                    Layout.preferredWidth: rectDelegateRoot.width
+                                    Layout.minimumHeight: MMaterial.Size.pixel20
 
-                                height: barRectList.height
-                                width: height
+                                    Rectangle {
+                                        id: barRect
 
-                                color: "transparent"
-                                radius: chartDelRoot.radius * 0.6
+                                        Layout.fillHeight: true
+                                        Layout.minimumHeight: rectDelegateRoot.height / 2  - rectDelegateRoot.spacing / 2
+                                        Layout.preferredWidth: height
+                                        color: barColor
+                                        radius: chartDelRoot.radius * 0.6
 
-                                border {
-                                    width: rectFooterMA.containsMouse ? 2 : 1
-                                    color: MMaterial.Theme.text.primary
+                                        border {
+                                            width: rectMA.containsMouse ? 2 : 1
+                                            color: MMaterial.Theme.text.primary
+                                        }
+
+                                        MouseArea {
+                                            id: rectMA
+
+                                            anchors.fill: barRect
+                                            hoverEnabled: true
+
+                                            onClicked: {
+                                                colorDialog.selectedColor = barColor;
+                                                colorDialog.elementItem = rectDelegateRoot;
+                                                colorDialog.open();
+                                            }
+                                        }
+                                    }
+
+                                    MMaterial.MTextField {
+                                        id: barNameInput
+
+                                        Layout.alignment: Qt.AlignHCenter
+                                        Layout.fillHeight: true
+                                        Layout.minimumHeight: MMaterial.Size.pixel20
+                                        Layout.minimumWidth: barRect.width
+                                        Layout.fillWidth: true
+                                        Layout.maximumWidth: rectDelegateRoot.width
+
+                                        input.font.pixelSize: MMaterial.Size.pixel12
+                                        type: MMaterial.MTextField.Type.Outlined
+                                        text: barName
+                                        horizontalMargins: MMaterial.Size.pixel8
+                                        placeholder: barNameInput.text != "" || barNameInput.input.activeFocus ? "" : qsTr("Bar name")
+
+                                        input {
+                                            KeyNavigation.tab: barValueInput.input
+                                            onEditingFinished: barName = input.text
+                                            onActiveFocusChanged: if (input.focus) barRectList.positionViewAtIndex(index, ListView.Beginning);
+                                        }
+                                    }
                                 }
 
-                                MMaterial.Icon {
-                                    anchors.centerIn: barRectFooter
-                                    size: MMaterial.Size.pixel14
-                                    iconData: MMaterial.Icons.light.add
-                                    color: MMaterial.Theme.text.disabled
-                                }
+                                RowLayout {
+                                    Layout.minimumWidth: rectDelegateRoot.width
+                                    Layout.preferredWidth: rectDelegateRoot.width
+                                    Layout.minimumHeight: MMaterial.Size.pixel20
 
-                                MouseArea {
-                                    id: rectFooterMA
 
-                                    anchors.fill: barRectFooter
-                                    hoverEnabled: true
+                                    MMaterial.MToggleButton {
+                                        Layout.fillHeight: true
+                                        Layout.preferredWidth: height
 
-                                    onClicked: element.insertEmpty(barRectList.count)
+                                        opacity: enabled ? 1 : 0.5
+                                        customCheckImplementation: true
+                                        checked: true
+                                        size: MMaterial.Size.Grade.S
+                                        accent: MMaterial.Theme.warning
+
+                                        icon.iconData: MMaterial.Icons.light.remove
+
+                                        onClicked: element.remove(index)
+                                    }
+
+                                    MMaterial.MTextField {
+                                        id: barValueInput
+
+                                        Layout.alignment: Qt.AlignHCenter
+                                        Layout.fillHeight: true
+                                        Layout.minimumHeight: MMaterial.Size.pixel20
+                                        Layout.minimumWidth: barRect.width
+                                        Layout.fillWidth: true
+                                        Layout.maximumWidth: rectDelegateRoot.width
+
+                                        input.font.pixelSize: MMaterial.Size.pixel12
+                                        type: MMaterial.MTextField.Type.Outlined
+                                        text: barValue
+                                        horizontalMargins: MMaterial.Size.pixel8
+                                        placeholder: barValueInput.text != "" || barValueInput.input.activeFocus ? "" : qsTr("Value")
+
+                                        input {
+                                            KeyNavigation.tab: barNameInput.input
+                                            inputMethodHints: Qt.ImhFormattedNumbersOnly
+
+                                            validator: RegularExpressionValidator {
+                                                regularExpression: /^[0-9]+$/
+                                            }
+
+                                            onEditingFinished: barValue = input.text
+                                            onActiveFocusChanged: if (input.focus) barRectList.positionViewAtIndex(index, ListView.Beginning);
+                                        }
+                                    }
                                 }
                             }
+                        }
+
+                    }
+
+                    ColumnLayout {
+                        Layout.preferredWidth: MMaterial.Size.pixel18
+
+                        MMaterial.MToggleButton {
+                            id: barRectFooter
+
+                            Layout.fillHeight: true
+                            Layout.preferredWidth: height
+
+                            enabled: barRectList.count < 5
+                            opacity: enabled ? 1 : 0.5
+                            customCheckImplementation: true
+                            checked: true
+                            size: MMaterial.Size.Grade.S
+
+                            icon.iconData: MMaterial.Icons.light.add
+
+                            onClicked: element.insertEmpty(barRectList.count)
+                        }
+
+                        MMaterial.MToggleButton {
+                            Layout.fillHeight: true
+                            Layout.preferredWidth: height
+
+                            opacity: enabled ? 1 : 0.5
+                            customCheckImplementation: true
+                            checked: true
+                            size: MMaterial.Size.Grade.S
+                            accent: MMaterial.Theme.error
+
+                            icon.iconData: MMaterial.Icons.light.remove
+
+                            onClicked: barChart.chartModel.remove(index)
                         }
                     }
                 }
 
                 onClicked: input.forceActiveFocus()
             }
-
-            footer: ListELement {
-                MMaterial.Icon {
-                    anchors.centerIn: parent
-                    size: MMaterial.Size.pixel24
-                    iconData: MMaterial.Icons.light.add
-                    color: MMaterial.Theme.text.disabled
-
-                }
-
-                onClicked: barChart.chartModel.insertEmpty(barChart.chartModel.count)
-            }
         }
-
-        Item { Layout.fillHeight: true }
     }
 
     ColumnLayout {

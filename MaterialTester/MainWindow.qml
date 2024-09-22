@@ -80,7 +80,7 @@ Rectangle {
         }
 
         asynchronous: true
-        sourceComponent: barChartShowcase
+        sourceComponent: placeholder
     }
 
     Component { id: placeholder; Placeholder{ } }
