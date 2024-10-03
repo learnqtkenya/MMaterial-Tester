@@ -12,12 +12,12 @@ And to learn and improve along the way! All contributions (comments and code) ar
 - [ ] Add transitions
 - [ ] Chips
 - [x] Avatars
-- [ ] Calendar
-- [ ] Clock
+- [x] Calendar
+- [x] Clock
 - [ ] Stepper
 - [ ] Popover
 - [ ] Timeline
-- [ ] Charts
+- [x] Charts
 - [ ] Whitelabeling (related to settings) ? 
 
 ## Recommendation :point_up:
