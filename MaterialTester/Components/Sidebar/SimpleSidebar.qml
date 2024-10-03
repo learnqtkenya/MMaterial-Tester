@@ -81,6 +81,15 @@ Sidebar {
     }
 
     SidebarItem {
+        text: "Charts";
+        icon: Icons.light.barChart;
+        category: "components"
+        model: [
+            {text : "Bar Chart", onClicked: function(){ showcaseLoader.sourceComponent = barChartShowcase}},
+        ];
+    }
+
+    SidebarItem {
         text: "Other";
         icon: Icons.light.atr;
         category: "components"

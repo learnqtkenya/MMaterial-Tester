@@ -14,6 +14,7 @@ import "./Showcase/ListItemShowcase"
 import "./Showcase/PaginationShowcase"
 import "./Showcase/TextFieldShowcase"
 import "./Showcase/TabShowcase"
+import "./Showcase/ChartShowcase"
 
 import "./Components/AppSettings"
 import "./Components/Sidebar"
@@ -100,6 +101,9 @@ Rectangle {
     Component { id: avatarShowcase; AvatarShowcase{ } }
     Component { id: dialogShowcase; DialogShowcase{ } }
     Component { id: dateTimeShowcase; DateTimeShowcase{ } }
+
+    // Charts
+    Component { id: barChartShowcase; BarChartShowcase{ } }
 
     // Buttons
     Component { id: buttonShowcase; ButtonShowcase{  } }

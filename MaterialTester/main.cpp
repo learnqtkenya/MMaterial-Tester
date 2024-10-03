@@ -7,18 +7,25 @@
 
 int main(int argc, char *argv[])
 {
-//    qputenv("QSG_VISUALIZE", "batches");
+//   qputenv("QSG_VISUALIZE", "batches");
+
+#ifdef Q_OS_WIN
     qputenv("MAIN_QML","../MaterialTester/Main.qml");
+#else
+	qputenv("MAIN_QML","../../../MaterialTester/Main.qml");
+#endif
     QGuiApplication app(argc, argv);
 
     CustomEngine engine;
 	Clipboard clipboard;
 
-    engine.addImportPath(":/MMaterial"); // for Material
+	engine.addImportPath(":/MMaterial"); // for Material
+	engine.addImportPath("qrc:/");
+
     engine.rootContext()->setContextProperty("QmlEngine", &engine);
 	engine.rootContext()->setContextProperty("Clipboard", &clipboard);
+
 #if defined(__wasm__) || !defined(QT_DEBUG)
-    engine.addImportPath("qrc:/");
     const QUrl url(u"qrc:/MaterialTester/Main.qml"_qs);
 #else
     const QUrl url(qgetenv("MAIN_QML"));

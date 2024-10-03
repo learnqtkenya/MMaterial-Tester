@@ -24,6 +24,7 @@ Item {
     readonly property real pixel32: 32 * scale
     readonly property real pixel36: 36 * scale
     readonly property real pixel40: 40 * scale
+    readonly property real pixel42: 42 * scale
     readonly property real pixel46: 46 * scale
     readonly property real pixel48: 48 * scale
     readonly property real pixel64: 64 * scale

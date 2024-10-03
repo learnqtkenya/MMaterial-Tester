@@ -12,10 +12,11 @@ Rectangle {
     property alias rightIcon: _rightIcon
     property alias text: _textInput.text
 
+    property real horizontalMargins: Size.pixel12
     property var hoverHandler: _hoverHandler
     property PaletteBasic accent: Theme.primary
 
-    property bool showPlaceholder: !_textInput.focus && _textInput.text === ""
+    property bool showPlaceholder: !_textInput.activeFocus && _textInput.text === ""
     property int type: MTextField.Type.Standard
 
     enum Type { Filled, Outlined, Standard }
@@ -85,7 +86,7 @@ Rectangle {
         },
         State {
             name: "focused-outlined"
-            when: _textInput.focus && _root.type == MTextField.Type.Outlined
+            when: _textInput.activeFocus && _root.type == MTextField.Type.Outlined
             PropertyChanges { target: _root; color: Theme.background.paper; border { color: Theme.text.primary} }
             PropertyChanges { target: _label; color: Theme.text.primary }
             PropertyChanges { target: _textInput; color: Theme.text.primary }
@@ -122,7 +123,7 @@ Rectangle {
         },
         State {
             name: "focused"
-            when: _textInput.focus
+            when: _textInput.activeFocus
             PropertyChanges { target: _root; color: "transparent"; border { color: Theme.text.primary} }
             PropertyChanges { target: _label; color: Theme.text.primary }
             PropertyChanges { target: _textInput; color: Theme.text.primary }
@@ -170,6 +171,7 @@ Rectangle {
 
         height: _root.border.width * 2
         width: _label.width
+        visible: _label.text != ""
 
         x: _label.x
         color: _root.color
@@ -185,7 +187,7 @@ Rectangle {
         width: implicitWidth + Size.pixel8
         height: implicitHeight
 
-        font.pixelSize: Size.pixel12
+        font.pixelSize: _textInput.font.pixelSize * 0.66
         text: "Placeholder"
 
         lineHeight: 1
@@ -244,14 +246,14 @@ Rectangle {
         TextInput{
             id: _textInput
 
-            property bool isInForeground: _textInput.focus || _textInput.text !== ""
+            property bool isInForeground: _textInput.activeFocus || _textInput.text !== ""
 
             anchors {
-                right: _rightIcon.left; rightMargin: Size.pixel14
+                right: _rightIcon.visible ? _rightIcon.left : _mainContainer.right; rightMargin: _rightIcon.visible ? _root.horizontalMargins + Size.pixel1 * 2 : _root.horizontalMargins
                 top: _mainContainer.top
                 bottom: _mainContainer.bottom
                 left: _leftIcon.visible ? _leftIcon.right : _mainContainer.left
-                leftMargin: _private.isStandardType && !_leftIcon.visible ? 0 : Size.pixel12
+                leftMargin: _private.isStandardType && !_leftIcon.visible ? 0 : _root.horizontalMargins
             }
 
             verticalAlignment: Qt.AlignVCenter
