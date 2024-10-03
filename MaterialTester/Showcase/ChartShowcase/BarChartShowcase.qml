@@ -15,8 +15,8 @@ Item {
         readonly property bool hovered: elementMA.containsMouse
         signal clicked
 
-        height: MMaterial.Size.pixel40
-        width: chartEditorList.width
+        implicitHeight: MMaterial.Size.pixel40
+        implicitWidth: chartEditorList.width
 
         color: elementMA.containsMouse ? MMaterial.Theme.background.neutral : "transparent"
         radius: MMaterial.Size.pixel8
@@ -56,7 +56,7 @@ Item {
     ColumnLayout {
         id: controlLayout
 
-        readonly property real layoutLeftMargin: d.isWide ? 0 : controlLayout.width / 2 - chartEditorList.width / 2
+        readonly property real layoutLeftMargin: d.isWide ? 0 : Math.max(0, controlLayout.width / 2 - chartEditorList.width / 2)
 
         height: d.isWide ? root.height : root.height / 2 - MMaterial.Size.pixel30
         width: d.isWide ? root.width / 2 - MMaterial.Size.pixel30 : root.width

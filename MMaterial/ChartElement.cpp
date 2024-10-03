@@ -276,7 +276,6 @@ double ChartModel::getMinValue() const
 
 double ChartModel::getMaxValue() const
 {
-	qDebug() << "called";
 	double max = m_elements.size() == 0 ? 0 : std::numeric_limits<double>::min();
 	for (auto element : m_elements)
 	{

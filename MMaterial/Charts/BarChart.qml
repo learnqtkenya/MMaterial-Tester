@@ -36,7 +36,7 @@ Item {
         orientation: ListView.Horizontal
         model: verticalDelRoot.chartElement
 
-        onCountChanged: Qt.callLater(() => { d.biggestElement = root.chartModel.getMaxValue(); })
+        onCountChanged: biggestElementTimer.restart()
 
         displaced: Transition {
             NumberAnimation { properties: "x, y, height, width"; duration: 250 }
@@ -66,7 +66,7 @@ Item {
             height: verticalDelRoot.height
             width: verticalDelRoot.delegateWidth
 
-            onValueChanged: Qt.callLater(() => { d.biggestElement = root.chartModel.getMaxValue(); })
+            onValueChanged: biggestElementTimer.restart()
 
             Rectangle {
                 id: verticalBar
@@ -123,7 +123,7 @@ Item {
         width: chartList.width
         model: horizontalDelRoot.chartElement
 
-        onCountChanged: Qt.callLater(() => { d.biggestElement = root.chartModel.getMaxValue(); })
+        onCountChanged: biggestElementTimer.restart()
 
         displaced: Transition {
             NumberAnimation { properties: "x, y, height, width"; duration: 250 }
@@ -163,7 +163,7 @@ Item {
                 color: Qt.lighter(horSubChart.color)
             }
 
-            onValueChanged: Qt.callLater(() => { d.biggestElement = root.chartModel.getMaxValue(); })
+            onValueChanged: biggestElementTimer.restart()
 
             Behavior on border.width { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
             NumberAnimation on width { id: widthInitAnimation; running: true; from: 0; to: horSubChart.prefMaxWidth; duration: 400; easing.type: Easing.InOutQuad }
@@ -199,6 +199,12 @@ Item {
     Timer {
         id: secondaryStopAnimationTimer
         interval: 500
+    }
+
+    Timer {
+        id: biggestElementTimer
+        interval: 80
+        onTriggered: d.biggestElement = root.chartModel.getMaxValue();
     }
 
     QtObject {
@@ -394,7 +400,7 @@ Item {
 
             onCountChanged: {
                 secondaryStopAnimationTimer.restart()
-                Qt.callLater(() => { d.biggestElement = root.chartModel.getMaxValue(); })
+                biggestElementTimer.restart()
             }
 
             delegate: Loader {
