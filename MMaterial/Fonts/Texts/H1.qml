@@ -4,7 +4,7 @@ import "../../Settings"
 
 BaseText {
     elide: Text.ElideRight
-    lineHeight: 1.2
+    lineHeight: 1
 
     font {
         family: PublicSans.extraBold

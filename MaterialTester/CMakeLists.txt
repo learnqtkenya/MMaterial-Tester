@@ -68,6 +68,7 @@ qt_add_qml_module(appMaterialTester
         Showcase/DialogShowcase.qml
         Showcase/DateTimeShowcase.qml
         Showcase/ChartShowcase/BarChartShowcase.qml
+        Showcase/ChartShowcase/WaterfallChartShowcase.qml
 
     SOURCES
         DevTools/FileWatcher.h

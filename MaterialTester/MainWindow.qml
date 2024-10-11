@@ -104,6 +104,7 @@ Rectangle {
 
     // Charts
     Component { id: barChartShowcase; BarChartShowcase{ } }
+    Component { id: waterfallChartShowcase; WaterfallChartShowcase{ } }
 
     // Buttons
     Component { id: buttonShowcase; ButtonShowcase{  } }

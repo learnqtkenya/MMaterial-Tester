@@ -332,7 +332,7 @@ Item {
 
                                         input.font.pixelSize: MMaterial.Size.pixel12
                                         type: MMaterial.MTextField.Type.Outlined
-                                        text: barValue
+                                        text: Number(barValue).toLocaleString(Qt.locale(), 'f', 0)
                                         horizontalMargins: MMaterial.Size.pixel8
                                         placeholder: barValueInput.text != "" || barValueInput.input.activeFocus ? "" : qsTr("Value")
 
@@ -410,6 +410,7 @@ Item {
         MMaterial.BarChart {
             id: barChart
 
+            graphContainer.width: barChart.width - MMaterial.Size.pixel30 * 2
             Layout.alignment: Qt.AlignCenter
 
             Layout.fillWidth: true

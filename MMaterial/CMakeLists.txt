@@ -111,6 +111,7 @@ list(APPEND MODULE_QML_FILES
     Components/Inputs/MCalendar.qml
     Components/Common/Popup.qml
     Components/Inputs/DatePicker.qml
+    Components/Common/ScrollBar.qml
 
     # Settings
     Settings/Size.qml
@@ -166,6 +167,8 @@ list(APPEND MODULE_QML_FILES
 
     # Charts
     Charts/BarChart.qml
+    Charts/WaterfallChart.qml
+    Charts/ChartFunctions.qml
 )
 
 list(APPEND MODULE_SOURCES
@@ -183,6 +186,7 @@ set_source_files_properties(
     Colors/BasicPalettes/BasicBlue.qml
     Colors/BasicPalettes/BasicOrange.qml
     Colors/BasicPalettes/BasicLightBlue.qml
+    Charts/ChartFunctions.qml
 
     Icons/IconFont.qml
     Fonts/PublicSans.qml

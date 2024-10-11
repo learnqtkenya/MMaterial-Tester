@@ -86,6 +86,7 @@ Sidebar {
         category: "components"
         model: [
             {text : "Bar Chart", onClicked: function(){ showcaseLoader.sourceComponent = barChartShowcase}},
+            {text : "Waterfall Chart", onClicked: function(){ showcaseLoader.sourceComponent = waterfallChartShowcase}},
         ];
     }
 

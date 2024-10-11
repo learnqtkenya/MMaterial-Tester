@@ -45,6 +45,19 @@ void ChartElementBar::setColor(const QString& newColor)
 	emit colorChanged();
 }
 
+bool ChartElementBar::selected() const
+{
+	return m_selected;
+}
+
+void ChartElementBar::setSelected(bool newSelected)
+{
+	if (m_selected == newSelected)
+		return;
+	m_selected = newSelected;
+	emit selectedChanged();
+}
+
 ChartElement::ChartElement(QObject* parent)
 	: QAbstractListModel(parent)
 {
@@ -73,6 +86,10 @@ QVariant ChartElement::data(const QModelIndex& index, int role) const
 		return m_bars.at(index.row())->value();
 	else if (role == BarColorRole)
 		return m_bars.at(index.row())->color();
+	else if (role == BarSelectedRole)
+		return m_bars.at(index.row())->selected();
+	else if (role == BarObjectRole)
+		return QVariant::fromValue(m_bars.at(index.row()));
 
 	return QVariant();
 }
@@ -109,6 +126,12 @@ bool ChartElement::setData(const QModelIndex& index, const QVariant& value, int 
 		emit dataChanged(index, index);
 		return true;
 	}
+	else if (role == BarSelectedRole)
+	{
+		m_bars.at(index.row())->setSelected(value.toBool());
+		emit dataChanged(index, index);
+		return true;
+	}
 
 	return false;
 }
@@ -120,6 +143,8 @@ QHash<int, QByteArray> ChartElement::roleNames() const
 	roles[BarNameRole] = "barName";
 	roles[BarValueRole] = "barValue";
 	roles[BarColorRole] = "barColor";
+	roles[BarSelectedRole] = "barSelected";
+	roles[BarObjectRole] = "barObject";
 	return roles;
 }
 
@@ -140,6 +165,16 @@ void ChartElement::remove(int index)
 	beginRemoveRows(QModelIndex(), index, index);
 	m_bars.takeAt(index)->deleteLater();
 	endRemoveRows();
+}
+
+ChartElementBar* ChartElement::createEmpty()
+{
+	return new ChartElementBar(this);
+}
+
+ChartElementBar* ChartElement::at(int index)
+{
+	return m_bars.at(index);
 }
 
 QList<ChartElementBar*> ChartElement::bars() const
@@ -165,6 +200,46 @@ void ChartElement::setName(const QString& newName)
 {
 	m_name = newName;
 	emit nameChanged();
+}
+
+double ChartElement::getMaxValue() const
+{
+	double max = 0;
+	for (auto bar : m_bars)
+	{
+		if (bar->value() > max)
+			max = bar->value();
+	}
+	return max;
+}
+
+void ChartElement::refreshExtremas()
+{
+	double max = 0;
+	double min = 0;
+	for (auto bar : m_bars)
+	{
+		if (bar->value() > max)
+			max = bar->value();
+		if (bar->value() < min)
+			min = bar->value();
+	}
+
+	m_peak = max;
+	m_trough = min;
+
+	emit peakChanged();
+	emit troughChanged();
+}
+
+double ChartElement::peak() const
+{
+	return m_peak;
+}
+
+double ChartElement::trough() const
+{
+	return m_trough;
 }
 
 ChartModel::ChartModel(QObject* parent)
@@ -256,7 +331,6 @@ void ChartModel::remove(int index)
 	m_elements.takeAt(index)->deleteLater();
 	endRemoveRows();
 
-	qDebug() << "Removed element at index" << index;
 	emit countChanged();
 }
 
@@ -279,11 +353,10 @@ double ChartModel::getMaxValue() const
 	double max = m_elements.size() == 0 ? 0 : std::numeric_limits<double>::min();
 	for (auto element : m_elements)
 	{
-		for (auto bar : element->bars())
-		{
-			if (bar->value() > max)
-				max = bar->value();
-		}
+		double elementMax = element->getMaxValue();
+
+		if (elementMax > max)
+			max = elementMax;
 	}
 	return max;
 }

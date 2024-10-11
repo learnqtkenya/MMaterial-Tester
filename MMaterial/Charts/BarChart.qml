@@ -36,7 +36,7 @@ Item {
         orientation: ListView.Horizontal
         model: verticalDelRoot.chartElement
 
-        onCountChanged: biggestElementTimer.restart()
+        onCountChanged: peakValueTimer.restart()
 
         displaced: Transition {
             NumberAnimation { properties: "x, y, height, width"; duration: 250 }
@@ -61,12 +61,12 @@ Item {
             id: subChart
 
             property double value: barValue
-            readonly property real prefMaxHeight: chartList.height * (subChart.value / d.biggestElement)
+            readonly property real prefMaxHeight: chartList.height * (subChart.value / d.peakValue)
 
             height: verticalDelRoot.height
             width: verticalDelRoot.delegateWidth
 
-            onValueChanged: biggestElementTimer.restart()
+            onValueChanged: peakValueTimer.restart()
 
             Rectangle {
                 id: verticalBar
@@ -83,7 +83,7 @@ Item {
                     color: Qt.lighter(subChart.color)
                 }
 
-                Behavior on border.width { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
+                Behavior on border.width { NumberAnimation { duration: 50; easing.type: Easing.OutQuad } }
                 NumberAnimation on height { id: heightInitAnimation; running: true; from: 0; to: subChart.prefMaxHeight; duration: 400; easing.type: Easing.InOutQuad }
 
                 Behavior on height {
@@ -123,7 +123,7 @@ Item {
         width: chartList.width
         model: horizontalDelRoot.chartElement
 
-        onCountChanged: biggestElementTimer.restart()
+        onCountChanged: peakValueTimer.restart()
 
         displaced: Transition {
             NumberAnimation { properties: "x, y, height, width"; duration: 250 }
@@ -149,7 +149,7 @@ Item {
             id: horSubChart
 
             property real value: barValue
-            readonly property real prefMaxWidth: chartList.width * (horSubChart.value / d.biggestElement)
+            readonly property real prefMaxWidth: chartList.width * (horSubChart.value / d.peakValue)
 
             radius: MMaterial.Size.pixel4
 
@@ -163,9 +163,9 @@ Item {
                 color: Qt.lighter(horSubChart.color)
             }
 
-            onValueChanged: biggestElementTimer.restart()
+            onValueChanged: peakValueTimer.restart()
 
-            Behavior on border.width { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
+            Behavior on border.width { NumberAnimation { duration: 50; easing.type: Easing.OutQuad } }
             NumberAnimation on width { id: widthInitAnimation; running: true; from: 0; to: horSubChart.prefMaxWidth; duration: 400; easing.type: Easing.InOutQuad }
 
             Behavior on width {
@@ -202,44 +202,20 @@ Item {
     }
 
     Timer {
-        id: biggestElementTimer
+        id: peakValueTimer
         interval: 80
-        onTriggered: d.biggestElement = root.chartModel.getMaxValue();
+        onTriggered: d.peakValue = root.chartModel.getMaxValue();
     }
 
     QtObject {
         id: d
 
-        property var valueListModel: d.generateSpreadNumbers(0, biggestElement, root.height / (MMaterial.Size.scale * 100))
-        property real biggestElement: root.chartModel.getMaxValue()
+        property var valueListModel: MMaterial.ChartFunctions.generateSpreadNumbers(0, peakValue, Math.ceil(root.height / (MMaterial.Size.scale * 100)))
+        property real peakValue: root.chartModel.getMaxValue()
         readonly property real verticalBarWidth: root.autoResize ? (chartList.width - (chartList.count - 1) * chartList.spacing) / chartList.count : root.barContainerWidth
         readonly property real horizontalBarHeight: root.autoResize ? (chartList.height - (chartList.count - 1) * chartList.spacing) / chartList.count : root.barContainerWidth
         readonly property list<MMaterial.PaletteBasic> defaultColorPatterns: [MMaterial.Theme.primary, MMaterial.Theme.secondary, MMaterial.Theme.info, MMaterial.Theme.success, MMaterial.Theme.warning, MMaterial.Theme.error]
-
-        function generateSpreadNumbers(min, max, n) {
-            if (n < 2) {
-                return []
-            }
-
-            if (min >= max) {
-                return []
-            }
-
-            const result = [];
-            const step = (max - min) / (n - 1);
-
-            for (let i = 0; i < n; i++) {
-                let value = min + step * i;
-                result.push(Number(value.toFixed(2)));
-            }
-
-            result[0] = Number(min.toFixed(2));
-            result[n - 1] = Number(max.toFixed(2));
-
-            return result;
-        }
     }
-
 
     ListView {
         id: valueList
@@ -271,7 +247,7 @@ Item {
             width: valueList.delWidth
             horizontalAlignment: chartList.isHorizontalChart ? Qt.AlignRight : Qt.AlignLeft
             verticalAlignment: chartList.isHorizontalChart ? Qt.AlignVCenter : Qt.AlignTop
-            text: modelData
+            text: Number(modelData).toLocaleString(Qt.locale(), 'f', 0)
             color: MMaterial.Theme.text.disabled
             font.pixelSize: root.fontSize
         }
@@ -400,7 +376,7 @@ Item {
 
             onCountChanged: {
                 secondaryStopAnimationTimer.restart()
-                biggestElementTimer.restart()
+                peakValueTimer.restart()
             }
 
             delegate: Loader {

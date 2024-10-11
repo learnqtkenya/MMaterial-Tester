@@ -14,6 +14,8 @@ class ChartElementBar : public QObject
 	Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged FINAL)
 	Q_PROPERTY(double value READ value WRITE setValue NOTIFY valueChanged FINAL)
 	Q_PROPERTY(QString color READ color WRITE setColor NOTIFY colorChanged FINAL)
+	Q_PROPERTY(bool selected READ selected WRITE setSelected NOTIFY selectedChanged FINAL)
+
 public:
 	ChartElementBar(QObject* parent = nullptr);
 
@@ -26,15 +28,20 @@ public:
 	QString color() const;
 	void setColor(const QString& newColor);
 
+	bool selected() const;
+	void setSelected(bool newSelected);
+
 signals:
 	void nameChanged();
 	void valueChanged();
 	void colorChanged();
+	void selectedChanged();
 
 private:
 	QString m_name;
 	double m_value = 1;
 	QString m_color;
+	bool m_selected = false;
 };
 
 class ChartElement : public QAbstractListModel
@@ -44,6 +51,8 @@ class ChartElement : public QAbstractListModel
 
 	Q_PROPERTY(QQmlListProperty<ChartElementBar> bars READ model)
 	Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged FINAL)
+	Q_PROPERTY(double peak READ peak NOTIFY peakChanged FINAL)
+	Q_PROPERTY(double trough READ trough NOTIFY troughChanged FINAL)
 
 public:
 	ChartElement(QObject* parent = nullptr);
@@ -53,7 +62,9 @@ public:
 		NameRole = Qt::UserRole + 1,
 		BarNameRole,
 		BarValueRole,
-		BarColorRole
+		BarColorRole,
+		BarSelectedRole,
+		BarObjectRole
 	};
 
 	int rowCount(const QModelIndex& parent) const override;
@@ -64,6 +75,8 @@ public:
 	Q_INVOKABLE void insert(int index, ChartElementBar* bar);
 	Q_INVOKABLE void insertEmpty(int index);
 	Q_INVOKABLE void remove(int index);
+	Q_INVOKABLE ChartElementBar* createEmpty();
+	Q_INVOKABLE ChartElementBar* at(int index);
 
 	QList<ChartElementBar*> bars() const;
 	void setBars(const QList<ChartElementBar*>& newBars);
@@ -73,12 +86,23 @@ public:
 	QString name() const;
 	void setName(const QString& newName);
 
+	Q_INVOKABLE double getMaxValue() const;
+	Q_INVOKABLE void refreshExtremas();
+
+	double peak() const;
+	double trough() const;
+
 signals:
 	void nameChanged();
+	void peakChanged();
+	void troughChanged();
 
 private:
 	QList<ChartElementBar*> m_bars;
 	QString m_name;
+
+	double m_peak = 0;
+	double m_trough = 0;
 };
 
 class ChartModel : public QAbstractListModel
