@@ -1,9 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls as Controls
+import QtQuick.Controls.Material as Controls
 
 import MMaterial as MMaterial
-import QtQuick.Controls.Material
 
 Item {
     id: root

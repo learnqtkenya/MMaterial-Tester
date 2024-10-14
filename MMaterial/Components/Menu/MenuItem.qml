@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls.impl
+import QtQuick.Controls.Material.impl
 import QtQuick.Templates as T
 
 import MMaterial as MMaterial

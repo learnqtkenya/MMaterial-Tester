@@ -15,6 +15,8 @@ add_custom_target(RefreshAssets
     VERBATIM
 )
 
+target_compile_definitions(MMaterialLib PRIVATE QT_QUICKCONTROLS_MATERIAL_STYLE)
+
 # Read the contents of the file into a variable
 file(READ "./cmake_data/svgPaths.txt" SVG_ASSETS)
 file(READ "./cmake_data/pngPaths.txt" PNG_ASSETS)

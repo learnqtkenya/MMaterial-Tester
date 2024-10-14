@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Templates as T
-import QtQuick.Controls as C
+import QtQuick.Controls.Material as C
 import MMaterial as MMaterial
 
 T.DialogButtonBox {
