@@ -21,9 +21,22 @@ import "./Components/Sidebar"
 Rectangle {
     id: _root
 
+
+    function setSizeFormat() {
+        if (Window.width <= Window.height / 2) {
+            Size.format = Size.Format.Mobile
+        }
+        else if (Window.width > Window.height) {
+            Size.format = Size.Format.Extended
+        } else {
+            Size.format = Size.Format.Compact
+        }
+    }
+
     color: Theme.background.main
 
-    onWidthChanged: Size.format = Window.width > 800 ? Size.Format.Extended : Size.Format.Compact
+    onWidthChanged: Qt.callLater(_root.setSizeFormat)
+    onHeightChanged: Qt.callLater(_root.setSizeFormat)
 
     RowLayout {
         id: header
@@ -34,7 +47,7 @@ Rectangle {
         }
 
         height: 56 * Size.scale
-        width: parent.width* 0.95
+        width: parent.width * 0.95
 
         spacing: Size.pixel14
 
@@ -68,15 +81,6 @@ Rectangle {
     MLoader {
         id: showcaseLoader
         objectName: "Main Loader"
-
-        anchors{
-            margins: Size.pixel32
-            leftMargin: Size.pixel46
-            top: header.bottom
-            bottom: _root.bottom
-            left: sidebar.right
-            right: _root.right
-        }
 
         asynchronous: true
         sourceComponent: placeholder
@@ -126,6 +130,8 @@ Rectangle {
 
     SimpleSidebar {
         id: sidebar
+
+        mainView: showcaseLoader
     }
 
     AlertController {

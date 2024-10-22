@@ -31,7 +31,7 @@ Item {
 
     enum Grade { S, M, L, Custom }
 
-    enum Format { Extended, Compact }
+    enum Format { Extended, Compact, Mobile }
 
     property int format: Size.Format.Extended
 
