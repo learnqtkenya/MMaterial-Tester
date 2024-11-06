@@ -14,6 +14,7 @@ Checkable {
     property alias text: _title.text
     property alias model: _listView.model
     property alias list: _listView
+    property alias contextMenu: _contextMenu
 
     property bool isOpen: false
 
@@ -135,7 +136,7 @@ Checkable {
     Menu {
         id: _contextMenu
 
-        x: _root.x + _root.width
+        x: _root.width + Size.pixel6
         currentIndex: _root.checked ? _root.sidebarData.currentSubIndex : -1
         closePolicy: Popup.CloseOnPressOutsideParent
 

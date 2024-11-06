@@ -21,22 +21,20 @@ import "./Components/Sidebar"
 Rectangle {
     id: _root
 
-
     function setSizeFormat() {
-        if (Window.width <= Window.height / 2) {
-            Size.format = Size.Format.Mobile
-        }
-        else if (Window.width > Window.height) {
-            Size.format = Size.Format.Extended
-        } else {
-            Size.format = Size.Format.Compact
-        }
+        Size.autoSetFormat(Window.width, Window.height)
     }
 
     color: Theme.background.main
 
-    onWidthChanged: Qt.callLater(_root.setSizeFormat)
-    onHeightChanged: Qt.callLater(_root.setSizeFormat)
+    onWidthChanged: sizeFormatTime.restart()
+    onHeightChanged: sizeFormatTime.restart()
+
+    Timer {
+        id: sizeFormatTime
+        interval: 150
+        onTriggered: _root.setSizeFormat()
+    }
 
     RowLayout {
         id: header
@@ -67,15 +65,6 @@ Rectangle {
 
             onClicked: appSettings.toggle();
         }
-    }
-
-    Rectangle {
-        anchors.bottom: _root.bottom
-
-        height: 1
-        width: _root.width
-
-        color: Theme.other.divider
     }
 
     MLoader {
