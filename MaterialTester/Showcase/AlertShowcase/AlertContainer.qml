@@ -3,7 +3,7 @@ import QtQuick.Layouts
 
 import MMaterial
 
-RowLayout {
+ColumnLayout {
     id: alertContainer
 
     required property string title
@@ -13,18 +13,14 @@ RowLayout {
 
     Layout.preferredWidth: parent.width
 
+    spacing: Size.pixel8
+
     H6 {
         Layout.alignment: Qt.AlignTop
-        Layout.maximumWidth: 120 * Size.scale
         Layout.minimumWidth: Size.pixel10
-        Layout.preferredWidth: Window.width * 0.08
-
-        width: parent.width
-        height: Size.pixel40
 
         text: alertContainer.title
         color: Theme.text.disabled
-        visible: Window.width > 600
 
         font {
             pixelSize: Size.pixel12

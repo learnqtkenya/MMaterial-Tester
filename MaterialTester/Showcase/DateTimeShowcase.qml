@@ -15,15 +15,6 @@ Item {
         onClicked: timePicker.open()
     }
 
-    MButton {
-        y: datePicker.y + Size.pixel12
-        x: datePicker.x + Size.pixel12
-        text: qsTr("Open Date Picker")
-        type: MButton.Type.Outlined
-
-        onClicked: datePicker.open()
-    }
-
     TimePicker {
         id: timePicker
 
@@ -52,9 +43,18 @@ Item {
 
         closePolicy: Popup.NoAutoClose
         visible: true
-        x: timePicker.width + Size.pixel24
-        y: timePicker.y
+        x: timePicker.x
+        y: timeLabel.y + timeLabel.height + Size.pixel24
 
         onDateAccepted: (startDate, endDate) => {}
+    }
+
+    MButton {
+        y: datePicker.y + Size.pixel12
+        x: datePicker.x + Size.pixel12
+        text: qsTr("Open Date Picker")
+        type: MButton.Type.Outlined
+
+        onClicked: datePicker.open()
     }
 }

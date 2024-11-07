@@ -35,9 +35,6 @@ Flickable {
                 MTabButton {
                     text: "Text 2"
                 }
-                MTabButton {
-                    text: "Really long text this time 2"
-                }
             }
         }
 
@@ -58,10 +55,6 @@ Flickable {
                 }
                 MTabButton {
                     text: "Icon tab 3"
-                    leftIcon.iconData: Icons.heavy.logo
-                }
-                MTabButton {
-                    text: "Icon tab 4"
                     leftIcon.iconData: Icons.heavy.logo
                 }
             }
@@ -86,10 +79,6 @@ Flickable {
                     text: "Icon tab 3"
                     rightIcon.iconData: Icons.heavy.logo
                 }
-                MTabButton {
-                    text: "Icon tab 4"
-                    rightIcon.iconData: Icons.heavy.logo
-                }
             }
         }
 
@@ -112,11 +101,6 @@ Flickable {
                 }
                 MTabButton {
                     text: "Icon tab 3"
-                    rightIcon.iconData: Icons.heavy.logo
-                    leftIcon.iconData: Icons.heavy.logo
-                }
-                MTabButton {
-                    text: "Icon tab 4"
                     rightIcon.iconData: Icons.heavy.logo
                     leftIcon.iconData: Icons.heavy.logo
                 }

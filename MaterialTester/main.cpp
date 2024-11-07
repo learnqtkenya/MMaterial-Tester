@@ -8,9 +8,10 @@
 
 int main(int argc, char *argv[])
 {
-//   qputenv("QSG_VISUALIZE", "batches");
+	 // qputenv("QSG_VISUALIZE", "batches");
+	 // qputenv("QSG_VISUALIZE", "overdraw");
 
-	qputenv("MAIN_QML","../../../MaterialTester/Main.qml");
+	qputenv("MAIN_DIR","../../../MaterialTester");
 
     QGuiApplication app(argc, argv);
 
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
 #if defined(__wasm__) || !defined(QT_DEBUG)
     const QUrl url(u"qrc:/MaterialTester/Main.qml"_qs);
 #else
-    const QUrl url(qgetenv("MAIN_QML"));
+	const QUrl url(qgetenv("MAIN_DIR") + "/Main.qml");
 #endif
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
         &app, []() { QCoreApplication::exit(-1); },

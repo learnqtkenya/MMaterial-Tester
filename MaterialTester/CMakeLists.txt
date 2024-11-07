@@ -14,7 +14,7 @@ qt_add_executable(appMaterialTester
 
 qt_add_qml_module(appMaterialTester
     URI MaterialTester
-    VERSION 1.0
+    RESOURCE_PREFIX /
     QML_FILES
         Main.qml
         MainWindow.qml
@@ -79,6 +79,7 @@ qt_add_qml_module(appMaterialTester
         src/Icons/IconList.cpp
         DevTools/Clipboard.h
 )
+
 set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../" ${CMAKE_BINARY_DIR}/imports CACHE STRING "MMaterial imports" FORCE)
 
 # Add the QML import path to the QML_IMPORT_PATH environment variable
@@ -131,4 +132,3 @@ else()
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
 endif()
-

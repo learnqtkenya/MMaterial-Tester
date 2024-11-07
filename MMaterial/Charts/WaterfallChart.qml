@@ -240,7 +240,7 @@ Item {
         model: d.valueListModel
         spacing: chartList.height / (valueList.count - 1)
         opacity: 0
-        width: 100 * MMaterial.Size.scale
+        width: contentWidth
         interactive: false
 
         anchors {
@@ -254,13 +254,15 @@ Item {
         onModelChanged: valueListOpacityAnimation.restart()
 
         delegate: MMaterial.Caption {
-            width: valueList.width
+            width: Math.min(70 * MMaterial.Size.scale, contentWidth)
             height: 0
             horizontalAlignment: Qt.AlignRight
             verticalAlignment: Qt.AlignVCenter
             text: Number(modelData).toLocaleString(Qt.locale(), 'f', 0)
             color: MMaterial.Theme.text.disabled
             font.pixelSize: root.fontSize
+
+            onWidthChanged: if (width > valueList.width) valueList.width = width
         }
 
         NumberAnimation on opacity {
@@ -286,7 +288,6 @@ Item {
             top: root.top
             bottom: root.bottom
             right: root.right
-            margins: MMaterial.Size.pixel48
         }
 
         ListView {

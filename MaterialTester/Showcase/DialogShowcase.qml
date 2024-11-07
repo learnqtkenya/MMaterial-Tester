@@ -121,38 +121,10 @@ Item {
             }
 
             MMaterial.Dialog {
-                id: deleteDialog
-
-                y: parent.height / 2 - height / 2
-                width: Math.min (440 * MMaterial.Size.scale, root.width / 2 - MMaterial.Size.pixel10)
-                title: qsTr("Delete Files?")
-                closePolicy: MMaterial.Dialog.NoAutoClose
-                iconData: MMaterial.Icons.light.warning
-                text: qsTr("This is a destructive action, are you sure you want to delete those files?")
-
-                Component.onCompleted: open()
-
-                Item { Layout.fillWidth: true }
-
-                MMaterial.Dialog.DialogCloseButton {
-                    Layout.maximumWidth: parent.width / 2 - MMaterial.Size.pixel10
-                    text: qsTr("Cancel")
-                    onClicked: deleteDialog.close()
-                }
-
-                MMaterial.Dialog.DialogAlertButton {
-                    Layout.maximumWidth: parent.width / 2 - MMaterial.Size.pixel10
-                    text: qsTr("Delete")
-                    onClicked: deleteDialog.close()
-                }
-            }
-
-            MMaterial.Dialog {
                 id: simpleDialog
 
-                width: Math.min (440 * MMaterial.Size.scale, root.width / 2 - MMaterial.Size.pixel10)
-                y: parent.height / 2 - height / 2
-                x: deleteDialog.x + deleteDialog.width + MMaterial.Size.pixel20
+                width: Math.max(Math.min(440 * MMaterial.Size.scale, root.width / 2 - MMaterial.Size.pixel10), Math.min(320 * MMaterial.Size.scale))
+                x: parent.width / 2 - width / 2
                 closePolicy: MMaterial.Dialog.NoAutoClose
                 text: qsTr("Did you know that the first 1GB hard drive, introduced by IBM in 1980, weighed over 500 pounds and cost $40,000? It was a significant advancement at the time, although today, 1GB of storage is considered quite small and can be found on tiny, inexpensive flash drives.")
 
@@ -173,6 +145,34 @@ Item {
                     onClicked: simpleDialog.close()
                 }
 
+            }
+
+            MMaterial.Dialog {
+                id: deleteDialog
+
+                y: simpleDialog.y + simpleDialog.height + MMaterial.Size.pixel20
+                x: parent.width / 2 - width / 2
+                width: Math.max(Math.min(440 * MMaterial.Size.scale, root.width / 2 - MMaterial.Size.pixel10), Math.min(320 * MMaterial.Size.scale))
+                title: qsTr("Delete Files?")
+                closePolicy: MMaterial.Dialog.NoAutoClose
+                iconData: MMaterial.Icons.light.warning
+                text: qsTr("This is a destructive action, are you sure you want to delete those files?")
+
+                Component.onCompleted: open()
+
+                Item { Layout.fillWidth: true }
+
+                MMaterial.Dialog.DialogCloseButton {
+                    Layout.maximumWidth: parent.width / 2 - MMaterial.Size.pixel10
+                    text: qsTr("Cancel")
+                    onClicked: deleteDialog.close()
+                }
+
+                MMaterial.Dialog.DialogAlertButton {
+                    Layout.maximumWidth: parent.width / 2 - MMaterial.Size.pixel10
+                    text: qsTr("Delete")
+                    onClicked: deleteDialog.close()
+                }
             }
         }
     }
@@ -209,9 +209,8 @@ Item {
             MMaterial.LargeImageDialog {
                 id: largeImageDialog
 
-                y: parent.height / 2 - height / 2
-
-                width: Math.min (440 * MMaterial.Size.scale, root.width / 2 - MMaterial.Size.pixel10)
+                x: parent.width / 2 - width / 2
+                width: Math.max(Math.min(440 * MMaterial.Size.scale, root.width / 2 - MMaterial.Size.pixel10), Math.min(320 * MMaterial.Size.scale))
                 text: qsTr("This is an amazing update that will fix all the problems in your life. Are you interested?")
                 title: qsTr("We have an update to offer!")
                 visible: true
@@ -233,9 +232,10 @@ Item {
             MMaterial.MediumImageDialog {
                 id: mediumImageDialog
 
-                y: parent.height / 2 - height / 2
-                x: largeImageDialog.x + largeImageDialog.width + MMaterial.Size.pixel20
+                x: parent.width / 2 - width / 2
+                y: largeImageDialog.y + largeImageDialog.height + MMaterial.Size.pixel20
 
+                width: Math.max(Math.min(440 * MMaterial.Size.scale, root.width / 2 - MMaterial.Size.pixel10), Math.min(320 * MMaterial.Size.scale))
                 title: qsTr("Hold Up")
                 text: qsTr("We are promoting something that you need to see first! Check out our shop.")
                 visible: true

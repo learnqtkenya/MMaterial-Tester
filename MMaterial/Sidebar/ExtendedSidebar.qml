@@ -6,6 +6,7 @@ import MMaterial
 
 Item {
     id: _root
+    objectName: "extendedSidebar"
 
     property SidebarData sidebarData
 

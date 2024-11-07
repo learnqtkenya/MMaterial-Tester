@@ -115,6 +115,7 @@ list(APPEND MODULE_QML_FILES
     Sidebar/SidebarCategoryLabel.qml
     Sidebar/SidebarExtendedItem.qml
     Sidebar/CompactSidebar.qml
+    Sidebar/MobileSidebar.qml
     Sidebar/SidebarCompactItem.qml
     Sidebar/SidebarSeparator.qml
     Sidebar/ExtendedSidebar.qml
@@ -181,6 +182,7 @@ set_source_files_properties(
 
 qt_add_qml_module(MMaterialLib
     URI MMaterial
+    RESOURCE_PREFIX /
     VERSION 1.0
     QML_FILES ${MODULE_QML_FILES}
     RESOURCES ${MODULE_ASSETS}

@@ -21,9 +21,20 @@ import "./Components/Sidebar"
 Rectangle {
     id: _root
 
+    function setSizeFormat() {
+        Size.autoSetFormat(Window.width, Window.height)
+    }
+
     color: Theme.background.main
 
-    onWidthChanged: Size.format = Window.width > 800 ? Size.Format.Extended : Size.Format.Compact
+    onWidthChanged: sizeFormatTime.restart()
+    onHeightChanged: sizeFormatTime.restart()
+
+    Timer {
+        id: sizeFormatTime
+        interval: 150
+        onTriggered: _root.setSizeFormat()
+    }
 
     RowLayout {
         id: header
@@ -34,7 +45,7 @@ Rectangle {
         }
 
         height: 56 * Size.scale
-        width: parent.width* 0.95
+        width: parent.width * 0.95
 
         spacing: Size.pixel14
 
@@ -56,27 +67,9 @@ Rectangle {
         }
     }
 
-    Rectangle {
-        anchors.bottom: _root.bottom
-
-        height: 1
-        width: _root.width
-
-        color: Theme.other.divider
-    }
-
     MLoader {
         id: showcaseLoader
         objectName: "Main Loader"
-
-        anchors{
-            margins: Size.pixel32
-            leftMargin: Size.pixel46
-            top: header.bottom
-            bottom: _root.bottom
-            left: sidebar.right
-            right: _root.right
-        }
 
         asynchronous: true
         sourceComponent: placeholder
@@ -126,6 +119,8 @@ Rectangle {
 
     SimpleSidebar {
         id: sidebar
+
+        mainView: showcaseLoader
     }
 
     AlertController {

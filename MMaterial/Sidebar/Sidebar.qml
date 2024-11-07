@@ -1,11 +1,14 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Effects
-import QtQuick.Layouts
 
 import MMaterial
 
 Rectangle {
-    id: _root
+    id: root
+
+    required property Item mainView
 
     default property list<SidebarItem> sidebarItems
 
@@ -21,6 +24,11 @@ Rectangle {
     color: Theme.background.main
     state: ""
 
+    anchors {
+        left: parent.left
+        bottom: parent.bottom
+    }
+
     layer{
         enabled: true
         effect: MultiEffect{
@@ -35,56 +43,134 @@ Rectangle {
         State {
             name: "extended"
             when: Size.format == Size.Format.Extended
+
+            PropertyChanges {
+                root {
+                    width: 280 * Size.scale
+                    height: root.parent.height
+
+                    mainView.anchors {
+                        margins: Size.pixel32
+                        left: root.right
+                        top: root.parent.top
+                        bottom: root.parent.bottom
+                        right: root.parent.right
+                    }
+                }
+
+            }
         },
         State {
             name: "compact"
-            when: true //Size.format == Size.Format.Contained
+            when: Size.format == Size.Format.Compact
+
+            PropertyChanges {
+                root {
+                    width: 86 * Size.scale
+                    height: root.parent.height
+
+                    mainView.anchors {
+                        margins: Size.pixel32
+                        left: root.right
+                        top: root.parent.top
+                        bottom: root.parent.bottom
+                        right: root.parent.right
+                    }
+                }
+
+            }
+        },
+        State {
+            name: "mobile"
+            when: true
+
+            PropertyChanges {
+                root {
+                    width: root.parent.width
+                    height: Size.pixel64
+
+                    mainView.anchors {
+                        margins: Size.pixel32
+                        left: root.parent.left
+                        top: root.parent.top
+                        bottom: root.top
+                        right: root.parent.right
+                    }
+                }
+            }
         }
     ]
 
-    onStateChanged: _swapAnimation.restart()
+    transitions: [
+        Transition {
+            from: "extended"
+            to: "compact"
 
-    SequentialAnimation {
-        id: _swapAnimation
+            SequentialAnimation {
+                NumberAnimation { targets: _loader; properties: "opacity"; duration: 0; to: 0; easing.type: Easing.InOutQuad }
+                NumberAnimation { target: root; properties: "width"; duration: 220; easing.type: Easing.InOutQuad }
+                NumberAnimation { targets: _loader; properties: "opacity"; duration: 220; to: 1; easing.type: Easing.InOutQuad }
+            }
+        },
+        Transition {
+            from: "compact"
+            to: "extended"
 
-        ParallelAnimation {
-            NumberAnimation { target: _root; properties: "width"; to: Size.format == Size.Format.Extended ? 280 * Size.scale : 86 * Size.scale; duration: 220; easing.type: Easing.InOutQuad }
-            NumberAnimation { target: _loader; properties: "opacity"; to: 0; duration: 200; easing.type: Easing.OutQuad }
+            SequentialAnimation {
+                NumberAnimation { targets: _loader; properties: "opacity"; duration: 0; to: 0; easing.type: Easing.InOutQuad }
+                NumberAnimation { target: root; properties: "width"; duration: 220; easing.type: Easing.InOutQuad }
+                NumberAnimation { targets: _loader; properties: "opacity"; duration: 220; to: 1; easing.type: Easing.InOutQuad }
+            }
+        },
+        Transition {
+            from: "*"
+            to: "mobile"
+
+            SequentialAnimation {
+                NumberAnimation { targets: _loader; properties: "opacity"; duration: 0; to: 0; easing.type: Easing.InOutQuad }
+                NumberAnimation { target: root; properties: "width"; duration: 320; to: 0; easing.type: Easing.InOutQuad }
+                PropertyAction { target: root.mainView.anchors; property: "left"; }
+                NumberAnimation { target: root; properties: "height"; duration: 0; to: 0; }
+                PropertyAction { target: root.mainView.anchors; property: "bottom"; }
+                NumberAnimation { target: root; properties: "width"; duration: 0;  }
+                NumberAnimation { target: root; properties: "height"; duration: 220; easing.type: Easing.InOutQuad }
+                NumberAnimation { targets: _loader; properties: "opacity"; duration: 220; to: 1; easing.type: Easing.InOutQuad }
+            }
+        },
+        Transition {
+            from: "mobile"
+            to: "*"
+
+            SequentialAnimation {
+                NumberAnimation { targets: _loader; properties: "opacity"; duration: 0; to: 0; easing.type: Easing.InOutQuad }
+                NumberAnimation { target: root; properties: "height"; duration: 220; to: 0; easing.type: Easing.InOutQuad; }
+                PropertyAction { target: root.mainView.anchors; property: "bottom"; }
+                NumberAnimation { target: root; properties: "width"; duration: 0; to: 0 }
+                PropertyAction { target: root.mainView.anchors; property: "left"; }
+                NumberAnimation { target: root; properties: "height"; duration: 0; }
+                NumberAnimation { target: root; properties: "width"; duration: 320; easing.type: Easing.InOutQuad }
+                NumberAnimation { targets: _loader; properties: "opacity"; duration: 220; to: 1; easing.type: Easing.InOutQuad }
+            }
         }
-        ScriptAction { script: d.swapSources() }
-    }
-
-    NumberAnimation {
-        id: _showAnimation
-
-        target: _loader
-        properties: "opacity"
-        to: 1
-        duration: 200
-        easing.type: Easing.OutQuad
-    }
+    ]
 
     Loader {
         id: _loader
 
-        anchors.fill: _root
+        anchors.fill: root
+        sourceComponent: d.getSources(Size.format)
+        visible: _loader.status == Loader.Ready
         asynchronous: true
-
-        onStatusChanged: {
-            if (status == Loader.Ready) {
-                _showAnimation.restart()
-            }
-        }
     }
 
     Component {
         id: _extendedSidebar
 
         ExtendedSidebar{
-            title.text: _root.name
-            subtitle.text: _root.role
+            title.text: root.name
+            subtitle.text: root.role
 
-            model: _root.sidebarItems
+            model: root.sidebarItems
             sidebarData: d.sidebarData
         }
     }
@@ -93,7 +179,16 @@ Rectangle {
         id: _compactSidebar
 
         CompactSidebar{
-            model: _root.sidebarItems
+            model: root.sidebarItems
+            sidebarData: d.sidebarData
+        }
+    }
+
+    Component {
+        id: _mobileSidebar
+
+        MobileSidebar{
+            model: root.sidebarItems
             sidebarData: d.sidebarData
         }
     }
@@ -103,11 +198,13 @@ Rectangle {
 
         property SidebarData sidebarData: SidebarData {}
 
-        function swapSources() {
-            if ( Size.format == Size.Format.Extended )
-                _loader.sourceComponent = _extendedSidebar
+        function getSources(format) {
+            if (format == Size.Format.Extended )
+                return _extendedSidebar
+            else if (format == Size.Format.Mobile)
+                return _mobileSidebar
             else
-                _loader.sourceComponent = _compactSidebar
+                return _compactSidebar
         }
     }
 }
