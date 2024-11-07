@@ -66,7 +66,8 @@ qt_add_qml_module(appMaterialTester
         Components/Sidebar/CustomSidebar.qml
         Showcase/AvatarShowcase.qml
         Showcase/DialogShowcase.qml
-        Showcase/DateTimeShowcase.qml
+        Showcase/DateShowcase.qml
+        Showcase/TimeShowcase.qml
         Showcase/ChartShowcase/BarChartShowcase.qml
         Showcase/ChartShowcase/WaterfallChartShowcase.qml
 

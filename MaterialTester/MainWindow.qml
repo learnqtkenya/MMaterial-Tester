@@ -92,7 +92,8 @@ Rectangle {
     Component { id: menuShowcase; MenuShowcase{ } }
     Component { id: avatarShowcase; AvatarShowcase{ } }
     Component { id: dialogShowcase; DialogShowcase{ } }
-    Component { id: dateTimeShowcase; DateTimeShowcase{ } }
+    Component { id: dateShowcase; DateShowcase{ } }
+    Component { id: timeShowcase; TimeShowcase{ } }
 
     // Charts
     Component { id: barChartShowcase; BarChartShowcase{ } }
