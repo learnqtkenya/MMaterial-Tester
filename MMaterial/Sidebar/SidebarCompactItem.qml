@@ -20,11 +20,6 @@ Checkable {
 
     function selectItem(subindex) : void {
         if (ListView.view) {
-            if(typeof index !== "undefined")
-                ListView.view.currentIndex = index;
-            else if(typeof ObjectModel.index !== "undefined")
-                ListView.view.currentIndex = ObjectModel.index;
-
             _root.sidebarData.currentIndex = index;
 
             if (subindex >= 0)
@@ -137,7 +132,7 @@ Checkable {
         id: _contextMenu
 
         x: _root.width + Size.pixel6
-        currentIndex: _root.checked ? _root.sidebarData.currentSubIndex : -1
+        currentIndex: _root.sidebarData.currentSubIndex
         closePolicy: Popup.CloseOnPressOutsideParent
 
         background: Rectangle {
@@ -175,6 +170,7 @@ Checkable {
 
                     text: modelItem.text
                     width: _listView.width
+                    selected: index == _root.sidebarData.currentSubIndex && _root.checked
 
                     onClicked: {
                         _root.selectItem(index);
