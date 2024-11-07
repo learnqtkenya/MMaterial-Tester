@@ -3,13 +3,15 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 import MMaterial
 Item {
+    id: root
+
     objectName: "Alerts"
 
     Flickable {
         anchors.fill: parent
 
         contentHeight: mainLayout.implicitHeight
-        contentWidth: parent.width < 600 ? 600 : parent.width
+        contentWidth: parent.width < 300 ? 300 : parent.width
 
         ScrollIndicator.horizontal: MScrollIndicator{}
 
@@ -81,37 +83,37 @@ Item {
                     color: Theme.text.primary
                 }
 
+                CheckedGroup{
+                    id: severityGroup
+
+                    checkables: [infoButton, successButton, warningButton, errorButton]
+                }
+                CheckedGroup{
+                    id: variantGroup
+
+                    checkables: [filledButton, standardButton, outlinedButton]
+                }
+                CheckedGroup{
+                    id: buttonGroup
+
+                    checkables: [yesButton, noButton]
+                }
+
                 RowLayout {
                     Layout.topMargin: -Size.pixel40
                     Layout.fillWidth: true
                     Layout.preferredHeight: implicitHeight
 
-                    CheckedGroup{
-                        id: severityGroup
-
-                        checkables: [infoButton, successButton, warningButton, errorButton]
-                    }
-                    CheckedGroup{
-                        id: variantGroup
-
-                        checkables: [filledButton, standardButton, outlinedButton]
-                    }
-                    CheckedGroup{
-                        id: buttonGroup
-
-                        checkables: [yesButton, noButton]
-                    }
 
                     ColumnLayout {
                         Layout.fillWidth: true
+                        Layout.minimumWidth: root.width / 2
 
                         H6 {
                             Layout.topMargin: Size.pixel20
                             Layout.alignment: Qt.AlignTop
                             Layout.fillWidth: true
-
-                            width: parent.width
-                            height: Size.pixel40
+                            Layout.preferredHeight: Size.pixel40
 
                             text: "Severity"
                             color: Theme.text.disabled
@@ -132,14 +134,13 @@ Item {
 
                     ColumnLayout {
                         Layout.fillWidth: true
+                        Layout.minimumWidth: root.width / 2
 
                         H6 {
                             Layout.alignment: Qt.AlignTop
                             Layout.fillWidth: true
                             Layout.topMargin: Size.pixel20
-
-                            width: parent.width
-                            height: Size.pixel40
+                            Layout.preferredHeight: Size.pixel40
 
                             text: "Variant"
                             color: Theme.text.disabled
@@ -156,17 +157,21 @@ Item {
 
                         Item { Layout.fillHeight: true }
                     }
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: implicitHeight
 
                     ColumnLayout {
                         Layout.fillWidth: true
+                        Layout.minimumWidth: root.width / 2
 
                         H6 {
                             Layout.alignment: Qt.AlignTop
                             Layout.fillWidth: true
                             Layout.topMargin: Size.pixel20
-
-                            width: parent.width
-                            height: Size.pixel40
+                            Layout.preferredHeight: Size.pixel40
 
                             text: "Buttons"
                             color: Theme.text.disabled
@@ -185,14 +190,13 @@ Item {
 
                     ColumnLayout {
                         Layout.fillWidth: true
+                        Layout.minimumWidth: root.width / 2
 
                         H6 {
                             Layout.topMargin: Size.pixel20
                             Layout.alignment: Qt.AlignTop
                             Layout.fillWidth: true
-
-                            width: parent.width
-                            height: Size.pixel40
+                            Layout.preferredHeight: Size.pixel40
 
                             text: "Edge Of"
                             color: Theme.text.disabled

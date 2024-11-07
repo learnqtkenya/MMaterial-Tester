@@ -9,7 +9,8 @@ Item {
         id: chart
 
         anchors {
-            margins: MMaterial.Size.pixel20
+            margins: MMaterial.Size.pixel10
+            topMargin: MMaterial.Size.pixel30
             fill: root
         }
 

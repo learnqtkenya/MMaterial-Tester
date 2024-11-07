@@ -150,7 +150,6 @@ Rectangle {
                 NumberAnimation { target: root; properties: "height"; duration: 0; }
                 NumberAnimation { target: root; properties: "width"; duration: 320; easing.type: Easing.InOutQuad }
                 NumberAnimation { targets: _loader; properties: "opacity"; duration: 220; to: 1; easing.type: Easing.InOutQuad }
-
             }
         }
     ]
