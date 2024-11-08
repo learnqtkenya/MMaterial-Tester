@@ -22,7 +22,6 @@ Rectangle {
     implicitHeight: parent.height
 
     color: Theme.background.main
-    state: ""
 
     anchors {
         left: parent.left
