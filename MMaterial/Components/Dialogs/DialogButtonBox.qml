@@ -17,7 +17,6 @@ T.DialogButtonBox {
 
     delegate: MMaterial.MButton {
         width: control.count === 1 ? control.availableWidth : implicitWidth
-        Component.onCompleted: console.log("created")
     }
 
     contentItem: ListView {

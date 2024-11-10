@@ -95,6 +95,13 @@ MMaterial.Dialog {
         root.close()
     }
 
+    onClosed: () => {
+        hexField.input.focus = false
+        hexField.input.deselect()
+        opacityInput.focus = false
+        opacityInput.deselect()
+    }
+
     enter: Transition {
         NumberAnimation { property: "scale"; from: 0.9; to: 1; easing.type: Easing.OutQuart; duration: 220 }
     }
