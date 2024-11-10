@@ -11,8 +11,6 @@ MMaterial.Dialog {
     property color selectedColor
     property alias currentColor: internal.color
 
-    signal selected(color : color)
-
     function toggle() {
         if (visible) close()
         else open()
