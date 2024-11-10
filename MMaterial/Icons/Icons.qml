@@ -270,6 +270,7 @@ QtObject{
         readonly property IconData wifiOff: IconData { path: _heavyRoot.iconBasePath + "wifi_off.svg"; type: IconData.Heavy }
         readonly property IconData work: IconData { path: _heavyRoot.iconBasePath + "work.svg"; type: IconData.Heavy }
         readonly property IconData dashedCircle: IconData { path: _heavyRoot.iconBasePath + "dashedCircle.svg"; type: IconData.Heavy }
+        readonly property IconData colorize: IconData { path: _heavyRoot.iconBasePath + "colorize.svg"; type: IconData.Heavy }
 
 
         function getAll() : list<string> {
@@ -536,8 +537,7 @@ QtObject{
         readonly property IconData imagesmode: IconData { path: '\ue9ff'; type: IconData.Light }
         readonly property IconData info: IconData { path: '\uea00'; type: IconData.Light }
         readonly property IconData inventory: IconData { path: '\uea01'; type: IconData.Light }
-
-
+        readonly property IconData colorize: IconData { path: '\uea02'; type: IconData.Light }
 
         function getAll() : list<string> {
             return _root.getPropertyNames(this);
