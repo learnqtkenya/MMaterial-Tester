@@ -52,7 +52,11 @@ T.Menu {
         implicitWidth:  MMaterial.Size.scale * 420
         implicitHeight: MMaterial.Size.pixel36
         color: MMaterial.Theme.background.paper
-        border.color:  MMaterial.Theme.background.neutral
+
+        border {
+            color:  MMaterial.Theme.other.divider
+            width: 1
+        }
     }
 
     T.Overlay.modal: Rectangle {

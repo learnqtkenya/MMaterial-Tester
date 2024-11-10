@@ -13,6 +13,7 @@ T.Dialog {
     property MMaterial.IconData iconData: null
     property real iconSize: MMaterial.Size.pixel24
     property color textColor: MMaterial.Theme.text.secondary
+    property bool showXButton: false
 
     component DialogButton: MMaterial.MButton {
         Layout.alignment: Qt.AlignRight
@@ -56,8 +57,28 @@ T.Dialog {
     }
 
     background: Rectangle {
+        id: bgRoot
+
         radius: MMaterial.Size.pixel16
         color: MMaterial.Theme.background.paper
+
+        MMaterial.Icon {
+            id: closeIcon
+
+            visible: control.showXButton
+            iconData: MMaterial.Icons.light.close
+            size: MMaterial.Size.pixel12
+            color: MMaterial.Theme.text.primary
+            interactive: true
+
+            anchors {
+                right: bgRoot.right;
+                top: bgRoot.top;
+                margins: MMaterial.Size.pixel6
+            }
+
+            onClicked: control.reject()
+        }
     }
 
     font {

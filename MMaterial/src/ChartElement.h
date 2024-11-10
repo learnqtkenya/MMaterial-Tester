@@ -1,10 +1,9 @@
 #pragma once
 
-#include <QAbstractListModel>
 #include <QObject>
+#include <QAbstractListModel>
 #include <QQmlListProperty>
 #include <qqmlintegration.h>
-#include <QColor>
 
 class ChartElementBar : public QObject
 {
@@ -92,7 +91,7 @@ public:
 	double peak() const;
 	double trough() const;
 
-signals:
+Q_SIGNALS:
 	void nameChanged();
 	void peakChanged();
 	void troughChanged();
@@ -139,7 +138,7 @@ public:
 
 	QQmlListProperty<ChartElement> model();
 
-signals:
+Q_SIGNALS:
 	void countChanged();
 
 private:

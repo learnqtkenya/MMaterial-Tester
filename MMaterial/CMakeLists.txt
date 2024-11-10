@@ -3,6 +3,11 @@ qt_add_library(MMaterialLib STATIC)
 set_target_properties(MMaterialLib PROPERTIES AUTOMOC ON)
 target_link_libraries(MMaterialLib PRIVATE Qt6::Quick)
 
+target_include_directories(MMaterialLib PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ColorPicker
+)
+
 target_compile_definitions(MMaterialLib PRIVATE QT_QUICKCONTROLS_MATERIAL_STYLE)
 
 list(APPEND MODULE_ASSETS
@@ -94,6 +99,12 @@ list(APPEND MODULE_QML_FILES
     Components/Common/Popup.qml
     Components/Inputs/DatePicker.qml
     Components/Common/ScrollBar.qml
+    Components/Inputs/ColorPicker/ColorPicker.qml
+    Components/Inputs/ColorPicker/ColorPreview.qml
+    Components/Inputs/ColorPicker/ColorSelection.qml
+    Components/Inputs/ColorPicker/ColorSlider.qml
+    Components/Inputs/ColorPicker/OpacitySlider.qml
+
 
     # Settings
     Settings/Size.qml
@@ -155,7 +166,13 @@ list(APPEND MODULE_QML_FILES
 )
 
 list(APPEND MODULE_SOURCES
-    ChartElement.h ChartElement.cpp
+    src/ChartElement.h src/ChartElement.cpp
+    src/ColorPicker/ColorHistoryModel.h src/ColorPicker/ColorHistoryModel.cpp
+    src/ColorPicker/ColorPickerController.h src/ColorPicker/ColorPickerController.cpp
+    src/ColorPicker/ColorPickerPreview.h src/ColorPicker/ColorPickerPreview.cpp
+    src/ColorPicker/ColorSliderController.h src/ColorPicker/ColorSliderController.cpp
+    src/ColorPicker/ColorUtils.h src/ColorPicker/ColorUtils.cpp
+    src/ColorPicker/ShadePickerController.h src/ColorPicker/ShadePickerController.cpp
 )
 
 set_source_files_properties(
