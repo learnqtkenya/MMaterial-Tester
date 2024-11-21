@@ -83,6 +83,7 @@ list(APPEND MODULE_QML_FILES
     Components/Pagination/Paginator.qml
     Components/Progress/MProgressBar.qml
     Components/Progress/MCircularProgressBar.qml
+    Components/Progress/BusyIndicator.qml
     Components/Inputs/MTextField.qml
     Components/Inputs/MDropdown.qml
     Components/Common/MScrollIndicator.qml

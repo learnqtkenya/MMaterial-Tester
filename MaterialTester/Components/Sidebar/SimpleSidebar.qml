@@ -101,6 +101,7 @@ Sidebar {
             {text : "Accordion", onClicked: function(){ showcaseLoader.sourceComponent = accordionShowcase}},
             {text : "Avatar", onClicked: function(){ showcaseLoader.sourceComponent = avatarShowcase }},
             {text : "Rectangle", onClicked: function(){ showcaseLoader.sourceComponent = rectangleShowcase }},
+            {text : "BusyIndicator", onClicked: function(){ showcaseLoader.sourceComponent = busyIndicatorShowcase }}
         ];
     }
 }

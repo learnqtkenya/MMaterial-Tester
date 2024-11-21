@@ -95,6 +95,7 @@ Rectangle {
     Component { id: dateShowcase; DateShowcase{ } }
     Component { id: timeShowcase; TimeShowcase{ } }
     Component { id: colorPickerShowcase; ColorPickerShowcase{ } }
+    Component { id: busyIndicatorShowcase; BusyIndicatorShowcase{ } }
 
     // Charts
     Component { id: barChartShowcase; BarChartShowcase{ } }
