@@ -7,9 +7,10 @@ Item {
 
     property alias animation: animation
     property bool show: false
+    property real size: 150 * MMaterial.Size.scale
 
-    implicitHeight: 150 * MMaterial.Size.scale
-    implicitWidth: 150 * MMaterial.Size.scale
+    implicitHeight: root.size
+    implicitWidth: root.size
 
     visible: opacity > 0 // Change the "show" property instead of "visible" to animate the component properly
 

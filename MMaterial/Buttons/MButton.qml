@@ -2,35 +2,35 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial as MMaterial
 
 Rectangle {
     id: _root
 
     property alias mouseArea: mouseArea
     property alias title: _title
-    property PaletteBasic accent: Theme.primary //Needs to be PaletteBasic type
+    property MMaterial.PaletteBasic accent: MMaterial.Theme.primary //Needs to be PaletteBasic type
 
     property int pixelSize: {
-        if(_root.size == Size.Grade.L)
-            return Size.pixel15
-        if(_root.size == Size.Grade.M)
-            return Size.pixel14
-        return Size.pixel13
+        if(_root.size == MMaterial.Size.Grade.L)
+            return MMaterial.Size.pixel15
+        if(_root.size == MMaterial.Size.Grade.M)
+            return MMaterial.Size.pixel14
+        return MMaterial.Size.pixel13
     }
     property real horizontalPadding: {
-        if(_root.size == Size.Grade.L)
-            return Size.pixel22;
-        if(_root.size == Size.Grade.M)
-            return Size.pixel16;
-        return Size.pixel10;
+        if(_root.size == MMaterial.Size.Grade.L)
+            return MMaterial.Size.pixel22;
+        if(_root.size == MMaterial.Size.Grade.M)
+            return MMaterial.Size.pixel16;
+        return MMaterial.Size.pixel10;
     }
     property real verticalPadding: {
-        if(_root.size == Size.Grade.L)
-            return Size.pixel12;
-        if(_root.size == Size.Grade.M)
-            return Size.pixel6;
-        return Size.pixel4;
+        if(_root.size == MMaterial.Size.Grade.L)
+            return MMaterial.Size.pixel12;
+        if(_root.size == MMaterial.Size.Grade.M)
+            return MMaterial.Size.pixel6;
+        return MMaterial.Size.pixel4;
     }
 
     property bool isLoading: false
@@ -38,7 +38,7 @@ Rectangle {
     property string text: "Button"
 
     property int type: MButton.Type.Contained
-    property int size: Size.Grade.L
+    property int size: MMaterial.Size.Grade.L
 
     property alias leftIcon: _leftIcon
     property alias rightIcon: _rightIcon
@@ -56,7 +56,7 @@ Rectangle {
     implicitHeight: _private.oneOrLessChildrenVisible ? _title.contentHeight + _root.verticalPadding * 2 : _title.contentHeight + _root.verticalPadding * 2
     implicitWidth:  _mainLayout.implicitWidth + _root.horizontalPadding * 2
 
-    radius: 8
+    radius: MMaterial.Size.pixel8
     opacity: mouseArea.pressed ? 0.7 : 1 //TODO replace with ripple effect when OpacityMask is fixed in Qt6
     color: _private.backgroundColor
     border.color: _private.borderColor
@@ -69,8 +69,8 @@ Rectangle {
             PropertyChanges { target: _root; border.width: 0 }
             PropertyChanges {
                 target: _private;
-                backgroundColor: _root.enabled ? (mouseArea.containsMouse ? _root.accent.dark : _root.accent.main) : Theme.action.disabledBackground
-                textColor: _root.enabled ? _root.accent.contrastText : Theme.action.disabled
+                backgroundColor: _root.enabled ? (mouseArea.containsMouse ? _root.accent.dark : _root.accent.main) : MMaterial.Theme.action.disabledBackground
+                textColor: _root.enabled ? _root.accent.contrastText : MMaterial.Theme.action.disabled
                 borderColor: "transparent"
             }
             PropertyChanges{ target: _leftIcon; color: _private.textColor }
@@ -83,8 +83,8 @@ Rectangle {
             PropertyChanges {
                 target: _private;
                 backgroundColor: _root.enabled ? (mouseArea.containsMouse ? _root.accent.transparent.p8 : "transparent") : "transparent"
-                textColor: _root.enabled ? _root.accent.main : Theme.action.disabled
-                borderColor:  _root.enabled ? (_root.mouseArea.containsMouse ? _root.accent.main : _root.accent.transparent.p24) : Theme.action.disabled
+                textColor: _root.enabled ? _root.accent.main : MMaterial.Theme.action.disabled
+                borderColor:  _root.enabled ? (_root.mouseArea.containsMouse ? _root.accent.main : _root.accent.transparent.p24) : MMaterial.Theme.action.disabled
             }
             PropertyChanges{ target: _leftIcon; color: _private.textColor }
             PropertyChanges{ target: _rightIcon; color: _private.textColor }
@@ -96,7 +96,7 @@ Rectangle {
             PropertyChanges {
                 target: _private;
                 backgroundColor: mouseArea.containsMouse ? _root.accent.transparent.p8 : "transparent"
-                textColor:  _root.enabled ? _root.accent.main : Theme.action.disabled
+                textColor:  _root.enabled ? _root.accent.main : MMaterial.Theme.action.disabled
                 borderColor: "transparent"
             }
             PropertyChanges{ target: _leftIcon; color: _private.textColor }
@@ -108,8 +108,8 @@ Rectangle {
             PropertyChanges { target: _root; border.width: 0; }
             PropertyChanges {
                 target: _private;
-                backgroundColor: _root.enabled ? (mouseArea.containsMouse ? _root.accent.transparent.p32 : _root.accent.transparent.p16) : Theme.action.disabledBackground
-                textColor:  _root.enabled ? _root.accent.dark : Theme.action.disabled
+                backgroundColor: _root.enabled ? (mouseArea.containsMouse ? _root.accent.transparent.p32 : _root.accent.transparent.p16) : MMaterial.Theme.action.disabledBackground
+                textColor:  _root.enabled ? _root.accent.dark : MMaterial.Theme.action.disabled
                 borderColor: "transparent"
             }
             PropertyChanges{ target: _leftIcon; color: _private.textColor }
@@ -139,9 +139,9 @@ Rectangle {
 
         anchors.centerIn: _root
 
-        spacing: Size.pixel8
+        spacing: MMaterial.Size.pixel8
 
-        Icon {
+        MMaterial.Icon {
             id: _leftIcon
 
             Layout.alignment: _title.visible ? Qt.AlignLeft : Qt.AlignCenter
@@ -149,7 +149,7 @@ Rectangle {
             visible: iconData && !_root.isLoading
         }
 
-        H2{
+        MMaterial.H2{
             id: _title
 
             Layout.alignment: Qt.AlignCenter
@@ -168,7 +168,7 @@ Rectangle {
             }
         }
 
-        Icon {
+        MMaterial.Icon {
             id: _rightIcon
 
             Layout.alignment: _title.visible ? Qt.AlignRight : Qt.AlignCenter
