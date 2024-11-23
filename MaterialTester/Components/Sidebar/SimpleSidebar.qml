@@ -21,6 +21,7 @@ Sidebar {
         text: "Core";
         icon: Icons.light.dashboard;
         category: "components"
+
         model: [
             {text : "Icons", onClicked: function(){ showcaseLoader.sourceComponent = iconShowcase}},
             {text : "Fonts", onClicked: function(){ showcaseLoader.sourceComponent = fontShowcase}},
@@ -96,10 +97,16 @@ Sidebar {
         text: "Other";
         icon: Icons.light.atr;
         category: "components"
+
+        chip {
+            text: qsTr("New")
+            accent: Theme.info
+        }
+
         model: [
             {text : "Badge", onClicked: function(){ showcaseLoader.sourceComponent = badgeShowcase}},
             {text : "Accordion", onClicked: function(){ showcaseLoader.sourceComponent = accordionShowcase}},
-            {text : "Avatar", onClicked: function(){ showcaseLoader.sourceComponent = avatarShowcase }},
+            {text : "Avatar", onClicked: function(){ showcaseLoader.sourceComponent = avatarShowcase }, "chip" : Qt.platform.os === "windows" ? { "text" : qsTr("Non-WASM"), "accent": Theme.warning } : null},
             {text : "Rectangle", onClicked: function(){ showcaseLoader.sourceComponent = rectangleShowcase }},
             {text : "BusyIndicator", onClicked: function(){ showcaseLoader.sourceComponent = busyIndicatorShowcase }}
         ];

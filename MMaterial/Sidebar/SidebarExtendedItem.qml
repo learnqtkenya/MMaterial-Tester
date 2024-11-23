@@ -14,6 +14,7 @@ Item {
     property alias text: _title.text
     property alias model: _listView.model
     property alias list: _listView
+    property QtObject chip: null
 
     property bool checked: index == _root.sidebarData.currentIndex
     property bool isOpen: false
@@ -141,8 +142,34 @@ Item {
                 Layout.leftMargin: _icon.visible ? Size.pixel8 : 0
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignVCenter
+                elide: Text.ElideRight
 
                 verticalAlignment: Qt.AlignVCenter
+            }
+
+            Loader {
+                Layout.alignment: Qt.AlignVCenter
+                Layout.preferredHeight: item ? item.height : 0
+                Layout.preferredWidth: item ? item.width : 0
+                asynchronous: true
+
+                active: _root.chip ? _root.chip.text !== "" : false
+
+                sourceComponent: Component {
+                    MButton {
+                        type: MButton.Type.Soft
+                        text: _root.chip ? _root.chip.text : ""
+                        accent: _root.chip ? _root.chip.accent : Theme.primary
+                        size: Size.Grade.Custom
+                        horizontalPadding: Size.pixel8
+                        verticalPadding: Size.pixel6
+                        pixelSize: Size.pixel12
+                        mouseArea {
+                            enabled: false
+                            anchors.fill: null
+                        }
+                    }
+                }
             }
 
             Icon {
@@ -181,6 +208,7 @@ Item {
 
             property bool checked: _root.sidebarData.currentSubIndex == index
             property string text: modelData.text
+            property var chip: modelData.chip ? modelData.chip : null
 
             enabled: modelData.enabled === undefined ? true : modelData.enabled
             radius: _checkableBackground.radius
@@ -259,7 +287,34 @@ Item {
                     text: _subItem.text
                 }
 
+                Loader {
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.preferredHeight: item ? item.height : 0
+                    Layout.preferredWidth: item ? item.width : 0
+                    asynchronous: true
+
+                    active: _subItem.chip
+
+                    sourceComponent: Component {
+                        MButton {
+                            type: MButton.Type.Soft
+                            text: _subItem.chip ? _subItem.chip.text : ""
+                            accent: _subItem.chip ? _subItem.chip.accent : Theme.primary
+                            size: Size.Grade.Custom
+                            horizontalPadding: Size.pixel6
+                            verticalPadding: Size.pixel6
+                            pixelSize: Size.pixel11
+
+                            mouseArea {
+                                enabled: false
+                                anchors.fill: null
+                            }
+                        }
+                    }
+                }
             }
+
+
             MouseArea {
                 id: _subItemMouseArea
 
