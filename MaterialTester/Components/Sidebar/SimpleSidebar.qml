@@ -106,7 +106,7 @@ Sidebar {
         model: [
             {text : "Badge", onClicked: function(){ showcaseLoader.sourceComponent = badgeShowcase}},
             {text : "Accordion", onClicked: function(){ showcaseLoader.sourceComponent = accordionShowcase}},
-            {text : "Avatar", onClicked: function(){ showcaseLoader.sourceComponent = avatarShowcase }, "chip" : Qt.platform.os === "windows" ? { "text" : qsTr("Non-WASM"), "accent": Theme.warning } : null},
+            {text : "Avatar", onClicked: function(){ showcaseLoader.sourceComponent = avatarShowcase }, "chip" : Qt.platform.os === "wasm" ? { "text" : qsTr("Non-WASM"), "accent": Theme.warning } : null},
             {text : "Rectangle", onClicked: function(){ showcaseLoader.sourceComponent = rectangleShowcase }},
             {text : "BusyIndicator", onClicked: function(){ showcaseLoader.sourceComponent = busyIndicatorShowcase }}
         ];
