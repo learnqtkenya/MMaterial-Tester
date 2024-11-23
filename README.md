@@ -14,29 +14,21 @@ Since Tag 1.1 (Qt 6.7+)
 
 # Advantages
 
-## Extensive google icon library 
-* Out of the box
-* Implemented in a lightweight manner
+## Theming - Light & Dark mode
 
-## Predefined color palettes
-* Dark and lightmode
-* Extensible
+https://github.com/user-attachments/assets/a3cd49ac-9675-4f32-832a-fd33ea616453
+
+## Theming - Typography, Color schemes, Icons
   
-![image](https://github.com/user-attachments/assets/45c1e28a-4336-476b-8397-77a40a29ea8f)
+  ![Untitled design](https://github.com/user-attachments/assets/0656fac2-173a-449c-9fcb-0e6277e7515b)
 
-## Buttons & Controls
-* But fancier
+## Date, Time, Color pickers
 
-![image](https://github.com/user-attachments/assets/fcf1e63b-ed0b-4739-ad26-14293afda4cc)
-
-## Date & Time pickers
-
-![image](https://github.com/user-attachments/assets/f6f70a81-6982-41fb-a325-43da3654c443)
-![image](https://github.com/user-attachments/assets/93d3bc71-02b9-41a4-8d3e-632aa9339d72)
+![Untitled design (1)](https://github.com/user-attachments/assets/c42fb1d9-dbd7-435c-86d0-d121502b10b8)
 
 ## Notifications
 
-![image](https://github.com/user-attachments/assets/cb2d4728-a232-4b75-a897-adca5a49da65)
+![375885289-cb2d4728-a232-4b75-a897-adca5a49da65](https://github.com/user-attachments/assets/0aa52230-f1ca-4627-affa-c436c5281b46)
 
 ## Charts
 
@@ -46,19 +38,3 @@ Since Tag 1.1 (Qt 6.7+)
 
 # Link for preview :link:
 https://markostanojevic12.github.io/appMaterialTester.html
-
-
-## To-do :white_check_mark:
-- [x] Menu
-- [ ] Provide documentation
-- [ ] Improve settings
-- [ ] Add transitions
-- [ ] Chips
-- [x] Avatars
-- [x] Calendar
-- [x] Clock
-- [ ] Stepper
-- [ ] Popover
-- [ ] Timeline
-- [x] Charts
-- [ ] Whitelabeling (related to settings) ? 
