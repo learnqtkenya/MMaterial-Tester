@@ -157,7 +157,7 @@ ColumnLayout {
         flickDeceleration: 1000
 
         cellHeight: Size.pixel46 * 2.5
-        cellWidth: Size.pixel64 * 2.5
+        cellWidth: iconList.width / Math.floor(iconList.width / (Size.pixel64 * 2.5))
 
         cacheBuffer: 1000
 
