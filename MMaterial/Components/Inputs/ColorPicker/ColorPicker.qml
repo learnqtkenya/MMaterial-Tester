@@ -89,7 +89,7 @@ MMaterial.Dialog {
     onAccepted: () => {
         root.selectedColor = root.currentColor
         root.addToHistory(root.currentColor)
-        root.selected(root.selectedColor)
+        root.selected()
         root.close()
     }
 
