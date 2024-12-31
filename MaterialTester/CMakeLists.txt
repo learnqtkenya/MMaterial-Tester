@@ -86,6 +86,7 @@ add_subdirectory(MMaterial)
 
 target_include_directories(appMaterialTester PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Icons
+    ${CMAKE_CURRENT_SOURCE_DIR}/DevTools
 )
 
 target_link_libraries(appMaterialTester

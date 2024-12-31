@@ -6,19 +6,20 @@
 #include <QQmlApplicationEngine>
 #include "FileWatcher.h"
 
+// Will be depricated soon
 class CustomEngine : public QQmlApplicationEngine
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit CustomEngine(QObject *parent = Q_NULLPTR);
+	explicit CustomEngine(QObject *parent = Q_NULLPTR);
 
-    Q_INVOKABLE void clearCache();
+	Q_INVOKABLE void clearCache();
 
 Q_SIGNALS:
-    void reloadUI();
+	void reloadUI();
 
 private:
-    FileWatcher* m_fileWatcher;
+	FileWatcher* m_fileWatcher;
 };
 
 #endif // CustomEngine_H
