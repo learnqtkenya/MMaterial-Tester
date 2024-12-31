@@ -4,9 +4,8 @@ project(MaterialTester VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
-
-qt_standard_project_setup()
+find_package(Qt6 6.7 REQUIRED COMPONENTS Quick)
+qt_standard_project_setup(REQUIRES 6.7)
 
 qt_add_executable(appMaterialTester
     main.cpp
@@ -83,15 +82,7 @@ qt_add_qml_module(appMaterialTester
         DevTools/Clipboard.h
 )
 
-set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../" ${CMAKE_BINARY_DIR}/imports CACHE STRING "MMaterial imports" FORCE)
-
-# Add the QML import path to the QML_IMPORT_PATH environment variable
-list(APPEND ENV{QML_IMPORT_PATH} "${QML_IMPORT_PATH}")
-
-# Add the QML import path to the CMake include directories
-include_directories(${QML_IMPORT_PATH})
-
-add_subdirectory(../MMaterial ./MMaterial)
+add_subdirectory(MMaterial)
 
 target_include_directories(appMaterialTester PUBLIC
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Icons

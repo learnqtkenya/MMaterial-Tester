@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 	engine.rootContext()->setContextProperty("Clipboard", &clipboard);
 
 #if defined(__wasm__) || !defined(QT_DEBUG)
-    const QUrl url(u"qrc:/MaterialTester/Main.qml"_qs);
+	const QUrl url(u"qrc:/MaterialTester/Main.qml"_qs);
 #else
 	const QUrl url(qgetenv("MAIN_DIR") + "/Main.qml");
 #endif
