@@ -10,6 +10,9 @@
 class CustomEngine : public QQmlApplicationEngine
 {
 	Q_OBJECT
+	QML_ELEMENT
+	QML_UNCREATABLE("C++ only")
+
 public:
 	explicit CustomEngine(QObject *parent = Q_NULLPTR);
 
