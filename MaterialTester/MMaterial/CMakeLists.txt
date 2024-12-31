@@ -45,6 +45,7 @@ list(APPEND MODULE_QML_FILES
     Icons/IconData.qml
     Icons/HeavyIcon.qml
     Icons/IconBase.qml
+    Icons/IconSet.qml
 
     # Components
     Components/Badge/BadgeNumber.qml
