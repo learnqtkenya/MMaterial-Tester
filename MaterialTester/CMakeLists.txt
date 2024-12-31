@@ -85,15 +85,15 @@ qt_add_qml_module(appMaterialTester
 add_subdirectory(MMaterial)
 
 target_include_directories(appMaterialTester PUBLIC
-                ${CMAKE_CURRENT_SOURCE_DIR}/src/Icons
-            )
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Icons
+)
 
 target_link_libraries(appMaterialTester
-    PRIVATE Qt6::Quick Qt::Gui MMaterialLibplugin
+    PRIVATE Qt6::Quick Qt::Gui
 )
 
 set_target_properties(appMaterialTester PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
+    MACOSX_BUNDLE_GUI_IDENTIFIER com.mmaterial.appMaterialTester
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
@@ -114,12 +114,6 @@ if (EMSCRIPTEN)
     # endif()
     install(FILES ${MM_INSTALL_FILES} DESTINATION ${CMAKE_INSTALL_PREFIX})
 else()
-    install(TARGETS appMaterialTester
-        BUNDLE DESTINATION .
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-    )
-
     install(TARGETS appMaterialTester
         BUNDLE DESTINATION .
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
