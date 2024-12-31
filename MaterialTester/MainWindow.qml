@@ -3,20 +3,7 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 
 import MMaterial
-
-import "./Showcase"
-import "./Showcase/ColorShowcase"
-import "./Showcase/IconShowcase"
-import "./Showcase/ButtonShowcase"
-import "./Showcase/AlertShowcase"
-import "./Showcase/ListItemShowcase"
-import "./Showcase/PaginationShowcase"
-import "./Showcase/TextFieldShowcase"
-import "./Showcase/TabShowcase"
-import "./Showcase/ChartShowcase"
-
-import "./Components/AppSettings"
-import "./Components/Sidebar"
+import MaterialTester
 
 Rectangle {
     id: _root

@@ -16,10 +16,8 @@ Window {
         function reload() : void {
             mainLoader.source = "";
             QmlEngine.clearCache();
-            mainLoader.source = "./MainWindow.qml";
+            mainLoader.source = Qt.resolvedUrl("MainWindow.qml");
         }
-
-        anchors.centerIn: parent
 
         height: parent.height; width: parent.width;
 

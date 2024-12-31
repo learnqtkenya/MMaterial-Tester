@@ -1,15 +1,3 @@
-qt_add_library(MMaterialLib STATIC)
-
-set_target_properties(MMaterialLib PROPERTIES AUTOMOC ON)
-target_link_libraries(MMaterialLib PRIVATE Qt6::Quick)
-
-target_include_directories(MMaterialLib PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/ColorPicker
-)
-
-target_compile_definitions(MMaterialLib PRIVATE QT_QUICKCONTROLS_MATERIAL_STYLE)
-
 list(APPEND MODULE_ASSETS
     # Fonts
     Fonts/Families/PublicSans/PublicSans-ExtraBold.ttf
@@ -24,7 +12,6 @@ list(APPEND MODULE_ASSETS
 
 list(APPEND MODULE_QML_FILES
     # Fonts
-    Fonts/PublicSans.qml
     Fonts/BaseFont.qml
     Fonts/Texts/H1.qml
     Fonts/Texts/H2.qml
@@ -41,8 +28,6 @@ list(APPEND MODULE_QML_FILES
     Fonts/Texts/BaseText.qml
 
     # Colors / Themes
-    Colors/Theme.qml
-    Colors/ThemeList.qml
     Colors/BaseObjects/PaletteTransparent.qml
     Colors/BaseObjects/PaletteCommon.qml
     Colors/BaseObjects/PaletteBackground.qml
@@ -53,21 +38,10 @@ list(APPEND MODULE_QML_FILES
     Colors/BaseObjects/PaletteOther.qml
     Colors/BaseObjects/PaletteAction.qml
     Colors/BaseObjects/ThemeBase.qml
-    Colors/Themes/DarkTheme.qml
-    Colors/Themes/LightTheme.qml
-    Colors/BasicPalettes/BasicRed.qml
-    Colors/BasicPalettes/BasicGreen.qml
-    Colors/BasicPalettes/BasicPurple.qml
-    Colors/BasicPalettes/BasicBlue.qml
-    Colors/BasicPalettes/BasicOrange.qml
-    Colors/BasicPalettes/BasicLightBlue.qml
 
     # Icons
     Icons/Icon.qml
-    Icons/Icons.qml
-    Icons/Images.qml
     Icons/LightIcon.qml
-    Icons/IconFont.qml
     Icons/IconData.qml
     Icons/HeavyIcon.qml
     Icons/IconBase.qml
@@ -105,10 +79,6 @@ list(APPEND MODULE_QML_FILES
     Components/Inputs/ColorPicker/ColorSelection.qml
     Components/Inputs/ColorPicker/ColorSlider.qml
     Components/Inputs/ColorPicker/OpacitySlider.qml
-
-
-    # Settings
-    Settings/Size.qml
 
     # Buttons
     Buttons/MButton.qml
@@ -163,7 +133,6 @@ list(APPEND MODULE_QML_FILES
     # Charts
     Charts/BarChart.qml
     Charts/WaterfallChart.qml
-    Charts/ChartFunctions.qml
 )
 
 list(APPEND MODULE_SOURCES
@@ -176,7 +145,7 @@ list(APPEND MODULE_SOURCES
     src/ColorPicker/ShadePickerController.h src/ColorPicker/ShadePickerController.cpp
 )
 
-set_source_files_properties(
+list(APPEND QML_SINGLETONS
     Colors/Theme.qml
     Colors/Themes/DarkTheme.qml
     Colors/Themes/LightTheme.qml
@@ -194,7 +163,10 @@ set_source_files_properties(
     Icons/Icons.qml
     Icons/Images.qml
     Settings/Size.qml
+)
 
+set_source_files_properties(
+    ${QML_SINGLETONS}
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE
 )
 
@@ -202,21 +174,34 @@ qt_add_qml_module(MMaterialLib
     URI MMaterial
     RESOURCE_PREFIX /
     VERSION 1.0
-    QML_FILES ${MODULE_QML_FILES}
+    STATIC
+    QML_FILES ${MODULE_QML_FILES} ${QML_SINGLETONS}
     RESOURCES ${MODULE_ASSETS}
     SOURCES ${MODULE_SOURCES}
 )
 
+set_target_properties(MMaterialLib PROPERTIES AUTOMOC ON)
+target_link_libraries(MMaterialLib PRIVATE Qt6::Quick)
+
+target_include_directories(MMaterialLib PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ColorPicker
+)
+
+target_compile_definitions(MMaterialLib PRIVATE QT_QUICKCONTROLS_MATERIAL_STYLE)
+
 # Read the contents of the file into a variable
-file(GLOB PNG_ASSETS "Icons/assets/png/*.png")
-file(GLOB JPEG_ASSETS "Icons/assets/png/*.jpeg")
+file(GLOB PNG_ASSETS "Icons/assets/other/*.png")
+file(GLOB JPEG_ASSETS "Icons/assets/other/*.jpeg")
 file(GLOB SVG_ASSETS "Icons/assets/svg/*.svg")
 
 qt_add_resources(MMaterialLib
-    "mmaterial_icons"
+    "mmaterial_assets"
     BASE "${CMAKE_CURRENT_SOURCE_DIR}"
     PREFIX "MMaterial"
+    BIG_RESOURCES
     FILES
+    ${MODULE_ASSETS}
     ${PNG_ASSETS}
     ${JPEG_ASSETS}
     ${SVG_ASSETS}

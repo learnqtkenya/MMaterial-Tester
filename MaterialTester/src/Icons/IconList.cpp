@@ -53,9 +53,9 @@ void IconListModel::clear()
 	if (m_iconList.isEmpty())
 		return;
 
-	beginRemoveRows(QModelIndex(), 0, m_iconList.count() - 1);
+	beginResetModel();
 	m_iconList.clear();
-	endRemoveRows();
+	endResetModel();
 }
 
 IconFilterProxyModel::IconFilterProxyModel(QObject* parent)
