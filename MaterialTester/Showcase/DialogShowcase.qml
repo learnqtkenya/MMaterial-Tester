@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material as Controls
 
 import MMaterial as MMaterial
+import MMaterial.Controls.Dialogs as Dialogs
 
 Item {
     id: root
@@ -120,26 +121,26 @@ Item {
                 onClicked: simpleDialog.open()
             }
 
-            MMaterial.Dialog {
+            Dialogs.Dialog {
                 id: simpleDialog
 
                 width: Math.max(Math.min(440 * MMaterial.Size.scale, root.width / 2 - MMaterial.Size.pixel10), Math.min(320 * MMaterial.Size.scale))
                 x: parent.width / 2 - width / 2
-                closePolicy: MMaterial.Dialog.NoAutoClose
+                closePolicy: Dialogs.Dialog.NoAutoClose
                 text: qsTr("Did you know that the first 1GB hard drive, introduced by IBM in 1980, weighed over 500 pounds and cost $40,000? It was a significant advancement at the time, although today, 1GB of storage is considered quite small and can be found on tiny, inexpensive flash drives.")
 
                 Component.onCompleted: open()
 
                 Item { Layout.fillWidth: true }
 
-                MMaterial.Dialog.DialogCloseButton {
+                Dialogs.Dialog.DialogCloseButton {
                     Layout.maximumWidth: parent.width / 2 - MMaterial.Size.pixel10
                     text: qsTr("Close")
                     onClicked: simpleDialog.close()
 
                 }
 
-                MMaterial.Dialog.DialogButton {
+                Dialogs.Dialog.DialogButton {
                     Layout.maximumWidth: parent.width / 2 - MMaterial.Size.pixel10
                     text: qsTr("Good to know!")
                     onClicked: simpleDialog.close()
@@ -147,14 +148,14 @@ Item {
 
             }
 
-            MMaterial.Dialog {
+            Dialogs.Dialog {
                 id: deleteDialog
 
                 y: simpleDialog.y + simpleDialog.height + MMaterial.Size.pixel20
                 x: parent.width / 2 - width / 2
                 width: Math.max(Math.min(440 * MMaterial.Size.scale, root.width / 2 - MMaterial.Size.pixel10), Math.min(320 * MMaterial.Size.scale))
                 title: qsTr("Delete Files?")
-                closePolicy: MMaterial.Dialog.NoAutoClose
+                closePolicy: Dialogs.Dialog.NoAutoClose
                 iconData: MMaterial.Icons.light.warning
                 text: qsTr("This is a destructive action, are you sure you want to delete those files?")
 
@@ -162,13 +163,13 @@ Item {
 
                 Item { Layout.fillWidth: true }
 
-                MMaterial.Dialog.DialogCloseButton {
+                Dialogs.Dialog.DialogCloseButton {
                     Layout.maximumWidth: parent.width / 2 - MMaterial.Size.pixel10
                     text: qsTr("Cancel")
                     onClicked: deleteDialog.close()
                 }
 
-                MMaterial.Dialog.DialogAlertButton {
+                Dialogs.Dialog.DialogAlertButton {
                     Layout.maximumWidth: parent.width / 2 - MMaterial.Size.pixel10
                     text: qsTr("Delete")
                     onClicked: deleteDialog.close()
@@ -206,7 +207,7 @@ Item {
                 onClicked: mediumImageDialog.open()
             }
 
-            MMaterial.LargeImageDialog {
+            Dialogs.LargeImageDialog {
                 id: largeImageDialog
 
                 x: parent.width / 2 - width / 2
@@ -216,20 +217,20 @@ Item {
                 visible: true
                 imageSource: MMaterial.Images.realisticShape3.path
 
-                MMaterial.Dialog.DialogCloseButton {
+                Dialogs.Dialog.DialogCloseButton {
                     Layout.fillWidth: true
                     text: qsTr("Cancel")
                     onClicked: largeImageDialog.close()
                 }
 
-                MMaterial.Dialog.DialogButton {
+                Dialogs.Dialog.DialogButton {
                     Layout.fillWidth: true
                     text: qsTr("Install")
                     onClicked: largeImageDialog.close()
                 }
             }
 
-            MMaterial.MediumImageDialog {
+            Dialogs.MediumImageDialog {
                 id: mediumImageDialog
 
                 x: parent.width / 2 - width / 2
@@ -241,7 +242,7 @@ Item {
                 visible: true
                 imageSource: MMaterial.Images.realisticShape2.path
 
-                MMaterial.Dialog.DialogButton {
+                Dialogs.Dialog.DialogButton {
                     Layout.fillWidth: true
                     size: MMaterial.Size.Grade.L
                     text: qsTr("Shop")
@@ -280,7 +281,7 @@ Item {
                 onClicked: inputDialog2.open()
             }
 
-            MMaterial.InputDialog {
+            Dialogs.InputDialog {
                 id: inputDialog
 
                 x: parent.width / 2 - width / 2
@@ -293,7 +294,7 @@ Item {
                 placeholder: qsTr("your-email@.com")
             }
 
-            MMaterial.InputDialog {
+            Dialogs.InputDialog {
                 id: inputDialog2
 
                 x: parent.width / 2 - width / 2

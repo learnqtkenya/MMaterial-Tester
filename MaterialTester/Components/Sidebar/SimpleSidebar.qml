@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 
 import MMaterial
+import MMaterial.Controls.Sidebar
 
 // Compared to CustomSidebar, it's less work but less customizability aswell
 

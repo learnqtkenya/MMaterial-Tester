@@ -1,6 +1,7 @@
 import QtQuick 
 
 import MMaterial
+import MMaterial.Controls.Pagination
 
 Item {
     objectName: "Pagination Arrows"

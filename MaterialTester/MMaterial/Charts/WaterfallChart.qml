@@ -3,6 +3,7 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 
 import MMaterial as MMaterial
+import MMaterial.Charts as Charts
 
 Item {
     id: root
@@ -18,12 +19,12 @@ Item {
     property MMaterial.PaletteBasic positiveAccent: MMaterial.Theme.success
     property MMaterial.PaletteBasic negativeAccent: MMaterial.Theme.error
 
-    property MMaterial.ChartElement chartModel: MMaterial.ChartElement {
+    property Charts.ChartElement chartModel: Charts.ChartElement {
         bars: [
-            MMaterial.ChartElementBar { value: -100; name: qsTr("January") },
-            MMaterial.ChartElementBar { value: 1800; name: qsTr("February") },
-            MMaterial.ChartElementBar { value: 3000; name: qsTr("March") },
-            MMaterial.ChartElementBar { value: 2700; name: qsTr("April") }
+            Charts.ChartElementBar { value: -100; name: qsTr("January") },
+            Charts.ChartElementBar { value: 1800; name: qsTr("February") },
+            Charts.ChartElementBar { value: 3000; name: qsTr("March") },
+            Charts.ChartElementBar { value: 2700; name: qsTr("April") }
         ]
     }
 
@@ -180,7 +181,7 @@ Item {
                         Item { Layout.fillHeight: true }
 
                         MMaterial.H4 {
-                            property double percentage: MMaterial.ChartFunctions.calculateGrowthPercentage(verticalBarContainer.previousBarValue, barValue)
+                            property double percentage: Charts.ChartFunctions.calculateGrowthPercentage(verticalBarContainer.previousBarValue, barValue)
 
                             Layout.fillWidth: true
                             horizontalAlignment: Qt.AlignRight
@@ -219,7 +220,7 @@ Item {
     QtObject {
         id: d
 
-        readonly property var valueListModel: MMaterial.ChartFunctions.generateAdaptiveCloseRangeNumbers(troughValue, peakValue, Math.ceil(root.height / (MMaterial.Size.scale * 100)))
+        readonly property var valueListModel: Charts.ChartFunctions.generateAdaptiveCloseRangeNumbers(troughValue, peakValue, Math.ceil(root.height / (MMaterial.Size.scale * 100)))
         property bool autoscroll: true
         property real oldContentX: chartList.contentX
 

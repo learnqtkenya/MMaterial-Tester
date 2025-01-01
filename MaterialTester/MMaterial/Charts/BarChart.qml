@@ -1,8 +1,7 @@
 import QtQuick
-import QtQuick.Controls.Material
-import QtQuick.Layouts
 
 import MMaterial as MMaterial
+import MMaterial.Charts as Charts
 
 Item {
     id: root
@@ -16,7 +15,7 @@ Item {
     property real fontSize: MMaterial.Size.pixel12
     property real barContainerWidth: MMaterial.Size.pixel48
 
-    property MMaterial.ChartModel chartModel: MMaterial.ChartModel {}
+    property Charts.ChartModel chartModel: Charts.ChartModel {}
 
     onHeightChanged: stopAnimationTimer.restart()
     onWidthChanged: stopAnimationTimer.restart()
@@ -25,7 +24,7 @@ Item {
     component VerticalBars: ListView {
         id: verticalDelRoot
 
-        readonly property MMaterial.ChartElement chartElement: element
+        readonly property Charts.ChartElement chartElement: element
         property real delegateWidth: (verticalDelRoot.width - (verticalDelRoot.count - 1) * verticalDelRoot.spacing) / verticalDelRoot.count
         property real contentX: 0
         property int elementIndex: index
@@ -113,7 +112,7 @@ Item {
     component HorizontalBars: ListView {
         id: horizontalDelRoot
 
-        readonly property MMaterial.ChartElement chartElement: element
+        readonly property Charts.ChartElement chartElement: element
         property real delegateHeight: (horizontalDelRoot.height - (horizontalDelRoot.count - 1) * horizontalDelRoot.spacing) / horizontalDelRoot.count
         property real contentY: 0
         property int elementIndex: index
@@ -210,7 +209,7 @@ Item {
     QtObject {
         id: d
 
-        property var valueListModel: MMaterial.ChartFunctions.generateSpreadNumbers(0, peakValue, Math.ceil(root.height / (MMaterial.Size.scale * 100)))
+        property var valueListModel: Charts.ChartFunctions.generateSpreadNumbers(0, peakValue, Math.ceil(root.height / (MMaterial.Size.scale * 100)))
         property real peakValue: root.chartModel.getMaxValue()
         readonly property real verticalBarWidth: root.autoResize ? (chartList.width - (chartList.count - 1) * chartList.spacing) / chartList.count : root.barContainerWidth
         readonly property real horizontalBarHeight: root.autoResize ? (chartList.height - (chartList.count - 1) * chartList.spacing) / chartList.count : root.barContainerWidth

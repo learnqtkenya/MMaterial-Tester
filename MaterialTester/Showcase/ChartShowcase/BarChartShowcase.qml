@@ -4,6 +4,7 @@ import QtQuick.Dialogs
 import QtQuick.Controls.Material
 
 import MMaterial as MMaterial
+import MMaterial.Charts as Charts
 
 Item {
     id: root
@@ -406,7 +407,7 @@ Item {
             bottom: root.bottom
         }
 
-        MMaterial.BarChart {
+        Charts.BarChart {
             id: barChart
 
             graphContainer.width: barChart.width - MMaterial.Size.pixel30 * 2
@@ -420,27 +421,27 @@ Item {
             Layout.minimumWidth: 300 * MMaterial.Size.scale
 
             model: [
-                MMaterial.ChartElement {
+                Charts.ChartElement {
                     name: qsTr("Serbia")
                     bars: [
-                        MMaterial.ChartElementBar { value: 1197714; name: qsTr("Belgrade"); color: "#A12D2E" },
-                        MMaterial.ChartElementBar { value: 280763; name: qsTr("Novi Sad"); color: "#0C4077" },
-                        MMaterial.ChartElementBar { value: 182797; name: qsTr("Niš"); color: "#FFFFFF" }
+                        Charts.ChartElementBar { value: 1197714; name: qsTr("Belgrade"); color: "#A12D2E" },
+                        Charts.ChartElementBar { value: 280763; name: qsTr("Novi Sad"); color: "#0C4077" },
+                        Charts.ChartElementBar { value: 182797; name: qsTr("Niš"); color: "#FFFFFF" }
                     ]
                 },
-                MMaterial.ChartElement {
+                Charts.ChartElement {
                     name: qsTr("Poland")
                     bars: [
-                        MMaterial.ChartElementBar { value: 673743; name: qsTr("Wrocław"); color: "#FFFFFF" },
-                        MMaterial.ChartElementBar { value: 652015; name: qsTr("Łódź"); color: "#DC143C" }
+                        Charts.ChartElementBar { value: 673743; name: qsTr("Wrocław"); color: "#FFFFFF" },
+                        Charts.ChartElementBar { value: 652015; name: qsTr("Łódź"); color: "#DC143C" }
                     ]
                 },
-                MMaterial.ChartElement {
+                Charts.ChartElement {
                     name: qsTr("Hungary")
                     bars: [
-                        MMaterial.ChartElementBar { value: 880371; name: qsTr("Budapest"); color: "#CE2939" },
-                        MMaterial.ChartElementBar { value: 76000; name: qsTr("Paradsasvar"); color: "#FFFFFF" },
-                        MMaterial.ChartElementBar { value: 75474; name: qsTr("Szolnok"); color: "#477050" }
+                        Charts.ChartElementBar { value: 880371; name: qsTr("Budapest"); color: "#CE2939" },
+                        Charts.ChartElementBar { value: 76000; name: qsTr("Paradsasvar"); color: "#FFFFFF" },
+                        Charts.ChartElementBar { value: 75474; name: qsTr("Szolnok"); color: "#477050" }
                     ]
                 }
             ]

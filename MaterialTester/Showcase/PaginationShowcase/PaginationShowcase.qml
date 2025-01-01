@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 
 import MMaterial
+import MMaterial.Controls.Pagination
 
 Item {
     objectName: "Pagination"

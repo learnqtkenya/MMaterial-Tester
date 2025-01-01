@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls.Material
 
 import MMaterial
+import MMaterial.Controls
 
 Item {
     id: _root
