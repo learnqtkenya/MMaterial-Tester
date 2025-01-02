@@ -1,5 +1,7 @@
 import QtQuick
 
+import MMaterial.Theme
+
 IconBase {
     id: _root
 
@@ -9,7 +11,7 @@ IconBase {
         }
 
         text: _root.iconData.path
-        color: _root.color
+        color: _root.color == "" ? Theme.text.primary : _root.color
 
         horizontalAlignment: Qt.AlignHCenter
         verticalAlignment: Qt.AlignVCenter

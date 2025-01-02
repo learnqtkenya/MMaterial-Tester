@@ -1,12 +1,12 @@
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.Controls.Settings as Settings
 
 BaseText {
     elide: Text.ElideRight
 
     font {
         family: PublicSans.regular
-        pixelSize: MMaterial.Size.pixel14
+        pixelSize: Settings.Size.pixel14
     }
 }

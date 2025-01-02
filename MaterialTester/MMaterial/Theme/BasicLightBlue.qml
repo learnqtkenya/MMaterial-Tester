@@ -1,10 +1,6 @@
 pragma Singleton
 
-import QtQuick
-
-import MMaterial as MMaterial
-
-MMaterial.PaletteBasic{
+PaletteBasic{
     main: "#33adff"
     contrastText: "#ffffff"
 }

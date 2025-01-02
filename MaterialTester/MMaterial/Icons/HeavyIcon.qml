@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Effects
 
@@ -8,7 +10,7 @@ IconBase {
         anchors.fill: _root
 
         fillMode: Image.PreserveAspectFit
-        source: visible ? _root.iconData?.path ?? "" : ""
+        source: (visible ? _root.iconData?.path ?? "" : "").toString()
 
         sourceSize.height: _root.size
 

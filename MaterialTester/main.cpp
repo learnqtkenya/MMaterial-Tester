@@ -31,8 +31,9 @@ int main(int argc, char *argv[])
 	CustomEngine engine;
 	Clipboard clipboard;
 
-	engine.addImportPath(":/MMaterial"); // for Material
+	engine.addImportPath(":/MMaterial/"); // for Material
 	engine.addImportPath("qrc:/");
+	engine.addImportPath(":/");
 
 	engine.rootContext()->setContextProperty("QmlEngine", &engine);
 

@@ -46,7 +46,7 @@ Item {
 
             color: _title.color
             size: _root.pixelSize * 1.42
-            visible: iconData && !_root.isLoading
+            visible: iconData
         }
 
         H2{
@@ -55,7 +55,7 @@ Item {
             Layout.alignment: Qt.AlignCenter
             Layout.fillWidth: true
 
-            visible: text !== "" && !_root.isLoading
+            visible: text !== ""
             text: _root.text
             color: _root.selected ? Theme.text.primary : Theme.text.secondary
 
@@ -75,7 +75,7 @@ Item {
             Layout.alignment: _title.visible ? Qt.AlignRight : Qt.AlignCenter
 
             color:  _title.color
-            visible: iconData && !_root.isLoading
+            visible: iconData
             size: _root.pixelSize * 1.42
         }
     }

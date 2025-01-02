@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 
 QtObject{
@@ -20,16 +22,16 @@ QtObject{
     property PaletteCommon common: PaletteCommon{}
 
     property PaletteBasic defaultNeutral: PaletteBasic{
-        main: text.primary
-        contrastText: background.main
+        main: root.text.primary
+        contrastText: root.background.main
     }
 
     property PaletteBasic passive: PaletteBasic{
         darker: root.main.transparent.p32
         dark: root.main.transparent.p16
-        main: text.primary
+        main: root.text.primary
         light: root.main.transparent.p16
         lighter: root.main.transparent.p32
-        contrastText: text.secondary
+        contrastText: root.text.secondary
     }
 }

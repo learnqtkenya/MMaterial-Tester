@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls.Material
 
@@ -5,6 +7,8 @@ import MMaterial
 
 Checkable {
     id: _root
+
+    required property int index
 
     property SidebarData sidebarData
 
@@ -43,7 +47,7 @@ Checkable {
                 _contextMenu.open();
         }
         else
-            selectItem();
+            selectItem(-1);
     }
 
     states: [
@@ -166,6 +170,8 @@ Checkable {
                 ScrollIndicator.vertical: ScrollIndicator {}
 
                 delegate: ListItem {
+                    required property int index
+
                     property var modelItem: _root.model[index]
 
                     text: modelItem.text

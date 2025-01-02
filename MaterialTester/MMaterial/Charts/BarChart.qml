@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 
 import MMaterial as MMaterial
@@ -24,16 +26,17 @@ Item {
     component VerticalBars: ListView {
         id: verticalDelRoot
 
-        readonly property Charts.ChartElement chartElement: element
+        required property Charts.ChartElement element
+        required property int index
+
         property real delegateWidth: (verticalDelRoot.width - (verticalDelRoot.count - 1) * verticalDelRoot.spacing) / verticalDelRoot.count
         property real contentX: 0
-        property int elementIndex: index
 
         spacing: MMaterial.Size.pixel6
         height: chartList.height
         width: d.verticalBarWidth
         orientation: ListView.Horizontal
-        model: verticalDelRoot.chartElement
+        model: verticalDelRoot.element
 
         onCountChanged: peakValueTimer.restart()
 
@@ -59,13 +62,17 @@ Item {
         delegate: Item {
             id: subChart
 
-            property double value: barValue
-            readonly property real prefMaxHeight: chartList.height * (subChart.value / d.peakValue)
+            required property double barValue
+            required property color barColor
+            required property string barName
+            required property int index
+
+            readonly property real prefMaxHeight: chartList.height * (subChart.barValue / d.peakValue)
 
             height: verticalDelRoot.height
             width: verticalDelRoot.delegateWidth
 
-            onValueChanged: peakValueTimer.restart()
+            onBarValueChanged: peakValueTimer.restart()
 
             Rectangle {
                 id: verticalBar
@@ -75,11 +82,11 @@ Item {
                 height: subChart.prefMaxHeight
                 anchors.bottom: parent.bottom
 
-                color: barColor ?? MMaterial.Theme.getChartPatternColor(index, d.defaultColorPatterns[verticalDelRoot.elementIndex % d.defaultColorPatterns.length])
+                color: subChart.barColor ?? MMaterial.Theme.getChartPatternColor(subChart.index, d.defaultColorPatterns[verticalDelRoot.index % d.defaultColorPatterns.length])
 
                 border {
                     width: delHover.hovered ? MMaterial.Size.pixel1 * 2 : 0
-                    color: Qt.lighter(subChart.color)
+                    color: Qt.lighter(subChart.barColor)
                 }
 
                 Behavior on border.width { NumberAnimation { duration: 50; easing.type: Easing.OutQuad } }
@@ -99,7 +106,7 @@ Item {
                         if (delHover.hovered) {
                             tooltip.x = verticalDelRoot.contentX + subChart.x + subChart.width + MMaterial.Size.pixel8;
                             tooltip.y = verticalBar.y + verticalBar.height / 2 - tooltip.height / 2;
-                            tooltip.show("<b>" + barName + "</b>: " + subChart.value, 0);
+                            tooltip.show("<b>" + subChart.barName + "</b>: " + subChart.barValue, 0);
                             tooltipCloseTimer.restart();
                         }
                     }
@@ -112,15 +119,17 @@ Item {
     component HorizontalBars: ListView {
         id: horizontalDelRoot
 
-        readonly property Charts.ChartElement chartElement: element
+        required property Charts.ChartElement element
+        required property int index
+
         property real delegateHeight: (horizontalDelRoot.height - (horizontalDelRoot.count - 1) * horizontalDelRoot.spacing) / horizontalDelRoot.count
         property real contentY: 0
-        property int elementIndex: index
+
 
         spacing: MMaterial.Size.pixel6
         height: d.horizontalBarHeight
         width: chartList.width
-        model: horizontalDelRoot.chartElement
+        model: horizontalDelRoot.element
 
         onCountChanged: peakValueTimer.restart()
 
@@ -147,22 +156,26 @@ Item {
         delegate: Rectangle {
             id: horSubChart
 
-            property real value: barValue
-            readonly property real prefMaxWidth: chartList.width * (horSubChart.value / d.peakValue)
+            required property double barValue
+            required property color barColor
+            required property string barName
+            required property int index
+
+            readonly property real prefMaxWidth: chartList.width * (horSubChart.barValue / d.peakValue)
 
             radius: MMaterial.Size.pixel4
 
             height: horizontalDelRoot.delegateHeight
             width: horSubChart.prefMaxWidth
 
-            color: barColor ?? MMaterial.Theme.getChartPatternColor(index, d.defaultColorPatterns[horizontalDelRoot.elementIndex % d.defaultColorPatterns.length])
+            color: barColor ?? MMaterial.Theme.getChartPatternColor(horSubChart.index, d.defaultColorPatterns[horizontalDelRoot.index % d.defaultColorPatterns.length])
 
             border {
                 width: horDelHover.hovered ? MMaterial.Size.pixel1 * 2 : 0
                 color: Qt.lighter(horSubChart.color)
             }
 
-            onValueChanged: peakValueTimer.restart()
+            onBarValueChanged: peakValueTimer.restart()
 
             Behavior on border.width { NumberAnimation { duration: 50; easing.type: Easing.OutQuad } }
             NumberAnimation on width { id: widthInitAnimation; running: true; from: 0; to: horSubChart.prefMaxWidth; duration: 400; easing.type: Easing.InOutQuad }
@@ -181,7 +194,7 @@ Item {
                     if (horDelHover.hovered) {
                         tooltip.x = horSubChart.x + horSubChart.width + MMaterial.Size.pixel8;
                         tooltip.y = horizontalDelRoot.contentY + horizontalDelRoot.y + horSubChart.y + horSubChart.height / 2 - tooltip.height / 2;
-                        tooltip.show("<b>" + barName + "</b>: " + horSubChart.value, 0);
+                        tooltip.show("<b>" + horSubChart.barName + "</b>: " + horSubChart.barValue, 0);
                         tooltipCloseTimer.restart();
                     }
                 }
@@ -209,7 +222,7 @@ Item {
     QtObject {
         id: d
 
-        property var valueListModel: Charts.ChartFunctions.generateSpreadNumbers(0, peakValue, Math.ceil(root.height / (MMaterial.Size.scale * 100)))
+        property list<string> valueListModel: Charts.ChartFunctions.generateSpreadNumbers(0, peakValue, Math.ceil(root.height / (MMaterial.Size.scale * 100)))
         property real peakValue: root.chartModel.getMaxValue()
         readonly property real verticalBarWidth: root.autoResize ? (chartList.width - (chartList.count - 1) * chartList.spacing) / chartList.count : root.barContainerWidth
         readonly property real horizontalBarHeight: root.autoResize ? (chartList.height - (chartList.count - 1) * chartList.spacing) / chartList.count : root.barContainerWidth
@@ -242,6 +255,8 @@ Item {
         onModelChanged: valueListOpacityAnimation.restart()
 
         delegate: MMaterial.Caption {
+            required property string modelData
+
             height: valueList.delHeight
             width: valueList.delWidth
             horizontalAlignment: chartList.isHorizontalChart ? Qt.AlignRight : Qt.AlignLeft
@@ -284,6 +299,8 @@ Item {
         }
 
         delegate: MMaterial.Caption {
+            required property string name
+
             height: nameList.delHeight
             width: nameList.delWidth
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -381,12 +398,17 @@ Item {
             delegate: Loader {
                 id: del
 
+                required property Charts.ChartElement element
+                required property int index
+
                 sourceComponent: chartList.isHorizontalChart ? verticalComponent : horizontalComponent
 
                 Component {
                     id: verticalComponent
 
                     VerticalBars {
+                        index: del.index
+                        element: del.element
                         contentX: del.x + chartList.contentX
                     }
                 }
@@ -395,6 +417,8 @@ Item {
                     id: horizontalComponent
 
                     HorizontalBars {
+                        index: del.index
+                        element: del.element
                         contentY: del.y - (chartList.verticalLayoutDirection == ListView.BottomToTop ? chartList.contentY : -chartList.contentY)
                     }
                 }

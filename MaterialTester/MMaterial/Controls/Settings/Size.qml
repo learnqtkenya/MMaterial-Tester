@@ -9,6 +9,7 @@ Item {
     readonly property real pixel1: 1 * scale
     readonly property real pixel2: 2 * scale
     readonly property real pixel4: 4 * scale
+    readonly property real pixel5: 5 * scale
     readonly property real pixel6: 6 * scale
     readonly property real pixel8: 8 * scale
     readonly property real pixel10: 10 * scale

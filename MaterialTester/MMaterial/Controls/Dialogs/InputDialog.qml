@@ -44,7 +44,7 @@ T.Dialog {
 
     padding: 0
     spacing: 0
-    closePolicy: MMaterial.Dialog.NoAutoClose
+    closePolicy: Dialog.NoAutoClose
 
     background: Rectangle {
         radius: MMaterial.Size.pixel16

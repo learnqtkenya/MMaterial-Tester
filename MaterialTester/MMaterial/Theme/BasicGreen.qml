@@ -1,10 +1,6 @@
 pragma Singleton
 
-import QtQuick
-
-import MMaterial as MMaterial
-
-MMaterial.PaletteBasic{
+PaletteBasic{
     lighter: "#C8FACD"
     light: "#5BE584"
     main: "#00AB55"

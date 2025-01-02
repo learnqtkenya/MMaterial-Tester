@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
@@ -30,6 +32,10 @@ Item {
 
     component VerticalBar: Item {
         id: verticalBarContainer
+
+        required property double barValue
+        required property bool barSelected
+        required property int index
 
         property alias barOpacity: verticalBar.opacity
 
@@ -78,7 +84,7 @@ Item {
             }
 
             border {
-                width: delHover.hovered || barSelected ? MMaterial.Size.pixel1 * 2 : 0
+                width: delHover.hovered || verticalBarContainer.barSelected ? MMaterial.Size.pixel1 * 2 : 0
                 color: Qt.lighter(verticalBar.color)
             }
 
@@ -92,7 +98,7 @@ Item {
             TapHandler {
                 onTapped: {
                     d.autoscroll = false;
-                    barSelected = !barSelected;
+                    verticalBarContainer.barSelected = !verticalBarContainer.barSelected;
                 }
             }
 
@@ -114,7 +120,7 @@ Item {
                 rightPadding: MMaterial.Size.pixel12
 
                 delay: 0
-                visible: delHover.hovered || (barSelected && verticalBarContainer.trueVisible)
+                visible: delHover.hovered || (verticalBarContainer.barSelected && verticalBarContainer.trueVisible)
 
                 enter: Transition {
                     SequentialAnimation {
@@ -181,7 +187,7 @@ Item {
                         Item { Layout.fillHeight: true }
 
                         MMaterial.H4 {
-                            property double percentage: Charts.ChartFunctions.calculateGrowthPercentage(verticalBarContainer.previousBarValue, barValue)
+                            property double percentage: Charts.ChartFunctions.calculateGrowthPercentage(verticalBarContainer.previousBarValue, verticalBarContainer.barValue)
 
                             Layout.fillWidth: true
                             horizontalAlignment: Qt.AlignRight
@@ -198,7 +204,7 @@ Item {
                             horizontalAlignment: Qt.AlignRight
                             elide: Text.ElideNone
                             wrapMode: Text.NoWrap
-                            text: barValue.toString()
+                            text: verticalBarContainer.barValue.toString()
                             color: tooltip.accent.darker
                             opacity: 0.72
                             font.pixelSize: MMaterial.Size.pixel12
@@ -255,6 +261,8 @@ Item {
         onModelChanged: valueListOpacityAnimation.restart()
 
         delegate: MMaterial.Caption {
+            required property string modelData
+
             width: Math.min(70 * MMaterial.Size.scale, contentWidth)
             height: 0
             horizontalAlignment: Qt.AlignRight

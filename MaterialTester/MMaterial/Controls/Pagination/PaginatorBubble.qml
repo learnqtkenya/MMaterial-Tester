@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls.Material
 
@@ -26,13 +28,15 @@ ListView {
     delegate: Item {
         id: _delegateItem
 
+        required property int index
+
         height: _root.height
         width: height
 
         Rectangle {
             id: _dot
 
-            property bool checked: _root.currentIndex === index
+            property bool checked: _root.currentIndex === _delegateItem.index
 
             anchors.centerIn: _delegateItem
 
@@ -86,7 +90,7 @@ ListView {
 
             cursorShape: Qt.PointingHandCursor
 
-            onClicked: _root.indexView.currentIndex = index;
+            onClicked: _root.indexView.currentIndex = _delegateItem.index;
         }
     }
 }

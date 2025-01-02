@@ -1,6 +1,6 @@
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.Controls.Settings as Settings
 
 BaseText {
     elide: Text.ElideRight
@@ -8,6 +8,6 @@ BaseText {
 
     font {
         family: PublicSans.extraBold
-        pixelSize: MMaterial.Size.pixel64
+        pixelSize: Settings.Size.pixel64
     }
 }

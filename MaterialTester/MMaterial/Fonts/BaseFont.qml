@@ -1,6 +1,8 @@
-import QtQuick 2.10
+import QtQuick
 
 Item {
+    id: root
+
     property string fontName
 
     readonly property string extraBold: extraBoldFont.name
@@ -13,11 +15,11 @@ Item {
 
     readonly property string basePath: "./Families/" + fontName + "/" + fontName
 
-    FontLoader{ id: extraBoldFont; source: basePath + "-ExtraBold.ttf" }
-    FontLoader{ id: boldFont; source: basePath + "-Bold.ttf"; }
-    FontLoader{ id: semiBoldFont; source: basePath + "-SemiBold.ttf" }
-    FontLoader{ id: mediumFont; source: basePath + "-Medium.ttf" }
-    FontLoader{ id: regularFont; source: basePath + "-Regular.ttf" }
-    FontLoader{ id: lightFont; source: basePath + "-Light.ttf" }
-    FontLoader{ id: extraLightFont; source: basePath + "-ExtraLight.ttf" }
+    FontLoader{ id: extraBoldFont; source: root.basePath + "-ExtraBold.ttf" }
+    FontLoader{ id: boldFont; source: root.basePath + "-Bold.ttf"; }
+    FontLoader{ id: semiBoldFont; source: root.basePath + "-SemiBold.ttf" }
+    FontLoader{ id: mediumFont; source: root.basePath + "-Medium.ttf" }
+    FontLoader{ id: regularFont; source: root.basePath + "-Regular.ttf" }
+    FontLoader{ id: lightFont; source: root.basePath + "-Light.ttf" }
+    FontLoader{ id: extraLightFont; source: root.basePath + "-ExtraLight.ttf" }
 }

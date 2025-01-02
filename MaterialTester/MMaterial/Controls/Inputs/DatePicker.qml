@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
@@ -140,6 +142,9 @@ Dialogs.Dialog {
                             delegate: Rectangle {
                                 id: yearDelegate
 
+                                required property int modelData
+                                required property int index
+
                                 readonly property int year: modelData
                                 readonly property bool selected: yearList.currentIndex == index
 
@@ -172,8 +177,8 @@ Dialogs.Dialog {
                                     hoverEnabled: true
 
                                     onClicked: {
-                                        calendar.currentYear = year;
-                                        yearList.currentIndex = index;
+                                        calendar.currentYear = yearDelegate.year;
+                                        yearList.currentIndex = yearDelegate.index;
                                         yearSelectionPopup.close();
                                     }
                                 }

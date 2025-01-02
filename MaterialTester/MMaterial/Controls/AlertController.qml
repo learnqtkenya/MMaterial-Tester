@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls.Material
 
@@ -64,6 +66,8 @@ Popup {
         delegate: Alert {
             id: _alertComponent
 
+            required property int index
+
             property var item: listModel.get(index)
             property int closeTime: item ? item.closeTime : 0
 
@@ -90,12 +94,12 @@ Popup {
             Timer {
                 id: _timer
 
-                running: visible
+                running: _root.visible
                 interval: _alertComponent.closeTime
 
                 onTriggered: {
-                    if(index >= 0)
-                        listModel.remove(index)
+                    if(_alertComponent.index >= 0)
+                        listModel.remove(_alertComponent.index)
                 }
             }
         }

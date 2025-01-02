@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 
 import MMaterial
@@ -22,8 +24,8 @@ ListView {
             Rectangle {
                 anchors.bottom:_highlight.bottom
 
-                height: orientation == ListView.Horizontal ? Size.pixel1 * 2 : _highlight.height
-                width: orientation == ListView.Horizontal ? _highlight.width : Size.pixel1 * 2
+                height: _root.orientation == ListView.Horizontal ? Size.pixel1 * 2 : _highlight.height
+                width: _root.orientation == ListView.Horizontal ? _highlight.width : Size.pixel1 * 2
 
                 color: Theme.primary.main
             }

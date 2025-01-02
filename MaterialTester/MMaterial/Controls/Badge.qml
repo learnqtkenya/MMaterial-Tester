@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick 
 
 import MMaterial
@@ -65,7 +67,7 @@ Item {
         }
 
         asynchronous: true
-        active: quantity > 0
+        active: _root.quantity > 0
     }
 
     Component {

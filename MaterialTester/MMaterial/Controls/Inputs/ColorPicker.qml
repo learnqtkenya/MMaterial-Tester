@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls.Material
@@ -26,7 +28,7 @@ Dialogs.Dialog {
         property alias pickerPreview: pickerPreview
 
         function stopPicking() {
-            pickingWindow.close()
+            root.pickingWindow.close()
             pickingAction.trigger()
         }
 
@@ -54,7 +56,7 @@ Dialogs.Dialog {
 
             Keys.onEscapePressed: {
                 internal.revertPicking()
-                pickingWindow.stopPicking()
+                root.pickingWindow.stopPicking()
             }
         }
 
@@ -72,7 +74,7 @@ Dialogs.Dialog {
             }
 
             onClicked: {
-                pickingWindow.stopPicking()
+                root.pickingWindow.stopPicking()
                 root.addToHistory(internal.color)
             }
         }
@@ -90,7 +92,6 @@ Dialogs.Dialog {
     onAccepted: () => {
         root.selectedColor = root.currentColor
         root.addToHistory(root.currentColor)
-        root.selected()
         root.close()
     }
 
@@ -291,7 +292,7 @@ Dialogs.Dialog {
                 Layout.topMargin: root.padding / 2
                 Layout.fillWidth: true
 
-                model: MMaterial.ColorHistoryModel
+                model: Dialogs.ColorHistoryModel
 
                 parentBackgroundColor: root.background.color
 

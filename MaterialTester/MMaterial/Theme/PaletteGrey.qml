@@ -1,6 +1,8 @@
 import QtQuick
 
 QtObject{
+    id: root
+
     required property color p100
     required property color p200
     required property color p300
@@ -12,6 +14,6 @@ QtObject{
     required property color p900
 
     property PaletteTransparent transparent: PaletteTransparent{
-        mainColor: p500
+        mainColor: root.p500
     }
 }

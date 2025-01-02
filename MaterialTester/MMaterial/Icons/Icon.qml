@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 
@@ -10,7 +12,7 @@ Loader {
     readonly property bool containsMouse: _root.item?.containsMouse ?? false
 
     property real size: Size.pixel30
-    property string color: ""
+    property string color
 
     property bool interactive: false
     property bool hoverable: true

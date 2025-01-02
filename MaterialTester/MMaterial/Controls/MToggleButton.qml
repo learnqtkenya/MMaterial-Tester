@@ -1,5 +1,4 @@
 import QtQuick 
-import QtQuick.Layouts
 
 import MMaterial as MMaterial
 
@@ -61,7 +60,6 @@ Rectangle {
 
         hoverEnabled: true
         cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
-        enabled: !_root.isLoading
 
         onClicked: {
             _root.clicked();

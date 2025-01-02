@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 
 import MMaterial as MMaterial
@@ -31,6 +33,8 @@ GridView {
     delegate: Item {
         id: delegateRoot
 
+        required property int index
+
         height: root.cellHeight
         width: root.cellWidth
 
@@ -42,7 +46,7 @@ GridView {
             height: root.cellHeight - MMaterial.Size.pixel4
             width: root.cellWidth - MMaterial.Size.pixel4
             radius: height / 2
-            color: model.selectionColor
+            color: root.model.selectionColor
             scale: mouseArea.containsMouse ? 1.1 : 1
             opacity: mouseArea.pressed ? 0.6 : 1
 
@@ -63,8 +67,8 @@ GridView {
                 onDoubleClicked: root.doubleClicked(circle.color)
 
                 onClicked: (_mouse) => {
-                               root.currentIndex = index
-                               root.clicked(circle.color, index, _mouse)
+                               root.currentIndex = delegateRoot.index
+                               root.clicked(circle.color, delegateRoot.index, _mouse)
                            }
             }
         }

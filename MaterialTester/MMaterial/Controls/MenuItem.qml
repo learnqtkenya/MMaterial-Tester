@@ -43,7 +43,7 @@ T.MenuItem {
         RowLayout {
             anchors {
                 fill: contentItemRoot
-                rightMargin: indicator.visible || arrow.visible ? control.icon.width + control.padding * 2 : 0
+                rightMargin: control.indicator.visible || control.arrow.visible ? control.icon.width + control.padding * 2 : 0
             }
             spacing: control.spacing
 

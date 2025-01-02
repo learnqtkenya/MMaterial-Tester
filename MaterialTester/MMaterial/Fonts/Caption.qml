@@ -1,12 +1,12 @@
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.Controls.Settings as Settings
 
 BaseText {
     wrapMode: Text.WordWrap
 
     font {
         family: PublicSans.regular
-        pixelSize: MMaterial.Size.pixel12
+        pixelSize: Settings.Size.pixel12
     }
 }

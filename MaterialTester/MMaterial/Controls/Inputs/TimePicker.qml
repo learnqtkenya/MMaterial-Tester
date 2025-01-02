@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 
@@ -98,11 +100,6 @@ Dialogs.Dialog {
     }
 
     signal timeAccepted(date : var)
-
-    function setTime(date) {
-        d.hourToAngle(time.getHours());
-        d.minuteToAngle(time.getMinutes());
-    }
 
     function formatTime(date) {
         let hours = date.getHours();
@@ -338,6 +335,10 @@ Dialogs.Dialog {
 
                 delegate: MMaterial.B1 {
                     id: numberDelegate
+
+                    required property var modelData
+                    required property int index
+
                     text: numberRepeater.showHours ? modelData.hour : modelData.minute
                     opacity: numberRepeater.delegateOpacity
                     color: (numberRepeater.showHours ? d.currentHour === modelData.hour : d.currentMinute === modelData.minute) && bigDot.isEnlarged
@@ -351,7 +352,7 @@ Dialogs.Dialog {
                         cursorShape: Qt.PointingHandCursor
                         onTapped: {
                             if (numberRepeater.showHours)
-                                secondHandAnimation.to = d.hourToAngle(modelData.hour);
+                                secondHandAnimation.to = d.hourToAngle(numberDelegate.modelData.hour);
                             else
                                 secondHandAnimation.to = d.minuteToAngle(modelData.minute);
 

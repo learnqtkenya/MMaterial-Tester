@@ -90,7 +90,7 @@ target_include_directories(appMaterialTester PUBLIC
 )
 
 target_link_libraries(appMaterialTester
-    PRIVATE Qt6::Quick Qt::Gui
+    PRIVATE Qt6::Quick Qt::Gui MMaterialLibplugin
 )
 
 set_target_properties(appMaterialTester PROPERTIES
@@ -121,3 +121,4 @@ else()
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
 endif()
+

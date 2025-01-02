@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
@@ -138,10 +140,10 @@ ColumnLayout {
         }
 
         spacing: Size.pixel1 * 2
-        width: calendarRoot.width
         month: Calendar.December
         year: 2024
         locale: Qt.locale("en_US")
+        implicitWidth: calendarRoot.width
 
         Layout.fillWidth: true
         Layout.topMargin: -Size.pixel10

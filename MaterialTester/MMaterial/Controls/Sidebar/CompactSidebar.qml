@@ -1,5 +1,6 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
-import QtQuick.Effects
 import QtQuick.Layouts
 
 import MMaterial

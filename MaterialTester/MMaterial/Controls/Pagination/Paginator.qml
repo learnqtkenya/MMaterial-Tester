@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls.Material
@@ -33,10 +35,12 @@ Item {
         type: MFabButton.Type.Text
         enabled: _listView.currentIndex > 0
         accent: Theme.defaultNeutral
+        opacity: enabled ? 1 : 0.5
 
         leftIcon {
-            Layout.rightMargin: 1
+            Layout.rightMargin: 2 * scale
             iconData: Icons.light.chevronLeft
+            scale: 1.3
         }
 
         onClicked: _root.indexView.decrementCurrentIndex();
@@ -62,6 +66,10 @@ Item {
         onCurrentIndexChanged: positionViewAtIndex(currentIndex, ListView.Center);
 
         delegate: MFabButton {
+
+            required property var modelData
+            required property int index
+
             height: _root.height
             width: height
 
@@ -97,10 +105,12 @@ Item {
         accent: Theme.defaultNeutral
         type: MFabButton.Type.Text
         enabled: _listView.currentIndex < _listView.count-1
+        opacity: enabled ? 1 : 0.5
 
         leftIcon {
-            Layout.leftMargin: 1
+            Layout.leftMargin: 2 * scale
             iconData: Icons.light.chevronRight
+            scale: 1.3
         }
 
         onClicked: _root.indexView.incrementCurrentIndex();

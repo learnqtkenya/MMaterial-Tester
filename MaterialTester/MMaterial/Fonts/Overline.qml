@@ -1,6 +1,6 @@
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.Controls.Settings as Settings
 
 BaseText {
     lineHeight: 1.5
@@ -8,7 +8,7 @@ BaseText {
 
     font {
         family: PublicSans.bold
-        pixelSize: MMaterial.Size.pixel12
+        pixelSize: Settings.Size.pixel12
         capitalization: Font.AllUppercase
         bold: true
     }

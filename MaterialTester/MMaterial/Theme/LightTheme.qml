@@ -1,14 +1,12 @@
 pragma Singleton
 
-import MMaterial as MMaterial
-
-MMaterial.ThemeBase{
+ThemeBase{
     objectName: "Light Theme"
 
-    primary: MMaterial.BasicGreen
-    secondary: MMaterial.BasicBlue
+    primary: BasicGreen
+    secondary: BasicBlue
 
-    info: MMaterial.PaletteBasic{
+    info: PaletteBasic{
         lighter: "#CAFDF5"
         light: "#61F3F3"
         main: "#00B8D9"
@@ -17,7 +15,7 @@ MMaterial.ThemeBase{
         contrastText: "#FFFFFF"
     }
 
-    success: MMaterial.PaletteBasic{
+    success: PaletteBasic{
         lighter: "#D8FBDE"
         light: "#86E8AB"
         main: "#36B37E"
@@ -26,7 +24,7 @@ MMaterial.ThemeBase{
         contrastText: "#FFFFFF"
     }
 
-    warning: MMaterial.PaletteBasic{
+    warning: PaletteBasic{
         lighter: "#FFF5CC"
         light: "#FFD666"
         main: "#FFAB00"
@@ -35,7 +33,7 @@ MMaterial.ThemeBase{
         contrastText: "#212B36"
     }
 
-    error: MMaterial.PaletteBasic{
+    error: PaletteBasic{
         lighter: "#FFE9D5"
         light: "#FFAC82"
         main: "#FF5630"
@@ -44,26 +42,26 @@ MMaterial.ThemeBase{
         contrastText: "#FFFFFF"
     }
 
-    social: MMaterial.PaletteSocial{
+    social: PaletteSocial{
         facebook: "#1877F2"
         twitter: "#00AAEC"
         instagram: "#E02D69"
         linkedin: "#007EBB"
     }
 
-    text: MMaterial.PaletteText{
+    text: PaletteText{
         primary: "#212B36"
         secondary: "#637381"
         disabled: "#919EAB"
     }
 
-    background: MMaterial.PaletteBackground{
+    background: PaletteBackground{
         main: "#FFFFFF"
         paper: "#fafafa"
         neutral: "#F4F6F8"
     }
 
-    action: MMaterial.PaletteAction{
+    action: PaletteAction{
         active: "#637381"
         hover: Qt.rgba(0, 0, 0, 0.03)
         selected: Qt.rgba(0, 0, 0, 0.06)
@@ -72,12 +70,12 @@ MMaterial.ThemeBase{
         focus: Qt.rgba(0, 0, 0, 0.14)
     }
 
-    other: MMaterial.PaletteOther{
+    other: PaletteOther{
         divider: "#919EAB"
         outline: Qt.rgba(145, 158, 171, 0.32)
     }
 
-    main: MMaterial.PaletteGrey{
+    main: PaletteGrey{
         p100: "#F9FAFB"
         p200: "#F4F6F8"
         p300: "#DFE3E8"

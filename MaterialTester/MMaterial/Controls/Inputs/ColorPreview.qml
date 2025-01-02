@@ -33,7 +33,7 @@ Item {
             radius: root.radius
 
             border {
-                width: utils.isSimilar(root.parentBackgroundColor, colorHandler.color) ? 1 : 0
+                width: utils.isSimilar(root.parentBackgroundColor, root.colorHandler.color) ? 1 : 0
                 color: MMaterial.Theme.other.divider
             }
         }

@@ -1,9 +1,9 @@
 import QtQuick
-import QtQuick.Controls.Material
 import QtQuick.Layouts
 
 import MMaterial
 import MaterialTester
+import MMaterial.Theme
 
 Rectangle {
     id: _root
