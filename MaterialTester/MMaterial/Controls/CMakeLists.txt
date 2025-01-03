@@ -39,13 +39,11 @@ list(APPEND CONTROLS_QML_FILES
 
 qt_add_qml_module(ControlsLib
     URI MMaterial.Controls
-    RESOURCE_PREFIX /
     VERSION 1.0
     STATIC
 
     IMPORTS
         MMaterial.Controls.Inputs
-        MMaterial.Controls.Settings
 
     OPTIONAL_IMPORTS
         MMaterial.Controls.Dialogs
@@ -56,12 +54,11 @@ qt_add_qml_module(ControlsLib
 )
 
 set_target_properties(ControlsLib PROPERTIES AUTOMOC ON)
-target_link_libraries(ControlsLib PRIVATE Qt6::Quick DialogsLibplugin InputsLibplugin PaginationLibplugin SettingsLibplugin SidebarLibplugin)
+target_link_libraries(ControlsLib PRIVATE Qt6::Quick DialogsLibplugin InputsLibplugin PaginationLibplugin SidebarLibplugin)
 
 target_compile_definitions(ControlsLib PRIVATE QT_QUICKCONTROLS_MATERIAL_STYLE)
 
 add_subdirectory(Dialogs)
 add_subdirectory(Inputs)
 add_subdirectory(Pagination)
-add_subdirectory(Settings)
 add_subdirectory(Sidebar)

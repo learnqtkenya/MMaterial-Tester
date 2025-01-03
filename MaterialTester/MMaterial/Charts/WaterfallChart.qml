@@ -4,8 +4,10 @@ import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 import MMaterial.Charts as Charts
+import MMaterial.Controls as Controls
+import MMaterial.Media as Media
 
 Item {
     id: root
@@ -14,12 +16,12 @@ Item {
     property alias chartList: chartList
 
     property bool showLockButton: true
-    property real spacing: MMaterial.Size.pixel12
-    property real barWidth: MMaterial.Size.pixel6
-    property real fontSize: MMaterial.Size.pixel12
+    property real spacing: UI.Size.pixel12
+    property real barWidth: UI.Size.pixel6
+    property real fontSize: UI.Size.pixel12
 
-    property MMaterial.PaletteBasic positiveAccent: MMaterial.Theme.success
-    property MMaterial.PaletteBasic negativeAccent: MMaterial.Theme.error
+	property UI.PaletteBasic positiveAccent: UI.Theme.success
+	property UI.PaletteBasic negativeAccent: UI.Theme.error
 
     property Charts.ChartElement chartModel: Charts.ChartElement {
         bars: [
@@ -64,7 +66,7 @@ Item {
 
             width: verticalBarContainer.width - root.spacing / 2
             height: verticalBar.prefHeight
-            radius: MMaterial.Size.pixel12
+            radius: UI.Size.pixel12
             color: verticalBar.isNegative ? root.negativeAccent.main : root.positiveAccent.main
 
             anchors {
@@ -84,7 +86,7 @@ Item {
             }
 
             border {
-                width: delHover.hovered || verticalBarContainer.barSelected ? MMaterial.Size.pixel1 * 2 : 0
+                width: delHover.hovered || verticalBarContainer.barSelected ? UI.Size.pixel1 * 2 : 0
                 color: Qt.lighter(verticalBar.color)
             }
 
@@ -102,22 +104,22 @@ Item {
                 }
             }
 
-            MMaterial.MToolTip {
+			Controls.MToolTip {
                 id: tooltip
 
-                property MMaterial.PaletteBasic accent: verticalBar.isNegative ? root.negativeAccent : root.positiveAccent
+                property UI.PaletteBasic accent: verticalBar.isNegative ? root.negativeAccent : root.positiveAccent
 
                 x: verticalBar.x
                 closePolicy: Popup.NoAutoClose
 
-                height: 87 * MMaterial.Size.scale
-                width: 210 * MMaterial.Size.scale
+                height: 87 * UI.Size.scale
+                width: 210 * UI.Size.scale
 
                 margins: 0
-                topPadding: MMaterial.Size.pixel12
-                bottomPadding: MMaterial.Size.pixel12
-                leftPadding: MMaterial.Size.pixel12
-                rightPadding: MMaterial.Size.pixel12
+                topPadding: UI.Size.pixel12
+                bottomPadding: UI.Size.pixel12
+                leftPadding: UI.Size.pixel12
+                rightPadding: UI.Size.pixel12
 
                 delay: 0
                 visible: delHover.hovered || (verticalBarContainer.barSelected && verticalBarContainer.trueVisible)
@@ -128,7 +130,7 @@ Item {
 
                         ParallelAnimation {
                             NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; duration: 340 }
-                            NumberAnimation { property: "width"; from: 0.0; to: 210 * MMaterial.Size.scale; easing.type: Easing.OutQuad; duration: 340 }
+                            NumberAnimation { property: "width"; from: 0.0; to: 210 * UI.Size.scale; easing.type: Easing.OutQuad; duration: 340 }
                             SequentialAnimation {
                                 PauseAnimation { duration: 150 }
                                 NumberAnimation { property: "contentItem.textLayout.opacity"; from: 0.0; to: 1.0; duration: 190 }
@@ -147,13 +149,13 @@ Item {
                 }
 
                 background: Rectangle {
-                    radius: MMaterial.Size.pixel20
+                    radius: UI.Size.pixel20
                     color: tooltip.accent.lighter
                     opacity: 0.8
                 }
 
                 contentItem:  RowLayout {
-                    spacing: MMaterial.Size.pixel24
+                    spacing: UI.Size.pixel24
 
                     property alias textLayout: textLayout
 
@@ -166,14 +168,14 @@ Item {
                         Layout.preferredWidth: height
 
                         color: Qt.rgba(tooltip.accent.main.r, tooltip.accent.main.g, tooltip.accent.main.b, 0.18)
-                        radius: MMaterial.Size.pixel16
+                        radius: UI.Size.pixel16
 
-                        MMaterial.Icon {
+                        Media.Icon {
                             anchors.centerIn: tooltipIconContainer
 
-                            iconData: verticalBar.isNegative ? MMaterial.Icons.light.trendingDown : MMaterial.Icons.light.trendingUp
-                            color: tooltip.accent.dark
-                            size: MMaterial.Size.pixel36
+                            iconData: verticalBar.isNegative ? Media.Icons.light.trendingDown : Media.Icons.light.trendingUp
+							color: tooltip.accent.dark.toString()
+                            size: UI.Size.pixel36
                         }
                     }
 
@@ -186,7 +188,7 @@ Item {
 
                         Item { Layout.fillHeight: true }
 
-                        MMaterial.H4 {
+						UI.H4 {
                             property double percentage: Charts.ChartFunctions.calculateGrowthPercentage(verticalBarContainer.previousBarValue, verticalBarContainer.barValue)
 
                             Layout.fillWidth: true
@@ -195,11 +197,11 @@ Item {
                             wrapMode: Text.NoWrap
                             text: (verticalBar.isNegative ? "" : "+") + percentage.toString() + "%"
                             color: tooltip.accent.darker
-                            font.family: MMaterial.PublicSans.extraBold
+                            font.family: UI.PublicSans.extraBold
                             font.bold: true
                         }
 
-                        MMaterial.Subtitle2 {
+						UI.Subtitle2 {
                             Layout.fillWidth: true
                             horizontalAlignment: Qt.AlignRight
                             elide: Text.ElideNone
@@ -207,7 +209,7 @@ Item {
                             text: verticalBarContainer.barValue.toString()
                             color: tooltip.accent.darker
                             opacity: 0.72
-                            font.pixelSize: MMaterial.Size.pixel12
+                            font.pixelSize: UI.Size.pixel12
                         }
 
                         Item { Layout.fillHeight: true }
@@ -226,7 +228,7 @@ Item {
     QtObject {
         id: d
 
-        readonly property var valueListModel: Charts.ChartFunctions.generateAdaptiveCloseRangeNumbers(troughValue, peakValue, Math.ceil(root.height / (MMaterial.Size.scale * 100)))
+        readonly property var valueListModel: Charts.ChartFunctions.generateAdaptiveCloseRangeNumbers(troughValue, peakValue, Math.ceil(root.height / (UI.Size.scale * 100)))
         property bool autoscroll: true
         property real oldContentX: chartList.contentX
 
@@ -260,15 +262,15 @@ Item {
 
         onModelChanged: valueListOpacityAnimation.restart()
 
-        delegate: MMaterial.Caption {
+		delegate: UI.Caption {
             required property string modelData
 
-            width: Math.min(70 * MMaterial.Size.scale, contentWidth)
+            width: Math.min(70 * UI.Size.scale, contentWidth)
             height: 0
             horizontalAlignment: Qt.AlignRight
             verticalAlignment: Qt.AlignVCenter
             text: Number(modelData).toLocaleString(Qt.locale(), 'f', 0)
-            color: MMaterial.Theme.text.disabled
+            color: UI.Theme.text.disabled
             font.pixelSize: root.fontSize
 
             onWidthChanged: if (width > valueList.width) valueList.width = width
@@ -286,14 +288,14 @@ Item {
     Rectangle {
         id: rootContainer
 
-        radius: MMaterial.Size.pixel12
+        radius: UI.Size.pixel12
         color: "transparent"
 
         border.width: 1
-        border.color: MMaterial.Theme.action.focus
+        border.color: UI.Theme.action.focus
 
         anchors {
-            left: valueList.right; leftMargin: MMaterial.Size.pixel8
+            left: valueList.right; leftMargin: UI.Size.pixel8
             top: root.top
             bottom: root.bottom
             right: root.right
@@ -312,7 +314,7 @@ Item {
 
             anchors {
                 fill: rootContainer
-                margins: MMaterial.Size.pixel18
+                margins: UI.Size.pixel18
             }
 
             add: Transition {
@@ -354,7 +356,7 @@ Item {
                 previousBarValue: index == 0 ? 0 : root.chartModel.at(index - 1).value
             }
 
-            ScrollBar.horizontal: MMaterial.ScrollBar {
+			ScrollBar.horizontal: Controls.ScrollBar {
                 id: horizontalScrollBar
 
                 parent: rootContainer
@@ -375,13 +377,13 @@ Item {
             }
         }
 
-        MMaterial.MToggleButton {
-            accent: MMaterial.Theme.primary
+		Controls.MToggleButton {
+            accent: UI.Theme.primary
             checked: d.autoscroll
             customCheckImplementation: true
-            size: MMaterial.Size.Grade.S
+            size: UI.Size.Grade.S
             visible: root.showLockButton
-            icon.iconData: checked ? MMaterial.Icons.light.lock : MMaterial.Icons.light.lockOpen
+            icon.iconData: checked ? Media.Icons.light.lock : Media.Icons.light.lockOpen
 
             anchors {
                 right: rootContainer.right

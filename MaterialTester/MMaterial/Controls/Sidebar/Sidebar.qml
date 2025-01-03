@@ -3,7 +3,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Effects
 
-import MMaterial
+import MMaterial.UI as UI
 
 Rectangle {
     id: root
@@ -21,7 +21,7 @@ Rectangle {
 
     implicitHeight: parent.height
 
-    color: Theme.background.main
+	color: UI.Theme.background.main
 
     anchors {
         left: parent.left
@@ -41,15 +41,15 @@ Rectangle {
     states: [
         State {
             name: "extended"
-            when: Size.format == Size.Format.Extended
+            when: UI.Size.format == UI.Size.Format.Extended
 
             PropertyChanges {
                 root {
-                    width: 280 * Size.scale
+                    width: 280 * UI.Size.scale
                     height: root.parent.height
 
                     mainView.anchors {
-                        margins: Size.pixel32
+                        margins: UI.Size.pixel32
                         left: root.right
                         top: root.parent.top
                         bottom: root.parent.bottom
@@ -61,15 +61,15 @@ Rectangle {
         },
         State {
             name: "compact"
-            when: Size.format == Size.Format.Compact
+            when: UI.Size.format == UI.Size.Format.Compact
 
             PropertyChanges {
                 root {
-                    width: 86 * Size.scale
+                    width: 86 * UI.Size.scale
                     height: root.parent.height
 
                     mainView.anchors {
-                        margins: Size.pixel32
+                        margins: UI.Size.pixel32
                         left: root.right
                         top: root.parent.top
                         bottom: root.parent.bottom
@@ -86,10 +86,10 @@ Rectangle {
             PropertyChanges {
                 root {
                     width: root.parent.width
-                    height: Size.pixel64
+                    height: UI.Size.pixel64
 
                     mainView.anchors {
-                        margins: Size.pixel32
+                        margins: UI.Size.pixel32
                         left: root.parent.left
                         top: root.parent.top
                         bottom: root.top
@@ -157,7 +157,7 @@ Rectangle {
         id: _loader
 
         anchors.fill: root
-        sourceComponent: d.getSources(Size.format)
+		sourceComponent: d.getSources(UI.Size.format)
         visible: _loader.status == Loader.Ready
         asynchronous: true
     }
@@ -198,9 +198,9 @@ Rectangle {
         property SidebarData sidebarData: SidebarData {}
 
         function getSources(format) {
-            if (format == Size.Format.Extended )
+            if (format == UI.Size.Format.Extended )
                 return _extendedSidebar
-            else if (format == Size.Format.Mobile)
+            else if (format == UI.Size.Format.Mobile)
                 return _mobileSidebar
             else
                 return _compactSidebar

@@ -3,7 +3,9 @@ import QtCore
 import QtQuick.Layouts
 import QtQuick.Dialogs
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
+import MMaterial.Controls as Controls
 
 Item {
     id: control
@@ -11,9 +13,9 @@ Item {
     readonly property bool isEmpty: image.source.toString() === ""
     readonly property url source: image.source
 
-    property real size: MMaterial.Size.scale * 128
+    property real size: UI.Size.scale * 128
     property alias background: background
-    property color textColor: control.isEmpty ? MMaterial.Theme.text.disabled : MMaterial.Theme.common.white
+	property color textColor: control.isEmpty ? UI.Theme.text.disabled : UI.Theme.common.white
 
     function removeImage() {
         removeImageAnimation.start();
@@ -48,19 +50,19 @@ Item {
         }
     }
 
-    MMaterial.Icon {
+    Media.Icon {
         id: dash
 
         anchors.fill: control
         size: control.height
 
-        iconData: MMaterial.Icons.heavy.dashedCircle
-        color: MMaterial.Theme.main.transparent.p32
+        iconData: Media.Icons.heavy.dashedCircle
+		color: UI.Theme.main.transparent.p32.toString()
 
         Rectangle {
             id: background
 
-            color: MMaterial.Theme.background.neutral
+            color: UI.Theme.background.neutral
             radius: control.height / 2
             opacity: tap.pressed ? 0.6 : (hoverHandler.hovered ? 0.8 : 1)
 
@@ -68,11 +70,11 @@ Item {
 
             anchors {
                 fill: dash
-                margins: MMaterial.Size.pixel8
+                margins: UI.Size.pixel8
             }
         }
 
-        MMaterial.MaskedImage {
+		Controls.MaskedImage {
             id: image
 
             anchors.fill: background
@@ -103,7 +105,7 @@ Item {
 
             anchors.fill: background
             visible: opacity > 0
-            color: MMaterial.Theme.main.p900
+			color: UI.Theme.main.p900
             opacity: hoverHandler.hovered && !control.isEmpty && !imageAnimation.running ? (tap.pressed ? 0.4 :  0.64) : 0
             radius: background.radius
 
@@ -112,7 +114,7 @@ Item {
 
         ColumnLayout {
             anchors.fill: background
-            spacing: MMaterial.Size.pixel8
+            spacing: UI.Size.pixel8
             opacity: ((hoverHandler.hovered && !control.isEmpty) || control.isEmpty) && !imageAnimation.running ? 1 : 0
             visible: opacity > 0
 
@@ -120,14 +122,14 @@ Item {
 
             Item { Layout.fillHeight: true }
 
-            MMaterial.Icon {
+            Media.Icon {
                 Layout.alignment: Qt.AlignHCenter
-                size: MMaterial.Size.pixel24
-                color: control.textColor
-                iconData: MMaterial.Icons.light.addAPhoto
+                size: UI.Size.pixel24
+				color: control.textColor.toString()
+                iconData: Media.Icons.light.addAPhoto
             }
 
-            MMaterial.Caption {
+			UI.Caption {
                 text: control.isEmpty ? qsTr("Upload photo") : qsTr("Update photo")
                 color: control.textColor
                 Layout.fillWidth: true

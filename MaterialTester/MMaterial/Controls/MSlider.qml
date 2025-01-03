@@ -1,12 +1,12 @@
 import QtQuick
 import QtQuick.Templates as T
 
-import MMaterial
+import MMaterial.UI as UI
 
 T.Slider {
     id: control
 
-    property var accent: Theme.primary
+	property var accent: UI.Theme.primary
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitHandleWidth + leftPadding + rightPadding)

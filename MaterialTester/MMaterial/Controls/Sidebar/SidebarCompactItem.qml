@@ -3,9 +3,11 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
+import MMaterial.Media as Media
 
-Checkable {
+Controls.Checkable {
     id: _root
 
     required property int index
@@ -32,7 +34,7 @@ Checkable {
     }
 
     implicitWidth: ListView.view ? ListView.view.width : 0
-    implicitHeight: 54 * Size.scale
+    implicitHeight: 54 * UI.Size.scale
 
     checked: _root.sidebarData.currentIndex === index
     customCheckImplementation: true
@@ -56,27 +58,27 @@ Checkable {
             when: !_root.enabled
             PropertyChanges{ target: _root; opacity: 0.64 }
             PropertyChanges{ target: _background; color: "transparent" }
-            PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
-            PropertyChanges{ target: _icon; color: Theme.text.secondary }
-            PropertyChanges{ target: _arrow; color: Theme.text.secondary }
+			PropertyChanges { target: _title; font.family: UI.PublicSans.regular; color: UI.Theme.text.secondary }
+			PropertyChanges{ target: _icon; color: UI.Theme.text.secondary }
+			PropertyChanges{ target: _arrow; color: UI.Theme.text.secondary }
         },
         State {
             name: "checked"
             when: _root.checked
             PropertyChanges{ target: _root; opacity: 1;}
-            PropertyChanges{ target: _background; color: _root.mouseArea.containsMouse ? Theme.primary.transparent.p16 : Theme.primary.transparent.p8; }
-            PropertyChanges { target: _title; font.family: PublicSans.semiBold; color: Theme.primary.main; }
-            PropertyChanges{ target: _icon; color: Theme.primary.main }
-            PropertyChanges{ target: _arrow; color: Theme.primary.main; }
+			PropertyChanges{ target: _background; color: _root.mouseArea.containsMouse ? UI.Theme.primary.transparent.p16 : UI.Theme.primary.transparent.p8; }
+			PropertyChanges { target: _title; font.family: UI.PublicSans.semiBold; color: UI.Theme.primary.main; }
+			PropertyChanges{ target: _icon; color: UI.Theme.primary.main }
+			PropertyChanges{ target: _arrow; color: UI.Theme.primary.main; }
         },
         State {
             name: "unchecked"
             when: !_root.checked
             PropertyChanges{ target: _root; opacity: 1;}
-            PropertyChanges{ target: _background; color: _root.mouseArea.containsMouse ? Theme.background.neutral : "transparent"; }
-            PropertyChanges { target: _title; font.family: PublicSans.regular; color: Theme.text.secondary }
-            PropertyChanges{ target: _icon; color: Theme.text.secondary }
-            PropertyChanges{ target: _arrow; color: Theme.text.secondary }
+			PropertyChanges{ target: _background; color: _root.mouseArea.containsMouse ? UI.Theme.background.neutral : "transparent"; }
+			PropertyChanges { target: _title; font.family: UI.PublicSans.regular; color: UI.Theme.text.secondary }
+			PropertyChanges{ target: _icon; color: UI.Theme.text.secondary }
+			PropertyChanges{ target: _arrow; color: UI.Theme.text.secondary }
         }
     ]
 
@@ -84,80 +86,80 @@ Checkable {
         id: _background
 
         anchors.fill: _root
-        radius: Size.pixel8
+        radius: UI.Size.pixel8
     }
 
-    Icon {
+	Media.Icon {
         id: _icon
 
         anchors {
             horizontalCenter: _root.horizontalCenter
-            top: _root.top; topMargin: Size.pixel8
+            top: _root.top; topMargin: UI.Size.pixel8
         }
 
-        size: Size.pixel22
-        color: Theme.primary.main
-        iconData: Icons.light.star
+        size: UI.Size.pixel22
+		color: UI.Theme.primary.main.toString()
+        iconData: Media.Icons.light.star
     }
 
-    B2 {
+	UI.B2 {
         id: _title
 
         anchors {
             horizontalCenter: _root.horizontalCenter
-            bottom: _root.bottom; bottomMargin: Size.pixel4
+            bottom: _root.bottom; bottomMargin: UI.Size.pixel4
         }
 
         width: _root.width
-        height: Size.pixel16
+        height: UI.Size.pixel16
 
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: Qt.AlignHCenter
 
-        font.pixelSize: Size.pixel10
+        font.pixelSize: UI.Size.pixel10
     }
 
-    Icon {
+	Media.Icon {
         id: _arrow
 
         anchors {
             verticalCenter: _icon.verticalCenter
-            left: _icon.right; leftMargin: Size.pixel6
+            left: _icon.right; leftMargin: UI.Size.pixel6
         }
 
         visible: _root.model ? _root.model.length > 0 : 0
-        iconData: Icons.light.chevronRight
+        iconData: Media.Icons.light.chevronRight
 
-        size: Size.pixel16
+        size: UI.Size.pixel16
     }
 
     //Popup
     Menu {
         id: _contextMenu
 
-        x: _root.width + Size.pixel6
+        x: _root.width + UI.Size.pixel6
         currentIndex: _root.sidebarData.currentSubIndex
         closePolicy: Popup.CloseOnPressOutsideParent
 
         background: Rectangle {
             radius: 12
-            color: Theme.background.main
+			color: UI.Theme.background.main
             implicitWidth: 200
             implicitHeight: 0
-            border.color: Theme.action.disabledBackground
+			border.color: UI.Theme.action.disabledBackground
         }
 
         contentItem: Item {
             id: _contentItem
 
-            implicitHeight: _listView.contentHeight + Size.pixel8
+            implicitHeight: _listView.contentHeight + UI.Size.pixel8
 
             ListView {
                 id: _listView
 
                 anchors.centerIn: _contentItem
 
-                width: _contentItem.width - Size.pixel8
+                width: _contentItem.width - UI.Size.pixel8
                 implicitHeight: contentHeight
 
                 model: _contextMenu.contentModel
@@ -169,7 +171,7 @@ Checkable {
 
                 ScrollIndicator.vertical: ScrollIndicator {}
 
-                delegate: ListItem {
+				delegate: Controls.ListItem {
                     required property int index
 
                     property var modelItem: _root.model[index]

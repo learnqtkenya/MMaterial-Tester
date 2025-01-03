@@ -5,7 +5,7 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 import QtQuick.Templates as T
 
-import MMaterial
+import MMaterial.UI as UI
 
 ColumnLayout {
     id: calendarRoot
@@ -51,7 +51,7 @@ ColumnLayout {
     }
 
 
-    implicitWidth: 264 * Size.scale
+    implicitWidth: 264 * UI.Size.scale
 
     component DaysRow: T.AbstractDayOfWeekRow {
         id: control
@@ -118,16 +118,16 @@ ColumnLayout {
 
             required property string narrowName
 
-            Layout.preferredWidth: Size.pixel36
-            Layout.preferredHeight: Size.pixel40
+            Layout.preferredWidth: UI.Size.pixel36
+            Layout.preferredHeight: UI.Size.pixel40
 
-            Caption {
+			UI.Caption {
                 anchors.fill: dayDelegate
 
                 text: dayDelegate.narrowName
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                color: Theme.text.secondary
+                color: UI.Theme.text.secondary
             }
         }
     }
@@ -139,14 +139,14 @@ ColumnLayout {
             return mouseX >= delX && mouseX <= delX + delWidth && mouseY >= delY && mouseY <= delY + delHeight;
         }
 
-        spacing: Size.pixel1 * 2
+        spacing: UI.Size.pixel1 * 2
         month: Calendar.December
         year: 2024
         locale: Qt.locale("en_US")
         implicitWidth: calendarRoot.width
 
         Layout.fillWidth: true
-        Layout.topMargin: -Size.pixel10
+		Layout.topMargin: -UI.Size.pixel10
 
         delegate: Item {
             id: del
@@ -161,8 +161,8 @@ ColumnLayout {
             readonly property bool isFirstSelected: d.firstSelectedDate ? d.firstSelectedDate.getTime() === del.date.getTime() : false
             readonly property bool isLastSelected: d.lastSelectedDate ? d.lastSelectedDate.getTime() === del.date.getTime() : false
 
-            Layout.preferredHeight: Size.pixel36
-            Layout.preferredWidth: Size.pixel36
+            Layout.preferredHeight: UI.Size.pixel36
+            Layout.preferredWidth: UI.Size.pixel36
 
             opacity: del.model.month === grid.month ? (dateMA.pressed && del.highlighted ? 0.8 : 1) : 0.3
 
@@ -172,7 +172,7 @@ ColumnLayout {
                 property bool useIndividualRadii: d.firstSelectedDate !== d.lastSelectedDate
                 readonly property bool firstIsEarlier: !d.firstSelectedDate || !d.lastSelectedDate ? false : d.compareDates(d.firstSelectedDate, d.lastSelectedDate);
 
-                color: del.selected ? Theme.primary.dark : "transparent"
+                color: del.selected ? UI.Theme.primary.dark : "transparent"
 
                 radius: selectionRect.height / 2
                 topLeftRadius: useIndividualRadii ? (del.isFirstSelected && firstIsEarlier ? selectionRect.radius : del.isLastSelected && !firstIsEarlier ? selectionRect.radius : 0) : undefined
@@ -182,8 +182,8 @@ ColumnLayout {
 
                 anchors {
                     fill: del
-                    leftMargin: useIndividualRadii ? -Size.pixel1 : 0
-                    rightMargin: useIndividualRadii ? -Size.pixel1 : 0
+					leftMargin: useIndividualRadii ? -UI.Size.pixel1 : 0
+					rightMargin: useIndividualRadii ? -UI.Size.pixel1 : 0
                 }
             }
 
@@ -196,18 +196,18 @@ ColumnLayout {
 
                 border {
                     width: del.highlighted && !dateMA.pressed ? 1 : 0
-                    color: del.selected ? Theme.primary.lighter : Theme.text.secondary
+                    color: del.selected ? UI.Theme.primary.lighter : UI.Theme.text.secondary
                 }
             }
 
-            B2 {
+			UI.B2 {
                 id: dateLabel
 
                 anchors.fill: parent
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 text: del.model.day
-                color: del.selected ? Theme.primary.lighter : Theme.text.primary
+                color: del.selected ? UI.Theme.primary.lighter : UI.Theme.text.primary
             }
         }
 

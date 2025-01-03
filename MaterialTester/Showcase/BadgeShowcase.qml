@@ -1,96 +1,97 @@
-import QtQuick 
+import QtQuick
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
 
 Item {
-    objectName: "Badge"
+	objectName: "Controls.Badge"
 
     ColumnLayout {
         anchors.fill: parent
 
-        H6 { text: qsTr("Number") }
+        UI.H6 { text: qsTr("Number") }
 
         GridLayout {
-            id: numberBadgeGrid
+			id: numberBadgeGrid
 
-            Layout.topMargin: Size.pixel24
+            Layout.topMargin: UI.Size.pixel24
             Layout.preferredWidth: parent.width
-            Layout.preferredHeight: 100 * Size.scale
+            Layout.preferredHeight: 100 * UI.Size.scale
 
-            columns: Size.format == Size.Format.Extended ? 7 : 4
+            columns: UI.Size.format == UI.Size.Format.Extended ? 7 : 4
 
-            rowSpacing: Size.pixel40
-            columnSpacing: Size.pixel40
+            rowSpacing: UI.Size.pixel40
+            columnSpacing: UI.Size.pixel40
 
-            Badge {
-                accent: Theme.primary
-                type: Badge.Type.Number
+			Controls.Badge {
+				accent: UI.Theme.primary
+				type: Controls.Badge.Type.Number
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.secondary
-                type: Badge.Type.Number
-
-                onClicked: quantity = 0
-            }
-
-            Badge {
-                accent: Theme.info
-                type: Badge.Type.Number
+			Controls.Badge {
+				accent: UI.Theme.secondary
+				type: Controls.Badge.Type.Number
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.success
-                type: Badge.Type.Number
+			Controls.Badge {
+				accent: UI.Theme.info
+				type: Controls.Badge.Type.Number
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.warning
-                type: Badge.Type.Number
+			Controls.Badge {
+				accent: UI.Theme.success
+				type: Controls.Badge.Type.Number
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.error
-                type: Badge.Type.Number
+			Controls.Badge {
+				accent: UI.Theme.warning
+				type: Controls.Badge.Type.Number
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.success
-                type: Badge.Type.Number
+			Controls.Badge {
+				accent: UI.Theme.error
+				type: Controls.Badge.Type.Number
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.error
-                type: Badge.Type.Number
+			Controls.Badge {
+				accent: UI.Theme.success
+				type: Controls.Badge.Type.Number
+
+                onClicked: quantity = 0
+            }
+
+			Controls.Badge {
+				accent: UI.Theme.error
+				type: Controls.Badge.Type.Number
                 quantity: 1
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.error
-                type: Badge.Type.Number
+			Controls.Badge {
+				accent: UI.Theme.error
+				type: Controls.Badge.Type.Number
                 quantity: 1500
                 maxQuantity: 99
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.error
-                type: Badge.Type.Number
+			Controls.Badge {
+				accent: UI.Theme.error
+				type: Controls.Badge.Type.Number
                 quantity: 1500
                 maxQuantity: 999
 
@@ -98,61 +99,61 @@ Item {
             }
         }
 
-        H6 {
-            Layout.topMargin: Size.pixel48
+        UI.H6 {
+            Layout.topMargin: UI.Size.pixel48
 
             text: qsTr("Dot")
         }
 
         GridLayout {
-            id: dotBadgeGrid
+			id: dotBadgeGrid
 
-            Layout.topMargin: Size.pixel24
+            Layout.topMargin: UI.Size.pixel24
             Layout.preferredWidth: parent.width
 
-            columns: Size.format == Size.Format.Extended ? 7 : 4
+            columns: UI.Size.format == UI.Size.Format.Extended ? 7 : 4
 
-            rowSpacing: Size.pixel40
-            columnSpacing: Size.pixel40
+            rowSpacing: UI.Size.pixel40
+            columnSpacing: UI.Size.pixel40
 
-            Badge {
-                accent: Theme.primary
-
-                onClicked: quantity = 0
-            }
-
-            Badge {
-                accent: Theme.secondary
+			Controls.Badge {
+				accent: UI.Theme.primary
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.info
+			Controls.Badge {
+				accent: UI.Theme.secondary
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.success
+			Controls.Badge {
+				accent: UI.Theme.info
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.warning
+			Controls.Badge {
+				accent: UI.Theme.success
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.error
+			Controls.Badge {
+				accent: UI.Theme.warning
 
                 onClicked: quantity = 0
             }
 
-            Badge {
-                accent: Theme.success
+			Controls.Badge {
+				accent: UI.Theme.error
+
+                onClicked: quantity = 0
+            }
+
+			Controls.Badge {
+				accent: UI.Theme.success
 
                 onClicked: quantity = 0
             }

@@ -7,70 +7,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.8 REQUIRED COMPONENTS Quick)
 qt_standard_project_setup(REQUIRES 6.8)
 
-qt_add_executable(appMaterialTester
+qt_add_executable(MaterialTesterLib
     main.cpp
 )
 
-qt_add_qml_module(appMaterialTester
+qt_add_qml_module(MaterialTesterLib
     URI MaterialTester
-    RESOURCE_PREFIX /
+    IMPORTS
+        MaterialTester.Components
+        MaterialTester.Showcase
+
     QML_FILES
         Main.qml
         MainWindow.qml
-        Showcase/FontShowcase.qml
-        Showcase/ColorShowcase/ColorShowcase.qml
-        Showcase/ColorShowcase/PaletteBasicView.qml
-        Showcase/ColorShowcase/ColorRect.qml
-        Showcase/BadgeShowcase.qml
-        Showcase/AccordionShowcase.qml
-        Showcase/ButtonShowcase/ButtonShowcase.qml
-        Showcase/ButtonShowcase/ButtonGroup.qml
-        Showcase/AlertShowcase/AlertShowcase.qml
-        Showcase/AlertShowcase/CustomAlert.qml
-        Components/AppSettings/AppSettings.qml
-        Showcase/ButtonShowcase/ToggleButtonShowcase.qml
-        Components/Common/TitleRow.qml
-        Showcase/AlertShowcase/AlertContainer.qml
-        Components/AppSettings/SubTitle.qml
-        Components/AppSettings/TwoChoices.qml
-        Components/AppSettings/PresetButton.qml
-        Showcase/ButtonShowcase/FabButtonShowcase.qml
-        Showcase/ButtonShowcase/FABButtonGroup.qml
-        Components/Sidebar/SimpleSidebar.qml
-        Showcase/ButtonShowcase/CheckboxShowcase.qml
-        Showcase/ListItemShowcase/ListItemShowcase.qml
-        Showcase/ListItemShowcase/ListBorders.qml
-        Showcase/ProjectInfo.qml
-        Showcase/Placeholder.qml
-        Showcase/PaginationShowcase/PaginationShowcase.qml
-        Showcase/PaginationShowcase/CustomSwipeView.qml
-        Showcase/PaginationShowcase/PaginatorArrowsShowcase.qml
-        Showcase/PaginationShowcase/PaginatorBubbleShowcase.qml
-        Showcase/PaginationShowcase/PaginatorSimpleShowcase.qml
-        Showcase/ButtonShowcase/RadioButtonShowcase.qml
-        Showcase/ProgressShowcase.qml
-        Showcase/ButtonShowcase/SwitchShowcase.qml
-        Showcase/TextFieldShowcase/TextFieldShowcase.qml
-        Showcase/TextFieldShowcase/TextFieldGroup.qml
-        Showcase/TextFieldShowcase/DropdownShowcase.qml
-        Showcase/TextFieldShowcase/DropdownGroup.qml
-        Showcase/IconShowcase/IconShowcase.qml
-        Showcase/IconShowcase/IconSpeedComparison.qml
-        Showcase/IconShowcase/IconOverview.qml
-        Showcase/IconShowcase/IconGeneratorTimer.qml
-        Showcase/SliderShowcase.qml
-        Showcase/RectangleShowcase.qml
-        Showcase/TabShowcase/TabShowcase.qml
-        Showcase/MenuShowcase.qml
-        Components/Sidebar/CustomSidebar.qml
-        Showcase/AvatarShowcase.qml
-        Showcase/DialogShowcase.qml
-        Showcase/DateShowcase.qml
-        Showcase/TimeShowcase.qml
-        Showcase/ChartShowcase/BarChartShowcase.qml
-        Showcase/ChartShowcase/WaterfallChartShowcase.qml
-        Showcase/ColorShowcase/ColorPickerShowcase.qml
-        Showcase/BusyIndicatorShowcase.qml
 
     SOURCES
         DevTools/FileWatcher.h
@@ -82,19 +31,22 @@ qt_add_qml_module(appMaterialTester
         DevTools/Clipboard.h
 )
 
+add_subdirectory(Components)
+add_subdirectory(Showcase)
 add_subdirectory(MMaterial)
 
-target_include_directories(appMaterialTester PUBLIC
+target_include_directories(MaterialTesterLib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Icons
     ${CMAKE_CURRENT_SOURCE_DIR}/DevTools
 )
 
-target_link_libraries(appMaterialTester
-    PRIVATE Qt6::Quick Qt::Gui MMaterialLibplugin
+set_target_properties(MMaterialLib PROPERTIES AUTOMOC ON)
+target_link_libraries(MaterialTesterLib
+    PRIVATE Qt6::Quick Qt::Gui MMaterialLibplugin ShowcaseLibplugin ComponentsLibplugin
 )
 
-set_target_properties(appMaterialTester PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER com.mmaterial.appMaterialTester
+set_target_properties(MaterialTesterLib PROPERTIES
+    MACOSX_BUNDLE_GUI_IDENTIFIER com.mmaterial.MaterialTesterLib
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
@@ -104,10 +56,10 @@ set_target_properties(appMaterialTester PROPERTIES
 if (EMSCRIPTEN)
 
     set(MM_INSTALL_FILES
-        "$<TARGET_FILE_DIR:appMaterialTester>/appMaterialTester.js"
-        "$<TARGET_FILE_DIR:appMaterialTester>/appMaterialTester.wasm"
-        "$<TARGET_FILE_DIR:appMaterialTester>/appMaterialTester.html"
-        "$<TARGET_FILE_DIR:appMaterialTester>/qtloader.js"
+        "$<TARGET_FILE_DIR:MaterialTesterLib>/MaterialTesterLib.js"
+        "$<TARGET_FILE_DIR:MaterialTesterLib>/MaterialTesterLib.wasm"
+        "$<TARGET_FILE_DIR:MaterialTesterLib>/MaterialTesterLib.html"
+        "$<TARGET_FILE_DIR:MaterialTesterLib>/qtloader.js"
     )
 
     # if (MM_ENABLE_THREADING)
@@ -115,7 +67,7 @@ if (EMSCRIPTEN)
     # endif()
     install(FILES ${MM_INSTALL_FILES} DESTINATION ${CMAKE_INSTALL_PREFIX})
 else()
-    install(TARGETS appMaterialTester
+    install(TARGETS MaterialTesterLib
         BUNDLE DESTINATION .
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

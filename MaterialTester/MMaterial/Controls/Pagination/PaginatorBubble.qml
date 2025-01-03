@@ -3,7 +3,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial.UI as UI
 
 ListView {
     id: _root
@@ -13,7 +13,7 @@ ListView {
     property int numberOfPages: indexView.count
 
     implicitWidth: childrenRect.width
-    implicitHeight: Size.pixel24
+    implicitHeight: UI.Size.pixel24
 
     model: numberOfPages
     currentIndex: indexView.currentIndex
@@ -44,7 +44,7 @@ ListView {
             width: height
 
             radius: 100
-            color: Theme.primary.main
+			color: UI.Theme.primary.main
 
             states: [
                 State {

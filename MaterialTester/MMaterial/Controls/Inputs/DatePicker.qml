@@ -4,8 +4,11 @@ import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 import MMaterial.Controls.Dialogs as Dialogs
+import MMaterial.Media as Media
+import MMaterial.Controls as Controls
+import MMaterial.Controls.Inputs as Inputs
 
 Dialogs.Dialog {
     id: root
@@ -26,55 +29,55 @@ Dialogs.Dialog {
 
     signal dateAccepted(var startDate, var endDate)
 
-    implicitHeight: 504 * MMaterial.Size.scale
-    implicitWidth: 319 * MMaterial.Size.scale
+    implicitHeight: 504 * UI.Size.scale
+    implicitWidth: 319 * UI.Size.scale
 
     contentItem: Item {
         id: dialogContentRoot
 
-        MMaterial.Overline {
+        UI.Overline {
             id: selectDateLabel
 
             anchors.top: dialogContentRoot.top
             width: dialogContentRoot.width
 
             text: qsTr("Select date")
-            color: MMaterial.Theme.text.secondary
+            color: UI.Theme.text.secondary
         }
 
-        MMaterial.H4 {
+		UI.H4 {
             id: dateLabel
 
             width: dialogContentRoot.width
             maximumLineCount: 1
             text: root.startDateString === root.endDateString ? root.startDateString : root.startDateString + " - " + root.endDateString
-            color: !root.startDate && !root.endDate ? MMaterial.Theme.text.secondary : MMaterial.Theme.text.primary
+            color: !root.startDate && !root.endDate ? UI.Theme.text.secondary : UI.Theme.text.primary
 
             font {
                 bold: true
-                pixelSize: MMaterial.Size.pixel22
+                pixelSize: UI.Size.pixel22
             }
 
             anchors {
-                top: selectDateLabel.bottom; topMargin: MMaterial.Size.pixel12
+                top: selectDateLabel.bottom; topMargin: UI.Size.pixel12
             }
         }
 
         RowLayout {
             id: controlsRow
 
-            height: MMaterial.Size.scale * 42
+            height: UI.Size.scale * 42
             width: dialogContentRoot.width
 
             anchors {
                 top: dateLabel.bottom
             }
 
-            MMaterial.Subtitle1 {
+            UI.Subtitle1 {
                 id: monthYearLabel
 
                 Layout.fillHeight: true
-                Layout.maximumHeight: MMaterial.Size.scale * 56
+                Layout.maximumHeight: UI.Size.scale * 56
 
                 verticalAlignment: Qt.AlignVCenter
 
@@ -84,34 +87,34 @@ Dialogs.Dialog {
                 }
             }
 
-            MMaterial.Icon {
+            Media.Icon {
                 id: yearDropdownIcon
 
-                Layout.leftMargin: MMaterial.Size.pixel6
+                Layout.leftMargin: UI.Size.pixel6
 
                 interactive: true
-                color: MMaterial.Theme.action.active
-                iconData: MMaterial.Icons.light.arrowDropDown
-                size: MMaterial.Size.pixel20
+				color: UI.Theme.action.active.toString()
+                iconData: Media.Icons.light.arrowDropDown
+                size: UI.Size.pixel20
 
                 onClicked: yearSelectionPopup.opened ? yearSelectionPopup.close() : yearSelectionPopup.open();
 
-                MMaterial.Popup {
+				Controls.Popup {
                     id: yearSelectionPopup
 
-                    width: monthYearLabel.width + yearDropdownIcon.width + MMaterial.Size.pixel12
-                    height: 300 * MMaterial.Size.scale
+                    width: monthYearLabel.width + yearDropdownIcon.width + UI.Size.pixel12
+                    height: 300 * UI.Size.scale
 
                     y: yearDropdownIcon.height
 
                     closePolicy: Popup.CloseOnPressOutsideParent
 
                     background: Rectangle {
-                        radius: MMaterial.Size.pixel10
-                        implicitWidth:  MMaterial.Size.scale * 420
-                        implicitHeight: MMaterial.Size.pixel36
-                        color: MMaterial.Theme.background.main
-                        border.color:  MMaterial.Theme.background.neutral
+                        radius: UI.Size.pixel10
+                        implicitWidth:  UI.Size.scale * 420
+                        implicitHeight: UI.Size.pixel36
+                        color: UI.Theme.background.main
+                        border.color:  UI.Theme.background.neutral
                     }
 
                     contentItem: Item {
@@ -132,8 +135,8 @@ Dialogs.Dialog {
 
                             anchors {
                                 fill: contentItemRoot
-                                topMargin: MMaterial.Size.pixel8
-                                bottomMargin: MMaterial.Size.pixel8
+                                topMargin: UI.Size.pixel8
+                                bottomMargin: UI.Size.pixel8
                             }
 
                             onModelChanged: yearList.positionIndex();
@@ -149,23 +152,23 @@ Dialogs.Dialog {
                                 readonly property bool selected: yearList.currentIndex == index
 
                                 width: yearList.width
-                                height: yearDelegateLabel.contentHeight + MMaterial.Size.pixel8
+                                height: yearDelegateLabel.contentHeight + UI.Size.pixel8
 
-                                color: yearDelegate.selected ? MMaterial.Theme.primary.lighter : "transparent"
+                                color: yearDelegate.selected ? UI.Theme.primary.lighter : "transparent"
 
-                                MMaterial.B1 {
+                                UI.B1 {
                                     id: yearDelegateLabel
 
                                     text: yearDelegate.year
                                     opacity: yearDelegateMA.pressed ? 0.7 : (yearDelegateMA.containsMouse ? 0.85 : 1)
                                     horizontalAlignment: Qt.AlignHCenter
                                     verticalAlignment: Qt.AlignVCenter
-                                    color: yearDelegate.selected ? MMaterial.Theme.primary.dark : MMaterial.Theme.text.secondary
+                                    color: yearDelegate.selected ? UI.Theme.primary.dark : UI.Theme.text.secondary
 
                                     anchors {
                                         fill: yearDelegate
-                                        leftMargin: MMaterial.Size.pixel8
-                                        rightMargin: MMaterial.Size.pixel8
+                                        leftMargin: UI.Size.pixel8
+                                        rightMargin: UI.Size.pixel8
                                     }
                                 }
 
@@ -190,28 +193,28 @@ Dialogs.Dialog {
 
             Item { Layout.fillWidth: true }
 
-            MMaterial.Icon {
-                Layout.rightMargin: MMaterial.Size.pixel30
+            Media.Icon {
+                Layout.rightMargin: UI.Size.pixel30
 
                 interactive: true
-                color: MMaterial.Theme.action.active
-                iconData: MMaterial.Icons.light.chevronLeft
-                size: MMaterial.Size.pixel24
+				color: UI.Theme.action.active.toString()
+                iconData: Media.Icons.light.chevronLeft
+                size: UI.Size.pixel24
 
                 onClicked: calendar.previousMonth();
             }
 
-            MMaterial.Icon {
+            Media.Icon {
                 interactive: true
-                color: MMaterial.Theme.action.active
-                iconData: MMaterial.Icons.light.chevronRight
-                size: MMaterial.Size.pixel24
+				color: UI.Theme.action.active.toString()
+                iconData: Media.Icons.light.chevronRight
+                size: UI.Size.pixel24
 
                 onClicked: calendar.nextMonth();
             }
         }
 
-        MMaterial.MCalendar {
+		Inputs.MCalendar {
             id: calendar
 
             width: dialogContentRoot.width
@@ -227,13 +230,13 @@ Dialogs.Dialog {
 
     Dialogs.Dialog.DialogButton {
         text: qsTr("Cancel")
-        type: MMaterial.MButton.Type.Text
+        type: Controls.MButton.Type.Text
         onClicked: root.close()
     }
 
     Dialogs.Dialog.DialogButton {
         text: qsTr("OK")
-        type: MMaterial.MButton.Type.Text
+        type: Controls.MButton.Type.Text
         onClicked: root.dateAccepted(root.startDate, root.endDate);
 
     }

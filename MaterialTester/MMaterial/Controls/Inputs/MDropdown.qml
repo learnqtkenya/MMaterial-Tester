@@ -1,7 +1,11 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick 
 import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
+import MMaterial.Media as Media
 
 MTextField {
     id: _root
@@ -26,7 +30,7 @@ MTextField {
 
     rightIcon {
         rotation: _contextMenu.opened ? 180 : 0
-        iconData: Icons.light.keyboardArrowDown
+        iconData: Media.Icons.light.keyboardArrowDown
         onClicked: _root.toggle();
     }
 
@@ -60,22 +64,22 @@ MTextField {
             implicitWidth: _root.width
 
             radius: 12
-            color: Theme.background.main
-            border.color: Theme.action.disabledBackground
+			color: UI.Theme.background.main
+			border.color: UI.Theme.action.disabledBackground
         }
 
         contentItem: Item {
             id: _contentItem
 
-            implicitHeight: _listView.height + Size.pixel8
+            implicitHeight: _listView.height + UI.Size.pixel8
 
             ListView {
                 id: _listView
 
                 anchors.centerIn: _contentItem
 
-                width: _contentItem.width - Size.pixel8
-                height: count > _root.delegateCount ? _root.delegateCount * Size.pixel46 : contentHeight
+                width: _contentItem.width - UI.Size.pixel8
+                height: count > _root.delegateCount ? _root.delegateCount * UI.Size.pixel46 : contentHeight
 
                 model: _root.model
 
@@ -84,7 +88,10 @@ MTextField {
 
                 ScrollIndicator.vertical: ScrollIndicator {}
 
-                delegate: ListItem {
+				delegate: Controls.ListItem {
+					required property int index
+					required property string modelData
+
                     text: modelData
                     width: _listView.width
                     onClicked: {

@@ -2,7 +2,9 @@ import QtQuick
 import QtQuick.Templates as T
 import QtQuick.Layouts
 
-import MMaterial as MMaterial
+import MMaterial.Media as Media
+import MMaterial.Controls as Controls
+import MMaterial.UI as UI
 
 T.Dialog {
     id: control
@@ -10,30 +12,30 @@ T.Dialog {
     default property alias buttons: buttonBox.data
 
     property string text: ""
-    property MMaterial.IconData iconData: null
-    property real iconSize: MMaterial.Size.pixel24
-    property color textColor: MMaterial.Theme.text.secondary
+    property Media.IconData iconData: null
+	property real iconSize: UI.Size.pixel24
+    property color textColor: UI.Theme.text.secondary
     property bool showXButton: false
 
-    component DialogButton: MMaterial.MButton {
+	component DialogButton: Controls.MButton {
         Layout.alignment: Qt.AlignRight
-        size: MMaterial.Size.Grade.M
+        size: UI.Size.Grade.M
     }
 
-    component DialogAlertButton: MMaterial.MButton {
+	component DialogAlertButton: Controls.MButton {
         Layout.alignment: Qt.AlignRight
-        accent: MMaterial.Theme.error
-        size: MMaterial.Size.Grade.M
+        accent: UI.Theme.error
+        size: UI.Size.Grade.M
     }
 
-    component DialogCloseButton: MMaterial.MButton {
+	component DialogCloseButton: Controls.MButton {
         Layout.alignment: Qt.AlignRight
-        accent: MMaterial.Theme.passive
-        size: MMaterial.Size.Grade.M
-        type: MMaterial.MButton.Type.Outlined
+		accent: UI.Theme.passive
+        size: UI.Size.Grade.M
+		type: Controls.MButton.Type.Outlined
     }
 
-    implicitWidth: Math.min(480 * MMaterial.Size.scale, Math.max(implicitBackgroundWidth + leftInset + rightInset,
+    implicitWidth: Math.min(480 * UI.Size.scale, Math.max(implicitBackgroundWidth + leftInset + rightInset,
                                                                   contentWidth + leftPadding + rightPadding,
                                                                   implicitHeaderWidth + leftPadding + rightPadding,
                                                                   implicitFooterWidth + leftPadding + rightPadding))
@@ -43,7 +45,7 @@ T.Dialog {
                              + (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0)
                              + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
 
-    padding: MMaterial.Size.pixel24
+    padding: UI.Size.pixel24
     spacing: 0
 
     enter: Transition {
@@ -59,22 +61,22 @@ T.Dialog {
     background: Rectangle {
         id: bgRoot
 
-        radius: MMaterial.Size.pixel16
-        color: MMaterial.Theme.background.paper
+        radius: UI.Size.pixel16
+        color: UI.Theme.background.paper
 
-        MMaterial.Icon {
+        Media.Icon {
             id: closeIcon
 
             visible: control.showXButton
-            iconData: MMaterial.Icons.light.close
-            size: MMaterial.Size.pixel12
-            color: MMaterial.Theme.text.primary
+            iconData: Media.Icons.light.close
+            size: UI.Size.pixel12
+			color: UI.Theme.text.primary.toString()
             interactive: true
 
             anchors {
                 right: bgRoot.right;
                 top: bgRoot.top;
-                margins: MMaterial.Size.pixel6
+                margins: UI.Size.pixel6
             }
 
             onClicked: control.reject()
@@ -82,8 +84,8 @@ T.Dialog {
     }
 
     font {
-        family: MMaterial.PublicSans.regular
-        pixelSize: MMaterial.Size.pixel16
+        family: UI.PublicSans.regular
+        pixelSize: UI.Size.pixel16
     }
 
     header: Item {
@@ -95,7 +97,7 @@ T.Dialog {
         RowLayout {
             id: headerLayout
 
-            spacing: MMaterial.Size.pixel16
+            spacing: UI.Size.pixel16
 
             anchors {
                 left: headerRoot.left; leftMargin: control.leftPadding
@@ -103,16 +105,16 @@ T.Dialog {
                 bottom: headerRoot.bottom
             }
 
-            MMaterial.Icon {
+            Media.Icon {
                 id: icon
                 Layout.alignment: Qt.AlignVCenter
                 size: control.iconSize
                 iconData: control.iconData
-                color: titleText.color
+				color: titleText.color.toString()
                 visible: control.iconData
             }
 
-            MMaterial.H6 {
+            UI.H6 {
                 id: titleText
 
                 Layout.rightMargin: control.rightPadding + headerLayout.x
@@ -123,12 +125,12 @@ T.Dialog {
                 visible: text !== ""
                 elide: Text.ElideRight
                 wrapMode: Text.NoWrap
-                color: MMaterial.Theme.text.primary
+                color: UI.Theme.text.primary
             }
         }
     }
 
-    contentItem: MMaterial.B1 {
+    contentItem: UI.B1 {
         id: contentItem
 
         verticalAlignment: Qt.AlignVCenter
@@ -145,7 +147,7 @@ T.Dialog {
         RowLayout {
             id: buttonBox
 
-            spacing: MMaterial.Size.pixel12
+            spacing: UI.Size.pixel12
 
             anchors {
                 left: footerRoot.left; leftMargin: control.leftPadding
@@ -156,10 +158,10 @@ T.Dialog {
     }
 
     T.Overlay.modal: Rectangle {
-        color: Qt.alpha(MMaterial.Theme.background.paper, 0.5)
+        color: Qt.alpha(UI.Theme.background.paper, 0.5)
     }
 
     T.Overlay.modeless: Rectangle {
-        color: Qt.alpha(MMaterial.Theme.background.paper, 0.12)
+        color: Qt.alpha(UI.Theme.background.paper, 0.12)
     }
 }

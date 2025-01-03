@@ -3,7 +3,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Templates as T
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 
 T.Menu {
     id: control
@@ -16,7 +16,7 @@ T.Menu {
     margins: 0
     overlap: 1
 
-    delegate: MenuItem { height: MMaterial.Size.pixel36 }
+    delegate: MenuItem { height: UI.Size.pixel36 }
 
     enter: Transition {
         NumberAnimation { property: "scale"; from: 0.9; to: 1.0; easing.type: Easing.OutQuint; duration: 220 }
@@ -31,7 +31,7 @@ T.Menu {
     contentItem: Item {
         id: contentItemRoot
 
-        implicitHeight: listView.implicitHeight + MMaterial.Size.pixel16
+        implicitHeight: listView.implicitHeight + UI.Size.pixel16
 
         ListView {
             id: listView
@@ -49,13 +49,13 @@ T.Menu {
     }
 
     background: Rectangle {
-        radius: MMaterial.Size.pixel6
-        implicitWidth:  MMaterial.Size.scale * 420
-        implicitHeight: MMaterial.Size.pixel36
-        color: MMaterial.Theme.background.paper
+        radius: UI.Size.pixel6
+        implicitWidth:  UI.Size.scale * 420
+        implicitHeight: UI.Size.pixel36
+		color: UI.Theme.background.paper
 
         border {
-            color:  MMaterial.Theme.other.divider
+			color:  UI.Theme.other.divider
             width: 1
         }
     }

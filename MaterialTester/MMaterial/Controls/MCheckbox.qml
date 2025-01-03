@@ -1,26 +1,27 @@
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 Checkable {
     id: _root
 
-    property var accent: MMaterial.Theme.primary
+    property var accent: UI.Theme.primary
 
-    implicitHeight: MMaterial.Size.pixel24
-    implicitWidth: MMaterial.Size.pixel24
+    implicitHeight: UI.Size.pixel24
+    implicitWidth: UI.Size.pixel24
 
     state: "unchecked"
     states: [
         State {
             name: "checked"
             when: _root.checked
-            PropertyChanges { target: _background; color: _root.enabled ? _root.accent.main : MMaterial.Theme.action.disabled; border.width: 0; }
+            PropertyChanges { target: _background; color: _root.enabled ? _root.accent.main : UI.Theme.action.disabled; border.width: 0; }
         },
         State {
             name: "unchecked"
             when: !_root.checked
-            PropertyChanges { target: _background; color: "transparent"; border { width: MMaterial.Size.pixel1*2; color: _root.enabled ? MMaterial.Theme.action.active : MMaterial.Theme.action.disabled } }
+            PropertyChanges { target: _background; color: "transparent"; border { width: UI.Size.pixel1*2; color: _root.enabled ? UI.Theme.action.active : UI.Theme.action.disabled } }
         }
     ]
 
@@ -29,17 +30,17 @@ Checkable {
 
         anchors.fill: _root
 
-        radius: Size.pixel6
+		radius: UI.Size.pixel6
     }
 
-    MMaterial.Icon {
+    Media.Icon {
         id: _icon
 
         anchors.centerIn: _root
 
         size: _root.height * 0.8
-        iconData: MMaterial.Icons.light.check
-        color: MMaterial.Theme.background.main;
+        iconData: Media.Icons.light.check
+		color: UI.Theme.background.main.toString();
         visible: _root.checked
     }
 

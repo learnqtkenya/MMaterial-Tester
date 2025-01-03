@@ -1,14 +1,14 @@
 import QtQuick 
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.UI as UI
 
 RowLayout {
     id: _root
 
-    property real lineWidth: Size.pixel4
+	property real lineWidth: UI.Size.pixel4
 
-    property var accent: Theme.primary
+	property var accent: UI.Theme.primary
     property color foregroundColor: accent.main
     property color backgroundColor: accent.transparent.p24
     property bool showLabel: false
@@ -19,7 +19,7 @@ RowLayout {
     property int progress: 50
 
     implicitWidth: 300
-    implicitHeight: Size.pixel10
+	implicitHeight: UI.Size.pixel10
 
     Rectangle {
         id: _bar
@@ -48,14 +48,15 @@ RowLayout {
             Behavior on width { SmoothedAnimation { duration: 50;} }
         }
     }
-    Caption{
+
+	UI.Caption{
         id: _label
 
         Layout.preferredWidth: contentWidth
         Layout.alignment: Qt.AlignVCenter
 
         visible: _root.showLabel
-        color: Theme.text.secondary
+		color: UI.Theme.text.secondary
         text: _root.progress + "%"
         verticalAlignment: Qt.AlignVCenter
 

@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Templates as T
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 
 T.ToolTip {
     id: control
@@ -25,12 +25,12 @@ T.ToolTip {
     contentItem: Text {
         text: control.text
         wrapMode: Text.Wrap
-        color: MMaterial.Theme.background.main
+		color: UI.Theme.background.main
     }
 
     background: Rectangle {
         radius: 10
-        color: MMaterial.Theme.text.primary
+		color: UI.Theme.text.primary
         opacity: 0.8
     }
 

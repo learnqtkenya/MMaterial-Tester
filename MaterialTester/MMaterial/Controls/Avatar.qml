@@ -1,6 +1,6 @@
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 
 Rectangle {
     id: root
@@ -8,12 +8,12 @@ Rectangle {
     readonly property bool isEmpty: image.source.toString() === ""
 
     property alias source: image.source
-    property real size: MMaterial.Size.pixel48
+    property real size: UI.Size.pixel48
 
     property string title: "A"
-    property MMaterial.PaletteBasic accent: MMaterial.Theme.primary
+    property UI.PaletteBasic accent: UI.Theme.primary
 
-    color: enabled ? accent.main : MMaterial.Theme.action.disabled
+    color: enabled ? accent.main : UI.Theme.action.disabled
     radius: height / 2
 
     implicitHeight: root.size
@@ -49,7 +49,7 @@ Rectangle {
         id: transitionAnimation
     }
 
-    MMaterial.Subtitle2 {
+	UI.Subtitle2 {
         id: title
 
         anchors.centerIn: root
@@ -67,7 +67,7 @@ Rectangle {
         }
     }
 
-    MMaterial.MaskedImage {
+	MaskedImage {
         id: image
 
         anchors.fill: root

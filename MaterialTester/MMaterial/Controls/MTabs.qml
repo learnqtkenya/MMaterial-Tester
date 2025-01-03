@@ -2,13 +2,13 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 
-import MMaterial
+import MMaterial.UI as UI
 
 ListView {
     id: _root
 
     orientation: ListView.Horizontal
-    spacing: Size.pixel40
+	spacing: UI.Size.pixel40
 
     highlightMoveDuration: 400
     highlightFollowsCurrentItem: true
@@ -24,10 +24,10 @@ ListView {
             Rectangle {
                 anchors.bottom:_highlight.bottom
 
-                height: _root.orientation == ListView.Horizontal ? Size.pixel1 * 2 : _highlight.height
-                width: _root.orientation == ListView.Horizontal ? _highlight.width : Size.pixel1 * 2
+				height: _root.orientation == ListView.Horizontal ? UI.Size.pixel1 * 2 : _highlight.height
+				width: _root.orientation == ListView.Horizontal ? _highlight.width : UI.Size.pixel1 * 2
 
-                color: Theme.primary.main
+				color: UI.Theme.primary.main
             }
         }
     }

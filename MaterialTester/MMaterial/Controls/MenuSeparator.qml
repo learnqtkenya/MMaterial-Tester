@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Templates as T
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 
 T.MenuSeparator {
     id: control
@@ -11,13 +11,13 @@ T.MenuSeparator {
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              implicitContentHeight + topPadding + bottomPadding)
 
-    padding: MMaterial.Size.pixel2
-    verticalPadding: padding + MMaterial.Size.pixel4
+    padding: UI.Size.pixel2
+    verticalPadding: padding + UI.Size.pixel4
 
     contentItem: Rectangle {
-        radius: MMaterial.Size.pixel6
+        radius: UI.Size.pixel6
         implicitWidth: 188
         implicitHeight: 1
-        color: MMaterial.Theme.text.secondary
+		color: UI.Theme.text.secondary
     }
 }

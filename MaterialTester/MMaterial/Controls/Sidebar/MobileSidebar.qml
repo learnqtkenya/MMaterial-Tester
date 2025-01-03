@@ -2,7 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 
-import MMaterial
+import MMaterial.UI as UI
 
 Item {
     id: root
@@ -16,7 +16,7 @@ Item {
     property alias model: barList.model
 
     implicitWidth: parent.width
-    implicitHeight: Size.pixel54 + barList.anchors.margins * 2
+    implicitHeight: UI.Size.pixel54 + barList.anchors.margins * 2
 
     ListView {
         id: barList
@@ -24,12 +24,12 @@ Item {
         anchors {
             top: root.top
             bottom: root.bottom
-            margins: Size.pixel6
+            margins: UI.Size.pixel6
             horizontalCenter: root.horizontalCenter
         }
 
-        width: Math.min(root.width - Size.pixel40, barList.contentWidth)
-        spacing: Size.pixel8
+        width: Math.min(root.width - UI.Size.pixel40, barList.contentWidth)
+        spacing: UI.Size.pixel8
         clip: true
         currentIndex: root.sidebarData.currentIndex
         orientation: ListView.Horizontal
@@ -41,7 +41,7 @@ Item {
 
             property SidebarItem data: root.model[index]
 
-            width: Size.pixel36 * 2
+            width: UI.Size.pixel36 * 2
             height: barList.height
 
             sidebarData: root.sidebarData
@@ -52,7 +52,7 @@ Item {
 
             contextMenu {
                 x: 0
-                y: -_delegate.contextMenu.height - Size.pixel6
+                y: -_delegate.contextMenu.height - UI.Size.pixel6
             }
 
             onClicked: typeof _delegate.data.onClicked === "function" ? _delegate.data.onClicked() : () => {}

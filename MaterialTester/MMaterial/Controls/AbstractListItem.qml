@@ -1,6 +1,6 @@
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 
 Rectangle {
     id: _root
@@ -13,7 +13,7 @@ Rectangle {
 
     opacity: 1
     radius: 8
-    color: MMaterial.Theme.background.main
+    color: UI.Theme.background.main
 
     onClicked: {
         if(typeof index !== "undefined" && ListView.view)
@@ -23,13 +23,13 @@ Rectangle {
     }
 
     states: [
-        //states based on this _mouseArea.pressed || selected ? MMaterial.Theme.action.selected : _root.containsMouse ? MMaterial.Theme.action.hover : MMaterial.Theme.background.main
+        //states based on this _mouseArea.pressed || selected ? UI.Theme.action.selected : _root.containsMouse ? UI.Theme.action.hover : UI.Theme.background.main
         State {
             name: "disabled"
             when: !_root.enabled
             PropertyChanges {
                 target: _root
-                color: MMaterial.Theme.action.disabled
+                color: UI.Theme.action.disabled
                 opacity: 0.4
             }
         },
@@ -38,7 +38,7 @@ Rectangle {
             when: _mouseArea.pressed
             PropertyChanges {
                 target: _root
-                color: MMaterial.Theme.action.selected
+                color: UI.Theme.action.selected
             }
         },
         State {
@@ -46,7 +46,7 @@ Rectangle {
             when: _root.containsMouse && !_mouseArea.pressed
             PropertyChanges {
                 target: _root
-                color: MMaterial.Theme.action.hover
+                color: UI.Theme.action.hover
             }
         },
         State {
@@ -54,7 +54,7 @@ Rectangle {
             when: _root.selected
             PropertyChanges {
                 target: _root
-                color: MMaterial.Theme.action.selected
+                color: UI.Theme.action.selected
             }
         }
     ]

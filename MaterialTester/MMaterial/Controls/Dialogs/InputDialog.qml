@@ -2,7 +2,9 @@ import QtQuick
 import QtQuick.Templates as T
 import QtQuick.Layouts
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
+import MMaterial.Controls.Inputs as Inputs
 
 T.Dialog {
     id: control
@@ -10,34 +12,34 @@ T.Dialog {
     property alias button: button
 
     property string text: ""
-    property color textColor: MMaterial.Theme.text.secondary
+    property color textColor: UI.Theme.text.secondary
     property url imageSource
     property string placeholder: ""
 
-    component DialogButton: MMaterial.MButton {
+    component DialogButton: Controls.MButton {
         Layout.alignment: Qt.AlignRight
-        size: MMaterial.Size.Grade.M
+        size: UI.Size.Grade.M
     }
 
-    component DialogAlertButton: MMaterial.MButton {
+    component DialogAlertButton: Controls.MButton {
         Layout.alignment: Qt.AlignRight
-        accent: MMaterial.Theme.error
-        size: MMaterial.Size.Grade.M
+        accent: UI.Theme.error
+        size: UI.Size.Grade.M
     }
 
-    component DialogCloseButton: MMaterial.MButton {
+    component DialogCloseButton: Controls.MButton {
         Layout.alignment: Qt.AlignRight
-        accent: MMaterial.Theme.passive
-        size: MMaterial.Size.Grade.M
-        type: MMaterial.MButton.Type.Outlined
+        accent: UI.Theme.passive
+        size: UI.Size.Grade.M
+        type: Controls.MButton.Type.Outlined
     }
 
-    implicitWidth: Math.max(614 * MMaterial.Size.scale, Math.max(implicitBackgroundWidth + leftInset + rightInset,
+    implicitWidth: Math.max(614 * UI.Size.scale, Math.max(implicitBackgroundWidth + leftInset + rightInset,
                                                                   contentWidth + leftPadding + rightPadding,
                                                                   implicitHeaderWidth + leftPadding + rightPadding,
                                                                   implicitFooterWidth + leftPadding + rightPadding))
 
-    implicitHeight: Math.max(240 * MMaterial.Size.scale, implicitBackgroundHeight + topInset + bottomInset,
+    implicitHeight: Math.max(240 * UI.Size.scale, implicitBackgroundHeight + topInset + bottomInset,
                              contentHeight + topPadding + bottomPadding
                              + (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0)
                              + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
@@ -47,13 +49,13 @@ T.Dialog {
     closePolicy: Dialog.NoAutoClose
 
     background: Rectangle {
-        radius: MMaterial.Size.pixel16
-        color: MMaterial.Theme.background.paper
+        radius: UI.Size.pixel16
+        color: UI.Theme.background.paper
     }
 
     font {
-        family: MMaterial.PublicSans.regular
-        pixelSize: MMaterial.Size.pixel16
+        family: UI.PublicSans.regular
+        pixelSize: UI.Size.pixel16
     }
 
     enter: Transition {
@@ -69,14 +71,14 @@ T.Dialog {
     contentItem: Item {
         id: contentItemRoot
 
-        MMaterial.MaskedImage {
+        Controls.MaskedImage {
             id: image
 
             visible: control.imageSource.toString() !== ""
             width: visible ? control.width * 0.3 : 0
             source: control.imageSource
-            bottomLeftRadius: MMaterial.Size.pixel16
-            topLeftRadius: MMaterial.Size.pixel16
+            bottomLeftRadius: UI.Size.pixel16
+            topLeftRadius: UI.Size.pixel16
             topRightRadius: 0
             bottomRightRadius: 0
 
@@ -88,17 +90,17 @@ T.Dialog {
         }
 
         ColumnLayout {
-            spacing: MMaterial.Size.pixel16
+            spacing: UI.Size.pixel16
 
             anchors {
                 left: image.right
                 right: contentItemRoot.right
                 top: contentItemRoot.top
                 bottom: contentItemRoot.bottom
-                margins: MMaterial.Size.pixel24
+                margins: UI.Size.pixel24
             }
 
-            MMaterial.H4 {
+            UI.H4 {
                 id: titleText
 
                 Layout.fillWidth: true
@@ -106,11 +108,11 @@ T.Dialog {
                 visible: text !== ""
                 elide: Text.ElideRight
                 wrapMode: Text.NoWrap
-                color: MMaterial.Theme.text.primary
+                color: UI.Theme.text.primary
                 font.bold: true
             }
 
-            MMaterial.B1 {
+            UI.B1 {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 verticalAlignment: Qt.AlignVCenter
@@ -119,16 +121,16 @@ T.Dialog {
                 color: control.textColor
             }
 
-            MMaterial.MTextField {
+			Inputs.MTextField {
                 id: textField
 
                 Layout.fillWidth: true
-                type: MMaterial.MTextField.Type.Outlined
-                accent: MMaterial.Theme.primary
+				type: Inputs.MTextField.Type.Outlined
+                accent: UI.Theme.primary
                 placeholder: control.placeholder
-                input.anchors.rightMargin: button.visible ? button.width + button.anchors.margins : MMaterial.Size.pixel14
+                input.anchors.rightMargin: button.visible ? button.width + button.anchors.margins : UI.Size.pixel14
 
-                MMaterial.MButton {
+                Controls.MButton {
                     id: button
                     text: qsTr("Send")
 
@@ -136,7 +138,7 @@ T.Dialog {
                         top: textField.top
                         bottom: textField.bottom
                         right: textField.right
-                        margins: MMaterial.Size.pixel4
+                        margins: UI.Size.pixel4
                     }
                 }
             }
@@ -144,10 +146,10 @@ T.Dialog {
     }
 
     T.Overlay.modal: Rectangle {
-        color: Qt.alpha(MMaterial.Theme.background.paper, 0.5)
+        color: Qt.alpha(UI.Theme.background.paper, 0.5)
     }
 
     T.Overlay.modeless: Rectangle {
-        color: Qt.alpha(MMaterial.Theme.background.paper, 0.12)
+        color: Qt.alpha(UI.Theme.background.paper, 0.12)
     }
 }

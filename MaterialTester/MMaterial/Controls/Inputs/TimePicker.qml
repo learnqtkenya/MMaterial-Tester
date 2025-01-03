@@ -3,8 +3,9 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Layouts
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 import MMaterial.Controls.Dialogs as Dialogs
+import MMaterial.Controls as Controls
 
 Dialogs.Dialog {
     id: root
@@ -14,10 +15,10 @@ Dialogs.Dialog {
 
         property bool isAM: true
 
-        MMaterial.Subtitle1 {
+		UI.Subtitle1 {
             id: amLabel
             text: qsTr("AM")
-            color: switchRoot.isAM ? MMaterial.Theme.text.primary : MMaterial.Theme.text.secondary
+            color: switchRoot.isAM ? UI.Theme.text.primary : UI.Theme.text.secondary
             opacity: amLabelMA.pressed ? 0.8 : 1
 
             MouseArea {
@@ -31,10 +32,10 @@ Dialogs.Dialog {
             }
         }
 
-        MMaterial.Subtitle1 {
+		UI.Subtitle1 {
             id: pmLabel
             text: qsTr("PM")
-            color: !switchRoot.isAM ? MMaterial.Theme.text.primary : MMaterial.Theme.text.secondary
+            color: !switchRoot.isAM ? UI.Theme.text.primary : UI.Theme.text.secondary
             opacity: pmLabelMA.pressed ? 0.8 : 1
 
             MouseArea {
@@ -58,11 +59,11 @@ Dialogs.Dialog {
 
         spacing: 0
 
-        MMaterial.H3 {
+		UI.H3 {
             id: hoursLabel
 
             text: timePresenter.hours + ":"
-            color: timePresenter.isEditingHours ? MMaterial.Theme.text.primary : MMaterial.Theme.text.secondary
+            color: timePresenter.isEditingHours ? UI.Theme.text.primary : UI.Theme.text.secondary
             font.bold: true
             opacity: hoursLabelMA.pressed ? 0.8 : 1
 
@@ -77,11 +78,11 @@ Dialogs.Dialog {
             }
         }
 
-        MMaterial.H3 {
+		UI.H3 {
             id: minutesLabel
 
             text: timePresenter.minutes
-            color: !timePresenter.isEditingHours ? MMaterial.Theme.text.primary : MMaterial.Theme.text.secondary
+            color: !timePresenter.isEditingHours ? UI.Theme.text.primary : UI.Theme.text.secondary
             font.bold: true
             opacity: minutesLabelMA.pressed ? 0.8 : 1
 
@@ -112,25 +113,25 @@ Dialogs.Dialog {
         return `${formattedHours}:${formattedMinutes}`;
     }
 
-    implicitHeight: 434 * MMaterial.Size.scale
-    implicitWidth: 320 * MMaterial.Size.scale
+    implicitHeight: 434 * UI.Size.scale
+    implicitWidth: 320 * UI.Size.scale
 
     contentItem: ColumnLayout {
-        MMaterial.Overline {
+		UI.Overline {
             Layout.fillWidth: true
 
             text: qsTr("Select time")
-            color: MMaterial.Theme.text.secondary
+            color: UI.Theme.text.secondary
         }
 
         RowLayout {
-            Layout.preferredHeight: MMaterial.Size.pixel48
+            Layout.preferredHeight: UI.Size.pixel48
 
             TimePresenter {
                 id: timePresentation
 
-                Layout.preferredWidth: MMaterial.Size.scale * 90
-                Layout.maximumWidth: MMaterial.Size.scale * 90
+                Layout.preferredWidth: UI.Size.scale * 90
+                Layout.maximumWidth: UI.Size.scale * 90
 
                 onIsEditingHoursChanged: {
                     secondHandAnimation.to = timePresentation.isEditingHours ? d.hourToAngle(parseInt(timePresentation.hours)) : d.minuteToAngle(parseInt(timePresentation.minutes));
@@ -154,24 +155,24 @@ Dialogs.Dialog {
         Rectangle {
             id: clockFace
 
-            property real clockNumbersMargin: MMaterial.Size.scale * 18
+            property real clockNumbersMargin: UI.Size.scale * 18
             property alias hand: secondHand
 
             Layout.fillWidth: true
             Layout.preferredHeight: width
-            Layout.topMargin: MMaterial.Size.pixel32
-            Layout.margins: MMaterial.Size.pixel13 * 2
+            Layout.topMargin: UI.Size.pixel32
+            Layout.margins: UI.Size.pixel13 * 2
 
             radius: height / 2
-            color: MMaterial.Theme.action.disabledBackground
+            color: UI.Theme.action.disabledBackground
 
             Rectangle {
                 id: secondHand
 
-                width: 1.69 * MMaterial.Size.scale
-                height: clockFace.width / 2 - (MMaterial.Size.pixel36 - (bigDot.height))
+                width: 1.69 * UI.Size.scale
+                height: clockFace.width / 2 - (UI.Size.pixel36 - (bigDot.height))
 
-                color: MMaterial.Theme.primary.main
+                color: UI.Theme.primary.main
                 antialiasing: true
 
                 anchors {
@@ -194,7 +195,7 @@ Dialogs.Dialog {
                 }
 
                 Rectangle {
-                    height: MMaterial.Size.pixel6
+                    height: UI.Size.pixel6
                     width: height
                     radius: height / 2
                     color: secondHand.color
@@ -213,7 +214,7 @@ Dialogs.Dialog {
                         (numberRepeater.showHours ? secondRotation.angle % 30 <= 5 : d.currentMinute % 5 == 0)
                         && !secondHandAnimation.running
 
-                    height: bigDot.isEnlarged ? MMaterial.Size.pixel36 : 0
+                    height: bigDot.isEnlarged ? UI.Size.pixel36 : 0
                     width: height
 
                     radius: height / 2
@@ -319,7 +320,7 @@ Dialogs.Dialog {
                         to: "*"
                         SequentialAnimation {
                             ParallelAnimation {
-                                NumberAnimation { target: numberRepeater; property: "marginFactor"; to: MMaterial.Size.pixel16; duration: 125; easing.type: Easing.InQuad }
+                                NumberAnimation { target: numberRepeater; property: "marginFactor"; to: UI.Size.pixel16; duration: 125; easing.type: Easing.InQuad }
                                 NumberAnimation { target: numberRepeater; property: "delegateOpacity"; to: 0; duration: 125; easing.type: Easing.InQuad }
                             }
 
@@ -333,7 +334,7 @@ Dialogs.Dialog {
                     }
                 ]
 
-                delegate: MMaterial.B1 {
+				delegate: UI.B1 {
                     id: numberDelegate
 
                     required property var modelData
@@ -342,8 +343,8 @@ Dialogs.Dialog {
                     text: numberRepeater.showHours ? modelData.hour : modelData.minute
                     opacity: numberRepeater.delegateOpacity
                     color: (numberRepeater.showHours ? d.currentHour === modelData.hour : d.currentMinute === modelData.minute) && bigDot.isEnlarged
-                           ? MMaterial.Theme.primary.lighter
-                           : MMaterial.Theme.text.primary;
+                           ? UI.Theme.primary.lighter
+                           : UI.Theme.text.primary;
 
                     x: clockFace.width / 2 + Math.cos(Math.PI / 6 * index - Math.PI / 2) * (clockFace.width / 2 - clockFace.clockNumbersMargin - numberRepeater.marginFactor) - width / 2
                     y: clockFace.height / 2 + Math.sin(Math.PI / 6 * index - Math.PI / 2) * (clockFace.height / 2 - clockFace.clockNumbersMargin - numberRepeater.marginFactor) - height / 3
@@ -370,13 +371,13 @@ Dialogs.Dialog {
 
     Dialogs.Dialog.DialogButton {
         text: qsTr("Cancel")
-        type: MMaterial.MButton.Type.Text
+		type: Controls.MButton.Type.Text
         onClicked: root.close()
     }
 
     Dialogs.Dialog.DialogButton {
         text: qsTr("OK")
-        type: MMaterial.MButton.Type.Text
+		type: Controls.MButton.Type.Text
         onClicked: {
             let date = new Date();
             date.setHours(amPmPresentation.isAM ? d.currentHour : d.currentHour + 12);

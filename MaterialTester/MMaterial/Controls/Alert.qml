@@ -1,7 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.Media as Media
+import MMaterial.UI as UI
 
 Rectangle {
     id: _root
@@ -16,18 +17,18 @@ Rectangle {
     property int variant: Alert.Variant.Filled
 
     property string text: ""
-    property IconData icon: {
-        if(_root.severity == Alert.Severity.Info) return Icons.light.info;
-        if(_root.severity == Alert.Severity.Success) return Icons.light.checkCircle;
-        if(_root.severity == Alert.Severity.Warning) return Icons.light.warning;
-        if(_root.severity == Alert.Severity.Error) return Icons.light.info;
+	property Media.IconData icon: {
+		if(_root.severity == Alert.Severity.Info) return Media.Icons.light.info;
+		if(_root.severity == Alert.Severity.Success) return Media.Icons.light.checkCircle;
+		if(_root.severity == Alert.Severity.Warning) return Media.Icons.light.warning;
+		if(_root.severity == Alert.Severity.Error) return Media.Icons.light.info;
     }
 
     property var accent: {
-        if(_root.severity == Alert.Severity.Info) return Theme.info;
-        if(_root.severity == Alert.Severity.Success) return Theme.success;
-        if(_root.severity == Alert.Severity.Warning) return Theme.warning;
-        if(_root.severity == Alert.Severity.Error) return Theme.error;
+		if(_root.severity == Alert.Severity.Info) return UI.Theme.info;
+		if(_root.severity == Alert.Severity.Success) return UI.Theme.success;
+		if(_root.severity == Alert.Severity.Warning) return UI.Theme.warning;
+		if(_root.severity == Alert.Severity.Error) return UI.Theme.error;
     }
 
     signal clicked
@@ -56,12 +57,12 @@ Rectangle {
             PropertyChanges{ target: _closeIcon; color: _root.accent.contrastText}
             PropertyChanges{ target: _text; color: _root.accent.contrastText}
             PropertyChanges{ target: _dismissButton; title.color: _root.accent.contrastText; border.color: _root.accent.contrastText }
-            PropertyChanges{ target: _actionButton; title.color: Theme.main.p800; color: Theme.common.white; }
+			PropertyChanges{ target: _actionButton; title.color: UI.Theme.main.p800; color: UI.Theme.common.white; }
         },
         State{
             name: "outlined"
             when: _root.variant == Alert.Variant.Outlined
-            PropertyChanges{ target: _root; color: Theme.background.main; border.width: Size.pixel1; border.color: accent.dark}
+            PropertyChanges{ target: _root; color: UI.Theme.background.main; border.width: UI.Size.pixel1; border.color: accent.dark}
             PropertyChanges{ target: _icon; color: _root.accent.main}
             PropertyChanges{ target: _closeIcon; color: _root.accent.main}
             PropertyChanges{ target: _text; color: _root.accent.dark}
@@ -71,7 +72,7 @@ Rectangle {
     QtObject{
         id: _private
 
-        readonly property int recommendedHeight: Size.scale * 50
+        readonly property int recommendedHeight: UI.Size.scale * 50
     }
 
     MouseArea {
@@ -87,28 +88,28 @@ Rectangle {
 
         anchors{
             fill: _root
-            margins: Size.pixel8
+            margins: UI.Size.pixel8
         }
 
-        Icon {
+		Media.Icon {
             id: _icon
 
             Layout.alignment: _text.lineCount <= 1 ? Qt.AlignVCenter : Qt.AlignTop
-            Layout.topMargin: _text.lineCount <= 1 ? 0 : Size.pixel6
-            Layout.leftMargin: Size.pixel8
+            Layout.topMargin: _text.lineCount <= 1 ? 0 : UI.Size.pixel6
+            Layout.leftMargin: UI.Size.pixel8
 
-            size: Size.pixel24
+            size: UI.Size.pixel24
             iconData: _root.icon
         }
 
-        B2 {
+		UI.B2 {
             id: _text
 
             Layout.fillWidth: true
-            Layout.leftMargin: Size.pixel12
+            Layout.leftMargin: UI.Size.pixel12
 
             text: _root.text
-            color: Theme.info.darker
+			color: UI.Theme.info.darker
             verticalAlignment: Qt.AlignVCenter
             elide: Text.ElideNone
             wrapMode: Text.WordWrap
@@ -119,7 +120,7 @@ Rectangle {
             id: _actionButton
 
             type: MButton.Type.Contained
-            size: Size.S
+            size: UI.Size.S
             text: ""
             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             Layout.preferredHeight: _actionButton.implicitHeight
@@ -136,7 +137,7 @@ Rectangle {
             Layout.preferredWidth: _dismissButton.implicitWidth
 
             type: MButton.Type.Outlined
-            size: Size.S
+            size: UI.Size.S
             text: ""
             accent: _root.accent
             visible: text != ""
@@ -144,16 +145,16 @@ Rectangle {
             onClicked: _root.close()
         }
 
-        Icon {
+		Media.Icon {
             id: _closeIcon
 
             Layout.alignment: _text.lineCount <= 1 ? Qt.AlignVCenter : Qt.AlignTop
-            Layout.topMargin: _text.lineCount <= 1 ? 0 : Size.pixel6
-            Layout.rightMargin: Size.pixel8
+            Layout.topMargin: _text.lineCount <= 1 ? 0 : UI.Size.pixel6
+            Layout.rightMargin: UI.Size.pixel8
 
             visible: !_actionButton.visible && !_dismissButton.visible
-            size: Size.pixel18
-            iconData: Icons.light.close
+            size: UI.Size.pixel18
+			iconData: Media.Icons.light.close
             interactive: true
 
             onClicked: _root.close()

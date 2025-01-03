@@ -4,7 +4,6 @@
 
 class ShadePickerController : public QQuickPaintedItem
 {
-
 	Q_OBJECT
 	QML_NAMED_ELEMENT(ShadeChooser)
 

@@ -1,10 +1,16 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
+import MMaterial.Media as Media
 
 Item {
     id: _root
+
+	required property int index
 
     property SidebarData sidebarData
 
@@ -22,7 +28,7 @@ Item {
     property real openingSpeed: 150
 
     function selectItem(subindex) : void {
-        if (ListView.view) {
+		if (ListView.view) {
             if(typeof index !== "undefined")
                 ListView.view.currentIndex = index;
             else if(typeof ObjectModel.index !== "undefined")
@@ -66,10 +72,10 @@ Item {
         }
     ]
 
-    MMaterial.Checkable {
+	Controls.Checkable {
         id: _mainItem
 
-        height: 50 * MMaterial.Size.scale
+        height: 50 * UI.Size.scale
         width: _root.width
 
         customCheckImplementation: true
@@ -88,25 +94,25 @@ Item {
                 name: "disabled"
                 when: !_root.enabled
                 PropertyChanges{ target: _checkableBackground; color: "transparent"; opacity: 0.64; }
-                PropertyChanges { target: _title; font.family: MMaterial.PublicSans.regular; color: MMaterial.Theme.text.secondary }
-                PropertyChanges{ target: _icon; color: MMaterial.Theme.text.secondary }
-                PropertyChanges{ target: _arrow; color: MMaterial.Theme.text.secondary }
+                PropertyChanges { target: _title; font.family: UI.PublicSans.regular; color: UI.Theme.text.secondary }
+                PropertyChanges{ target: _icon; color: UI.Theme.text.secondary }
+                PropertyChanges{ target: _arrow; color: UI.Theme.text.secondary }
             },
             State {
                 name: "checked"
                 when: _root.checked
-                PropertyChanges{ target: _checkableBackground; color: _mainItem.mouseArea.containsMouse ? MMaterial.Theme.primary.transparent.p16 : MMaterial.Theme.primary.transparent.p8; opacity: 1;}
-                PropertyChanges { target: _title; font.family: MMaterial.PublicSans.semiBold; color: MMaterial.Theme.primary.main; }
-                PropertyChanges{ target: _icon; color: MMaterial.Theme.primary.main }
-                PropertyChanges{ target: _arrow; color: MMaterial.Theme.primary.main; }
+                PropertyChanges{ target: _checkableBackground; color: _mainItem.mouseArea.containsMouse ? UI.Theme.primary.transparent.p16 : UI.Theme.primary.transparent.p8; opacity: 1;}
+                PropertyChanges { target: _title; font.family: UI.PublicSans.semiBold; color: UI.Theme.primary.main; }
+                PropertyChanges{ target: _icon; color: UI.Theme.primary.main }
+                PropertyChanges{ target: _arrow; color: UI.Theme.primary.main; }
             },
             State {
                 name: "unchecked"
                 when: !_root.checked
-                PropertyChanges{ target: _checkableBackground; color: _mainItem.mouseArea.containsMouse ? MMaterial.Theme.background.neutral : "transparent"; opacity: 1;}
-                PropertyChanges { target: _title; font.family: MMaterial.PublicSans.regular; color: MMaterial.Theme.text.secondary }
-                PropertyChanges{ target: _icon; color: MMaterial.Theme.text.secondary }
-                PropertyChanges{ target: _arrow; color: MMaterial.Theme.text.secondary }
+                PropertyChanges{ target: _checkableBackground; color: _mainItem.mouseArea.containsMouse ? UI.Theme.background.neutral : "transparent"; opacity: 1;}
+                PropertyChanges { target: _title; font.family: UI.PublicSans.regular; color: UI.Theme.text.secondary }
+                PropertyChanges{ target: _icon; color: UI.Theme.text.secondary }
+                PropertyChanges{ target: _arrow; color: UI.Theme.text.secondary }
             }
         ]
 
@@ -114,32 +120,32 @@ Item {
             id: _checkableBackground
 
             anchors.fill: _mainItem
-            radius: MMaterial.Size.pixel8
+            radius: UI.Size.pixel8
         }
 
         RowLayout {
             anchors{
                 fill: _mainItem
-                leftMargin: MMaterial.Size.pixel16
-                rightMargin: MMaterial.Size.pixel12
+                leftMargin: UI.Size.pixel16
+                rightMargin: UI.Size.pixel12
             }
 
-            spacing: MMaterial.Size.pixel8
+            spacing: UI.Size.pixel8
 
-            MMaterial.Icon {
+            Media.Icon {
                 id: _icon
 
                 Layout.alignment: Qt.AlignVCenter
 
                 visible: iconData.path != ""
-                size: MMaterial.Size.pixel24
-                color: _title.color
+                size: UI.Size.pixel24
+				color: _title.color.toString()
             }
 
-            MMaterial.Subtitle2 {
+			UI.Subtitle2 {
                 id: _title
 
-                Layout.leftMargin: _icon.visible ? MMaterial.Size.pixel8 : 0
+                Layout.leftMargin: _icon.visible ? UI.Size.pixel8 : 0
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignVCenter
                 elide: Text.ElideRight
@@ -156,14 +162,14 @@ Item {
                 active: _root.chip ? _root.chip.text !== "" : false
 
                 sourceComponent: Component {
-                    MMaterial.MButton {
-                        type: MMaterial.MButton.Type.Soft
+					Controls.MButton {
+						type: Controls.MButton.Type.Soft
                         text: _root.chip ? _root.chip.text : ""
-                        accent: _root.chip ? _root.chip.accent : MMaterial.Theme.primary
-                        size: MMaterial.Size.Grade.Custom
-                        horizontalPadding: MMaterial.Size.pixel8
-                        verticalPadding: MMaterial.Size.pixel6
-                        pixelSize: MMaterial.Size.pixel12
+                        accent: _root.chip ? _root.chip.accent : UI.Theme.primary
+                        size: UI.Size.Grade.Custom
+                        horizontalPadding: UI.Size.pixel8
+                        verticalPadding: UI.Size.pixel6
+                        pixelSize: UI.Size.pixel12
                         mouseArea {
                             enabled: false
                             anchors.fill: null
@@ -172,16 +178,16 @@ Item {
                 }
             }
 
-            MMaterial.Icon {
+            Media.Icon {
                 id: _arrow
 
                 Layout.alignment: Qt.AlignVCenter
 
                 visible: _root.model ? _root.model.length > 0 : 0
-                iconData: MMaterial.Icons.light.chevronRight
+                iconData: Media.Icons.light.chevronRight
                 rotation: _root.isOpen ? 90 : 0
 
-                size: MMaterial.Size.pixel16
+                size: UI.Size.pixel16
 
                 Behavior on rotation { SmoothedAnimation { duration: _root.openingSpeed;} }
             }
@@ -191,20 +197,23 @@ Item {
     ListView {
         id: _listView
 
-        property real delegateHeight: 36 * MMaterial.Size.scale
+        property real delegateHeight: 36 * UI.Size.scale
 
         anchors{
-            top: _mainItem.bottom; topMargin: MMaterial.Size.pixel4
+            top: _mainItem.bottom; topMargin: UI.Size.pixel4
             left: _root.left; right: _root.right
         }
 
         currentIndex: _root.checked ? _root.sidebarData.currentSubIndex : -1
-        spacing: MMaterial.Size.pixel4
+        spacing: UI.Size.pixel4
         interactive: false
         clip: true
 
         delegate: Rectangle {
             id: _subItem
+
+			required property var modelData
+			required property int index
 
             property bool checked: _root.sidebarData.currentSubIndex == index
             property string text: modelData.text
@@ -214,29 +223,29 @@ Item {
             radius: _checkableBackground.radius
             height: _listView.delegateHeight
             width: _listView.width
-            color: _subItemMouseArea.containsMouse ? MMaterial.Theme.background.neutral : "transparent"
+            color: _subItemMouseArea.containsMouse ? UI.Theme.background.neutral : "transparent"
 
             states: [
                 State {
                     name: "disabled"
                     when: !_subItem.enabled
                     PropertyChanges{ target: _subItem; opacity: 0.68; }
-                    PropertyChanges{ target: _dot; color: MMaterial.Theme.text.secondary; scale: 1 }
-                    PropertyChanges{ target: _label; color: MMaterial.Theme.text.secondary; font.family: MMaterial.PublicSans.regular }
+                    PropertyChanges{ target: _dot; color: UI.Theme.text.secondary; scale: 1 }
+                    PropertyChanges{ target: _label; color: UI.Theme.text.secondary; font.family: UI.PublicSans.regular }
                 },
                 State {
                     name: "checked"
-                    when: _root.sidebarData.currentSubIndex === index && _root.checked
+					when: _root.sidebarData.currentSubIndex === _subItem.index && _root.checked
                     PropertyChanges{ target: _subItem; opacity: 1; }
-                    PropertyChanges{ target: _dot; color: MMaterial.Theme.primary.main; scale: 3 }
-                    PropertyChanges{ target: _label; color: MMaterial.Theme.text.primary; font.family: MMaterial.PublicSans.semiBold }
+                    PropertyChanges{ target: _dot; color: UI.Theme.primary.main; scale: 3 }
+                    PropertyChanges{ target: _label; color: UI.Theme.text.primary; font.family: UI.PublicSans.semiBold }
                 },
                 State {
                     name: "unchecked"
                     when: true
                     PropertyChanges{ target: _subItem; opacity: 1; }
-                    PropertyChanges{ target: _dot; color: MMaterial.Theme.text.secondary; scale: 1 }
-                    PropertyChanges{ target: _label; color: MMaterial.Theme.text.secondary; font.family: MMaterial.PublicSans.regular }
+                    PropertyChanges{ target: _dot; color: UI.Theme.text.secondary; scale: 1 }
+                    PropertyChanges{ target: _label; color: UI.Theme.text.secondary; font.family: UI.PublicSans.regular }
                 }
             ]
 
@@ -260,23 +269,23 @@ Item {
             RowLayout {
                 anchors {
                     fill: _subItem
-                    leftMargin: MMaterial.Size.pixel16
-                    rightMargin: MMaterial.Size.pixel12
+                    leftMargin: UI.Size.pixel16
+                    rightMargin: UI.Size.pixel12
                 }
 
-                spacing: MMaterial.Size.pixel16
+                spacing: UI.Size.pixel16
 
                 Item {
                     id: _dotContainer
 
-                    Layout.preferredHeight: MMaterial.Size.pixel24
+                    Layout.preferredHeight: UI.Size.pixel24
                     Layout.preferredWidth: height
                     Layout.alignment: Qt.AlignVCenter
 
-                    Rectangle { id: _dot; height: MMaterial.Size.pixel4; width: MMaterial.Size.pixel4; anchors.centerIn: _dotContainer; radius: 100 }
+                    Rectangle { id: _dot; height: UI.Size.pixel4; width: UI.Size.pixel4; anchors.centerIn: _dotContainer; radius: 100 }
                 }
 
-                MMaterial.Subtitle2 {
+				UI.Subtitle2 {
                     id: _label
 
                     Layout.fillWidth: true
@@ -296,14 +305,14 @@ Item {
                     active: _subItem.chip
 
                     sourceComponent: Component {
-                        MMaterial.MButton {
-                            type: MMaterial.MButton.Type.Soft
+						Controls.MButton {
+							type: Controls.MButton.Type.Soft
                             text: _subItem.chip ? _subItem.chip.text : ""
-                            accent: _subItem.chip ? _subItem.chip.accent : MMaterial.Theme.primary
-                            size: MMaterial.Size.Grade.Custom
-                            horizontalPadding: MMaterial.Size.pixel6
-                            verticalPadding: MMaterial.Size.pixel6
-                            pixelSize: MMaterial.Size.pixel11
+                            accent: _subItem.chip ? _subItem.chip.accent : UI.Theme.primary
+                            size: UI.Size.Grade.Custom
+                            horizontalPadding: UI.Size.pixel6
+                            verticalPadding: UI.Size.pixel6
+                            pixelSize: UI.Size.pixel11
 
                             mouseArea {
                                 enabled: false
@@ -324,9 +333,9 @@ Item {
                 cursorShape: Qt.PointingHandCursor
 
                 onClicked: {
-                    _listView.currentIndex = index;
-                    _root.selectItem(index);
-                    modelData.onClicked();
+					_listView.currentIndex = _root.index;
+					_root.selectItem(_subItem.index);
+					_subItem.modelData.onClicked();
                 }
             }
         }

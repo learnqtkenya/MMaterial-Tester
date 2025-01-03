@@ -9,7 +9,6 @@ list(APPEND INPUTS_SOURCES
 
 qt_add_qml_module(InputsLib
     URI MMaterial.Controls.Inputs
-    RESOURCE_PREFIX /
     VERSION 1.0
     STATIC
     QML_FILES

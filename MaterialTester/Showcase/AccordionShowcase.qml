@@ -1,11 +1,14 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick 
-import MMaterial
-import QtQuick.Layouts
-import QtQuick.Effects
+
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
+
 Rectangle {
     objectName: "Accordion"
 
-    color: Theme.background.main
+	color: UI.Theme.background.main
 
     ListView {
         id: listview
@@ -13,9 +16,11 @@ Rectangle {
         anchors.fill: parent
 
         model: 5
-        spacing: Size.pixel8
+        spacing: UI.Size.pixel8
 
-        delegate: Accordion {
+		delegate: Controls.Accordion {
+			required property int index
+
             width: listview.width
 
             title: "Accordion " + index

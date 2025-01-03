@@ -1,12 +1,13 @@
 import QtQuick
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.Media as Media
+import MMaterial.UI as UI
 
 Item {
     id: _root
 
-    property PaletteBasic accent: Theme.primary
+	property UI.PaletteBasic accent: UI.Theme.primary
 
     property alias leftIcon: _leftIcon
     property alias rightIcon: _rightIcon
@@ -14,7 +15,7 @@ Item {
     property alias pixelSize: _title.font.pixelSize
 
     property real horizontalPadding: 0
-    property real verticalPadding: Size.pixel12
+	property real verticalPadding: UI.Size.pixel12
 
     property bool selected: ListView.view?.currentIndex === ObjectModel?.index;
 
@@ -37,19 +38,19 @@ Item {
 
         anchors.fill: _root
 
-        spacing: Size.pixel8
+		spacing: UI.Size.pixel8
 
-        Icon {
+		Media.Icon {
             id: _leftIcon
 
             Layout.alignment: _title.visible ? Qt.AlignLeft : Qt.AlignCenter
 
-            color: _title.color
+			color: Qt.color(_title.color)
             size: _root.pixelSize * 1.42
             visible: iconData
         }
 
-        H2{
+		UI.H2{
             id: _title
 
             Layout.alignment: Qt.AlignCenter
@@ -57,24 +58,24 @@ Item {
 
             visible: text !== ""
             text: _root.text
-            color: _root.selected ? Theme.text.primary : Theme.text.secondary
+			color: _root.selected ? UI.Theme.text.primary : UI.Theme.text.secondary
 
             verticalAlignment: Qt.AlignVCenter
             horizontalAlignment: Qt.AlignHCenter
 
             font{
-                pixelSize: Size.pixel14
+				pixelSize: UI.Size.pixel14
                 capitalization: Font.Capitalize
                 bold: true
             }
         }
 
-        Icon {
+		Media.Icon {
             id: _rightIcon
 
             Layout.alignment: _title.visible ? Qt.AlignRight : Qt.AlignCenter
 
-            color:  _title.color
+			color:  Qt.color(_title.color)
             visible: iconData
             size: _root.pixelSize * 1.42
         }

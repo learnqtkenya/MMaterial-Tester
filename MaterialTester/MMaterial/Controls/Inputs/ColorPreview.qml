@@ -1,12 +1,13 @@
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
+import MMaterial.Controls.Inputs as Inputs
 
 Item {
     id: root
 
     required property color parentBackgroundColor
-    required property MMaterial.ColorPickerController colorHandler
+	required property Inputs.ColorPickerController colorHandler
 
     property real radius: height / 2
 
@@ -20,7 +21,7 @@ Item {
 
         border {
             width: 1
-            color: MMaterial.Theme.text.primary
+            color: UI.Theme.text.primary
         }
 
         Rectangle {
@@ -34,10 +35,10 @@ Item {
 
             border {
                 width: utils.isSimilar(root.parentBackgroundColor, root.colorHandler.color) ? 1 : 0
-                color: MMaterial.Theme.other.divider
+                color: UI.Theme.other.divider
             }
         }
     }
 
-    MMaterial.ColorUtils { id: utils }
+	Inputs.ColorUtils { id: utils }
 }

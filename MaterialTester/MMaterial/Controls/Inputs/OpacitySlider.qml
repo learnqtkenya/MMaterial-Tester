@@ -1,12 +1,13 @@
 import QtQuick
 import QtQuick.Controls.Material
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
+import MMaterial.Controls.Inputs as Inputs
 
 Slider {
     id: root
 
-    required property MMaterial.ColorPickerController colorPickerController
+	required property Inputs.ColorPickerController colorPickerController
 
     signal editFinished
 
@@ -37,15 +38,15 @@ Slider {
         scale: root.pressed ? 0.9 : 1
 
         border {
-            width: MMaterial.Size.pixel2
-            color: MMaterial.Theme.other.divider
+            width: UI.Size.pixel2
+            color: UI.Theme.other.divider
         }
 
         Behavior on scale { NumberAnimation { duration: 250; easing.type: Easing.OutQuart } }
     }
 
     background: Rectangle {
-        radius: MMaterial.Size.pixel8
+        radius: UI.Size.pixel8
 
         gradient: Gradient {
             orientation: Gradient.Horizontal

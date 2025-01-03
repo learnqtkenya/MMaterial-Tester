@@ -3,7 +3,8 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 Item {
     id: _root
@@ -17,35 +18,35 @@ Item {
     property alias list: _sidebarLayout
     property alias model: _sidebarLayout.model
 
-    implicitWidth: 86 * Size.scale
+    implicitWidth: 86 * UI.Size.scale
     implicitHeight: parent.height
 
     ColumnLayout {
         anchors {
             fill: _root
-            margins: Size.pixel6
-            topMargin: Size.pixel24
+            margins: UI.Size.pixel6
+            topMargin: UI.Size.pixel24
         }
 
-        Icon {
+		Media.Icon {
             id: _logo
 
             Layout.alignment: Qt.AlignHCenter
 
-            size: Size.pixel32
+            size: UI.Size.pixel32
 
-            color: Theme.primary.main
-            iconData: Icons.heavy.logo
+			color: UI.Theme.primary.main.toString()
+            iconData: Media.Icons.heavy.logo
         }
 
         ListView {
             id: _sidebarLayout
 
-            Layout.topMargin: Size.pixel16
+            Layout.topMargin: UI.Size.pixel16
             Layout.fillHeight: true;
             Layout.fillWidth: true
 
-            spacing: Size.pixel4
+            spacing: UI.Size.pixel4
             clip: true
             currentIndex: _root.sidebarData.currentIndex
 

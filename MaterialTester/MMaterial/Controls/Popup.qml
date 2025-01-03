@@ -3,7 +3,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Templates as T
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 
 T.Popup {
     id: control
@@ -14,11 +14,11 @@ T.Popup {
                              contentHeight + topPadding + bottomPadding)
 
     background: Rectangle {
-        radius: MMaterial.Size.pixel6
-        implicitWidth:  MMaterial.Size.scale * 420
-        implicitHeight: MMaterial.Size.pixel36
-        color: MMaterial.Theme.background.paper
-        border.color:  MMaterial.Theme.background.neutral
+		radius: UI.Size.pixel6
+		implicitWidth:  UI.Size.scale * 420
+		implicitHeight: UI.Size.pixel36
+		color: UI.Theme.background.paper
+		border.color:  UI.Theme.background.neutral
     }
 
     T.Overlay.modal: Rectangle {

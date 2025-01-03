@@ -3,11 +3,14 @@ import QtQuick.Layouts
 
 import MMaterial as MMaterial
 import MMaterial.Controls.Dialogs as Dialogs
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
+import MMaterial.Media as Media
 
 Dialogs.Dialog {
     id: control
 
-    property real imageHeight: MMaterial.Size.scale * 400
+    property real imageHeight: UI.Size.scale * 400
     property url imageSource: MMaterial.Images.realisticShape1.path
 
     closePolicy: Dialogs.Dialog.NoAutoClose
@@ -18,13 +21,13 @@ Dialogs.Dialog {
         implicitHeight: headerLayout.implicitHeight + control.topPadding + (image.visible ? control.imageHeight : 0)
         visible: control.iconData || titleText.text !== ""
 
-        MMaterial.MaskedImage {
+        Controls.MaskedImage {
             id: image
             width: headerRoot.width
             height: control.imageHeight
 
-            topRightRadius: MMaterial.Size.pixel16
-            topLeftRadius: MMaterial.Size.pixel16
+            topRightRadius: UI.Size.pixel16
+            topLeftRadius: UI.Size.pixel16
             bottomLeftRadius: 0
             bottomRightRadius: 0
 
@@ -35,7 +38,7 @@ Dialogs.Dialog {
         RowLayout {
             id: headerLayout
 
-            spacing: MMaterial.Size.pixel16
+            spacing: UI.Size.pixel16
 
             anchors {
                 left: headerRoot.left; leftMargin: control.leftPadding
@@ -43,16 +46,16 @@ Dialogs.Dialog {
                 bottom: headerRoot.bottom
             }
 
-            MMaterial.Icon {
+            Media.Icon {
                 id: icon
                 Layout.alignment: Qt.AlignVCenter
                 size: control.iconSize
                 iconData: control.iconData
-                color: titleText.color
+				color: titleText.color.toString()
                 visible: control.iconData
             }
 
-            MMaterial.H6 {
+			UI.H6 {
                 id: titleText
 
                 Layout.rightMargin: control.rightPadding + headerLayout.x
@@ -63,7 +66,7 @@ Dialogs.Dialog {
                 visible: text !== ""
                 elide: Text.ElideRight
                 wrapMode: Text.NoWrap
-                color: MMaterial.Theme.text.primary
+                color: UI.Theme.text.primary
             }
         }
     }

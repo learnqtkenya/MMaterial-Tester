@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Effects
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 
 Item {
     id: control
@@ -15,8 +15,8 @@ Item {
     property alias bottomLeftRadius: mask.bottomLeftRadius
     property alias bottomRightRadius: mask.bottomRightRadius
 
-    implicitHeight: MMaterial.Size.pixel48
-    implicitWidth: MMaterial.Size.pixel48
+    implicitHeight: UI.Size.pixel48
+    implicitWidth: UI.Size.pixel48
 
     Image {
         id: sourceImageItem

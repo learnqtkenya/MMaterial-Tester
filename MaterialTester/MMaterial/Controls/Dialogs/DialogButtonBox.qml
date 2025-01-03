@@ -3,7 +3,8 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Templates as T
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
 
 T.DialogButtonBox {
     id: control
@@ -14,10 +15,10 @@ T.DialogButtonBox {
                              implicitContentHeight + topPadding + bottomPadding)
     contentWidth: (contentItem as ListView).contentWidth // QTBUG-111283 blocks optional chaining + nullish coalescing
 
-    padding: MMaterial.Size.pixel12
+    padding: UI.Size.pixel12
     alignment: count === 1 ? Qt.AlignRight : undefined
 
-    delegate: MMaterial.MButton {
+    delegate: Controls.MButton {
         width: control.count === 1 ? control.availableWidth : implicitWidth
     }
 

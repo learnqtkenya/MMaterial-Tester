@@ -1,13 +1,17 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
+import MMaterial.Controls as Controls
 
 Item {
     id: _root
     objectName: "extendedSidebar"
 
-    property SidebarData sidebarData
+	property SidebarData sidebarData
 
     property alias logo: _logo
     property alias list: _sidebarLayout
@@ -22,74 +26,74 @@ Item {
     ColumnLayout {
         anchors {
             fill: _root
-            margins: Size.pixel16
-            topMargin: Size.pixel24
+            margins: UI.Size.pixel16
+            topMargin: UI.Size.pixel24
         }
 
-        Icon {
+		Media.Icon {
             id: _logo
 
-            Layout.leftMargin: Size.pixel8
+            Layout.leftMargin: UI.Size.pixel8
 
-            color: Theme.primary.main
-            size: Size.pixel32
-            iconData: Icons.heavy.logo
+			color: UI.Theme.primary.main.toString()
+            size: UI.Size.pixel32
+            iconData: Media.Icons.heavy.logo
         }
 
         Rectangle {
             id: _avatarRect
 
-            Layout.leftMargin: Size.pixel4
-            Layout.rightMargin: Size.pixel4
-            Layout.topMargin: Size.pixel32
-            Layout.preferredHeight: 72 * Size.scale
+            Layout.leftMargin: UI.Size.pixel4
+            Layout.rightMargin: UI.Size.pixel4
+            Layout.topMargin: UI.Size.pixel32
+            Layout.preferredHeight: 72 * UI.Size.scale
             Layout.fillWidth: true
 
             radius: 12
-            color: Theme.background.neutral
+			color: UI.Theme.background.neutral
 
-            Avatar{
+			Controls.Avatar{
                 id: _avatar
 
                 anchors{
-                    left: _avatarRect.left; leftMargin: Size.pixel20;
-                    top: _avatarRect.top; topMargin: Size.pixel16;
-                    bottom: _avatarRect.bottom; bottomMargin: Size.pixel16
+                    left: _avatarRect.left; leftMargin: UI.Size.pixel20;
+                    top: _avatarRect.top; topMargin: UI.Size.pixel16;
+                    bottom: _avatarRect.bottom; bottomMargin: UI.Size.pixel16
                 }
 
-                height: Size.pixel40
-                width: Size.pixel40
+                height: UI.Size.pixel40
+                width: UI.Size.pixel40
 
                 title: _title.text
             }
 
-            Subtitle2 {
+			UI.Subtitle2 {
                 id: _title
 
                 anchors{
-                    left: _avatar.right; leftMargin: Size.pixel16;
-                    top: _avatarRect.top; topMargin: Size.pixel16;
-                    right: _avatarRect.right; rightMargin: Size.pixel20;
+                    left: _avatar.right; leftMargin: UI.Size.pixel16;
+                    top: _avatarRect.top; topMargin: UI.Size.pixel16;
+                    right: _avatarRect.right; rightMargin: UI.Size.pixel20;
                 }
 
                 text: "John Doe"
                 maximumLineCount: 1
                 elide: Text.ElideRight
-                color: Theme.text.primary
+				color: UI.Theme.text.primary
             }
 
-            B2 {
+			UI.B2 {
                 id: _subtitle
 
                 anchors {
-                    left: _avatar.right; leftMargin: Size.pixel16;
-                    bottom: _avatarRect.bottom; bottomMargin: Size.pixel16;
-                    right: _avatarRect.right; rightMargin: Size.pixel20;
+                    left: _avatar.right; leftMargin: UI.Size.pixel16;
+                    bottom: _avatarRect.bottom; bottomMargin: UI.Size.pixel16;
+                    right: _avatarRect.right; rightMargin: UI.Size.pixel20;
                 }
 
                 verticalAlignment: Qt.AlignBottom
                 text: "Admin"
-                color: Theme.text.disabled
+				color: UI.Theme.text.disabled
                 maximumLineCount: 1
             }
         }
@@ -97,27 +101,27 @@ Item {
         ListView {
             id: _sidebarLayout
 
-            Layout.topMargin: Size.pixel16
+            Layout.topMargin: UI.Size.pixel16
             Layout.fillHeight: true;
             Layout.fillWidth: true
 
-            spacing: Size.pixel4
+            spacing: UI.Size.pixel4
             clip: true
             currentIndex: _root.sidebarData.currentIndex
 
             section {
                 property: "category"
-                delegate: SidebarCategoryLabel{
+				delegate: SidebarCategoryLabel{
                     required property string section
 
                     text: section
                 }
             }
 
-            delegate: SidebarExtendedItem {
+			delegate: SidebarExtendedItem {
                 id: _delegate
 
-                property SidebarItem data: _root.model[index]
+				property SidebarItem data: _root.model[index]
 
                 sidebarData: _root.sidebarData
                 isOpen: _delegate.sidebarData.currentIndex == index

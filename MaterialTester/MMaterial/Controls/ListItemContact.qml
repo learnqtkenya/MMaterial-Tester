@@ -1,7 +1,8 @@
 import QtQuick 
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.Media as Media
+import MMaterial.UI as UI
 
 AbstractListItem{
     id: _root
@@ -14,7 +15,7 @@ AbstractListItem{
     property alias avatar: _avatar
     property alias layout: _mainLayout
 
-    height: 68 * Size.scale
+	height: 68 * UI.Size.scale
 
     containsMouse: mouseArea.containsMouse || _icon.containsMouse
 
@@ -23,14 +24,14 @@ AbstractListItem{
 
         anchors{
             fill: _root
-            margins: Size.pixel12
-            leftMargin: Size.pixel16; rightMargin: Size.pixel16
+			margins: UI.Size.pixel12
+			leftMargin: UI.Size.pixel16; rightMargin: UI.Size.pixel16
         }
 
         Avatar{
             id: _avatar
 
-            Layout.rightMargin: Size.pixel16
+			Layout.rightMargin: UI.Size.pixel16
             Layout.fillHeight: true
             Layout.preferredWidth: height
 
@@ -41,35 +42,35 @@ AbstractListItem{
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            Subtitle2 {
+			UI.Subtitle2 {
                 id: _title
 
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
                 verticalAlignment: Qt.AlignTop
-                color: Theme.text.primary
+				color: UI.Theme.text.primary
                 text: "John Doe"
             }
-            B2 {
+			UI.B2 {
                 id: _subtitle
 
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
                 verticalAlignment: Qt.AlignBottom
-                color: Theme.text.secondary
+				color: UI.Theme.text.secondary
                 text: "johhny_doe@gmail.com"
             }
         }
 
-        Icon {
+		Media.Icon {
             id: _icon
 
             Layout.alignment: Qt.AlignVCenter
-            color: Theme.action.active
+			color: UI.Theme.action.active.toString()
             visible: iconData.path != ""
-            iconData: Icons.light.call
+			iconData: Media.Icons.light.call
             interactive: true
         }
     }

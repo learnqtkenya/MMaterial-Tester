@@ -1,6 +1,7 @@
 import QtQuick 
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 Rectangle {
     id: _root
@@ -11,23 +12,23 @@ Rectangle {
     property alias rightIcon: _rightIcon
     property alias text: _textInput.text
 
-    property real horizontalMargins: Size.pixel12
+    property real horizontalMargins: UI.Size.pixel12
     property var hoverHandler: _hoverHandler
-    property PaletteBasic accent: Theme.primary
+	property UI.PaletteBasic accent: UI.Theme.primary
 
     property bool showPlaceholder: !_textInput.activeFocus && _textInput.text === ""
     property int type: MTextField.Type.Standard
 
     enum Type { Filled, Outlined, Standard }
 
-    implicitHeight: 56 * Size.scale
-    implicitWidth: (Size.format == Size.Format.Extended ? 319 : 200) * Size.scale
+    implicitHeight: 56 * UI.Size.scale
+	implicitWidth: (UI.Size.format == UI.Size.Format.Extended ? 319 : 200) * UI.Size.scale
 
-    radius: Size.pixel8
+    radius: UI.Size.pixel8
 
     border {
         width: _root.type === MTextField.Type.Outlined ? 1 : 0
-        color: Theme.text.primary
+		color: UI.Theme.text.primary
     }
 
     states: [
@@ -35,111 +36,111 @@ Rectangle {
         State {
             name: "disabled-filled"
             when: !_root.enabled && _root.type == MTextField.Type.Filled
-            PropertyChanges { target: _root; color: Theme.action.disabledBackground; border { color: Theme.action.disabledBackground } }
-            PropertyChanges { target: _label; color: Theme.text.disabled }
-            PropertyChanges { target: _textInput; color: Theme.text.disabled }
+			PropertyChanges { target: _root; color: UI.Theme.action.disabledBackground; border { color: UI.Theme.action.disabledBackground } }
+			PropertyChanges { target: _label; color: UI.Theme.text.disabled }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.disabled }
         },
         State {
             name: "error-filled"
             when: !_textInput.acceptableInput && _root.type == MTextField.Type.Filled
-            PropertyChanges { target: _root; color: Theme.error.transparent.p8; border { color: Theme.error.main } }
-            PropertyChanges { target: _label; color: Theme.error.main }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: UI.Theme.error.transparent.p8; border { color: UI.Theme.error.main } }
+			PropertyChanges { target: _label; color: UI.Theme.error.main }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
         State {
             name: "focused-filled"
             when: _textInput.focus && _root.type == MTextField.Type.Filled
-            PropertyChanges { target: _root; color: Theme.main.transparent.p16; border { color: Theme.text.primary} }
-            PropertyChanges { target: _label; color: Theme.text.primary }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: UI.Theme.main.transparent.p16; border { color: UI.Theme.text.primary} }
+			PropertyChanges { target: _label; color: UI.Theme.text.primary }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
         State {
             name: "hovered-filled"
             when: _root.hoverHandler.hovered && _root.type == MTextField.Type.Filled
-            PropertyChanges { target: _root; color: Theme.main.transparent.p16; border { color: Theme.text.primary} }
-            PropertyChanges { target: _label; color: Theme.text.disabled }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: UI.Theme.main.transparent.p16; border { color: UI.Theme.text.primary} }
+			PropertyChanges { target: _label; color: UI.Theme.text.disabled }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
         State {
             name: "normal-filled"
             when: _root.type == MTextField.Type.Filled
-            PropertyChanges { target: _root; color: Theme.main.transparent.p8; border { color: Theme.action.disabledBackground} }
-            PropertyChanges { target: _label; color: Theme.text.disabled }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: UI.Theme.main.transparent.p8; border { color: UI.Theme.action.disabledBackground} }
+			PropertyChanges { target: _label; color: UI.Theme.text.disabled }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
 
         //Outlined
         State {
             name: "disabled-outlined"
             when: !_root.enabled && _root.type == MTextField.Type.Outlined
-            PropertyChanges { target: _root; color: Theme.background.paper; border { color: Theme.action.disabledBackground } }
-            PropertyChanges { target: _label; color: Theme.text.disabled }
-            PropertyChanges { target: _textInput; color: Theme.text.disabled }
+			PropertyChanges { target: _root; color: UI.Theme.background.paper; border { color: UI.Theme.action.disabledBackground } }
+			PropertyChanges { target: _label; color: UI.Theme.text.disabled }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.disabled }
         },
         State {
             name: "error-outlined"
             when: !_textInput.acceptableInput && _root.type == MTextField.Type.Outlined
-            PropertyChanges { target: _root; color: Theme.background.paper; border { color: Theme.error.main } }
-            PropertyChanges { target: _label; color: Theme.error.main }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: UI.Theme.background.paper; border { color: UI.Theme.error.main } }
+			PropertyChanges { target: _label; color: UI.Theme.error.main }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
         State {
             name: "focused-outlined"
             when: _textInput.activeFocus && _root.type == MTextField.Type.Outlined
-            PropertyChanges { target: _root; color: Theme.background.paper; border { color: Theme.text.primary} }
-            PropertyChanges { target: _label; color: Theme.text.primary }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: UI.Theme.background.paper; border { color: UI.Theme.text.primary} }
+			PropertyChanges { target: _label; color: UI.Theme.text.primary }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
         State {
             name: "hovered-outlined"
             when: _root.hoverHandler.hovered && _root.type == MTextField.Type.Outlined
-            PropertyChanges { target: _root; color: Theme.background.paper; border { color: Theme.text.primary} }
-            PropertyChanges { target: _label; color: Theme.text.disabled }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: UI.Theme.background.paper; border { color: UI.Theme.text.primary} }
+			PropertyChanges { target: _label; color: UI.Theme.text.disabled }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
         State {
             name: "normal-outlined"
             when: _root.type == MTextField.Type.Outlined
-            PropertyChanges { target: _root; color: Theme.background.paper; border { color: Theme.action.disabledBackground} }
-            PropertyChanges { target: _label; color: Theme.text.disabled }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: UI.Theme.background.paper; border { color: UI.Theme.action.disabledBackground} }
+			PropertyChanges { target: _label; color: UI.Theme.text.disabled }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
 
         //Standard
         State {
             name: "disabled"
             when: !_root.enabled
-            PropertyChanges { target: _root; color: "transparent"; border { color: Theme.action.disabledBackground } }
-            PropertyChanges { target: _label; color: Theme.text.disabled }
-            PropertyChanges { target: _textInput; color: Theme.text.disabled }
+			PropertyChanges { target: _root; color: "transparent"; border { color: UI.Theme.action.disabledBackground } }
+			PropertyChanges { target: _label; color: UI.Theme.text.disabled }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.disabled }
         },
         State {
             name: "error"
             when: !_textInput.acceptableInput
-            PropertyChanges { target: _root; color: "transparent"; border { color: Theme.error.main } }
-            PropertyChanges { target: _label; color: Theme.error.main }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: "transparent"; border { color: UI.Theme.error.main } }
+			PropertyChanges { target: _label; color: UI.Theme.error.main }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
         State {
             name: "focused"
             when: _textInput.activeFocus
-            PropertyChanges { target: _root; color: "transparent"; border { color: Theme.text.primary} }
-            PropertyChanges { target: _label; color: Theme.text.primary }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: "transparent"; border { color: UI.Theme.text.primary} }
+			PropertyChanges { target: _label; color: UI.Theme.text.primary }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
         State {
             name: "hovered"
             when: _root.hoverHandler.hovered
-            PropertyChanges { target: _root; color: "transparent"; border { color: Theme.text.primary} }
-            PropertyChanges { target: _label; color: Theme.text.disabled }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: "transparent"; border { color: UI.Theme.text.primary} }
+			PropertyChanges { target: _label; color: UI.Theme.text.disabled }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         },
         State {
             name: "normal"
             when: true
-            PropertyChanges { target: _root; color: "transparent"; border { color: Theme.action.disabledBackground} }
-            PropertyChanges { target: _label; color: Theme.text.disabled }
-            PropertyChanges { target: _textInput; color: Theme.text.primary }
+			PropertyChanges { target: _root; color: "transparent"; border { color: UI.Theme.action.disabledBackground} }
+			PropertyChanges { target: _label; color: UI.Theme.text.disabled }
+			PropertyChanges { target: _textInput; color: UI.Theme.text.primary }
         }
     ]
 
@@ -177,13 +178,13 @@ Rectangle {
         radius: 8
     }
 
-    B2 {
+	UI.B2 {
         id: _label
 
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: _private.isOutlinedType ? Qt.AlignHCenter : Qt.AlignLeft
 
-        width: implicitWidth + Size.pixel8
+        width: implicitWidth + UI.Size.pixel8
         height: implicitHeight
 
         font.pixelSize: _textInput.font.pixelSize * 0.66
@@ -204,7 +205,7 @@ Rectangle {
                 name: "background"
                 when: true
                 PropertyChanges { target: _labelContainer; opacity: 1.0; }
-                PropertyChanges { target: _mainContainer; anchors { topMargin: _root.type === MTextField.Type.Outlined ? 0 : Size.pixel16; } }
+                PropertyChanges { target: _mainContainer; anchors { topMargin: _root.type === MTextField.Type.Outlined ? 0 : UI.Size.pixel16; } }
                 PropertyChanges{
                     target: _label;
                     scale: 1;
@@ -226,18 +227,18 @@ Rectangle {
 
         anchors {
             fill: _root
-            topMargin: _root.type === MTextField.Type.Outlined ? 0 : (_textInput.isInForeground ? Size.pixel16 : 0)
+            topMargin: _root.type === MTextField.Type.Outlined ? 0 : (_textInput.isInForeground ? UI.Size.pixel16 : 0)
         }
 
-        Icon {
+		Media.Icon {
             id: _leftIcon
 
             anchors {
-                left: _mainContainer.left; leftMargin: _private.isStandardType ? 0 : Size.pixel14;
+                left: _mainContainer.left; leftMargin: _private.isStandardType ? 0 : UI.Size.pixel14;
                 verticalCenter: _mainContainer.verticalCenter
             }
 
-            color: Theme.text.disabled
+			color: UI.Theme.text.disabled.toString()
             visible: iconData
             size: !visible ? 0 : _root.height * 0.3
         }
@@ -248,7 +249,7 @@ Rectangle {
             property bool isInForeground: _textInput.activeFocus || _textInput.text !== ""
 
             anchors {
-                right: _rightIcon.visible ? _rightIcon.left : _mainContainer.right; rightMargin: _rightIcon.visible ? _root.horizontalMargins + Size.pixel1 * 2 : _root.horizontalMargins
+                right: _rightIcon.visible ? _rightIcon.left : _mainContainer.right; rightMargin: _rightIcon.visible ? _root.horizontalMargins + UI.Size.pixel1 * 2 : _root.horizontalMargins
                 top: _mainContainer.top
                 bottom: _mainContainer.bottom
                 left: _leftIcon.visible ? _leftIcon.right : _mainContainer.left
@@ -258,12 +259,12 @@ Rectangle {
             verticalAlignment: Qt.AlignVCenter
             selectByMouse: true
             clip: true
-            selectedTextColor: acceptableInput ? _root.accent.contrastText : Theme.error.contrastText
-            selectionColor: acceptableInput ? _root.accent.main : Theme.error.main
+			selectedTextColor: acceptableInput ? _root.accent.contrastText : UI.Theme.error.contrastText
+			selectionColor: acceptableInput ? _root.accent.main : UI.Theme.error.main
 
             font {
-                family: PublicSans.regular
-                pixelSize: Size.pixel16
+				family: UI.PublicSans.regular
+                pixelSize: UI.Size.pixel16
             }
 
             HoverHandler{
@@ -274,15 +275,15 @@ Rectangle {
             }
         }
 
-        Icon {
+		Media.Icon {
             id: _rightIcon
 
             anchors {
-                right: _mainContainer.right; rightMargin: Size.pixel12;
+                right: _mainContainer.right; rightMargin: UI.Size.pixel12;
                 verticalCenter: _mainContainer.verticalCenter
             }
 
-            color: Theme.action.active
+			color: UI.Theme.action.active.toString()
             visible: iconData
             interactive: true
             size: !visible ? 0 : _root.height * 0.3

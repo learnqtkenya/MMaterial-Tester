@@ -1,15 +1,15 @@
 import QtQuick
 
-import MMaterial
+import MMaterial.UI as UI
 
 Checkable {
     id: _root
 
-    property var accent: Theme.primary
+	property var accent: UI.Theme.primary
     property alias text: _label.text
     property alias label: _label
 
-    implicitHeight: Size.pixel24
+	implicitHeight: UI.Size.pixel24
     implicitWidth: implicitHeight + (_label.visible ? (_label.anchors.leftMargin + _label.implicitWidth) : 0)
 
     Rectangle {
@@ -22,8 +22,8 @@ Checkable {
         color: "transparent"
 
         border{
-            width: Size.pixel1
-            color: _root.enabled ?  (_root.checked ? _root.accent.main : Theme.action.active) : Theme.action.disabled
+			width: UI.Size.pixel1
+            color: _root.enabled ?  (_root.checked ? _root.accent.main : UI.Theme.action.active) : UI.Theme.action.disabled
         }
 
         states: [
@@ -77,7 +77,7 @@ Checkable {
 
             radius: height
             visible: _root.mouseArea.containsMouse
-            color: _root.checked ? _root.accent.transparent.p8 : Theme.action.hover
+            color: _root.checked ? _root.accent.transparent.p8 : UI.Theme.action.hover
         }
 
         Rectangle {
@@ -134,11 +134,11 @@ Checkable {
         }
     }
 
-    B2 {
+	UI.B2 {
         id: _label
 
         anchors{
-            left: _radioButton.right; leftMargin: Size.pixel12
+			left: _radioButton.right; leftMargin: UI.Size.pixel12
             right: _root.right
         }
 

@@ -1,13 +1,13 @@
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.Controls as Controls
 
 Loader {
     id: _root
 
     property alias busyIndicator: _busyIndicator
 
-    MMaterial.BusyIndicator{
+	Controls.BusyIndicator{
         id: _busyIndicator
 
         anchors.centerIn: _root

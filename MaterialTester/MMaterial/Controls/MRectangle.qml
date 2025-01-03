@@ -1,6 +1,6 @@
 import QtQuick
 
-import MMaterial
+import MMaterial.UI as UI
 
 import QtQuick.Shapes 1.6
 
@@ -13,7 +13,7 @@ Shape {
     smooth: true
     antialiasing: true
 
-    property color color: Theme.primary.main
+	property color color: UI.Theme.primary.main
     property MBorder border: MBorder {}
     property CornerRadii radius: CornerRadii {
         topLeft: 0

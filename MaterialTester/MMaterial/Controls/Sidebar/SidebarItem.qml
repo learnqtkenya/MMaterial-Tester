@@ -1,16 +1,17 @@
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 Item {
     component ChipData: Item {
         property string text
-        property MMaterial.PaletteBasic accent: MMaterial.Theme.primary
+        property UI.PaletteBasic accent: UI.Theme.primary
     }
 
     property string category
 
-    property MMaterial.IconData icon
+    property Media.IconData icon
     property string text
     property var model
 

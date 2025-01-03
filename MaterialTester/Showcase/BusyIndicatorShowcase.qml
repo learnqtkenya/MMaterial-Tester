@@ -1,24 +1,24 @@
 import QtQuick
-import QtQuick.Layouts
 
-import MMaterial as MMaterial
+import MMaterial.Controls as Controls
+import MMaterial.UI as UI
 
 Item {
     id: root
 
-    MMaterial.BusyIndicator{
+	Controls.BusyIndicator{
         id: busyIndicator
 
         anchors.centerIn: root
         show: true
     }
 
-    MMaterial.MFabButton {
+	Controls.MFabButton {
         text: busyIndicator.show ? qsTr("Hide") : qsTr("Show")
-        type: busyIndicator.show ? MMaterial.MButton.Type.Outlined : MMaterial.MButton.Type.Contained
+		type: busyIndicator.show ? Controls.MButton.Type.Outlined : Controls.MButton.Type.Contained
 
         anchors {
-            bottom: root.bottom; bottomMargin: MMaterial.Size.pixel28
+            bottom: root.bottom; bottomMargin: UI.Size.pixel28
             horizontalCenter: root.horizontalCenter
         }
 

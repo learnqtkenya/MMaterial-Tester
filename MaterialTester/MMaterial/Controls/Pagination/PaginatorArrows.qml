@@ -1,7 +1,8 @@
 import QtQuick
 import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 Item {
     id: _root
@@ -12,10 +13,10 @@ Item {
         left: indexView.left
         right: indexView.right
         verticalCenter: indexView.verticalCenter
-        margins: Size.pixel16
+        margins: UI.Size.pixel16
     }
 
-    height: Size.pixel36
+    height: UI.Size.pixel36
 
     Rectangle {
         id: _leftArrow
@@ -26,11 +27,11 @@ Item {
         width: height
 
         enabled: _root.indexView.currentIndex > 0
-        color: _leftMouseArea.pressed ? Theme.main.p700 : Theme.main.p800
+		color: _leftMouseArea.pressed ? UI.Theme.main.p700 : UI.Theme.main.p800
         radius: 10
         opacity: enabled ? 1 : 0.48
 
-        Icon {
+		Media.Icon {
             id: _leftIcon
 
             anchors {
@@ -38,8 +39,8 @@ Item {
                 horizontalCenterOffset: -1
             }
 
-            iconData: Icons.light.chevronLeft
-            color: Theme.common.white
+            iconData: Media.Icons.light.chevronLeft
+			color: UI.Theme.common.white.toString()
             size: _leftArrow.height * 0.5
         }
 
@@ -63,19 +64,19 @@ Item {
         height: _root.height
         width: height
 
-        color: _rightMouseArea.pressed ? Theme.main.p700 : Theme.main.p800
+		color: _rightMouseArea.pressed ? UI.Theme.main.p700 : UI.Theme.main.p800
         radius: 10
 
         enabled: _root.indexView.currentIndex < _root.indexView.count - 1
         opacity: enabled ? 1 : 0.48
 
-        Icon {
+		Media.Icon {
             anchors {
                 centerIn: _rightArrow
                 horizontalCenterOffset: 1
             }
-            iconData: Icons.light.chevronRight
-            color: Theme.common.white
+            iconData: Media.Icons.light.chevronRight
+			color: UI.Theme.common.white.toString()
             size: _rightArrow.height * 0.5
         }
 

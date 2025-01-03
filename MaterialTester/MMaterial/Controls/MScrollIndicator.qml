@@ -1,7 +1,7 @@
 import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial.UI as UI
 
 ScrollIndicator {
-    palette.mid: Theme.primary.main
+	palette.mid: UI.Theme.primary.main
 }

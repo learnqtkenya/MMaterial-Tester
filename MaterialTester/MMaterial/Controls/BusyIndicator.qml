@@ -1,13 +1,14 @@
 import QtQuick
-import MMaterial as MMaterial
-import MMaterial.Animations
+
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 Item {
     id: root
 
     property alias animation: animation
     property bool show: false
-    property real size: 150 * MMaterial.Size.scale
+    property real size: 150 * UI.Size.scale
 
     implicitHeight: root.size
     implicitWidth: root.size
@@ -45,13 +46,13 @@ Item {
             to: "hide"
 
             ParallelAnimation {
-                EasedAnimation {
+				UI.EasedAnimation {
                     target: root
                     property: "opacity"
                     duration: 250
                 }
 
-                EasedAnimation {
+				UI.EasedAnimation {
                     target: root
                     property: "scale"
                     duration: 350
@@ -77,7 +78,7 @@ Item {
                     easing.type: Easing.InQuart
                 }
 
-                EasedAnimation {
+				UI.EasedAnimation {
                     target: root
                     property: "scale"
                     duration: 350
@@ -102,8 +103,8 @@ Item {
         opacity: 0.1
 
         border {
-            width: MMaterial.Size.pixel8
-            color: MMaterial.Theme.primary.light
+            width: UI.Size.pixel8
+            color: UI.Theme.primary.light
         }
     }
 
@@ -120,19 +121,19 @@ Item {
         }
 
         border {
-            width: 3 * MMaterial.Size.scale
-            color: MMaterial.Theme.primary.light
+            width: 3 * UI.Size.scale
+            color: UI.Theme.primary.light
         }
     }
 
-    MMaterial.Icon {
+    Media.Icon {
         id: _logo
 
         size: root.width * 0.3
         anchors.centerIn: root
 
-        iconData: MMaterial.Icons.heavy.logo
-        color: MMaterial.Theme.primary.main
+        iconData: Media.Icons.heavy.logo
+		color: UI.Theme.primary.main.toString()
     }
 
     ParallelAnimation {

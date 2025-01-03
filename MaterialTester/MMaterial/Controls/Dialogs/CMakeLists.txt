@@ -1,6 +1,5 @@
 qt_add_qml_module(DialogsLib
     URI MMaterial.Controls.Dialogs
-    RESOURCE_PREFIX /
     VERSION 1.0
     STATIC
     QML_FILES

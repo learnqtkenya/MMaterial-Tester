@@ -1,15 +1,15 @@
 import QtQuick
 
-import MMaterial
+import MMaterial.UI as UI
 
 Item {
     id: _root
 
-    property int size: Size.pixel48 * 2
-    property int lineWidth: Size.pixel4
+	property int size: UI.Size.pixel48 * 2
+	property int lineWidth: UI.Size.pixel4
     property int progress: 0
 
-    property var accent: Theme.primary
+	property var accent: UI.Theme.primary
     property color primaryColor: accent.main
     property color secondaryColor: "transparent"
     property bool showLabel: false
@@ -21,14 +21,13 @@ Item {
 
     onProgressChanged: canvas.degree = (progress/100) * 360;
 
-
-    Caption{
+	UI.Caption{
         anchors.centerIn: _root
 
         text: _root.progress + "%"
         visible: _root.showLabel
         font.pixelSize: _root.height* 0.25
-        color: Theme.text.primary
+		color: UI.Theme.text.primary
 
         verticalAlignment: Qt.AlignVCenter
     }

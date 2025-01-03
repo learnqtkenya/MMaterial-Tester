@@ -1,8 +1,8 @@
 import QtQuick
 
-import MMaterial
+import MMaterial.UI as UI
 
 QtObject {
     property real width: 0
-    property color color: Theme.text.primary
+	property color color: UI.Theme.text.primary
 }

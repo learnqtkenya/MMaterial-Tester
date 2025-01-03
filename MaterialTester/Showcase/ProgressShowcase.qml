@@ -2,14 +2,14 @@ import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
 
-import MMaterial
-
-import "../Components/Common"
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
+import MaterialTester.Components
 
 Flickable {
     contentHeight: _progressShowcase.implicitHeight
 
-    ScrollIndicator.vertical: MScrollIndicator{}
+	ScrollIndicator.vertical: Controls.MScrollIndicator{}
 
     ColumnLayout {
         id: _progressShowcase
@@ -40,60 +40,60 @@ Flickable {
             onTriggered: _progressAnimation.restart();
         }
 
-        H6 { text: qsTr("Progress Bar") }
+		UI.H6 { text: qsTr("Progress Bar") }
 
         TitleRow {
-            width: parent.width
+			Layout.fillWidth: true
 
             title.text: qsTr("Color")
-            spacing: Size.pixel36
+            spacing: UI.Size.pixel36
             grid.columns: 1
 
-            MProgressBar{ progress: _progressShowcase.progress; accent: Theme.primary; }
-            MProgressBar{ progress: _progressShowcase.progress; accent: Theme.secondary; }
-            MProgressBar{ progress: _progressShowcase.progress; accent: Theme.info; }
-            MProgressBar{ progress: _progressShowcase.progress; accent: Theme.success; }
-            MProgressBar{ progress: _progressShowcase.progress; accent: Theme.warning; }
-            MProgressBar{ progress: _progressShowcase.progress; accent: Theme.error; }
+			Controls.MProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.primary; }
+			Controls.MProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.secondary; }
+			Controls.MProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.info; }
+			Controls.MProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.success; }
+			Controls.MProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.warning; }
+			Controls.MProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.error; }
         }
 
         TitleRow {
-            width: parent.width
+			Layout.fillWidth: true
 
             title.text: qsTr("Label")
-            spacing: Size.pixel36
+            spacing: UI.Size.pixel36
             grid.columns: 1
 
-            MProgressBar{ progress: _progressShowcase.progress; accent: Theme.primary; showLabel: true }
+			Controls.MProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.primary; showLabel: true }
         }
 
-        H6 {
-            Layout.topMargin: Size.pixel48
+		UI.H6 {
+            Layout.topMargin: UI.Size.pixel48
 
             text: qsTr("Circular Progress Bar")
         }
 
         TitleRow {
-            width: parent.width
+			Layout.fillWidth: true
 
             title.text: qsTr("Color")
-            spacing: Size.pixel36
+            spacing: UI.Size.pixel36
 
-            MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.primary; }
-            MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.secondary; }
-            MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.info; }
-            MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.success; }
-            MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.warning; }
-            MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.error; }
+			Controls.MCircularProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.primary; }
+			Controls.MCircularProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.secondary; }
+			Controls.MCircularProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.info; }
+			Controls.MCircularProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.success; }
+			Controls.MCircularProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.warning; }
+			Controls.MCircularProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.error; }
         }
         TitleRow {
-            width: parent.width
+			Layout.fillWidth: true
 
             title.text: qsTr("Label")
-            spacing: Size.pixel36
+            spacing: UI.Size.pixel36
             grid.columns: 1
 
-            MCircularProgressBar{ progress: _progressShowcase.progress; accent: Theme.primary; showLabel: true }
+			Controls.MCircularProgressBar{ progress: _progressShowcase.progress; accent: UI.Theme.primary; showLabel: true }
         }
 
         Item { Layout.fillHeight: true; }

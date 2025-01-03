@@ -2,19 +2,20 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Effects
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 Rectangle {
     id: _root
 
     property bool isOpen: false
-    property real padding: Size.pixel20
+    property real padding: UI.Size.pixel20
     property string title: "Accordion Item"
     property string subtitle: "Donec id justo. Curabitur blandit mollis lacus. Vivamus quis mi. In ut quam vitae odio lacinia tincidunt. In consectetuer turpis ut velit."
 
     radius: 8
     clip: true
-    color: Theme.background.paper
+	color: UI.Theme.background.paper
 
     layer{
         enabled: _root.isOpen
@@ -120,30 +121,30 @@ Rectangle {
             margins: _root.padding
         }
 
-        Subtitle1 {
+		UI.Subtitle1 {
             id: _title
 
             Layout.fillWidth: true
 
             verticalAlignment: Qt.AlignVCenter
             text: _root.title
-            color: Theme.text.primary
+			color: UI.Theme.text.primary
             maximumLineCount: 1
         }
 
-        Icon {
+		Media.Icon {
             id: _arrow
 
-            size: Size.pixel20
-            iconData: Icons.light.keyboardArrowDown
+            size: UI.Size.pixel20
+			iconData: Media.Icons.light.keyboardArrowDown
             interactive: true
-            color: Theme.text.primary
+			color: UI.Theme.text.primary.toString()
 
             onClicked: _root.isOpen = !_root.isOpen
         }
     }
 
-    B1{
+	UI.B1{
         id: _subtitle
 
         anchors{
@@ -155,7 +156,7 @@ Rectangle {
         }
 
         verticalAlignment: Qt.AlignBottom
-        color: Theme.text.primary
+		color: UI.Theme.text.primary
         text: _root.subtitle
         visible: opacity > 0
     }

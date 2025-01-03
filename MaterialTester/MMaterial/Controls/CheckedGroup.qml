@@ -5,6 +5,7 @@ import QtQuick
 QtObject {
     id: _root
 
+	property bool enabled: true
     property var checkables: []
     property var checkedButton: null
 
@@ -17,7 +18,7 @@ QtObject {
     }
 
     Component.onCompleted: {
-        if(!enabled)
+		if(!_root.enabled)
             return;
 
         _root.checkables = _root.checkables.filter(item => item.checked !== undefined && item.onClicked !== undefined);

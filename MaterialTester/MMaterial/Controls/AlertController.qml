@@ -3,7 +3,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial.UI as UI
 
 Popup {
     id: _root
@@ -53,10 +53,10 @@ Popup {
         id: _contentRoot
 
         implicitWidth: 300
-        implicitHeight: Math.max(contentHeight, Size.pixel48)
+        implicitHeight: Math.max(contentHeight, UI.Size.pixel48)
 
         verticalLayoutDirection: d.verticalDirection == Item.Top ? ListView.TopToBottom : ListView.BottomToTop
-        spacing: Size.pixel4
+        spacing: UI.Size.pixel4
         interactive: false
 
         model: ListModel {

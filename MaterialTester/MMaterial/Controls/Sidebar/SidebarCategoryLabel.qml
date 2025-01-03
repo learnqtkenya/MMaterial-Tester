@@ -1,25 +1,25 @@
 import QtQuick
 
-import MMaterial
+import MMaterial.UI as UI
 
 Item {
     id: _root
 
     property alias text: _label.text
 
-    height: Size.scale * 50
+    height: UI.Size.scale * 50
 
-    Overline {
+    UI.Overline {
         id: _label
 
         anchors{
             fill: _root
-            bottomMargin: Size.pixel8
-            leftMargin: Size.pixel16
+            bottomMargin: UI.Size.pixel8
+            leftMargin: UI.Size.pixel16
         }
 
         verticalAlignment: Qt.AlignBottom
-        color: Theme.text.secondary
-        font.pixelSize: Size.pixel11
+		color: UI.Theme.text.secondary
+        font.pixelSize: UI.Size.pixel11
     }
 }

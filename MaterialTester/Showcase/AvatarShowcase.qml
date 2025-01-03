@@ -1,30 +1,32 @@
 import QtQuick
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
+import MMaterial.Controls.Inputs as Inputs
 
 Item {
     id: root
 
     RowLayout {
         anchors.centerIn: root
-        spacing: Size.pixel48 * 2
+        spacing: UI.Size.pixel48 * 2
 
         ColumnLayout {
-            spacing: Size.pixel20
+            spacing: UI.Size.pixel20
 
-            Overline { text: qsTr("Avatar Input\n(Drag or click)"); color: Theme.text.disabled; horizontalAlignment: Qt.AlignHCenter; Layout.alignment: Qt.AlignHCenter }
+			UI.Overline { text: qsTr("Avatar Input\n(Drag or click)"); color: UI.Theme.text.disabled; horizontalAlignment: Qt.AlignHCenter; Layout.alignment: Qt.AlignHCenter }
 
-            AvatarInput {
+			Inputs.AvatarInput {
                 id: avatarInput
 
                 Layout.alignment: Qt.AlignHCenter
             }
 
-            MButton {
+			Controls.MButton {
                 Layout.alignment: Qt.AlignHCenter
                 text: qsTr("Clear")
-                accent: Theme.error
+				accent: UI.Theme.error
 
                 onClicked: avatarInput.removeImage()
             }
@@ -32,11 +34,11 @@ Item {
 
         ColumnLayout {
             Layout.alignment: Qt.AlignTop
-            spacing: Size.pixel20
+            spacing: UI.Size.pixel20
 
-            Overline { text: qsTr("Avatar\n(Preview)"); color: Theme.text.disabled; horizontalAlignment: Qt.AlignHCenter; Layout.alignment: Qt.AlignHCenter }
+			UI.Overline { text: qsTr("Avatar\n(Preview)"); color: UI.Theme.text.disabled; horizontalAlignment: Qt.AlignHCenter; Layout.alignment: Qt.AlignHCenter }
 
-            Avatar {
+			Controls.Avatar {
                 id: avatar
 
                 Layout.alignment: Qt.AlignHCenter

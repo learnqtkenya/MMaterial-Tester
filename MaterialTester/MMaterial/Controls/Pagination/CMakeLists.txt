@@ -1,6 +1,5 @@
 qt_add_qml_module(PaginationLib
     URI MMaterial.Controls.Pagination
-    RESOURCE_PREFIX /
     VERSION 1.0
     STATIC
     QML_FILES

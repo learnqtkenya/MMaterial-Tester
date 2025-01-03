@@ -1,7 +1,8 @@
 import QtQuick
 import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 Rectangle {
     id: _root
@@ -10,13 +11,13 @@ Rectangle {
 
     property int numberOfPages: indexView.count
 
-    implicitWidth: height * 3 - Size.pixel4
-    implicitHeight: Size.pixel32
+    implicitWidth: height * 3 - UI.Size.pixel4
+    implicitHeight: UI.Size.pixel32
 
     anchors.bottom: parent.bottom
 
     radius: 8
-    color: Theme.main.p800
+	color: UI.Theme.main.p800
 
     Item {
         id: _leftArrow
@@ -26,14 +27,14 @@ Rectangle {
         height: _root.height
         width: height
 
-        Icon {
+		Media.Icon {
             anchors {
                 centerIn: _leftArrow
                 horizontalCenterOffset: -1
             }
 
-            iconData: Icons.light.chevronLeft
-            color: Theme.common.white
+            iconData: Media.Icons.light.chevronLeft
+			color: UI.Theme.common.white.toString()
             size: _leftArrow.height * 0.5
             interactive: true
             enabled: _root.indexView.currentIndex > 0
@@ -43,7 +44,7 @@ Rectangle {
         }
     }
 
-    Subtitle2 {
+	UI.Subtitle2 {
         anchors{
             left: _leftArrow.right
             right: _rightArrow.left
@@ -55,7 +56,7 @@ Rectangle {
         horizontalAlignment: Qt.AlignHCenter
 
         text: _root.indexView.currentIndex + 1 + "/" + _root.numberOfPages
-        color: Theme.common.white
+		color: UI.Theme.common.white
 
         font {
             bold: true
@@ -71,14 +72,14 @@ Rectangle {
         height: _root.height
         width: height
 
-        Icon {
+		Media.Icon {
             anchors {
                 centerIn: _rightArrow
                 horizontalCenterOffset: 1
             }
 
-            iconData: Icons.light.chevronRight
-            color: Theme.common.white
+            iconData: Media.Icons.light.chevronRight
+			color: UI.Theme.common.white.toString()
             size: _rightArrow.height * 0.5
             interactive: true
             enabled: _root.indexView.currentIndex < _root.indexView.count - 1

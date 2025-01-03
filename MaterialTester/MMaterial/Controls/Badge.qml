@@ -2,13 +2,14 @@ pragma ComponentBehavior: Bound
 
 import QtQuick 
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 Item {
     id: _root
 
     property alias icon: _icon
-    property PaletteBasic accent: Theme.info
+	property UI.PaletteBasic accent: UI.Theme.info
     property int type: Badge.Type.Dot
 
     property int quantity: 1
@@ -48,12 +49,12 @@ Item {
         }
     ]
 
-    Icon {
+	Media.Icon {
         id: _icon
 
-        iconData: Icons.light.mail
-        size: Size.pixel32
-        color: Theme.text.primary
+		iconData: Media.Icons.light.mail
+        size: UI.Size.pixel32
+		color: UI.Theme.text.primary.toString()
         interactive: true
 
         onClicked: _root.clicked()

@@ -5,7 +5,6 @@ set_source_files_properties(
 
 qt_add_qml_module(ChartsLib
     URI MMaterial.Charts
-    RESOURCE_PREFIX /
     VERSION 1.0
     STATIC
     QML_FILES

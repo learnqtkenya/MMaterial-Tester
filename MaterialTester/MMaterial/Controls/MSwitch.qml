@@ -1,23 +1,23 @@
 import QtQuick
 
-import MMaterial
+import MMaterial.UI as UI
 
 Checkable {
     id: _root
 
-    property int size: Size.Grade.M
+	property int size: UI.Size.Grade.M
 
-    property PaletteBasic accent: Theme.primary
+	property UI.PaletteBasic accent: UI.Theme.primary
 
     property alias text: _label.text
     property alias label: _label
 
     implicitWidth: _switch.width + _label.anchors.leftMargin + _label.implicitWidth
     implicitHeight: {
-        if(size == Size.Grade.M)
-            return Size.pixel20
+		if(size == UI.Size.Grade.M)
+			return UI.Size.pixel20
 
-        return Size.pixel16
+		return UI.Size.pixel16
     }
 
     Rectangle {
@@ -33,7 +33,7 @@ Checkable {
                 when: !_root.enabled
                 name: "disabled"
                 PropertyChanges { target: _root; opacity: 0.48 }
-                PropertyChanges { target: _switch; color: Theme.main.transparent.p48 }
+				PropertyChanges { target: _switch; color: UI.Theme.main.transparent.p48 }
                 PropertyChanges { target: _innerCircle; x: _root.checked ? _innerCircle.parent.width - _innerCircle.width : 0 }
             },
             State {
@@ -47,7 +47,7 @@ Checkable {
                 when: true
                 name: "unchecked"
                 PropertyChanges { target: _root; opacity: 1 }
-                PropertyChanges { target: _switch; color: Theme.main.transparent.p48 }
+				PropertyChanges { target: _switch; color: UI.Theme.main.transparent.p48 }
                 PropertyChanges{ target: _innerCircle; x: 0 }
             }
         ]
@@ -94,7 +94,7 @@ Checkable {
                 width: height
 
                 radius: _switch.radius
-                color: Theme.main.p100
+				color: UI.Theme.main.p100
 
                 Rectangle {
                     id: _highlight
@@ -107,7 +107,7 @@ Checkable {
                     radius: height
                     visible: height > 0
                     opacity: _root.mouseArea.pressed ? 0.7 : 1
-                    color: _root.checked ? _root.accent.transparent.p8 : Theme.action.hover
+					color: _root.checked ? _root.accent.transparent.p8 : UI.Theme.action.hover
 
                     Behavior on height { SmoothedAnimation { duration: 150; easing.type: Easing.InOutQuad} }
                 }
@@ -115,11 +115,11 @@ Checkable {
         }
     }
 
-    B2 {
+	UI.B2 {
         id: _label
 
         anchors{
-            left: _switch.right; leftMargin: Size.pixel12
+			left: _switch.right; leftMargin: UI.Size.pixel12
             right: _root.right
         }
 

@@ -1,7 +1,8 @@
 import QtQuick 
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.Media as Media
+import MMaterial.UI as UI
 
 AbstractListItem{
     id: _root
@@ -12,36 +13,35 @@ AbstractListItem{
     property alias icon: _icon
     property alias layout: _mainLayout
 
-    height: Size.pixel46
+	height: UI.Size.pixel46
 
     RowLayout {
         id: _mainLayout
 
         anchors{
             fill: _root
-            leftMargin: Size.pixel16; rightMargin: Size.pixel12
+			leftMargin: UI.Size.pixel16; rightMargin: UI.Size.pixel12
         }
 
-        Icon {
+		Media.Icon {
             id: _icon
 
-            Layout.rightMargin: Size.pixel16
+			Layout.rightMargin: UI.Size.pixel16
             Layout.alignment: Qt.AlignVCenter
 
-            iconData: IconData{}
-            color: _title.color
-            visible: iconData.path != ""
-        }
+			iconData: Media.IconData{}
+			color: _title.color.toString()
+			visible: iconData.path != "" }
 
-        B2 {
+		UI.B2 {
             id: _title
 
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignVCenter
 
             verticalAlignment: Qt.AlignVCenter
-            font.family: _root.selected ? PublicSans.semiBold : PublicSans.regular
-            color: _root.selected ? Theme.text.primary : Theme.text.secondary
+			font.family: _root.selected ? UI.PublicSans.semiBold : UI.PublicSans.regular
+			color: _root.selected ? UI.Theme.text.primary : UI.Theme.text.secondary
         }
     }
 }

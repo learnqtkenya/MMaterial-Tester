@@ -6,6 +6,9 @@ import QtQuick.Controls.Material
 
 import MMaterial as MMaterial
 import MMaterial.Controls.Dialogs as Dialogs
+import MMaterial.Controls.Inputs as Inputs
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 Dialogs.Dialog {
     id: root
@@ -47,11 +50,11 @@ Dialogs.Dialog {
             color: "transparent"
             anchors.fill: parent
             focus: true
-            radius: MMaterial.Size.pixel6
+            radius: UI.Size.pixel6
 
             border {
                 width: 2
-                color: MMaterial.Theme.primary.main
+                color: UI.Theme.primary.main
             }
 
             Keys.onEscapePressed: {
@@ -82,12 +85,12 @@ Dialogs.Dialog {
 
     component Line: Rectangle {
         Layout.preferredHeight: 1
-        color: MMaterial.Theme.other.divider
+        color: UI.Theme.other.divider
     }
 
-    implicitWidth: 300 * MMaterial.Size.scale
+    implicitWidth: 300 * UI.Size.scale
     implicitHeight: mainLayout.implicitHeight + padding * 2
-    padding: MMaterial.Size.pixel20
+    padding: UI.Size.pixel20
 
     onAccepted: () => {
         root.selectedColor = root.currentColor
@@ -142,7 +145,7 @@ Dialogs.Dialog {
                 Layout.fillWidth: true
                 Layout.minimumHeight: width
 
-                MMaterial.ShadeChooser {
+				Inputs.ShadeChooser {
                     color: internal.color
 
                     anchors {
@@ -157,10 +160,10 @@ Dialogs.Dialog {
                 id: hueSlider
 
                 Layout.fillWidth: true
-                Layout.topMargin: MMaterial.Size.pixel10
-                Layout.leftMargin: MMaterial.Size.pixel4
-                Layout.rightMargin: MMaterial.Size.pixel4
-                Layout.preferredHeight: MMaterial.Size.pixel15
+                Layout.topMargin: UI.Size.pixel10
+                Layout.leftMargin: UI.Size.pixel4
+                Layout.rightMargin: UI.Size.pixel4
+                Layout.preferredHeight: UI.Size.pixel15
                 value: internal.color.hsvHue
 
                 onValueChanged: if (hueSlider.pressed) internal.color.hsvHue = value
@@ -170,10 +173,10 @@ Dialogs.Dialog {
                 id: opacitySlider
 
                 Layout.fillWidth: true
-                Layout.topMargin: MMaterial.Size.pixel10
-                Layout.leftMargin: MMaterial.Size.pixel4
-                Layout.rightMargin: MMaterial.Size.pixel4
-                Layout.preferredHeight: MMaterial.Size.pixel15
+                Layout.topMargin: UI.Size.pixel10
+                Layout.leftMargin: UI.Size.pixel4
+                Layout.rightMargin: UI.Size.pixel4
+                Layout.preferredHeight: UI.Size.pixel15
                 colorPickerController: internal
             }
 
@@ -181,17 +184,17 @@ Dialogs.Dialog {
                 id: textInputLayout
 
                 Layout.fillWidth: true
-                Layout.leftMargin: MMaterial.Size.pixel4
-                Layout.rightMargin: MMaterial.Size.pixel4
-                Layout.minimumHeight: MMaterial.Size.pixel36
-                Layout.topMargin: -MMaterial.Size.pixel10
+                Layout.leftMargin: UI.Size.pixel4
+                Layout.rightMargin: UI.Size.pixel4
+                Layout.minimumHeight: UI.Size.pixel36
+                Layout.topMargin: -UI.Size.pixel10
 
-                spacing: MMaterial.Size.pixel15
+                spacing: UI.Size.pixel15
 
-                MMaterial.MTextField {
+                Inputs.MTextField {
                     id: hexField
 
-                    Layout.leftMargin: MMaterial.Size.pixel5
+                    Layout.leftMargin: UI.Size.pixel5
                     Layout.alignment: Qt.AlignHCenter
                     Layout.fillWidth: true
                     placeholder: ""
@@ -201,20 +204,20 @@ Dialogs.Dialog {
                         inputMask: "HHHHHHhh"
                         topPadding: 0
                         bottomPadding: 0
-                        leftPadding: hashtagPrefix.contentWidth + hashtagPrefix.anchors.leftMargin + MMaterial.Size.pixel2
-                        rightPadding: MMaterial.Size.pixel6
+                        leftPadding: hashtagPrefix.contentWidth + hashtagPrefix.anchors.leftMargin + UI.Size.pixel2
+                        rightPadding: UI.Size.pixel6
                         text: internal.color.toString().toUpperCase()
-                        font.pixelSize: MMaterial.Size.pixel16
+                        font.pixelSize: UI.Size.pixel16
 
                         onEditingFinished: internal.color = `#${text}`
                         onActiveFocusChanged: if (hexField.input.activeFocus) hexField.input.selectAll()
                     }
 
-                    MMaterial.Caption {
+                    UI.Caption {
                         id: hashtagPrefix
 
                         anchors {
-                            left: hexField.left; leftMargin: MMaterial.Size.pixel15
+                            left: hexField.left; leftMargin: UI.Size.pixel15
                             verticalCenter: hexField.verticalCenter; verticalCenterOffset: hexField.height / 7
                         }
 
@@ -222,11 +225,11 @@ Dialogs.Dialog {
                         text: "#"
                     }
 
-                    MMaterial.Caption {
+                    UI.Caption {
                         id: percentSuffix
 
                         anchors {
-                            right: hexField.right; rightMargin: MMaterial.Size.pixel15
+                            right: hexField.right; rightMargin: UI.Size.pixel15
                             verticalCenter: opacityInput.verticalCenter
                         }
 
@@ -244,7 +247,7 @@ Dialogs.Dialog {
                         }
 
                         height: hexField.height
-                        width: MMaterial.Size.pixel36
+                        width: UI.Size.pixel36
                         text: Math.round(internal.color.a * 100)
 
                         color: hexField.input.color
@@ -263,20 +266,20 @@ Dialogs.Dialog {
 
                         Line {
                             anchors.verticalCenter: opacityInput.verticalCenter
-                            height: opacityInput.height - MMaterial.Size.pixel18
-                            color: MMaterial.Theme.action.selected
+                            height: opacityInput.height - UI.Size.pixel18
+                            color: UI.Theme.action.selected
                         }
                     }
                 }
 
-                MMaterial.Icon {
+                Media.Icon {
                     Layout.alignment: Qt.AlignBottom
                     Layout.bottomMargin: hexField.height / 10
 
-                    size: MMaterial.Size.pixel24
-                    color: MMaterial.Theme.text.primary
+                    size: UI.Size.pixel24
+					color: UI.Theme.text.primary.toString()
                     interactive: true
-                    iconData: MMaterial.Icons.light.colorize
+                    iconData: Media.Icons.light.colorize
                     visible: Qt.platform.os === "windows"
 
                     onClicked: pickingAction.toggle()
@@ -287,12 +290,12 @@ Dialogs.Dialog {
                 id: history
 
                 Layout.preferredHeight: history.count > 8 ? cellHeight * 2 : history.count === 0 ? 0 : cellHeight
-                Layout.leftMargin: MMaterial.Size.pixel4
-                Layout.rightMargin: MMaterial.Size.pixel4
+                Layout.leftMargin: UI.Size.pixel4
+                Layout.rightMargin: UI.Size.pixel4
                 Layout.topMargin: root.padding / 2
                 Layout.fillWidth: true
 
-                model: Dialogs.ColorHistoryModel
+				model: Inputs.ColorHistoryModel
 
                 parentBackgroundColor: root.background.color
 
@@ -326,20 +329,20 @@ Dialogs.Dialog {
         MMaterial.Menu {
             id: menu
 
-            width: MMaterial.Size.scale * 200
-            x: MMaterial.Size.pixel15
-            y: MMaterial.Size.pixel15
+            width: UI.Size.scale * 200
+            x: UI.Size.pixel15
+            y: UI.Size.pixel15
 
             MMaterial.MenuItem {
                 text: qsTr("Delete")
-                iconData: MMaterial.Icons.light.deleteElement
+                iconData: Media.Icons.light.deleteElement
 
                 onTriggered: MMaterial.ColorHistoryModel.removeAt(history.currentIndex)
             }
 
             MMaterial.MenuItem {
                 text: qsTr("Clear History")
-                iconData: MMaterial.Icons.light.refresh
+                iconData: Media.Icons.light.refresh
 
                 onTriggered: MMaterial.ColorHistoryModel.clear()
             }

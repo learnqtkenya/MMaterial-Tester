@@ -2,13 +2,14 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Templates as T
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
+import MMaterial.Media as Media
 
 T.MenuItem {
     id: control
 
-    property color color: control.highlighted ? MMaterial.Theme.text.primary : MMaterial.Theme.text.secondary
-    property MMaterial.IconData iconData: null
+    property color color: control.highlighted ? UI.Theme.text.primary : UI.Theme.text.secondary
+	property Media.IconData iconData: null
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
@@ -16,18 +17,18 @@ T.MenuItem {
                              implicitContentHeight + topPadding + bottomPadding,
                              implicitIndicatorHeight + topPadding + bottomPadding)
 
-    padding: MMaterial.Size.pixel6
-    spacing: MMaterial.Size.pixel16
+    padding: UI.Size.pixel6
+    spacing: UI.Size.pixel16
 
     icon {
-        height: MMaterial.Size.pixel22
-        width: MMaterial.Size.pixel22
+        height: UI.Size.pixel22
+        width: UI.Size.pixel22
         color: control.color
     }
 
     font {
-        family: MMaterial.PublicSans.regular
-        pixelSize: MMaterial.Size.pixel14
+		family: UI.PublicSans.regular
+        pixelSize: UI.Size.pixel14
     }
 
     contentItem: Item {
@@ -53,14 +54,14 @@ T.MenuItem {
                 rightMargin: control.padding
             }
 
-            MMaterial.Icon {
+			Media.Icon {
                 size: control.icon.height
                 iconData: control.iconData
 
-                color: control.color
+				color: Qt.color(control.color)
             }
 
-            MMaterial.B2 {
+			UI.B2 {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
@@ -74,33 +75,33 @@ T.MenuItem {
         }
     }
 
-    indicator: MMaterial.Icon {
+	indicator: Media.Icon {
         x: control.mirrored ? control.leftPadding : control.width - width - control.padding * 2
         y: control.topPadding + (control.availableHeight - height) / 2
 
         visible: control.checked
-        iconData: control.checkable ? MMaterial.Icons.light.check : null
-        color: control.color
-        size: control.icon.height + MMaterial.Size.pixel4
+		iconData: control.checkable ? Media.Icons.light.check : null
+		color: Qt.color(control.color)
+        size: control.icon.height + UI.Size.pixel4
     }
 
-    arrow: MMaterial.Icon {
+	arrow: Media.Icon {
         x: control.mirrored ? control.leftPadding : control.width - width - control.padding * 2
         y: control.topPadding + (control.availableHeight - height) / 2
 
-        size: control.icon.height - MMaterial.Size.pixel4
+        size: control.icon.height - UI.Size.pixel4
         visible: control.subMenu
-        iconData: control.subMenu ? MMaterial.Icons.light.chevronRight : null
-        color: control.color
+		iconData: control.subMenu ? Media.Icons.light.chevronRight : null
+		color: Qt.color(control.color)
     }
 
     background: Rectangle {
-        implicitWidth: 420 * MMaterial.Size.scale
-        implicitHeight: MMaterial.Size.pixel36
-        x: MMaterial.Size.pixel8
-        width: control.width - MMaterial.Size.pixel16
+        implicitWidth: 420 * UI.Size.scale
+        implicitHeight: UI.Size.pixel36
+        x: UI.Size.pixel8
+        width: control.width - UI.Size.pixel16
         height: control.height - 2
-        radius: MMaterial.Size.pixel6
-        color: control.down ? MMaterial.Theme.action.selected : control.highlighted ? MMaterial.Theme.action.hover : "transparent"
+        radius: UI.Size.pixel6
+        color: control.down ? UI.Theme.action.selected : control.highlighted ? UI.Theme.action.hover : "transparent"
     }
 }

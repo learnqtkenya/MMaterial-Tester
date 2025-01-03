@@ -2,8 +2,9 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 
-import MMaterial as MMaterial
+import MMaterial.UI as UI
 import MMaterial.Charts as Charts
+import MMaterial.Controls as Controls
 
 Item {
     id: root
@@ -14,8 +15,8 @@ Item {
     property alias model: root.chartModel.model
 
     property bool autoResize: true
-    property real fontSize: MMaterial.Size.pixel12
-    property real barContainerWidth: MMaterial.Size.pixel48
+    property real fontSize: UI.Size.pixel12
+    property real barContainerWidth: UI.Size.pixel48
 
     property Charts.ChartModel chartModel: Charts.ChartModel {}
 
@@ -32,7 +33,7 @@ Item {
         property real delegateWidth: (verticalDelRoot.width - (verticalDelRoot.count - 1) * verticalDelRoot.spacing) / verticalDelRoot.count
         property real contentX: 0
 
-        spacing: MMaterial.Size.pixel6
+        spacing: UI.Size.pixel6
         height: chartList.height
         width: d.verticalBarWidth
         orientation: ListView.Horizontal
@@ -77,15 +78,15 @@ Item {
             Rectangle {
                 id: verticalBar
 
-                radius: MMaterial.Size.pixel4
+                radius: UI.Size.pixel4
                 width: verticalDelRoot.delegateWidth
                 height: subChart.prefMaxHeight
                 anchors.bottom: parent.bottom
 
-                color: subChart.barColor ?? MMaterial.Theme.getChartPatternColor(subChart.index, d.defaultColorPatterns[verticalDelRoot.index % d.defaultColorPatterns.length])
+				color: subChart.barColor ?? UI.Theme.getChartPatternColor(subChart.index, d.defaultColorPatterns[verticalDelRoot.index % d.defaultColorPatterns.length])
 
                 border {
-                    width: delHover.hovered ? MMaterial.Size.pixel1 * 2 : 0
+                    width: delHover.hovered ? UI.Size.pixel1 * 2 : 0
                     color: Qt.lighter(subChart.barColor)
                 }
 
@@ -104,7 +105,7 @@ Item {
 
                     onHoveredChanged: {
                         if (delHover.hovered) {
-                            tooltip.x = verticalDelRoot.contentX + subChart.x + subChart.width + MMaterial.Size.pixel8;
+                            tooltip.x = verticalDelRoot.contentX + subChart.x + subChart.width + UI.Size.pixel8;
                             tooltip.y = verticalBar.y + verticalBar.height / 2 - tooltip.height / 2;
                             tooltip.show("<b>" + subChart.barName + "</b>: " + subChart.barValue, 0);
                             tooltipCloseTimer.restart();
@@ -126,7 +127,7 @@ Item {
         property real contentY: 0
 
 
-        spacing: MMaterial.Size.pixel6
+        spacing: UI.Size.pixel6
         height: d.horizontalBarHeight
         width: chartList.width
         model: horizontalDelRoot.element
@@ -163,15 +164,15 @@ Item {
 
             readonly property real prefMaxWidth: chartList.width * (horSubChart.barValue / d.peakValue)
 
-            radius: MMaterial.Size.pixel4
+            radius: UI.Size.pixel4
 
             height: horizontalDelRoot.delegateHeight
             width: horSubChart.prefMaxWidth
 
-            color: barColor ?? MMaterial.Theme.getChartPatternColor(horSubChart.index, d.defaultColorPatterns[horizontalDelRoot.index % d.defaultColorPatterns.length])
+			color: barColor ?? UI.Theme.getChartPatternColor(horSubChart.index, d.defaultColorPatterns[horizontalDelRoot.index % d.defaultColorPatterns.length])
 
             border {
-                width: horDelHover.hovered ? MMaterial.Size.pixel1 * 2 : 0
+                width: horDelHover.hovered ? UI.Size.pixel1 * 2 : 0
                 color: Qt.lighter(horSubChart.color)
             }
 
@@ -192,7 +193,7 @@ Item {
 
                 onHoveredChanged: {
                     if (horDelHover.hovered) {
-                        tooltip.x = horSubChart.x + horSubChart.width + MMaterial.Size.pixel8;
+                        tooltip.x = horSubChart.x + horSubChart.width + UI.Size.pixel8;
                         tooltip.y = horizontalDelRoot.contentY + horizontalDelRoot.y + horSubChart.y + horSubChart.height / 2 - tooltip.height / 2;
                         tooltip.show("<b>" + horSubChart.barName + "</b>: " + horSubChart.barValue, 0);
                         tooltipCloseTimer.restart();
@@ -222,11 +223,11 @@ Item {
     QtObject {
         id: d
 
-        property list<string> valueListModel: Charts.ChartFunctions.generateSpreadNumbers(0, peakValue, Math.ceil(root.height / (MMaterial.Size.scale * 100)))
+        property list<string> valueListModel: Charts.ChartFunctions.generateSpreadNumbers(0, peakValue, Math.ceil(root.height / (UI.Size.scale * 100)))
         property real peakValue: root.chartModel.getMaxValue()
         readonly property real verticalBarWidth: root.autoResize ? (chartList.width - (chartList.count - 1) * chartList.spacing) / chartList.count : root.barContainerWidth
         readonly property real horizontalBarHeight: root.autoResize ? (chartList.height - (chartList.count - 1) * chartList.spacing) / chartList.count : root.barContainerWidth
-        readonly property list<MMaterial.PaletteBasic> defaultColorPatterns: [MMaterial.Theme.primary, MMaterial.Theme.secondary, MMaterial.Theme.info, MMaterial.Theme.success, MMaterial.Theme.warning, MMaterial.Theme.error]
+		readonly property list<UI.PaletteBasic> defaultColorPatterns: [UI.Theme.primary, UI.Theme.secondary, UI.Theme.info, UI.Theme.success, UI.Theme.warning, UI.Theme.error]
     }
 
     ListView {
@@ -245,16 +246,16 @@ Item {
             left: chartList.isHorizontalChart ? root.left : rootContainer.left
             leftMargin: chartList.isHorizontalChart ? 0 : chartList.anchors.margins
             right: chartList.isHorizontalChart ? rootContainer.left : rootContainer.right;
-            rightMargin: chartList.isHorizontalChart ? MMaterial.Size.pixel8 : chartList.anchors.margins
+            rightMargin: chartList.isHorizontalChart ? UI.Size.pixel8 : chartList.anchors.margins
             top: chartList.isHorizontalChart ? rootContainer.top : rootContainer.bottom
-            topMargin: chartList.isHorizontalChart ? chartList.anchors.margins : MMaterial.Size.pixel8
+            topMargin: chartList.isHorizontalChart ? chartList.anchors.margins : UI.Size.pixel8
             bottom: chartList.isHorizontalChart ? rootContainer.bottom : root.bottom
             bottomMargin: chartList.isHorizontalChart ? chartList.anchors.margins : 0
         }
 
         onModelChanged: valueListOpacityAnimation.restart()
 
-        delegate: MMaterial.Caption {
+		delegate: UI.Caption {
             required property string modelData
 
             height: valueList.delHeight
@@ -262,7 +263,7 @@ Item {
             horizontalAlignment: chartList.isHorizontalChart ? Qt.AlignRight : Qt.AlignLeft
             verticalAlignment: chartList.isHorizontalChart ? Qt.AlignVCenter : Qt.AlignTop
             text: Number(modelData).toLocaleString(Qt.locale(), 'f', 0)
-            color: MMaterial.Theme.text.disabled
+            color: UI.Theme.text.disabled
             font.pixelSize: root.fontSize
         }
 
@@ -291,14 +292,14 @@ Item {
             left: chartList.isHorizontalChart ? rootContainer.left : root.left
             leftMargin: chartList.isHorizontalChart ? chartList.anchors.margins : 0
             right: chartList.isHorizontalChart ? rootContainer.right : rootContainer.left
-            rightMargin: chartList.isHorizontalChart ? chartList.anchors.margins : MMaterial.Size.pixel8
+            rightMargin: chartList.isHorizontalChart ? chartList.anchors.margins : UI.Size.pixel8
             top: chartList.isHorizontalChart ? rootContainer.bottom : rootContainer.top
-            topMargin: chartList.isHorizontalChart ? MMaterial.Size.pixel8 : chartList.anchors.margins
+            topMargin: chartList.isHorizontalChart ? UI.Size.pixel8 : chartList.anchors.margins
             bottom: chartList.isHorizontalChart ? root.bottom : rootContainer.bottom
             bottomMargin: chartList.isHorizontalChart ? 0 : chartList.anchors.margins
         }
 
-        delegate: MMaterial.Caption {
+		delegate: UI.Caption {
             required property string name
 
             height: nameList.delHeight
@@ -307,7 +308,7 @@ Item {
             horizontalAlignment: chartList.isHorizontalChart ? Qt.AlignHCenter : Qt.AlignRight
             verticalAlignment: chartList.isHorizontalChart ? Qt.AlignTop : Qt.AlignVCenter
             text: name
-            color: MMaterial.Theme.text.disabled
+            color: UI.Theme.text.disabled
             font.pixelSize: root.fontSize
         }
 
@@ -337,13 +338,13 @@ Item {
     Rectangle {
         id: rootContainer
 
-        radius: MMaterial.Size.pixel12
+        radius: UI.Size.pixel12
         height: root.height - root.fontSize * 4
-        width: root.width - MMaterial.Size.pixel48
+        width: root.width - UI.Size.pixel48
         color: "transparent"
 
         border.width: 1
-        border.color: MMaterial.Theme.action.focus
+        border.color: UI.Theme.action.focus
 
         anchors {
             right: root.right
@@ -357,7 +358,7 @@ Item {
 
             model: root.chartModel
             interactive: false
-            spacing: MMaterial.Size.pixel12
+            spacing: UI.Size.pixel12
             orientation: ListView.Horizontal
             verticalLayoutDirection: ListView.BottomToTop
             clip: true
@@ -382,7 +383,7 @@ Item {
 
             anchors {
                 fill: rootContainer
-                margins: MMaterial.Size.pixel18
+                margins: UI.Size.pixel18
             }
 
             onIsHorizontalChartChanged: {
@@ -424,7 +425,7 @@ Item {
                 }
             }
 
-            MMaterial.MToolTip {
+			Controls.MToolTip {
                 id: tooltip
                 delay: 300
 
