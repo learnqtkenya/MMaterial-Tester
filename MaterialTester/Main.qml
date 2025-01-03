@@ -17,7 +17,7 @@ Window {
             mainLoader.source = "";
             QmlEngine.clearCache();
             mainLoader.source = Qt.resolvedUrl("MainWindow.qml");
-        }
+		}
 
         height: parent.height; width: parent.width;
 

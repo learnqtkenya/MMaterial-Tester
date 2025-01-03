@@ -38,6 +38,7 @@ Item {
         required property double barValue
         required property bool barSelected
         required property int index
+		required property var model
 
         property alias barOpacity: verticalBar.opacity
 
@@ -100,7 +101,7 @@ Item {
             TapHandler {
                 onTapped: {
                     d.autoscroll = false;
-                    verticalBarContainer.barSelected = !verticalBarContainer.barSelected;
+					verticalBarContainer.model.barSelected = !verticalBarContainer.barSelected;
                 }
             }
 

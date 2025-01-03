@@ -151,6 +151,7 @@ Item {
 
 				required property int index
 				required property string name
+				required property var model
 				required property Charts.ChartElement element
 
                 height: UI.Size.pixel40 * 2
@@ -179,7 +180,7 @@ Item {
                             verticalAlignment: Qt.AlignVCenter
                             font.pixelSize: UI.Size.pixel16
 
-							onTextEdited: chartDelRoot.name = text
+							onTextEdited: chartDelRoot.model.name = text
                             onAccepted: {
                                 if (barRectList.count == 0) {
 									chartDelRoot.element.insertEmpty(barRectList.count)
@@ -242,11 +243,12 @@ Item {
 							required property double barValue
 							required property color barColor
 							required property string barName
+							required property var model
 
                             property alias barNameInput: barNameInput
 
                             function setBarColor(color) {
-                                barColor = color
+								rectDelegateRoot.model.barColor = color
                             }
 
                             height: barRectList.height
@@ -307,8 +309,8 @@ Item {
 
                                         input {
                                             KeyNavigation.tab: barValueInput.input
-											onEditingFinished: rectDelegateRoot.barName = input.text
-											onActiveFocusChanged: if (input.focus) barRectList.positionViewAtIndex(rectDelegateRoot.index, ListView.Beginning);
+											onEditingFinished: rectDelegateRoot.model.barName = barNameInput.input.text
+											onActiveFocusChanged: if (barNameInput.input.focus) barRectList.positionViewAtIndex(rectDelegateRoot.index, ListView.Beginning);
                                         }
                                     }
                                 }
@@ -358,8 +360,8 @@ Item {
                                                 regularExpression: /^[0-9]+$/
                                             }
 
-											onEditingFinished: rectDelegateRoot.barValue = input.text
-											onActiveFocusChanged: if (input.focus) barRectList.positionViewAtIndex(rectDelegateRoot.index, ListView.Beginning);
+											onEditingFinished: rectDelegateRoot.model.barValue = barValueInput.input.text
+											onActiveFocusChanged: if (barValueInput.input.focus) barRectList.positionViewAtIndex(rectDelegateRoot.index, ListView.Beginning);
                                         }
                                     }
                                 }
