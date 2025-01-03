@@ -54,6 +54,6 @@ qt_add_qml_module(ShowcaseLib
 )
 
 set_target_properties(ShowcaseLib PROPERTIES AUTOMOC ON)
-target_link_libraries(ShowcaseLib PRIVATE Qt6::Quick MMaterialLibplugin)
+target_link_libraries(ShowcaseLib PRIVATE Qt6::Quick)
 
 target_compile_definitions(ShowcaseLib PRIVATE QT_QUICKCONTROLS_MATERIAL_STYLE)

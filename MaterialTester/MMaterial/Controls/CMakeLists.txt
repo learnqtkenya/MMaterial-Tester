@@ -54,7 +54,7 @@ qt_add_qml_module(ControlsLib
 )
 
 set_target_properties(ControlsLib PROPERTIES AUTOMOC ON)
-target_link_libraries(ControlsLib PRIVATE Qt6::Quick DialogsLibplugin InputsLibplugin PaginationLibplugin SidebarLibplugin)
+target_link_libraries(ControlsLib PRIVATE Qt6::Quick)
 
 target_compile_definitions(ControlsLib PRIVATE QT_QUICKCONTROLS_MATERIAL_STYLE)
 

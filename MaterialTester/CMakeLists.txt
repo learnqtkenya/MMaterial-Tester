@@ -42,7 +42,7 @@ target_include_directories(MaterialTesterLib PUBLIC
 
 set_target_properties(MMaterialLib PROPERTIES AUTOMOC ON)
 target_link_libraries(MaterialTesterLib
-    PRIVATE Qt6::Quick Qt::Gui MMaterialLibplugin ShowcaseLibplugin ComponentsLibplugin
+    PRIVATE Qt6::Quick Qt::Gui
 )
 
 set_target_properties(MaterialTesterLib PROPERTIES

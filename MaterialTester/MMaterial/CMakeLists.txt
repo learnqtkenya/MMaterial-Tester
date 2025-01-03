@@ -27,7 +27,7 @@ qt_add_resources(MMaterialLib
 )
 
 set_target_properties(MMaterialLib PROPERTIES AUTOMOC ON)
-target_link_libraries(MMaterialLib PRIVATE Qt6::Quick ControlsLibplugin ChartsLibplugin MediaLibplugin UILibplugin)
+target_link_libraries(MMaterialLib PRIVATE Qt6::Quick)
 
 add_subdirectory(Controls)
 add_subdirectory(Charts)
