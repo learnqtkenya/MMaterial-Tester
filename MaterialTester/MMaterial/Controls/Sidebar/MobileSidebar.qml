@@ -37,8 +37,6 @@ Item {
         delegate: SidebarCompactItem {
             id: _delegate
 
-            required property int index
-
             property SidebarItem data: root.model[index]
 
             width: UI.Size.pixel36 * 2
