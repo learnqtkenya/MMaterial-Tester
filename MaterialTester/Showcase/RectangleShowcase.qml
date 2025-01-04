@@ -1,21 +1,22 @@
 import QtQuick
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.Controls as Controls
+import MMaterial.UI as UI
 
 ColumnLayout {
     id: _root
 
-    Overline {
+	UI.Overline {
         id: _title
 
         Layout.fillWidth: true
-        color: Theme.text.disabled
+		color: UI.Theme.text.disabled
         font.capitalization: Font.AllUppercase
         text: "MRectangle"
     }
 
-    B2 {
+	UI.B2 {
         Layout.fillWidth: true
 
         elide: Text.ElideNone
@@ -26,21 +27,21 @@ ColumnLayout {
     ListView {
         id: _mainLayout
 
-        Layout.topMargin: Size.pixel30
+        Layout.topMargin: UI.Size.pixel30
         Layout.fillWidth: true
         Layout.fillHeight: true
 
         clip: true
-        spacing: Size.pixel20
+        spacing: UI.Size.pixel20
 
         model: ObjectModel {
-            MRectangle {
-                height: Size.pixel40 * 2
+			Controls.MRectangle {
+                height: UI.Size.pixel40 * 2
                 width: height
             }
 
-            MRectangle {
-                height: Size.pixel40 * 2
+			Controls.MRectangle {
+                height: UI.Size.pixel40 * 2
                 width: height
 
                 radius.topLeft: 10
@@ -49,23 +50,23 @@ ColumnLayout {
                 radius.bottomRight: 40
             }
 
-            MRectangle {
-                height: Size.pixel40 * 2
+			Controls.MRectangle {
+                height: UI.Size.pixel40 * 2
                 width: height
 
                 radius.topLeft: 20
             }
 
-            MRectangle {
-                height: Size.pixel40 * 2
+		   Controls.MRectangle {
+                height: UI.Size.pixel40 * 2
                 width: height
 
                 radius.topLeft: 20
                 radius.topRight: 20
             }
 
-            MRectangle {
-                height: Size.pixel40 * 2
+			Controls.MRectangle {
+                height: UI.Size.pixel40 * 2
                 width: height
 
                 radius.topLeft: 40
@@ -74,8 +75,8 @@ ColumnLayout {
                 radius.bottomRight: 40
             }
 
-            MRectangle {
-                height: Size.pixel40 * 2
+			Controls.MRectangle {
+                height: UI.Size.pixel40 * 2
                 width: height
 
                 radius.topLeft: height / 2

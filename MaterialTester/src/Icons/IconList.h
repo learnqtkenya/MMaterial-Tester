@@ -32,6 +32,8 @@ private:
 class IconFilterProxyModel : public QSortFilterProxyModel
 {
 	Q_OBJECT
+	QML_ELEMENT
+	QML_UNCREATABLE("C++ only")
 
 public:
 	explicit IconFilterProxyModel(QObject* parent = nullptr);

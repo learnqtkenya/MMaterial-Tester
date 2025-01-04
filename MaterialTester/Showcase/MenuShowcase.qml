@@ -1,17 +1,19 @@
 import QtQuick
 import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
+import MMaterial.Media as Media
 
 Item {
     id: _root
 
-    B1 {
+	UI.B1 {
         text: qsTr("Right click anywhere")
         anchors.fill: _root
         verticalAlignment: Qt.AlignVCenter
         horizontalAlignment: Qt.AlignHCenter
-        color: Theme.text.primary
+		color: UI.Theme.text.primary
     }
 
     TapHandler {
@@ -19,51 +21,51 @@ Item {
         onTapped: (eventPoint, button) => _menu.popup(eventPoint)
     }
 
-    Menu {
+	Controls.Menu {
         id: _menu
 
-        Action {
+		Action {
             text: "Action"
         }
 
-        MenuItem {
+		Controls.MenuItem {
             text: "Menu Item"
         }
 
-        MenuItem {
+		Controls.MenuItem {
             enabled: false
             text: "Disabled Menu Item"
         }
 
-        MenuItem {
+		Controls.MenuItem {
             text: "Icon Menu Item"
-            iconData: Icons.light.bluetooth
+			iconData: Media.Icons.light.bluetooth
         }
 
-        MenuItem {
+		Controls.MenuItem {
             enabled: false
-            text: "Disabled Icon Menu Item"
-            iconData: Icons.light.bluetooth
+            text: "Disabled Media.Icon Menu Item"
+			iconData: Media.Icons.light.bluetooth
         }
 
         MenuSeparator {}
 
-        MenuItem {
+		Controls.MenuItem {
             text: "Menu Item Checked"
             checked: true
             checkable: true
         }
 
-        MenuItem {
+		Controls.MenuItem {
             text: "Icon Menu Item Checked"
-            iconData: Icons.light.bluetooth
+			iconData: Media.Icons.light.bluetooth
             checkable: true
             checked: true
         }
 
-        MenuItem {
-            text: "Disabled Icon Menu Item Checked"
-            iconData: Icons.light.bluetooth
+		Controls.MenuItem {
+            text: "Disabled Media.Icon Menu Item Checked"
+			iconData: Media.Icons.light.bluetooth
             checkable: true
             checked: true
             enabled: false
@@ -74,7 +76,7 @@ Item {
         Menu {
             title: "Nested menu"
 
-            MenuItem {
+			Controls.MenuItem {
                 text: "Nested item"
             }
         }
@@ -85,7 +87,7 @@ Item {
             Menu {
                 title: "First Layer"
 
-                MenuItem {
+				Controls.MenuItem {
                     text: "Nested item"
                 }
             }

@@ -1,7 +1,9 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick 
 import QtQuick.Layouts
 
-import MMaterial
+import MMaterial.UI as UI
 
 Item {
     objectName: "Project Info"
@@ -9,12 +11,12 @@ Item {
     ColumnLayout {
         anchors.fill: parent
 
-        spacing: Size.pixel24
+        spacing: UI.Size.pixel24
 
-        H3 {
+		UI.H3 {
             Layout.fillWidth: true
 
-            color: Theme.text.primary
+			color: UI.Theme.text.primary
             text: "About the project"
             font.bold: true
         }
@@ -25,7 +27,7 @@ Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            spacing: Size.pixel24
+            spacing: UI.Size.pixel24
             clip: true
 
             model: [
@@ -35,8 +37,11 @@ Item {
                 "Please note that this is a work in progress and is subdue to changes.\nI'm working hard to bring more components and features to MMaterial, so stay tuned for more updates!"
             ]
 
-            delegate: B2 {
-                color: index == _listView.count -1 ? Theme.text.primary : Theme.text.secondary
+			delegate: UI.B2 {
+				required property string modelData
+				required property int index
+
+				color: index == _listView.count -1 ? UI.Theme.text.primary : UI.Theme.text.secondary
                 width: _listView.width
                 text: modelData
                 wrapMode: Text.WordWrap
@@ -44,8 +49,8 @@ Item {
             }
         }
 
-        H6 {
-            color: Theme.text.secondary
+		UI.H6 {
+			color: UI.Theme.text.secondary
             Layout.fillWidth: true
             horizontalAlignment: Qt.AlignRight
             text: "Kind regards, Marko"

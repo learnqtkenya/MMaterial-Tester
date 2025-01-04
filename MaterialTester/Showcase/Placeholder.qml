@@ -1,33 +1,33 @@
 import QtQuick
-import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial.Media as Media
+import MMaterial.UI as UI
 
 Item {
     id: _root
     objectName: "Intro"
 
-    Icon {
+	Media.Icon {
         id: _logo
 
         size: Math.min(Window.width, Window.height) * 0.3
         anchors.centerIn: parent
 
-        iconData: Icons.heavy.logo
-        color: Theme.primary.main
+		iconData: Media.Icons.heavy.logo
+		color: UI.Theme.primary.main.toString()
     }
 
-    Overline {
+	UI.Overline {
         anchors{
-            top: _logo.bottom; topMargin: Size.pixel40
+            top: _logo.bottom; topMargin: UI.Size.pixel40
             horizontalCenter: parent.horizontalCenter
         }
 
         width: parent.width * 0.8
 
-        font.pixelSize: Size.pixel20
-        text: qsTr("MMaterial Component Library")
+        font.pixelSize: UI.Size.pixel20
+		text: qsTr("MMgaterial Component Library")
         horizontalAlignment: Qt.AlignHCenter
-        color: Theme.text.secondary
+		color: UI.Theme.text.secondary
     }
 }

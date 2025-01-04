@@ -1,12 +1,14 @@
 import QtQuick
 import QtQuick.Controls.Material
 
-import MMaterial
+import MMaterial.Controls as Controls
+import MMaterial.Controls.Inputs as Inputs
+import MMaterial.UI as UI
 
 Item {
     objectName: "DateTime"
 
-    DatePicker {
+	Inputs.DatePicker {
         id: datePicker
 
         closePolicy: Popup.NoAutoClose
@@ -15,11 +17,11 @@ Item {
         onDateAccepted: (startDate, endDate) => {}
     }
 
-    MButton {
-        y: datePicker.y + Size.pixel12
-        x: datePicker.x + Size.pixel12
+	Controls.MButton {
+        y: datePicker.y + UI.Size.pixel12
+        x: datePicker.x + UI.Size.pixel12
         text: qsTr("Open Date Picker")
-        type: MButton.Type.Outlined
+		type: Controls.MButton.Type.Outlined
 
         onClicked: datePicker.open()
     }

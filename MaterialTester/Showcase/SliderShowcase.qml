@@ -1,47 +1,47 @@
 import QtQuick
 import QtQuick.Layouts
 
-import MMaterial
-import MaterialTester
+import MMaterial.UI as UI
+import MMaterial.Controls as Controls
 
 Item {
     id: _root
 
-    component CustomSlider: MSlider {
+	component CustomSlider: Controls.MSlider {
         Layout.fillWidth: true
         from: 0
         value: 50
         to: 100
     }
 
-    Overline {
+	UI.Overline {
         id: _title
 
         width: _root.width
-        color: Theme.text.disabled
+		color: UI.Theme.text.disabled
         font.capitalization: Font.AllUppercase
         text: "MSlider"
     }
 
     ColumnLayout {
         anchors {
-            top: _title.bottom; topMargin: Size.pixel40
+            top: _title.bottom; topMargin: UI.Size.pixel40
             bottom: _root.bottom
-            left: _root.left; leftMargin: Size.pixel20
-            right: _root.right; rightMargin: Size.pixel20
+            left: _root.left; leftMargin: UI.Size.pixel20
+            right: _root.right; rightMargin: UI.Size.pixel20
         }
 
-        CustomSlider { accent: Theme.primary }
+		CustomSlider { accent: UI.Theme.primary }
 
-        CustomSlider { accent: Theme.secondary }
+		CustomSlider { accent: UI.Theme.secondary }
 
-        CustomSlider { accent: Theme.info }
+		CustomSlider { accent: UI.Theme.info }
 
-        CustomSlider { accent: Theme.success }
+		CustomSlider { accent: UI.Theme.success }
 
-        CustomSlider { accent: Theme.warning }
+		CustomSlider { accent: UI.Theme.warning }
 
-        CustomSlider { accent: Theme.error }
+		CustomSlider { accent: UI.Theme.error }
 
         Item { Layout.fillHeight: true }
     }
