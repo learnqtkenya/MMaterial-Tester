@@ -6,7 +6,7 @@ import MMaterial.UI as UI
 T.Slider {
     id: control
 
-	property var accent: UI.Theme.primary
+	property UI.PaletteBasic accent: UI.Theme.primary
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitHandleWidth + leftPadding + rightPadding)

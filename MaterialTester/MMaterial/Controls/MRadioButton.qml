@@ -5,7 +5,7 @@ import MMaterial.UI as UI
 Checkable {
     id: _root
 
-	property var accent: UI.Theme.primary
+	property UI.PaletteBasic accent: UI.Theme.primary
     property alias text: _label.text
     property alias label: _label
 

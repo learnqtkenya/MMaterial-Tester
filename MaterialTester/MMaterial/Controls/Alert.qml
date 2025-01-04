@@ -24,7 +24,7 @@ Rectangle {
 		if(_root.severity == Alert.Severity.Error) return Media.Icons.light.info;
     }
 
-    property var accent: {
+	property UI.PaletteBasic accent: {
 		if(_root.severity == Alert.Severity.Info) return UI.Theme.info;
 		if(_root.severity == Alert.Severity.Success) return UI.Theme.success;
 		if(_root.severity == Alert.Severity.Warning) return UI.Theme.warning;

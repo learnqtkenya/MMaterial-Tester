@@ -7,7 +7,7 @@ Rectangle {
 
     property real verticalPadding: pixelSize/2
     property real horizontalPadding: pixelSize
-	property var accent: UI.Theme.error //Needs to be PaletteBasic type
+	property UI.PaletteBasic accent: UI.Theme.error
     property int quantity: 1
     property int maxQuantity: 999
     property int pixelSize: UI.Size.pixel24

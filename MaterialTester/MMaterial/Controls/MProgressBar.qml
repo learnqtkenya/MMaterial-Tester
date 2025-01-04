@@ -8,7 +8,7 @@ RowLayout {
 
 	property real lineWidth: UI.Size.pixel4
 
-	property var accent: UI.Theme.primary
+	property UI.PaletteBasic accent: UI.Theme.primary
     property color foregroundColor: accent.main
     property color backgroundColor: accent.transparent.p24
     property bool showLabel: false

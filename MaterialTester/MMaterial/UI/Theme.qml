@@ -8,7 +8,7 @@ UI.ThemeBase{
     id: root
 
 	property UI.ThemeBase currentTheme: UI.DarkTheme
-    property var chartColors: [root.primary, root.secondary, root.info, root.success, root.warning, root.error]
+	property list<color> chartColors: [root.primary, root.secondary, root.info, root.success, root.warning, root.error]
 
 	function setTheme(theme: UI.ThemeBase) : void {
         console.log("Theme switched to " + theme.objectName)

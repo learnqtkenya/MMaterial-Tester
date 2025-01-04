@@ -6,7 +6,7 @@ import MMaterial.Media as Media
 Checkable {
     id: _root
 
-    property var accent: UI.Theme.primary
+	property UI.PaletteBasic accent: UI.Theme.primary
 
     implicitHeight: UI.Size.pixel24
     implicitWidth: UI.Size.pixel24

@@ -9,7 +9,7 @@ Item {
 	property int lineWidth: UI.Size.pixel4
     property int progress: 0
 
-	property var accent: UI.Theme.primary
+	property UI.PaletteBasic accent: UI.Theme.primary
     property color primaryColor: accent.main
     property color secondaryColor: "transparent"
     property bool showLabel: false

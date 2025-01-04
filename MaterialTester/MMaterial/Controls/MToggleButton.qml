@@ -8,7 +8,7 @@ Rectangle {
 
     property bool checked: false
     property alias mouseArea: mouseArea
-	property var accent: UI.Theme.primary //Needs to be PaletteBasic type
+	property UI.PaletteBasic accent: UI.Theme.primary
     property bool customCheckImplementation: false
 
 	property int size: UI.Size.Grade.L

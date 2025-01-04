@@ -90,7 +90,7 @@ Item {
                 Layout.fillWidth: true
 
                 Repeater {
-					property var colors: UI.Theme.main
+					property UI.PaletteGrey colors: UI.Theme.main
 
                     model: [colors.p100, colors.p200, colors.p300, colors.p400, colors.p500, colors.p600, colors.p700, colors.p800, colors.p900]
 

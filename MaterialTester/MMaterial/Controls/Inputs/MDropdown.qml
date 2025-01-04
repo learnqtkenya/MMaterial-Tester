@@ -10,7 +10,7 @@ import MMaterial.Media as Media
 MTextField {
     id: _root
 
-    property var model: ["Label 1", "Label 2", "Label 3"]
+	property list<string> model: ["Label 1", "Label 2", "Label 3"]
     property alias delegate: _listView.delegate
     property int delegateCount: 5
 

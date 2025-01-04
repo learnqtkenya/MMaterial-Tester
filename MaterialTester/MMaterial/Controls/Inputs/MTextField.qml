@@ -13,7 +13,7 @@ Rectangle {
     property alias text: _textInput.text
 
     property real horizontalMargins: UI.Size.pixel12
-    property var hoverHandler: _hoverHandler
+	property var hoverHandler: _hoverHandler
 	property UI.PaletteBasic accent: UI.Theme.primary
 
     property bool showPlaceholder: !_textInput.activeFocus && _textInput.text === ""
