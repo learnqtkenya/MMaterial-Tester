@@ -22,7 +22,6 @@ qt_add_qml_module(ShowcaseLib
         ListItemShowcase.qml
         ListBorders.qml
         ProjectInfo.qml
-        Placeholder.qml
         PaginationShowcase.qml
         CustomSwipeView.qml
         PaginatorArrowsShowcase.qml

@@ -26,7 +26,7 @@ Item {
         width: parent.width * 0.8
 
         font.pixelSize: UI.Size.pixel20
-		text: qsTr("MMgaterial Component Library")
+		text: qsTr("MMaterial Component Library")
         horizontalAlignment: Qt.AlignHCenter
 		color: UI.Theme.text.secondary
     }

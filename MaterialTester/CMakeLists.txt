@@ -20,6 +20,7 @@ qt_add_qml_module(MaterialTesterLib
     QML_FILES
         Main.qml
         MainWindow.qml
+        Placeholder.qml
 
     SOURCES
         DevTools/FileWatcher.h
