@@ -226,7 +226,7 @@ Rectangle {
 		}
     }
 
-    AlertController {
+	AlertGenerator {
         id: alertsController
 
         width: parent.width > 400 ? 400 * UI.Size.scale : parent.width * 0.9

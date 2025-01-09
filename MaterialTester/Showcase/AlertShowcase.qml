@@ -258,7 +258,7 @@ Item {
                             dismissButton : yesButton.checked ? dismissButton : null
                         }
 
-                        alerts.activate(alertTextInput.text, details)
+						Controls.AlertController.alert(alertTextInput.text, details, 3500, alerts.objectName)
                     }
                 }
 
@@ -267,9 +267,10 @@ Item {
         }
     }
 
-	Controls.AlertController {
+	Controls.AlertGenerator {
         id: alerts
 
+		objectName: "AlertShowcaseGenerator"
         width: parent.width > 400 ? 400 * UI.Size.scale : parent.width * 0.9
     }
 }

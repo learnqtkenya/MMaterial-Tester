@@ -14,7 +14,7 @@ list(APPEND CONTROLS_QML_FILES
     Badge.qml
     Accordion.qml
     Alert.qml
-    AlertController.qml
+    AlertGenerator.qml
     Avatar.qml
     MProgressBar.qml
     MCircularProgressBar.qml
@@ -51,12 +51,18 @@ qt_add_qml_module(ControlsLib
         MMaterial.Controls.Sidebar
 
     QML_FILES ${CONTROLS_QML_FILES}
+    SOURCES
+        src/AlertController.h src/AlertController.cpp
 )
 
 set_target_properties(ControlsLib PROPERTIES AUTOMOC ON)
 target_link_libraries(ControlsLib PRIVATE Qt6::Quick)
 
 target_compile_definitions(ControlsLib PRIVATE QT_QUICKCONTROLS_MATERIAL_STYLE)
+
+target_include_directories(ControlsLib PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/
+)
 
 add_subdirectory(Dialogs)
 add_subdirectory(Inputs)

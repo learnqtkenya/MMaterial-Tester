@@ -49,7 +49,7 @@ Item {
 		visible: true
 
 		downloadModel.onError: (errorString) => {
-								   alertsController.activate(errorString, {"severity": Controls.Alert.Severity.Error});
+								   Controls.AlertController.alert(errorString, {"severity": Controls.Alert.Severity.Error});
 							   }
 	}
 }
