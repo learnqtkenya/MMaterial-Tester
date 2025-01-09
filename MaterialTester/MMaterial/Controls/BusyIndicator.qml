@@ -88,17 +88,16 @@ Item {
     ]
 
     QtObject {
-        id: animation
+		id: d
 
         property real radius: root.height * 0.26
-        property real duration: 1900
     }
 
     Rectangle {
         id: thinRect
 
         color: "transparent"
-        radius: animation.radius * 1.35
+		radius: d.radius * 1.35
         anchors.fill: root
         opacity: 0.1
 
@@ -112,7 +111,7 @@ Item {
         id: thickRect
 
         color: "transparent"
-        radius: animation.radius
+		radius: d.radius
         opacity: 0.2
 
         anchors {
@@ -136,9 +135,13 @@ Item {
 		color: UI.Theme.primary.main.toString()
     }
 
-    ParallelAnimation {
+	ParallelAnimation {
+		id: animation
+
+		property real duration: 1900
+
         loops: Animation.Infinite
-        running: root.visible
+		running: root.visible
 
         SequentialAnimation {
             ScaleAnimator {
