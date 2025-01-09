@@ -105,7 +105,10 @@ Rectangle {
     Component { id: paginationShowcase; PaginationShowcase{ } }
     Component { id: paginationArrowsShowcase; PaginatorArrowsShowcase{ } }
     Component { id: paginationBubbleShowcase; PaginatorBubbleShowcase{ } }
-    Component { id: paginationSimpleShowcase; PaginatorSimpleShowcase{ } }
+	Component { id: paginationSimpleShowcase; PaginatorSimpleShowcase{ } }
+
+	// Network
+	Component { id: downloadShowcase; DownloadShowcase{ } }
 
     AppSettings {
         id: appSettings
@@ -217,7 +220,8 @@ Rectangle {
 				{text : "Accordion", onClicked: function(){ showcaseLoader.sourceComponent = accordionShowcase}},
 				{text : "Avatar", onClicked: function(){ showcaseLoader.sourceComponent = avatarShowcase }, "chip" : Qt.platform.os === "wasm" ? { "text" : qsTr("Non-WASM"), "accent": UI.Theme.warning } : null},
 				{text : "Rectangle", onClicked: function(){ showcaseLoader.sourceComponent = rectangleShowcase }},
-				{text : "BusyIndicator", onClicked: function(){ showcaseLoader.sourceComponent = busyIndicatorShowcase }}
+				{text : "BusyIndicator", onClicked: function(){ showcaseLoader.sourceComponent = busyIndicatorShowcase }},
+				{text : "Download", onClicked: function(){ showcaseLoader.sourceComponent = downloadShowcase }, "chip" : Qt.platform.os === "wasm" ? { "text" : qsTr("Non-WASM"), "accent": UI.Theme.warning } : null}
 			];
 		}
     }

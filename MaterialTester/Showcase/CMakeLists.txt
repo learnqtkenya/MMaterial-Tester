@@ -50,6 +50,7 @@ qt_add_qml_module(ShowcaseLib
         WaterfallChartShowcase.qml
         ColorPickerShowcase.qml
         BusyIndicatorShowcase.qml
+        DownloadShowcase.qml
 )
 
 set_target_properties(ShowcaseLib PROPERTIES AUTOMOC ON)

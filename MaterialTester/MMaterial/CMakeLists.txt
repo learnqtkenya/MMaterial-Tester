@@ -9,6 +9,7 @@ qt_add_qml_module(MMaterialLib
 
     OPTIONAL_IMPORTS
         MMaterial.Charts
+        MMaterial.Network
 )
 
 file(GLOB PNG_ASSETS "Media/assets/other/*.png")
@@ -33,5 +34,6 @@ add_subdirectory(Controls)
 add_subdirectory(Charts)
 add_subdirectory(Media)
 add_subdirectory(UI)
+add_subdirectory(Network)
 
 target_compile_definitions(MMaterialLib PRIVATE QT_QUICKCONTROLS_MATERIAL_STYLE)

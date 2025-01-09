@@ -97,7 +97,7 @@ T.Dialog {
         RowLayout {
             id: headerLayout
 
-            spacing: UI.Size.pixel16
+			spacing: UI.Size.pixel10
 
             anchors {
                 left: headerRoot.left; leftMargin: control.leftPadding
