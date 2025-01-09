@@ -1,6 +1,6 @@
 import QtQuick
 
-import MMaterial.Controls as MMaterial
+import MMaterial.Controls as Controls
 import MMaterial.UI as UI
 
 Text {
@@ -16,7 +16,7 @@ Text {
         enabled: _root.showTooltip
     }
 
-    MMaterial.MToolTip {
+	Controls.MToolTip {
         visible: _hoverHandler.hovered
         text: _root.tooltipText
         delay: 300
