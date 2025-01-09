@@ -1,9 +1,12 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 import MMaterial.Media as Media
 import MMaterial.UI as UI
 import MMaterial.Controls.Dialogs as Dialogs
 import MMaterial.Controls as Controls
+import MMaterial.Network as Network
 
 Dialogs.Dialog {
 	id: root
@@ -51,7 +54,7 @@ Dialogs.Dialog {
 				UI.EasedAnimation { properties: "x, y, scale, opacity, height"; duration: 150; }
 			}
 
-			model: DownloadModel {
+			model: Network.DownloadModel {
 				id: downloadModel
 			}
 
@@ -82,31 +85,31 @@ Dialogs.Dialog {
 				state: "downloading"
 				states: [
 					State {
-						when: delRoot.status == Download.Downloading || delRoot.status == Download.Idle
+						when: delRoot.status == Network.Download.Downloading || delRoot.status == Network.Download.Idle
 						name: "downloading"
 						PropertyChanges { target: delRoot; accent: UI.Theme.primary }
 						PropertyChanges { target: downloadIcon; icon.iconData: Media.Icons.light.playArrow; onClicked: { downloadModel.pauseDownload(delRoot.index) } }
 					},
 					State {
-						when: delRoot.status == Download.Finished
+						when: delRoot.status == Network.Download.Finished
 						name: "downloaded"
 						PropertyChanges { target: delRoot; accent: UI.Theme.success }
 						PropertyChanges { target: downloadIcon; icon.iconData: Media.Icons.light.check; onClicked: {} }
 					},
 					State {
-						when: delRoot.status == Download.Error
+						when: delRoot.status == Network.Download.Error
 						name: "failed"
 						PropertyChanges { target: delRoot; accent: UI.Theme.error }
 						PropertyChanges { target: downloadIcon; icon.iconData: Media.Icons.light.restartAlt; onClicked: { downloadModel.startDownload(delRoot.index) } }
 					},
 					State {
-						when: delRoot.status == Download.Retrying
+						when: delRoot.status == Network.Download.Retrying
 						name: "retrying"
 						PropertyChanges { target: delRoot; accent: UI.Theme.error }
 						PropertyChanges { target: downloadIcon; icon.iconData: Media.Icons.light.restartAlt; onClicked: {} }
 					},
 					State {
-						when: delRoot.status == Download.Paused
+						when: delRoot.status == Network.Download.Paused
 						name: "paused"
 						PropertyChanges { target: delRoot; accent: UI.Theme.warning }
 						PropertyChanges { target: downloadIcon; checked: false; icon.iconData: Media.Icons.light.pause; onClicked: { downloadModel.startDownload(delRoot.index) } }
