@@ -3,6 +3,8 @@ pragma Singleton
 import MMaterial.UI as UI
 
 UI.ThemeBase{
+	id: root
+
     objectName: "Dark UI.Theme"
 
 	primary: UI.BasicGreen
@@ -60,7 +62,7 @@ UI.ThemeBase{
 	background: UI.PaletteBackground{
         main: "#161C24"
         paper: "#212B36"
-        neutral: "#212B36"
+		neutral: "#28323D"
     }
 
 	action: UI.PaletteAction{
