@@ -1,6 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
+import QtQuick.Layouts
 import QtQuick.Controls.Material
 
 import MMaterial.UI as UI
@@ -172,19 +173,47 @@ Controls.Checkable {
                 ScrollIndicator.vertical: ScrollIndicator {}
 
 				delegate: Controls.ListItem {
+					id: _subItem
                     required property int index
+					required property var modelData
 
-                    property var modelItem: _root.model[index]
+					property var chip: modelData.chip ? modelData.chip : null
 
-                    text: modelItem.text
+					text: modelData.text
                     width: _listView.width
                     selected: index == _root.sidebarData.currentSubIndex && _root.checked
 
                     onClicked: {
                         _root.selectItem(index);
-                        modelItem.onClicked();
+						modelData.onClicked();
                         _contextMenu.close();
                     }
+
+					Loader {
+						Layout.alignment: Qt.AlignVCenter
+						Layout.preferredHeight: item ? item.height : 0
+						Layout.preferredWidth: item ? item.width : 0
+						asynchronous: true
+
+						active: _subItem.chip
+
+						sourceComponent: Component {
+							Controls.MButton {
+								type: Controls.MButton.Type.Soft
+								text: _subItem.chip ? _subItem.chip.text : ""
+								accent: _subItem.chip ? _subItem.chip.accent : UI.Theme.primary
+								size: UI.Size.Grade.Custom
+								horizontalPadding: UI.Size.pixel5
+								verticalPadding: UI.Size.pixel5
+								pixelSize: UI.Size.pixel10
+
+								mouseArea {
+									enabled: false
+									anchors.fill: null
+								}
+							}
+						}
+					}
                 }
             }
         }
