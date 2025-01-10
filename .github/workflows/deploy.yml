@@ -80,7 +80,7 @@ jobs:
         echo "INSTALL_DIR=${{ github.workspace }}/install/${{ matrix.qtarch }}" >> $GITHUB_ENV
         echo "APK_DIR=$BUILD_DIR/android-build/build/outputs/apk/" >> $GITHUB_ENV
         echo "ANDROID_BUILD_DIR=$BUILD_DIR/android-build/" >> $GITHUB_ENV
-        echo "DEPLOYMENT_SETTINGS=$BUILD_DIR/android-MaterialTesterLib-deployment-settings.json" >> $GITHUB_ENV
+        echo "DEPLOYMENT_SETTINGS=$BUILD_DIR/android-appMaterialTester-deployment-settings.json" >> $GITHUB_ENV
 
     - name: Configure
       env:
