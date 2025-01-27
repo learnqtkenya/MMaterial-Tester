@@ -146,13 +146,13 @@ ColumnLayout {
         }
     }
 
-	Inputs.MTextField {
+	Inputs.TextField {
         id: searchInput
 
         Layout.topMargin: UI.Size.pixel24
         Layout.fillWidth: true
 
-		type: Inputs.MTextField.Type.Outlined
+		type: Inputs.TextField.Type.Outlined
 		accent: UI.Theme.primary
         placeholder: qsTr("Search ...")
         leftIcon.iconData: Media.Icons.light.search

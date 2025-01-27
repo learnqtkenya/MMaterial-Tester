@@ -22,29 +22,29 @@ ColumnLayout {
         title.text: qsTr("States")
         grid.columns: groupRoot.columnCount
 
-		Inputs.MTextField {
+		Inputs.TextField {
             type: groupRoot.type
 			accent: UI.Theme.primary
         }
 
-		Inputs.MTextField {
+		Inputs.TextField {
             type: groupRoot.type
 			accent: UI.Theme.primary
             text: qsTr("Value (Enabled)")
         }
 
-		Inputs.MTextField {
+		Inputs.TextField {
             enabled: false
             type: groupRoot.type
 			accent: UI.Theme.primary
             text: qsTr("Value (Disabled)")
         }
 
-		Inputs.MTextField {
+		Inputs.TextField {
             type: groupRoot.type
 			accent: UI.Theme.primary
             text: qsTr("Value (Incorrect)")
-            input.validator: RegularExpressionValidator{ regularExpression: /^[\d]+$/ }
+			validator: RegularExpressionValidator{ regularExpression: /^[\d]+$/ }
         }
     }
 
@@ -52,14 +52,14 @@ ColumnLayout {
         title.text: qsTr("Icon")
         grid.columns: groupRoot.columnCount
 
-		Inputs.MTextField {
+		Inputs.TextField {
             type: groupRoot.type
 			accent: UI.Theme.primary
             text: qsTr("Left Media.Icon")
 			leftIcon.iconData: Media.Icons.heavy.logo
         }
 
-		Inputs.MTextField {
+		Inputs.TextField {
             type: groupRoot.type
 			accent: UI.Theme.primary
             text: qsTr("Left and Right Media.Icon")
@@ -67,7 +67,7 @@ ColumnLayout {
 			rightIcon.iconData: Media.Icons.heavy.logo
         }
 
-		Inputs.MTextField {
+		Inputs.TextField {
             type: groupRoot.type
 			accent: UI.Theme.primary
             text: qsTr("Right Media.Icon")

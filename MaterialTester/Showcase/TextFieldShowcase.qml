@@ -17,9 +17,9 @@ Item {
         clip: true
 
         model: [
-			{ "type": Inputs.MTextField.Type.Outlined, "name" : "Outlined" },
-			{ "type": Inputs.MTextField.Type.Filled, "name" : "Filled" },
-			{ "type": Inputs.MTextField.Type.Standard, "name" : "Standard" }
+			{ "type": Inputs.TextField.Type.Outlined, "name" : "Outlined" },
+			{ "type": Inputs.TextField.Type.Filled, "name" : "Filled" },
+			{ "type": Inputs.TextField.Type.Standard, "name" : "Standard" }
         ]
 
         delegate: Item {

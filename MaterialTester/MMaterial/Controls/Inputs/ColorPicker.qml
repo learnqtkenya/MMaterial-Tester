@@ -191,7 +191,7 @@ Dialogs.Dialog {
 
                 spacing: UI.Size.pixel15
 
-                Inputs.MTextField {
+                Inputs.TextField {
                     id: hexField
 
                     Layout.leftMargin: UI.Size.pixel5
@@ -199,19 +199,17 @@ Dialogs.Dialog {
                     Layout.fillWidth: true
                     placeholder: ""
 
-                    input {
-                        horizontalAlignment: Text.AlignLeft
-                        inputMask: "HHHHHHhh"
-                        topPadding: 0
-                        bottomPadding: 0
-                        leftPadding: hashtagPrefix.contentWidth + hashtagPrefix.anchors.leftMargin + UI.Size.pixel2
-                        rightPadding: UI.Size.pixel6
-                        text: internal.color.toString().toUpperCase()
-                        font.pixelSize: UI.Size.pixel16
+					horizontalAlignment: Text.AlignLeft
+					inputMask: "HHHHHHhh"
+					topPadding: 0
+					bottomPadding: 0
+					leftPadding: hashtagPrefix.contentWidth + hashtagPrefix.anchors.leftMargin + UI.Size.pixel2
+					rightPadding: UI.Size.pixel6
+					text: internal.color.toString().toUpperCase()
+					font.pixelSize: UI.Size.pixel16
 
-                        onEditingFinished: internal.color = `#${text}`
-                        onActiveFocusChanged: if (hexField.input.activeFocus) hexField.input.selectAll()
-                    }
+					onEditingFinished: internal.color = `#${text}`
+					onActiveFocusChanged: if (hexField.input.activeFocus) hexField.input.selectAll()
 
                     UI.Caption {
                         id: hashtagPrefix

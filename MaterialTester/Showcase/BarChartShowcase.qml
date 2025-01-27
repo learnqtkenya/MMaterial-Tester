@@ -165,7 +165,7 @@ Item {
                         rightMargin: UI.Size.pixel10
                     }
 
-					Inputs.MTextField {
+					Inputs.TextField {
                         id: input
 
                         Layout.alignment: Qt.AlignTop
@@ -176,19 +176,17 @@ Item {
                         placeholder: qsTr("Name")
 						text: chartDelRoot.name
 
-                        input {
-                            verticalAlignment: Qt.AlignVCenter
-                            font.pixelSize: UI.Size.pixel16
+						verticalAlignment: Qt.AlignVCenter
+						font.pixelSize: UI.Size.pixel16
 
-							onTextEdited: chartDelRoot.model.name = text
-                            onAccepted: {
-                                if (barRectList.count == 0) {
-									chartDelRoot.element.insertEmpty(barRectList.count)
-                                }
-                            }
-                        }
+						onTextEdited: chartDelRoot.model.name = text
+						onAccepted: {
+							if (barRectList.count == 0) {
+								chartDelRoot.element.insertEmpty(barRectList.count)
+							}
+						}
 
-                        Component.onCompleted: input.input.forceActiveFocus()
+						Component.onCompleted: input.forceActiveFocus()
                     }
 
                     ListView {
@@ -211,7 +209,7 @@ Item {
                         onCountChanged: {
                             let barElement = barRectList.itemAtIndex(barRectList.count - 1);
                             if (barElement)
-                                barElement.barNameInput.input.forceActiveFocus();
+								barElement.barNameInput.forceActiveFocus();
                         }
 
                         add: Transition {
@@ -291,7 +289,7 @@ Item {
                                         }
                                     }
 
-									Inputs.MTextField {
+									Inputs.TextField {
                                         id: barNameInput
 
                                         Layout.alignment: Qt.AlignHCenter
@@ -301,17 +299,16 @@ Item {
                                         Layout.fillWidth: true
                                         Layout.maximumWidth: rectDelegateRoot.width
 
-                                        input.font.pixelSize: UI.Size.pixel12
-										type: Inputs.MTextField.Type.Outlined
+										font.pixelSize: UI.Size.pixel12
+										type: Inputs.TextField.Type.Outlined
 										text: rectDelegateRoot.barName
                                         horizontalMargins: UI.Size.pixel8
-                                        placeholder: barNameInput.text != "" || barNameInput.input.activeFocus ? "" : qsTr("Bar name")
+										placeholder: barNameInput.text != "" || barNameInput.activeFocus ? "" : qsTr("Bar name")
 
-                                        input {
-                                            KeyNavigation.tab: barValueInput.input
-											onEditingFinished: rectDelegateRoot.model.barName = barNameInput.input.text
-											onActiveFocusChanged: if (barNameInput.input.focus) barRectList.positionViewAtIndex(rectDelegateRoot.index, ListView.Beginning);
-                                        }
+										KeyNavigation.tab: barValueInput
+										onEditingFinished: rectDelegateRoot.model.barName = barNameInput.text
+										onActiveFocusChanged: if (barNameInput.focus) barRectList.positionViewAtIndex(rectDelegateRoot.index, ListView.Beginning);
+
                                     }
                                 }
 
@@ -336,7 +333,7 @@ Item {
 										onClicked: chartDelRoot.element.remove(rectDelegateRoot.index)
                                     }
 
-									Inputs.MTextField {
+									Inputs.TextField {
                                         id: barValueInput
 
                                         Layout.alignment: Qt.AlignHCenter
@@ -346,28 +343,25 @@ Item {
                                         Layout.fillWidth: true
                                         Layout.maximumWidth: rectDelegateRoot.width
 
-                                        input.font.pixelSize: UI.Size.pixel12
-										type: Inputs.MTextField.Type.Outlined
+										font.pixelSize: UI.Size.pixel12
+										type: Inputs.TextField.Type.Outlined
 										text: Number(rectDelegateRoot.barValue).toLocaleString(Qt.locale(), 'f', 0)
                                         horizontalMargins: UI.Size.pixel8
-                                        placeholder: barValueInput.text != "" || barValueInput.input.activeFocus ? "" : qsTr("Value")
+										placeholder: barValueInput.text != "" || barValueInput.activeFocus ? "" : qsTr("Value")
 
-                                        input {
-                                            KeyNavigation.tab: barNameInput.input
-                                            inputMethodHints: Qt.ImhFormattedNumbersOnly
+										KeyNavigation.tab: barNameInput
+										inputMethodHints: Qt.ImhFormattedNumbersOnly
 
-                                            validator: RegularExpressionValidator {
-                                                regularExpression: /^[0-9]+$/
-                                            }
+										validator: RegularExpressionValidator {
+											regularExpression: /^[0-9]+$/
+										}
 
-											onEditingFinished: rectDelegateRoot.model.barValue = barValueInput.input.text
-											onActiveFocusChanged: if (barValueInput.input.focus) barRectList.positionViewAtIndex(rectDelegateRoot.index, ListView.Beginning);
-                                        }
+										onEditingFinished: rectDelegateRoot.model.barValue = barValueInput.text
+										onActiveFocusChanged: if (barValueInput.focus) barRectList.positionViewAtIndex(rectDelegateRoot.index, ListView.Beginning);
                                     }
                                 }
                             }
                         }
-
                     }
 
                     ColumnLayout {

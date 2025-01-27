@@ -5,9 +5,10 @@ import QtQuick.Controls.Material
 
 import MMaterial.UI as UI
 import MMaterial.Controls as Controls
+import MMaterial.Controls.Inputs as Inputs
 import MMaterial.Media as Media
 
-MTextField {
+Inputs.TextField {
     id: _root
 
 	property list<string> model: ["Label 1", "Label 2", "Label 3"]
@@ -25,19 +26,15 @@ MTextField {
 
     showPlaceholder: !input.focus && input.text === "" && !_contextMenu.opened
 
-    type: MTextField.Type.Outlined
-    hoverHandler: _hoverHandler
+	type: Inputs.TextField.Type.Outlined
+	enabled: false
+	readOnly: true
+	text: _listView.currentItem ? _listView.currentItem.text : ""
 
     rightIcon {
         rotation: _contextMenu.opened ? 180 : 0
         iconData: Media.Icons.light.keyboardArrowDown
         onClicked: _root.toggle();
-    }
-
-    input {
-        enabled: false
-        readOnly: true
-        text: _listView.currentItem ? _listView.currentItem.text : ""
     }
 
     Behavior on rightIcon.rotation { NumberAnimation { duration: 200; easing.type: Easing.InOutQuad } }
@@ -46,12 +43,6 @@ MTextField {
         id: _tapHandler
 
         onTapped: _root.toggle();
-    }
-
-    HoverHandler{
-        id: _hoverHandler
-
-        cursorShape: Qt.PointingHandCursor
     }
 
     Menu {

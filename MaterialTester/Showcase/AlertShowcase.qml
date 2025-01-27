@@ -220,7 +220,7 @@ Item {
                     }
                 }
 
-				Inputs.MTextField {
+				Inputs.TextField {
                     id: alertTextInput
 
                     Layout.fillWidth: true
@@ -228,7 +228,7 @@ Item {
 
                     placeholder: qsTr("Message")
                     text: "Message for alerts..."
-					type: Inputs.MTextField.Type.Outlined
+					type: Inputs.TextField.Type.Outlined
                 }
 
 				Controls.MButton {

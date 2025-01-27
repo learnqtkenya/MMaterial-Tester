@@ -19,11 +19,11 @@ Item {
 		anchors.bottom: _root.bottom
 		spacing: UI.Size.pixel16
 
-		Inputs.MTextField {
+		Inputs.TextField {
 			id: textField
 			placeholder: qsTr("Add URL")
 			text: ""
-			input.onAccepted: _root.addDownload();
+			onAccepted: _root.addDownload();
 		}
 
 		RowLayout {

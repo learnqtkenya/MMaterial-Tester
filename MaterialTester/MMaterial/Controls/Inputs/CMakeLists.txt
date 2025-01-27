@@ -17,7 +17,7 @@ qt_add_qml_module(InputsLib
         MCalendar.qml
         AvatarInput.qml
         DatePicker.qml
-        MTextField.qml
+        TextField.qml
         ColorPicker.qml
         ColorPreview.qml
         ColorSelection.qml

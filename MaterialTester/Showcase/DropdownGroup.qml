@@ -41,7 +41,7 @@ ColumnLayout {
 		Inputs.MDropdown {
             type: groupRoot.type
 			accent: UI.Theme.primary
-            input.validator: RegularExpressionValidator{ regularExpression: /^[\d]+$/ }
+            validator: RegularExpressionValidator{ regularExpression: /^[\d]+$/ }
         }
     }
 
