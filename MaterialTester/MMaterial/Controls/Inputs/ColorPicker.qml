@@ -202,7 +202,7 @@ Dialogs.Dialog {
 					inputMask: "HHHHHHhh"
 					leftPadding: hashtagPrefix.contentWidth + hashtagPrefix.anchors.leftMargin + UI.Size.pixel2
 					rightPadding: UI.Size.pixel6
-					text: internal.color.toString().toUpperCase()
+					text: internal.color.toString().toUpperCase().replace(/\s/g, '')
 					font.pixelSize: UI.Size.pixel16
 
 					onEditingFinished: internal.color = `#${text}`
