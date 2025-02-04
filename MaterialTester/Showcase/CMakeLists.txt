@@ -32,8 +32,8 @@ qt_add_qml_module(ShowcaseLib
         SwitchShowcase.qml
         TextFieldShowcase.qml
         TextFieldGroup.qml
-        DropdownShowcase.qml
-        DropdownGroup.qml
+        ComboBoxShowcase.qml
+        ComboBoxGroup.qml
         IconShowcase.qml
         IconSpeedComparison.qml
         IconOverview.qml

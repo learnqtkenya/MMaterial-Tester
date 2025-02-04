@@ -25,12 +25,14 @@ ColumnLayout {
 		Inputs.TextField {
             type: groupRoot.type
 			accent: UI.Theme.primary
+			placeholderText: qsTr("Placeholder")
         }
 
 		Inputs.TextField {
             type: groupRoot.type
 			accent: UI.Theme.primary
             text: qsTr("Value (Enabled)")
+			placeholderText: qsTr("Placeholder")
         }
 
 		Inputs.TextField {
@@ -38,12 +40,14 @@ ColumnLayout {
             type: groupRoot.type
 			accent: UI.Theme.primary
             text: qsTr("Value (Disabled)")
+			placeholderText: qsTr("Placeholder")
         }
 
 		Inputs.TextField {
             type: groupRoot.type
 			accent: UI.Theme.primary
             text: qsTr("Value (Incorrect)")
+			placeholderText: qsTr("Placeholder")
 			validator: RegularExpressionValidator{ regularExpression: /^[\d]+$/ }
         }
     }
@@ -57,6 +61,7 @@ ColumnLayout {
 			accent: UI.Theme.primary
             text: qsTr("Left Media.Icon")
 			leftIcon.iconData: Media.Icons.heavy.logo
+			placeholderText: qsTr("Placeholder")
         }
 
 		Inputs.TextField {
@@ -65,6 +70,7 @@ ColumnLayout {
             text: qsTr("Left and Right Media.Icon")
 			leftIcon.iconData: Media.Icons.heavy.logo
 			rightIcon.iconData: Media.Icons.heavy.logo
+			placeholderText: qsTr("Placeholder")
         }
 
 		Inputs.TextField {
@@ -72,6 +78,7 @@ ColumnLayout {
 			accent: UI.Theme.primary
             text: qsTr("Right Media.Icon")
 			rightIcon.iconData: Media.Icons.heavy.logo
+			placeholderText: qsTr("Placeholder")
         }
     }
 

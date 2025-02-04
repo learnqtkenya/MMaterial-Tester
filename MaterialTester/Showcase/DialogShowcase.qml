@@ -295,7 +295,7 @@ Item {
                 title: qsTr("Sign up")
                 text: qsTr("We have a newsletter that you can sign up for. Enter your email below.")
                 visible: true
-                placeholder: qsTr("your-email@.com")
+				placeholder: qsTr("your-email@.com")
             }
 
             Dialogs.InputDialog {
@@ -307,7 +307,7 @@ Item {
                 title: qsTr("Sign up")
                 text: qsTr("We have a newsletter that you can sign up for. Enter your email below.")
                 visible: true
-                placeholder: qsTr("your-email@.com")
+				placeholder: qsTr("your-email@.com")
             }
         }
     }

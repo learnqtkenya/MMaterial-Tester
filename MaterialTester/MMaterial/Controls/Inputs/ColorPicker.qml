@@ -99,8 +99,8 @@ Dialogs.Dialog {
     }
 
     onClosed: () => {
-        hexField.input.focus = false
-        hexField.input.deselect()
+		hexField.focus = false
+		hexField.deselect()
         opacityInput.focus = false
         opacityInput.deselect()
     }
@@ -197,7 +197,6 @@ Dialogs.Dialog {
                     Layout.leftMargin: UI.Size.pixel5
                     Layout.alignment: Qt.AlignHCenter
                     Layout.fillWidth: true
-                    placeholder: ""
 
 					horizontalAlignment: Text.AlignLeft
 					inputMask: "HHHHHHhh"
@@ -209,7 +208,7 @@ Dialogs.Dialog {
 					font.pixelSize: UI.Size.pixel16
 
 					onEditingFinished: internal.color = `#${text}`
-					onActiveFocusChanged: if (hexField.input.activeFocus) hexField.input.selectAll()
+					onActiveFocusChanged: if (hexField.activeFocus) hexField.selectAll()
 
                     UI.Caption {
                         id: hashtagPrefix
@@ -219,7 +218,7 @@ Dialogs.Dialog {
                             verticalCenter: hexField.verticalCenter; verticalCenterOffset: hexField.height / 7
                         }
 
-                        font: hexField.input.font
+						font: hexField.font
                         text: "#"
                     }
 
@@ -231,7 +230,7 @@ Dialogs.Dialog {
                             verticalCenter: opacityInput.verticalCenter
                         }
 
-                        font: hexField.input.font
+						font: hexField.font
                         text: "%"
                     }
 
@@ -248,12 +247,12 @@ Dialogs.Dialog {
                         width: UI.Size.pixel36
                         text: Math.round(internal.color.a * 100)
 
-                        color: hexField.input.color
+						color: hexField.color
                         horizontalAlignment: Qt.AlignRight
                         verticalAlignment: Qt.AlignVCenter
-                        font: hexField.input.font
+						font: hexField.font
                         selectByMouse: true
-                        selectionColor: hexField.input.selectionColor
+						selectionColor: hexField.selectionColor
 
                         onEditingFinished: internal.color.a = (parseInt(opacityInput.text) / 100)
                         onActiveFocusChanged: if (activeFocus) opacityInput.selectAll()

@@ -9,6 +9,7 @@ import MaterialTester.Components
 
 ColumnLayout {
     id: groupRoot
+
     required property int type
     required property string title
 
@@ -22,26 +23,31 @@ ColumnLayout {
         title.text: qsTr("States")
         grid.columns: groupRoot.columnCount
 
-		Inputs.MDropdown {
+		Inputs.ComboBox {
             type: groupRoot.type
 			accent: UI.Theme.primary
+			placeholderText: qsTr("Default")
         }
 
-		Inputs.MDropdown {
-            type: groupRoot.type
+		Inputs.ComboBox {
+			type: groupRoot.type
 			accent: UI.Theme.primary
+			placeholderText: qsTr("Input")
+			editable: true
         }
 
-		Inputs.MDropdown {
+		Inputs.ComboBox {
             enabled: false
             type: groupRoot.type
 			accent: UI.Theme.primary
+			placeholderText: qsTr("Disabled")
         }
 
-		Inputs.MDropdown {
+		Inputs.ComboBox {
             type: groupRoot.type
 			accent: UI.Theme.primary
             validator: RegularExpressionValidator{ regularExpression: /^[\d]+$/ }
+			placeholderText: qsTr("Invalid")
         }
     }
 
@@ -49,19 +55,19 @@ ColumnLayout {
         title.text: qsTr("Icon")
         grid.columns: groupRoot.columnCount
 
-		Inputs.MDropdown {
+		Inputs.ComboBox {
             type: groupRoot.type
 			accent: UI.Theme.primary
-            leftIcon.iconData: Media.Icons.heavy.logo
+			iconData: Media.Icons.heavy.logo
         }
 
-		Inputs.MDropdown {
+		Inputs.ComboBox {
             type: groupRoot.type
 			accent: UI.Theme.primary
-            leftIcon.iconData: Media.Icons.heavy.logo
+			iconData: Media.Icons.heavy.logo
         }
 
-		Inputs.MDropdown {
+		Inputs.ComboBox {
             type: groupRoot.type
 			accent: UI.Theme.primary
         }

@@ -226,7 +226,7 @@ Item {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignRight
 
-                    placeholder: qsTr("Message")
+					placeholderText: qsTr("Message")
                     text: "Message for alerts..."
 					type: Inputs.TextField.Type.Outlined
                 }

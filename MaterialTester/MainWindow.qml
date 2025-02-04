@@ -63,7 +63,7 @@ Rectangle {
         objectName: "Main Loader"
 
         asynchronous: true
-        sourceComponent: placeholder
+		sourceComponent: placeholder
     }
 
     Component { id: placeholder; Placeholder{ } }
@@ -77,7 +77,7 @@ Rectangle {
     Component { id: listItemShowcase; ListItemShowcase{ } }
     Component { id: progressShowcase; ProgressShowcase{ } }
     Component { id: textFieldShowcase; TextFieldShowcase{ } }
-    Component { id: dropdownShowcase; DropdownShowcase{ } }
+	Component { id: comboboxShowcase; ComboBoxShowcase{ } }
     Component { id: sliderShowcase; SliderShowcase{ } }
     Component { id: rectangleShowcase; RectangleShowcase{ } }
     Component { id: menuShowcase; MenuShowcase{ } }
@@ -176,7 +176,7 @@ Rectangle {
 				{text : "ListItems", onClicked: function(){ showcaseLoader.sourceComponent = listItemShowcase}},
 				{text : "Progress", onClicked: function(){ showcaseLoader.sourceComponent = progressShowcase}},
 				{text : "TextField", onClicked: function(){ showcaseLoader.sourceComponent = textFieldShowcase }},
-				{text : "Dropdown", onClicked: function(){ showcaseLoader.sourceComponent = dropdownShowcase }},
+				{text : "ComboBox", onClicked: function(){ showcaseLoader.sourceComponent = comboboxShowcase }},
 				{text : "Slider", onClicked: function(){ showcaseLoader.sourceComponent = sliderShowcase }},
 				{text : "Menu", onClicked: function(){ showcaseLoader.sourceComponent = menuShowcase }},
 				{text : "Date Picker", onClicked: function(){ showcaseLoader.sourceComponent = dateShowcase }},

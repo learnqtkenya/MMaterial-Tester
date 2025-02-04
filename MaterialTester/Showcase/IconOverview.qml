@@ -154,7 +154,7 @@ ColumnLayout {
 
 		type: Inputs.TextField.Type.Outlined
 		accent: UI.Theme.primary
-        placeholder: qsTr("Search ...")
+		placeholderText: qsTr("Search ...")
         leftIcon.iconData: Media.Icons.light.search
 
         onTextChanged: iconList.model.setFilterRegularExpression(searchInput.text)

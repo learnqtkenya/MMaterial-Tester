@@ -173,7 +173,7 @@ Item {
                         Layout.maximumWidth: chartDelRoot.width * 0.25
                         Layout.leftMargin: UI.Size.pixel10
 
-                        placeholder: qsTr("Name")
+						placeholderText: qsTr("Name")
 						text: chartDelRoot.name
 
 						verticalAlignment: Qt.AlignVCenter
@@ -181,7 +181,7 @@ Item {
 
 						onTextEdited: chartDelRoot.model.name = text
 						onAccepted: {
-							if (barRectList.count == 0) {
+							if (barRectList.count === 0) {
 								chartDelRoot.element.insertEmpty(barRectList.count)
 							}
 						}
@@ -303,7 +303,7 @@ Item {
 										type: Inputs.TextField.Type.Outlined
 										text: rectDelegateRoot.barName
                                         horizontalMargins: UI.Size.pixel8
-										placeholder: barNameInput.text != "" || barNameInput.activeFocus ? "" : qsTr("Bar name")
+										placeholderText: barNameInput.text != "" || barNameInput.activeFocus ? "" : qsTr("Bar name")
 
 										KeyNavigation.tab: barValueInput
 										onEditingFinished: rectDelegateRoot.model.barName = barNameInput.text
@@ -347,7 +347,7 @@ Item {
 										type: Inputs.TextField.Type.Outlined
 										text: Number(rectDelegateRoot.barValue).toLocaleString(Qt.locale(), 'f', 0)
                                         horizontalMargins: UI.Size.pixel8
-										placeholder: barValueInput.text != "" || barValueInput.activeFocus ? "" : qsTr("Value")
+										placeholderText: barValueInput.text != "" || barValueInput.activeFocus ? "" : qsTr("Value")
 
 										KeyNavigation.tab: barNameInput
 										inputMethodHints: Qt.ImhFormattedNumbersOnly

@@ -30,7 +30,7 @@ Item {
             width: listView.width
             height: buttonGroup.height
 
-            DropdownGroup {
+			ComboBoxGroup {
                 id: buttonGroup
 
                 width: 1000

@@ -21,7 +21,7 @@ Item {
 
 		Inputs.TextField {
 			id: textField
-			placeholder: qsTr("Add URL")
+			placeholderText: qsTr("Add URL")
 			text: ""
 			onAccepted: _root.addDownload();
 		}

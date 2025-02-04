@@ -127,7 +127,7 @@ T.Dialog {
                 Layout.fillWidth: true
 				type: Inputs.TextField.Type.Outlined
                 accent: UI.Theme.primary
-                placeholder: control.placeholder
+				placeholderText: control.placeholder
 				anchors.rightMargin: button.visible ? button.width + button.anchors.margins : UI.Size.pixel14
 
                 Controls.MButton {

@@ -29,9 +29,10 @@ AbstractListItem{
 			Layout.rightMargin: UI.Size.pixel16
             Layout.alignment: Qt.AlignVCenter
 
-			iconData: Media.IconData{}
+			iconData: Media.IconData {}
 			color: _title.color.toString()
-			visible: iconData.path != "" }
+			visible: iconData.path !== ""
+		}
 
 		UI.B2 {
             id: _title
