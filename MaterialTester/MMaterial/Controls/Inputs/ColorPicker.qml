@@ -200,8 +200,6 @@ Dialogs.Dialog {
 
 					horizontalAlignment: Text.AlignLeft
 					inputMask: "HHHHHHhh"
-					topPadding: 0
-					bottomPadding: 0
 					leftPadding: hashtagPrefix.contentWidth + hashtagPrefix.anchors.leftMargin + UI.Size.pixel2
 					rightPadding: UI.Size.pixel6
 					text: internal.color.toString().toUpperCase()
