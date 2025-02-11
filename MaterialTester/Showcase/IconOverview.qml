@@ -186,7 +186,7 @@ ColumnLayout {
 
             onClicked: {
                 Clipboard.setText(iconNameLabel.text)
-                alertsController.activate(qsTr("'%1' copied to clipboard.").arg(iconNameLabel.text))
+				Controls.AlertController.alert(qsTr("'%1' copied to clipboard.").arg(iconNameLabel.text))
             }
 
             ColumnLayout {

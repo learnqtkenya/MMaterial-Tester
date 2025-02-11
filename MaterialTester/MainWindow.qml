@@ -100,6 +100,7 @@ Rectangle {
     Component { id: radioButtonShowcase; RadioButtonShowcase{ } }
     Component { id: switchShowcase; SwitchShowcase{ } }
     Component { id: tabShowcase; TabShowcase{ } }
+	Component { id: multiStateButtonShowcase; MultiStateButtonShowcase{ } }
 
     // Pagination
     Component { id: paginationShowcase; PaginationShowcase{ } }
@@ -152,7 +153,8 @@ Rectangle {
 				{text : "Checkbox", onClicked: function(){ showcaseLoader.sourceComponent = checkboxShowcase }},
 				{text : "Radio", onClicked: function(){ showcaseLoader.sourceComponent = radioButtonShowcase }},
 				{text : "Switch", onClicked: function(){ showcaseLoader.sourceComponent = switchShowcase }},
-				{text : "Tab", onClicked: function(){ showcaseLoader.sourceComponent = tabShowcase }}
+				{text : "Tab", onClicked: function(){ showcaseLoader.sourceComponent = tabShowcase }},
+				{text : "MultiState", onClicked: function(){ showcaseLoader.sourceComponent = multiStateButtonShowcase }}
 			];
 		}
 
