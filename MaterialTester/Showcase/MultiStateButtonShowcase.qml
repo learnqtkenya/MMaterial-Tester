@@ -20,6 +20,8 @@ Item {
 	}
 
 	ColumnLayout {
+		id: controlLayout
+
 		width: _root.width
 		spacing: UI.Size.pixel8
 
@@ -102,36 +104,50 @@ Item {
 		}
 	}
 
-	Controls.MultiStateButton {
-		id: button
+	Item {
+		id: buttonContainer
 
-		anchors.centerIn: parent
-		icon.iconData: Media.Icons.light.shoppingCart
-		startDegree: startDegreeSlider.value
-		endDegree: endDegreeSlider.value
-		spacing: spacingSlider.value
-		popup {
-			visible: (button.mobileMode ? button.mouseArea.pressed : button.checked) || startDegreeSlider.pressed || endDegreeSlider.pressed || spacingSlider.pressed
+		anchors {
+			top: controlLayout.bottom
+			bottom: _root.bottom
+			left: _root.left
+			right: _root.right
 		}
 
-		model: [
-			{
-				"name" : qsTr("Cash"),
-				"icon" : Media.Icons.light.attachMoney,
-				"onClicked" : () => Controls.AlertController.alert("You have selected Cash as your payment method.")
-			},
-			{
-				"name" : qsTr("Card"),
-				"icon" : Media.Icons.light.creditCard,
-				"onClicked" : () =>  Controls.AlertController.alert("You have selected Card as your payment method.")
+		Controls.MultiStateButton {
+			id: button
 
-			},
-			{
-				"name" : qsTr("Bitcoin"),
-				"icon" : Media.Icons.light.currencyBitcoin,
-				"onClicked" : () => Controls.AlertController.alert("You have selected Bitcoin as your payment method.")
+			size: UI.Size.Grade.S
+			anchors.centerIn: buttonContainer
+			icon.iconData: Media.Icons.light.shoppingCart
+			startDegree: startDegreeSlider.value
+			endDegree: endDegreeSlider.value
+			spacing: spacingSlider.value
+			popup {
+				visible: (button.mobileMode ? button.mouseArea.pressed : button.checked) || startDegreeSlider.pressed || endDegreeSlider.pressed || spacingSlider.pressed
 			}
-		]
+
+			model: [
+				{
+					"name" : qsTr("Cash"),
+					"icon" : Media.Icons.light.attachMoney,
+					"onClicked" : () => Controls.AlertController.alert("You have selected Cash as your payment method.")
+				},
+				{
+					"name" : qsTr("Card"),
+					"icon" : Media.Icons.light.creditCard,
+					"onClicked" : () =>  Controls.AlertController.alert("You have selected Card as your payment method.")
+
+				},
+				{
+					"name" : qsTr("Bitcoin"),
+					"icon" : Media.Icons.light.currencyBitcoin,
+					"onClicked" : () => Controls.AlertController.alert("You have selected Bitcoin as your payment method.")
+				}
+			]
+		}
 	}
+
+
 
 }

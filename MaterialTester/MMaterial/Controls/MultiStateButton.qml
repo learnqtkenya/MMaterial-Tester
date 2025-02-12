@@ -149,6 +149,8 @@ Controls.MToggleButton {
 			color: button.icon.color
 			visible: opacity > 0
 
+			font.pixelSize: mainButton.size == UI.Size.Grade.L ? UI.Size.pixel18 : (mainButton.size == UI.Size.Grade.M ? UI.Size.pixel16 : UI.Size.pixel14)
+
 			anchors {
 				right: delRoot.right
 				rightMargin: delRoot.radius / 4
@@ -166,13 +168,14 @@ Controls.MToggleButton {
 	}
 
 	mouseArea {
-		onPositionChanged: if (mainButton.mobileMode) d.refreshHoverState(mainButton.mouseArea.mouseX + (buttonPopup.width / 2) - numberRepeater.delHeight / 2, mainButton.mouseArea.mouseY + (buttonPopup.height / 2) - numberRepeater.delHeight / 2)
+		onPositionChanged: if (mainButton.mobileMode) d.refreshHoverState(mainButton.mouseArea.mouseX + (buttonPopup.width / 2) - mainButton.height / 2, mainButton.mouseArea.mouseY + (buttonPopup.height / 2) - mainButton.height / 2)
 		onClicked: if (!mainButton.mobileMode) mainButton.checked = true
 	}
 
 	onStartDegreeChanged: d.distributeDelegates()
 	onEndDegreeChanged: d.distributeDelegates()
 	onSpacingChanged: d.distributeDelegates()
+	Component.onCompleted: d.distributeDelegates()
 
 	QtObject {
 		id: d
@@ -181,7 +184,7 @@ Controls.MToggleButton {
 			const centerX = buttonPopup.width / 2;
 			const centerY = buttonPopup.height / 2;
 			let radiusX = buttonPopup.width / 2 - numberRepeater.maxDelWidth / 2;
-			let radiusY = buttonPopup.height / 2 - numberRepeater.delHeight / 2;
+			let radiusY = buttonPopup.height / 2 - mainButton.height / 2;
 
 			if (numberRepeater.count === 0) {
 				return;
@@ -194,7 +197,7 @@ Controls.MToggleButton {
 			for (let i = 0; i < numberRepeater.count; i++) {
 				let angle = startAngle + i * angleStep;
 				let x = centerX + radiusX * Math.cos(angle) - numberRepeater.maxDelWidth / 2;
-				let y = centerY + radiusY * Math.sin(angle) - numberRepeater.delHeight / 2;
+				let y = centerY + radiusY * Math.sin(angle) - mainButton.height / 2;
 
 				let item = numberRepeater.itemAt(i);
 				if (item) {
@@ -285,7 +288,6 @@ Controls.MToggleButton {
 			Repeater {
 				id: numberRepeater
 
-				readonly property real delHeight: 56 * UI.Size.scale
 				property var positions: []
 				property real maxDelWidth: 0
 
@@ -299,11 +301,12 @@ Controls.MToggleButton {
 					required property var modelData
 					property real naturalExtendedWidth: button.width + label.implicitWidth + label.padding * 2
 
-					height: numberRepeater.delHeight
+					height: mainButton.height
 
 					x: numberRepeater.positions[index] ? numberRepeater.positions[index].x : 0
 					y: numberRepeater.positions[index] ? numberRepeater.positions[index].y : 0
 
+					button.size: mainButton.size
 					alwaysOpen: buttonPopup.visible
 					iconData: modelData.icon
 					text: modelData.name
