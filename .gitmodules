@@ -1,0 +1,3 @@
+[submodule "MaterialTester/MMaterial"]
+	path = MaterialTester/MMaterial
+	url = git@github.com:MarkoStanojevic12/MMaterial.git
