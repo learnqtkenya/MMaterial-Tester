@@ -1,40 +1,77 @@
-# Material-Qt :rocket:
-A fully custom QML library built on the Material design scheme
+# **Material-Qt** 🚀
 
-## Purpose :thinking:
-The purpose of the library is to simplify everyday Qt use, to make apps look stunning without much effort. 
-And to learn and improve along the way! All contributions (comments and code) are very welcome.
+[![Stars](https://img.shields.io/github/stars/MarkoStanojevic12/Material-Qt-Tester)](https://github.com/MarkoStanojevic12/Material-Qt-Tester/stargazers)
 
-## Recommendation :point_up:
-Take a look at the MaterialTester app, it is not only showing all the components but also how to use them. ( Simplified examples coming soon )
+A fully custom **QML** library built on the **Material Design** scheme.
 
-## Dependencies :dependabot:
-Qt6::Quick, Qt::Gui
-Since Tag 1.1 (Qt 6.7+)
+## 📌 **Purpose**
 
-# Advantages
+The purpose of this library is to simplify everyday Qt development, enabling stunning UI designs with minimal effort. Additionally, it serves as a platform for continuous learning and improvement. All contributions—both comments and code—are very welcome!
 
-## Theming - Light & Dark mode
+## 🛠️ **Getting Started**
+
+If you're looking to integrate **Material-Qt** into your Qt projects without the testing overhead, check out the **MMaterial** repository:
+
+🔗 **[MMaterial](https://github.com/MarkoStanojevic12/MMaterial)** - The core library for Material Design components in Qt.
+
+If you want to see **Material-Qt** in action and explore its full range of features, visit the **Material-Qt-Tester** repository:
+
+🔗 **[Material-Qt-Tester](https://github.com/MarkoStanojevic12/Material-Qt-Tester)** - A dedicated testing environment showcasing all components.
+
+---
+
+## 📦 **Dependencies**
+
+- **Qt6::Quick**, **Qt::Gui**  
+- Since **Tag 1.1** (Qt **6.7+**)
+
+---
+
+## 🎨 **Advantages**
+
+### **Theming - Light & Dark mode**
 
 https://github.com/user-attachments/assets/a3cd49ac-9675-4f32-832a-fd33ea616453
 
-## Theming - Typography, Color schemes, Icons
-  
-  ![Untitled design](https://github.com/user-attachments/assets/0656fac2-173a-449c-9fcb-0e6277e7515b)
+### **Theming - Typography, Color Schemes, Icons**
 
-## Date, Time, Color pickers
+![Typography and Colors](https://github.com/user-attachments/assets/0656fac2-173a-449c-9fcb-0e6277e7515b)
 
-![Untitled design (1)](https://github.com/user-attachments/assets/c42fb1d9-dbd7-435c-86d0-d121502b10b8)
+### **Date, Time, Color Pickers**
 
-## Notifications
+![Pickers](https://github.com/user-attachments/assets/c42fb1d9-dbd7-435c-86d0-d121502b10b8)
 
-![375885289-cb2d4728-a232-4b75-a897-adca5a49da65](https://github.com/user-attachments/assets/0aa52230-f1ca-4627-affa-c436c5281b46)
+### **Notifications**
 
-## Charts
+![Notifications](https://github.com/user-attachments/assets/0aa52230-f1ca-4627-affa-c436c5281b46)
 
-![image](https://github.com/user-attachments/assets/e6ab41ae-0391-4faa-8d10-3d2aa3e2627c)
+### **Charts**
 
-### And more!
+![Charts](https://github.com/user-attachments/assets/e6ab41ae-0391-4faa-8d10-3d2aa3e2627c)
 
-# Link for preview :link:
-https://markostanojevic12.github.io/appMaterialTester.html
+### **And More!**
+
+---
+
+## 🔗 **Preview**
+
+To see a live demonstration, visit:
+
+🔗 [Material-Qt Tester Preview](https://markostanojevic12.github.io/appMaterialTester.html)
+
+For those who want to use just the library without the testing overhead, visit:
+
+🔗 **[MMaterial](https://github.com/MarkoStanojevic12/MMaterial)**
+
+---
+
+## ⭐ **Contribute & Support**
+
+- If you find this project useful, consider giving it a **star ⭐** on GitHub!
+- **Contributions, issues, and feature requests are welcome!**
+- Feel free to **submit a pull request** or **open an issue**.
+
+---
+
+**Happy coding!** 🎨🚀
+
