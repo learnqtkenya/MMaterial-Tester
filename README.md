@@ -65,6 +65,16 @@ For those who want to use just the library without the testing overhead, visit:
 
 ---
 
+## Cloning the Repository with Submodules
+
+This repository contains submodules, so to ensure you pull everything correctly, use the following command:
+
+```sh
+git clone --recursive https://github.com/MarkoStanojevic12/MMaterial-Tester.git
+```
+
+---
+
 ## ⭐ **Contribute & Support**
 
 - If you find this project useful, consider giving it a **star ⭐** on GitHub!
