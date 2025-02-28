@@ -102,6 +102,7 @@ Rectangle {
     Component { id: tabShowcase; TabShowcase{ } }
 	Component { id: multiStateButtonShowcase; MultiStateButtonShowcase{ } }
 	Component { id: toggleButtonGroupShowcase; ToggleButtonGroupShowcase{ } }
+	Component { id: spinBoxShowcase; SpinBoxShowcase{ } }
 
     // Pagination
     Component { id: paginationShowcase; PaginationShowcase{ } }
@@ -156,7 +157,8 @@ Rectangle {
 				{text : "Switch", onClicked: function(){ showcaseLoader.sourceComponent = switchShowcase }},
 				{text : "Tab", onClicked: function(){ showcaseLoader.sourceComponent = tabShowcase }},
 				{text : "MultiState", onClicked: function(){ showcaseLoader.sourceComponent = multiStateButtonShowcase }},
-				{text : "ToggleButtonGroup", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonGroupShowcase }}
+				{text : "ToggleButtonGroup", onClicked: function(){ showcaseLoader.sourceComponent = toggleButtonGroupShowcase }},
+				{text : "SpinBox", onClicked: function(){ showcaseLoader.sourceComponent = spinBoxShowcase }}
 			];
 		}
 
