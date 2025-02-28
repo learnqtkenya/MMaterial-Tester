@@ -52,6 +52,7 @@ qt_add_qml_module(ShowcaseLib
         BusyIndicatorShowcase.qml
         DownloadShowcase.qml
         MultiStateButtonShowcase.qml
+        ToggleButtonGroupShowcase.qml
 )
 
 set_target_properties(ShowcaseLib PROPERTIES AUTOMOC ON)
