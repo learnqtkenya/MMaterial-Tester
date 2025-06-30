@@ -60,7 +60,6 @@ set_target_properties(appMaterialTester PROPERTIES
 )
 
 if (EMSCRIPTEN)
-
     set(MM_INSTALL_FILES
         "$<TARGET_FILE_DIR:appMaterialTester>/appMaterialTester.js"
         "$<TARGET_FILE_DIR:appMaterialTester>/appMaterialTester.wasm"
