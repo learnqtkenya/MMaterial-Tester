@@ -21,6 +21,7 @@ qt_add_qml_module(appMaterialTester
         Main.qml
         MainWindow.qml
         Placeholder.qml
+        Init.js
 
     SOURCES
         DevTools/FileWatcher.h

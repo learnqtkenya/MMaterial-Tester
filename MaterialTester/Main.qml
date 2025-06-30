@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Window
 
 import MMaterial.UI as UI
+import "Init.js" as AppInit
 
 Window {
     id: window
@@ -36,9 +37,6 @@ Window {
     }
 
     Component.onCompleted: {
-        UI.Font.normalFamilyPath = "qrc:/qt/qml/MaterialTester/fonts/Public_Sans/PublicSans-VariableFont_wght.ttf"
-        UI.Font.bodyFamilyPath = "qrc:/qt/qml/MaterialTester/fonts/Public_Sans/PublicSans-VariableFont_wght.ttf"
-        UI.Font.italicFamilyPath = "qrc:/qt/qml/MaterialTester/fonts/Public_Sans/PublicSans-Italic-VariableFont_wght.ttf"
-        UI.Font.monospaceFamilyPath = "qrc:/qt/qml/MaterialTester/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf"
+        AppInit.initialize(UI)
     }
 }
