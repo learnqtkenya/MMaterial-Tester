@@ -80,7 +80,6 @@ Drawer {
 
         TwoChoices {
             text: qsTr("Mode")
-            focus: true
 
             leftButton {
                 icon.iconData: Media.Icons.light.lightMode
