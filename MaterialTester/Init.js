@@ -1,3 +1,5 @@
+.pragma library
+
 function setupFonts(UI) {
     UI.Font.normalFamilyPath = "qrc:/qt/qml/MaterialTester/fonts/Public_Sans/PublicSans-VariableFont_wght.ttf";
     UI.Font.bodyFamilyPath = "qrc:/qt/qml/MaterialTester/fonts/Public_Sans/PublicSans-VariableFont_wght.ttf";
