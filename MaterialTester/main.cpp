@@ -19,19 +19,17 @@ int main(int argc, char *argv[])
 	QGuiApplication app(argc, argv);
 
 	// output qrc files:
-	// {
-	// 	qDebug() << "qrc files:";
-	// 	QDirIterator it(":", QDirIterator::Subdirectories);
-	// 	while (it.hasNext()) {
-	// 		const auto path = it.next();
-	// 		const auto file = QFile(path);
-	// 		qDebug() << QString("%1 kb - %2")
-	// 					.arg(file.size() / 1024, 6)
-	// 					.arg(path);
-	// 	}
-	// }
+    {
+        qDebug() << "qrc files:";
+        QDirIterator it(":", QDirIterator::Subdirectories);
+        while (it.hasNext()) {
+            const auto path = it.next();
+            const auto file = QFile(path);
+            qDebug() << QString("%1 kb - %2").arg(file.size() / 1024, 6).arg(path);
+        }
+    }
 
-	CustomEngine engine;
+    CustomEngine engine;
 	Clipboard clipboard;
 
 	engine.rootContext()->setContextProperty("QmlEngine", &engine);
