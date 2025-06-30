@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
 	engine.rootContext()->setContextProperty("QmlEngine", &engine);
 
-#if defined(__wasm__) || !defined(QT_DEBUG)
+#if defined(__wasm__) || defined(__ANDROID__) || !defined(QT_DEBUG)
     const QUrl url(u"qrc:/qt/qml/MaterialTester/Main.qml"_s);
 #else
 	const QUrl url(qgetenv("MAIN_DIR") + "/Main.qml");
