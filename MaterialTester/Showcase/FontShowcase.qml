@@ -46,6 +46,9 @@ Flickable {
 		UI.Overline { text: "B2"; color: UI.Theme.text.disabled; Layout.topMargin: UI.Size.pixel10 }
 		UI.B2 { text: _mainLayout.mainLabel; Layout.preferredWidth: parent.width }
 
+		UI.Overline { text: "Pre"; color: UI.Theme.text.disabled; Layout.topMargin: UI.Size.pixel10 }
+		UI.Pre { text: _mainLayout.mainLabel; Layout.preferredWidth: parent.width }
+
 		UI.Overline { text: "CAPTION"; color: UI.Theme.text.disabled; Layout.topMargin: UI.Size.pixel10 }
 		UI.Caption{ text: _mainLayout.mainLabel; Layout.preferredWidth: parent.width }
 

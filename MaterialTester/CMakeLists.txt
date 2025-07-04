@@ -21,6 +21,7 @@ qt_add_qml_module(appMaterialTester
         Main.qml
         MainWindow.qml
         Placeholder.qml
+        Init.js
 
     SOURCES
         DevTools/FileWatcher.h
@@ -30,6 +31,11 @@ qt_add_qml_module(appMaterialTester
         src/Icons/IconList.h
         src/Icons/IconList.cpp
         DevTools/Clipboard.h
+
+    RESOURCES
+        fonts/Public_Sans/PublicSans-VariableFont_wght.ttf
+        fonts/Public_Sans/PublicSans-Italic-VariableFont_wght.ttf
+        fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf
 )
 
 add_subdirectory(Components)
@@ -55,7 +61,6 @@ set_target_properties(appMaterialTester PROPERTIES
 )
 
 if (EMSCRIPTEN)
-
     set(MM_INSTALL_FILES
         "$<TARGET_FILE_DIR:appMaterialTester>/appMaterialTester.js"
         "$<TARGET_FILE_DIR:appMaterialTester>/appMaterialTester.wasm"
@@ -73,5 +78,18 @@ else()
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
+endif()
+
+if (ANDROID)
+    include(FetchContent)
+    FetchContent_Declare(
+      android_openssl
+      DOWNLOAD_EXTRACT_TIMESTAMP true
+      URL https://github.com/KDAB/android_openssl/archive/refs/heads/master.zip
+#      URL_HASH MD5=c97d6ad774fab16be63b0ab40f78d945 #optional
+    )
+    FetchContent_MakeAvailable(android_openssl)
+    include(${android_openssl_SOURCE_DIR}/android_openssl.cmake)
+    add_android_openssl_libraries(appMaterialTester)
 endif()
 
