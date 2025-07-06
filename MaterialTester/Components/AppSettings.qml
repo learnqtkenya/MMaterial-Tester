@@ -119,11 +119,11 @@ Drawer {
         }
         ListModel {
             id: fontModel
-            ListElement { displayName: "PublicSans";
-                normalFamilyPath: "qrc:/qt/qml/MaterialTester/fonts/Public_Sans/PublicSans-VariableFont_wght.ttf"
-                bodyFamilyPath: "qrc:/qt/qml/MaterialTester/fonts/Public_Sans/PublicSans-VariableFont_wght.ttf"
-                italicFamilyPath: "qrc:/qt/qml/MaterialTester/fonts/Public_Sans/PublicSans-Italic-VariableFont_wght.ttf"
-                monospaceFamilyPath: "qrc:/qt/qml/MaterialTester/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf"
+            ListElement { displayName: "PublicSans (default)";
+                normalFamilyPath:    "qrc:/qt/qml/MMaterial/UI/fonts/Public_Sans/PublicSans-VariableFont_wght.ttf"
+                bodyFamilyPath:      "qrc:/qt/qml/MMaterial/UI/fonts/Public_Sans/PublicSans-VariableFont_wght.ttf"
+                italicFamilyPath:    "qrc:/qt/qml/MMaterial/UI/fonts/Public_Sans/PublicSans-Italic-VariableFont_wght.ttf"
+                monospaceFamilyPath: "qrc:/qt/qml/MMaterial/UI/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf"
             }
             ListElement { displayName: "SourceSans3";
                 normalFamilyPath:    "https://alpinemaps.org/static/SourceSans3%5Bwght%5D.ttf";

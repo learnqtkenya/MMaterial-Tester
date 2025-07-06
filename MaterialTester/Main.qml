@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Window
 
 import MMaterial.UI as UI
-import "Init.js" as AppInit
 
 Window {
     id: window
@@ -34,9 +33,5 @@ Window {
             console.log("Reloading UI")
             mainLoader.reload();
         }
-    }
-
-    Component.onCompleted: {
-        AppInit.initialize(UI)
     }
 }
