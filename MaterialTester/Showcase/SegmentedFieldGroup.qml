@@ -9,7 +9,6 @@ import MaterialTester.Components
 ColumnLayout {
     id: groupRoot
 
-    required property int type
     required property string title
 
     property int columnCount: Window.width > (1920 * UI.Size.scale) ? 3 : (Window.width > 1180 * UI.Size.scale ? 2 : 1)
@@ -23,27 +22,21 @@ ColumnLayout {
         grid.columns: groupRoot.columnCount
 
         Inputs.SegmentedField {
-            type: groupRoot.type
+            length: 6
             accent: UI.Theme.primary
-            segmentCount: 6
-            placeholderText: "000000"
         }
 
         Inputs.SegmentedField {
-            type: groupRoot.type
+            length: 4
             accent: UI.Theme.primary
-            segmentCount: 4
             text: "1234"
-            placeholderText: "0000"
         }
 
         Inputs.SegmentedField {
             enabled: false
-            type: groupRoot.type
+            length: 5
             accent: UI.Theme.primary
-            segmentCount: 5
             text: "12345"
-            placeholderText: "00000"
         }
     }
 
@@ -52,61 +45,77 @@ ColumnLayout {
         grid.columns: groupRoot.columnCount
 
         Inputs.SegmentedField {
-            type: groupRoot.type
+            length: 4
             accent: UI.Theme.success
-            segmentCount: 4
-            placeholderText: "••••"
             validator: RegularExpressionValidator { regularExpression: /^[0-9]$/ }
         }
 
         Inputs.SegmentedField {
-            type: groupRoot.type
+            length: 6
             accent: UI.Theme.warning
-            segmentCount: 6
-            placeholderText: "••••••"
             validator: RegularExpressionValidator { regularExpression: /^[0-9]$/ }
         }
 
         Inputs.SegmentedField {
-            type: groupRoot.type
+            length: 8
             accent: UI.Theme.info
-            segmentCount: 8
             spacing: UI.Size.pixel12
-            placeholderText: "••••••••"
             validator: RegularExpressionValidator { regularExpression: /^[0-9]$/ }
         }
     }
 
     TitleRow {
-        title.text: qsTr("Responsive Wrapping")
+        title.text: qsTr("Custom Styling")
         grid.columns: groupRoot.columnCount
 
         Inputs.SegmentedField {
-            type: groupRoot.type
+            length: 6
             accent: UI.Theme.secondary
-            segmentCount: 12
-            placeholderText: "ABCDEFGHIJKL"
             validator: RegularExpressionValidator { regularExpression: /^[A-Z0-9]$/ }
+            inputMethodHints: Qt.ImhUppercaseOnly | Qt.ImhNoPredictiveText
         }
 
         Inputs.SegmentedField {
-            type: groupRoot.type
+            length: 4
             accent: UI.Theme.error
-            segmentCount: 4
             acceptableInput: false
             text: "ERR0"
-            placeholderText: "CODE"
             validator: RegularExpressionValidator { regularExpression: /^[A-Z0-9]$/ }
         }
 
         Inputs.SegmentedField {
-            type: groupRoot.type
+            length: 3
             accent: UI.Theme.primary
-            segmentCount: 3
             spacing: UI.Size.pixel16
             segmentSize: UI.Size.pixel54
-            placeholderText: "XYZ"
+            fontSize: UI.Size.pixel32
             validator: RegularExpressionValidator { regularExpression: /^[A-Z]$/ }
+            inputMethodHints: Qt.ImhUppercaseOnly | Qt.ImhNoPredictiveText
+        }
+    }
+
+    TitleRow {
+        title.text: qsTr("Different Lengths")
+        grid.columns: groupRoot.columnCount
+
+        Inputs.SegmentedField {
+            length: 2
+            accent: UI.Theme.primary
+            spacing: UI.Size.pixel20
+        }
+
+        Inputs.SegmentedField {
+            length: 7
+            accent: UI.Theme.secondary
+            spacing: UI.Size.pixel6
+        }
+
+        Inputs.SegmentedField {
+            length: 10
+            accent: UI.Theme.info
+            spacing: UI.Size.pixel4
+            segmentSize: UI.Size.pixel40
+            fontSize: UI.Size.pixel24
         }
     }
 
